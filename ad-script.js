@@ -60,3 +60,4 @@ document.addEventListener('DOMContentLoaded', function() {
         console.warn("未找到 'card-container' 元素，广告可能无法插入。请检查HTML结构是否正确。");
     }
 });
+
