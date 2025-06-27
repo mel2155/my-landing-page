@@ -2,6 +2,9 @@
  * style.css
  * 这是网站的主要样式文件，包含了全局设置、头部、内容网格、卡片、页脚以及加载指示器的样式。
  * 不包含广告相关的样式，广告样式在 ad-styles.css 中独立管理。
+ *
+ * 最近的更新主要集中在调整头部 (header) 的高度和它与下方内容的间距，
+ * 使头部更紧凑，并更贴近广告区域。同时，所有重要的 CSS 属性都已添加详细注释。
  */
 
 /* ===== 主题颜色与全局设置 ===== */
@@ -88,7 +91,11 @@ header {
        这为头部提供了一个平滑且有层次感的背景效果。*/
     background: linear-gradient(to right, var(--header-bg-start-color) 0%, var(--header-bg-end-color) 100%);
     color: #fff; /* 头部内部文本颜色设置为白色，确保与深色背景对比鲜明，易于阅读。*/
-    padding: 15px 0; /* 上下内边距为 15px，左右内边距为 0。这使得头部高度适中，不会过于臃肿。*/
+    /*
+     * 调整 padding：上下内边距从 15px 减少到 10px，使头部变矮。
+     * 这是为了让头部看起来更紧凑，并为下方内容留出更多空间。
+     */
+    padding: 10px 0; 
     text-align: center; /* 使头部内的所有行内内容（如文本）水平居中。*/
     font-size: 1.8em; /* 头部整体字体基准大小。这里的 'em' 是相对于父元素 (body) 的字体大小。*/
     font-weight: bold; /* 头部文本加粗。*/
@@ -97,7 +104,11 @@ header {
     z-index: 10; /* 设置堆叠顺序，确保头部在其他内容（如加载指示器之外的）之上。*/
     border-bottom-left-radius: 10px; /* 头部底部左侧圆角。*/
     border-bottom-right-radius: 10px; /* 头部底部右侧圆角。*/
-    margin-bottom: 20px; /* 头部与下方主要内容之间的间距。*/
+    /*
+     * 调整 margin-bottom：从 20px 减少到 10px，使头部与下方主要内容（特别是广告）之间的间距更小，
+     * 使它们看起来更贴近。
+     */
+    margin-bottom: 10px; 
 }
 
 /*
@@ -182,7 +193,7 @@ header {
      使用 CSS 变量，确保垂直间距和水平间距可以统一管理。*/
   gap: var(--grid-gap-vertical) var(--grid-gap-horizontal); 
   padding: 25px 20px; /* 网格容器内部的内边距：上下 25px，左右 20px。*/
-  max-width: 1400px; /* 限制网格容器的最大宽度，防止在超大屏幕上拉伸过宽，保持美观。*/
+  max-width: 1400px; /* 限制网格容器的最大宽度，防止在超宽屏幕上拉伸过宽，保持美观。*/
   margin: 0 auto; /* 水平居中网格容器。*/
   flex-grow: 1; /* 允许网格容器在 Flexbox 父容器 (body) 中占据所有可用垂直空间，
                     这确保了内容区域可以动态填充，并将页脚推到底部。*/
@@ -405,6 +416,8 @@ footer {
 /*
  * @media 规则用于根据屏幕宽度调整布局和样式，以适应不同设备（手机、平板、桌面等），
  * 确保网站在不同尺寸的屏幕上都能提供良好的用户体验。
+ * 在每个媒体查询中，头部 (header) 的 padding 和 margin-bottom 也进行了相应的调整，
+ * 以确保在小屏幕下头部依然保持紧凑。
  */
 
 /* 最小手机屏幕: 宽度在 480px 及以下时应用这些样式。*/
@@ -425,10 +438,11 @@ footer {
     .header-subtitle {
         font-size: 0.7em; 
     }
-    /* 头部内边距调整 */
+    /* 头部内边距和下方间距调整，使其在小屏幕下更紧凑。*/
     header { 
-        padding: 0.8rem 0; /* 减小头部内边距，使其在小屏幕上更紧凑。*/
-    }
+        padding: 8px 0; /* 减小头部上下内边距。*/
+        margin-bottom: 8px; /* 减小头部与下方内容的间距。*/
+    } 
     /* 网格布局调整：每行显示 4 个 App 图标，提高图标大小和可点击区域。*/
     .grid { 
         grid-template-columns: repeat(4, 1fr); 
@@ -474,10 +488,11 @@ footer {
     .header-subtitle {
         font-size: 0.75em; 
     }
-    /* 头部内边距调整 */
+    /* 头部内边距和下方间距调整。*/
     header { 
-        padding: 1rem 0; 
-    }
+        padding: 9px 0; 
+        margin-bottom: 9px; 
+    } 
     /* 网格布局调整：保持 5 列。*/
     .grid {
         grid-template-columns: repeat(5, 1fr); 
@@ -518,10 +533,11 @@ footer {
     .header-subtitle {
         font-size: 0.8em; 
     }
-    /* 头部内边距调整 */
+    /* 头部内边距和下方间距调整。*/
     header { 
-        padding: 1.2rem 0; 
-    }
+        padding: 10px 0; 
+        margin-bottom: 10px; 
+    } 
     /* 网格布局调整：保持 6 列。*/
     .grid {
         grid-template-columns: repeat(6, 1fr); 
@@ -562,6 +578,11 @@ footer {
     .header-subtitle {
         font-size: 0.85em; 
     }
+    /* 头部内边距和下方间距调整。*/
+    header { 
+        padding: 10px 0; 
+        margin-bottom: 10px; 
+    } 
     /* 网格布局调整：增加到 7 列。*/
     .grid {
         grid-template-columns: repeat(7, 1fr); 
@@ -598,6 +619,11 @@ footer {
     .header-subtitle {
         font-size: 0.9em; 
     }
+    /* 头部内边距和下方间距调整。*/
+    header { 
+        padding: 10px 0; 
+        margin-bottom: 10px; 
+    } 
     /* 网格布局调整：增加到 8 列。*/
     .grid {
         grid-template-columns: repeat(8, 1fr);
