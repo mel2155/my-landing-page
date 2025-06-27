@@ -7,21 +7,16 @@ const adsData = [
         pcImage: "images/ad-banner-pc.JPG",    // PC端广告图片的路径
         mobileImage: "images/ad-banner-mobile.JPG", // 移动端广告图片的路径
         alt: "Haohaise.tv 的主要推广广告",
-        link: "https://example.com/main-promo" // 此广告应链接到的URL
+        link: "https://cs-site-cloud-deploy.pages.dev" // 此广告应链接到的URL，请替换为您的实际链接
     },
+    // 如果您有更多广告，可以在这里添加更多对象
+    /*
     {
-        name: "新产品展示",
-        pcImage: "images/ad-new-product-pc.JPG",
-        mobileImage: "images/ad-new-product-mobile.JPG",
-        alt: "发现我们令人兴奋的新产品",
-        link: "https://example.com/new-product"
-    },
-    {
-        name: "限时优惠",
-        pcImage: "images/ad-special-offer-pc.JPG",
-        mobileImage: "images/ad-special-offer-mobile.JPG",
-        alt: "抓住我们的限时特别优惠",
-        link: "https://example.com/special-offer"
+        name: "第二个广告",
+        pcImage: "images/your-second-ad-pc.JPG",
+        mobileImage: "images/your-second-ad-mobile.JPG",
+        alt: "第二个广告的描述",
+        link: "https://example.com/second-ad-link"
     }
-    // 根据需要添加更多广告对象
+    */
 ];
