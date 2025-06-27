@@ -1,276 +1,306 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>好爱色·精选APP</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>好爱色·精选APP</title> <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
   <style>
     /* ===== 主题颜色与全局设置 ===== */
-    :root {
-      --bg-color: #15050A; /* 更深、更纯粹的背景色，提升沉浸感 */
+    :root { /* 定义 CSS 变量的根作用域，这些变量可以在整个文档中使用 */
+      --bg-color: #15050A; /* 页面背景色：深、纯粹，提升沉浸感 */
       --header-bg-start-color: #4A000F; /* 头部背景渐变起始色：深紫，与网站主题呼应 */
       --header-bg-end-color: #2A0008; /* 头部背景渐变结束色：深灰，平滑过渡 */
-      --text-color: #f0f0f0; /* 主要文本颜色，更亮，对比度更好 */
-      --secondary-text-color: #a0a0a0; /* 次要文本颜色，柔和，不抢主色 */
-      --logo-bg-color: transparent; /* Logo 背景色设置为透明 */
-      --border-color: #242424; /* 分隔线颜色，更暗，更融入背景 */
-      --card-hover-scale: 1.05; /* 卡片悬浮放大比例，更自然 */
-      --grid-gap-vertical: 20px; /* 网格垂直间距，略微增大，更清晰 */
-      --grid-gap-horizontal: 15px; /* 网格水平间距，略微增大，更清晰 */
-      --accent-color: #7aa1f9; /* 强调色，略微亮化，更具活力 */
-      --header-title-color: #ffffff; /* 标题颜色纯白，更醒目 */
+      --text-color: #f0f0f0; /* 主要文本颜色：更亮，对比度更好 */
+      --secondary-text-color: #a0a0a0; /* 次要文本颜色：柔和，不抢主色，用于辅助信息 */
+      --logo-bg-color: transparent; /* Logo 背景色设置为透明，方便与图片本身融合 */
+      --border-color: #242424; /* 分隔线颜色：更暗，更融入背景 */
+      --card-hover-scale: 1.05; /* 卡片悬浮时的放大比例，更自然 */
+      --grid-gap-vertical: 20px; /* 网格项之间垂直间距的默认值 */
+      --grid-gap-horizontal: 15px; /* 网格项之间水平间距的默认值 */
+      --accent-color: #7aa1f9; /* 强调色：略微亮化，更具活力，用于链接等 */
+      --header-title-color: #ffffff; /* 头部标题颜色：纯白，更醒目 */
 
-      /* 页脚新增或调整的变量 */
-      --footer-text-color: #d0d0d0; /* 页脚文本颜色，比主文本稍暗 */
+      /* 页脚新增或调整的颜色变量，用于页脚文本、链接和图标，方便统一管理 */
+      --footer-text-color: #d0d0d0; /* 页脚主要文本颜色，比主文本稍暗 */
       --footer-link-color: #8cafff; /* 页脚链接颜色，更柔和的蓝色 */
       --footer-icon-color: #8cafff; /* 页脚图标颜色，与链接一致 */
     }
 
-    body {
-      font-family: 'Noto Sans SC', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.65; /* 优化行高，提升可读性 */
-      -webkit-font-smoothing: antialiased; /* 字体抗锯齿 */
-      -moz-osx-font-smoothing: grayscale;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+    body { /* 页面主体样式 */
+      font-family: 'Noto Sans SC', sans-serif; /* 设置主要字体为 Noto Sans SC，备用为无衬线字体 */
+      margin: 0; /* 移除浏览器默认的外边距 */
+      padding: 0; /* 移除浏览器默认的内边距 */
+      background-color: var(--bg-color); /* 应用之前定义的背景色变量 */
+      color: var(--text-color); /* 应用之前定义的主要文本颜色变量 */
+      line-height: 1.65; /* 设置文本行高，提升可读性 */
+      -webkit-font-smoothing: antialiased; /* 针对 WebKit 浏览器，开启字体抗锯齿，使字体更平滑 */
+      -moz-osx-font-smoothing: grayscale; /* 针对 Firefox，开启字体灰度抗锯齿 */
+      min-height: 100vh; /* 设置页面最小高度为视口高度，确保页脚总在底部 */
+      display: flex; /* 启用 Flexbox 布局 */
+      flex-direction: column; /* Flex 子项垂直排列 */
     }
 
     /* ===== 头部样式 - 优化 ===== */
-    header {
-      /* 优化后的渐变背景：深紫到深灰，过渡更自然，更具质感 */
+    header { /* 头部区域样式 */
+      /* 渐变背景：从左上角到右下角，从深紫到深灰，过渡更自然，更具质感 */
       background: linear-gradient(135deg, var(--header-bg-start-color) 0%, var(--header-bg-end-color) 100%);
-      color: var(--header-title-color); /* 标题颜色 */
-      text-align: center;
-      padding: 2.2rem 1rem; /* 增加内边距，提供更多空间 */
+      color: var(--header-title-color); /* 应用头部标题颜色变量 */
+      text-align: center; /* 头部文字居中 */
+      padding: 2.2rem 1rem; /* 内边距：上下 2.2rem，左右 1rem，提供更多空间 */
       font-size: 2.3rem; /* 增大字体，更具冲击力 */
-      font-weight: 700; /* 加粗 */
+      font-weight: 700; /* 加粗字体 */
       border-bottom: 1px solid var(--border-color); /* 底部边框，与背景色协调 */
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* 更明显、更柔和的阴影 */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* 底部阴影，更明显、更柔和 */
       letter-spacing: 0.12em; /* 略微增大字间距，提升美观度 */
-      /* 优化文字阴影：更柔和，更具立体感 */
+      /* 文字阴影：更柔和，更具立体感 */
       text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 10px rgba(255, 255, 255, 0.2);
-      position: sticky; /* 顶部固定 */
-      top: 0;
-      z-index: 1000; /* 确保在其他内容之上 */
+      position: sticky; /* 使头部在滚动时保持在顶部 */
+      top: 0; /* 顶部固定位置 */
+      z-index: 1000; /* 确保头部在其他内容之上 */
     }
 
     /* ===== 网格布局 (核心) ===== */
-    .grid {
-      display: grid;
-      /* 默认桌面端显示 6 列，给大屏幕更多空间 */
-      grid-template-columns: repeat(6, 1fr); 
-      gap: var(--grid-gap-vertical) var(--grid-gap-horizontal);
-      padding: 30px 20px; /* 增加内边距，更舒适 */
-      max-width: 1400px; /* 增大最大宽度，适应大屏幕 */
-      margin: 0 auto;
-      flex-grow: 1;
+    .grid { /* 应用图标卡片的网格容器样式 */
+      display: grid; /* 启用 Grid 布局 */
+      /* 默认桌面端显示 6 列，每列等宽 */
+      grid-template-columns: repeat(6, 1fr); 
+      gap: var(--grid-gap-vertical) var(--grid-gap-horizontal); /* 设置网格项之间的垂直和水平间距 */
+      padding: 30px 20px; /* 网格容器内边距 */
+      max-width: 1400px; /* 网格容器的最大宽度，适应大屏幕 */
+      margin: 0 auto; /* 水平居中网格容器 */
+      flex-grow: 1; /* 允许网格容器占据所有可用垂直空间（在 flex-direction: column 的 body 中） */
     }
 
     /* ===== 卡片样式 ===== */
-    .card {
-      text-decoration: none;
-      color: var(--text-color);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* 动画更流畅 */
-      padding: 8px; /* 略微增大卡片内边距 */
+    .card { /* 每个 App 图标卡片的样式 */
+      text-decoration: none; /* 移除链接下划线 */
+      color: var(--text-color); /* 应用主要文本颜色 */
+      display: flex; /* 启用 Flexbox 布局 */
+      flex-direction: column; /* Flex 子项（图片和标题）垂直排列 */
+      align-items: center; /* 子项水平居中 */
+      justify-content: flex-start; /* 子项垂直向上对齐 */
+      /* 动画效果：平滑的形变、阴影和背景色过渡 */
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      padding: 8px; /* 卡片内边距 */
       border-radius: 12px; /* 更圆润的圆角 */
       background-color: transparent; /* 卡片背景透明 */
       box-shadow: none; /* 移除默认阴影 */
     }
 
-    .card:hover {
-      transform: scale(var(--card-hover-scale));
+    .card:hover { /* 卡片悬浮时的样式 */
+      transform: scale(var(--card-hover-scale)); /* 应用放大比例变量 */
       background-color: rgba(255, 255, 255, 0.07); /* 悬浮时显示略深的半透明背景 */
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* 悬浮时阴影更明显，但柔和 */
     }
 
-    /* ===== Logo图片样式 ===== */
-    .card img {
-      width: 90%; /* 图片宽度，略微缩小，留白更均匀 */
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      background-color: var(--logo-bg-color); /* Logo 背景色透明 */
+    /* ===== Logo图片样式 - 优化 ===== */
+    .card img { /* 卡片内部 Logo 图片的样式 */
+      width: 80%; /* 优化点1: 缩小图标宽度，从 90% 调整到 80% */
+      aspect-ratio: 1 / 1; /* 保持图片的宽高比为 1:1 */
+      object-fit: cover; /* 确保图片覆盖整个容器，可能会裁剪 */
+      background-color: var(--logo-bg-color); /* 应用 Logo 背景色变量 (透明) */
       border-radius: 22%; /* 使图标更圆润，或根据设计风格调整 */
-      margin-bottom: 8px; /* Logo和文字的间距 */
-      flex-shrink: 0;
-      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4); /* 图标增加更明显的阴影 */
+      margin-bottom: 6px; /* 优化点2: 略微减小 Logo 和文字的间距，使其更紧凑 */
+      flex-shrink: 0; /* 防止图片在空间不足时缩小 */
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); /* 优化点3: 略微减弱阴影，让图标看起来更“轻” */
     }
 
-    /* ===== 标题样式 ===== */
-    .card-title {
-      font-size: 14px; /* 字体大小适中 */
-      font-weight: 400; /* 字重适中 */
-      text-align: center;
-      width: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      box-sizing: border-box;
+    /* ===== 标题样式 - 优化 ===== */
+    .card-title { /* 卡片下方 App 标题的样式 */
+      font-size: 15px; /* 优化点4: 增大字体大小，从 14px 调整到 15px */
+      font-weight: 500; /* 优化点5: 略微加粗字体，使其更显眼 */
+      text-align: center; /* 标题文本居中 */
+      width: 100%; /* 标题宽度占据卡片 100% */
+      white-space: nowrap; /* 防止文本换行 */
+      overflow: hidden; /* 隐藏超出容器的文本 */
+      text-overflow: ellipsis; /* 超出部分显示省略号 (...) */
+      box-sizing: border-box; /* 盒模型设置为边框盒模型 */
       padding: 0 4px; /* 增加左右内边距，避免文字贴边 */
-      color: var(--text-color);
-      line-height: 1.4; /* 调整行高 */
+      color: var(--text-color); /* 应用主要文本颜色 */
+      line-height: 1.3; /* 优化点6: 调整行高，保持文字紧凑 */
     }
 
     /* ===== 响应式调整 ===== */
+    /* 使用 @media 规则根据屏幕宽度调整布局和样式，以适应不同设备 */
 
-    /* 最小手机屏幕: 320px - 480px, 显示 4 列 */
+    /* 最小手机屏幕: 宽度在 480px 及以下时应用 */
     @media (max-width: 480px) {
-      .grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 15px 8px; /* 减小间距 */
-        padding: 15px 10px;
+      .grid { /* 网格布局调整 */
+        grid-template-columns: repeat(5, 1fr); /* 核心优化点: 每行显示 5 个 App 图标 */
+        gap: 10px 6px; /* 进一步减小网格项的垂直和水平间距，适应 5 列布局 */
+        padding: 10px 8px; /* 减小网格容器的内边距 */
       }
-      .card {
-        padding: 5px;
+      .card { /* 卡片内边距调整 */
+        padding: 4px; /* 减小卡片内边距，使内容更紧凑 */
       }
-      .card-title {
-        font-size: 10px; /* 进一步减小字号 */
+      /* 图标和标题优化 */
+      .card img { /* 手机端图标进一步缩小，为更多列腾出空间 */
+        width: 70%;
+        margin-bottom: 4px;
       }
-      header {
-        font-size: 1.8rem; /* 调整手机端标题大小 */
-        padding: 1.8rem 1rem;
-        letter-spacing: 0.08em; /* 减小字间距 */
+      .card-title { /* 手机端标题略大，并调整行高 */
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 1.2;
+      }
+      header { /* 头部标题在手机端的大小和间距调整 */
+        font-size: 1.6rem;
+        padding: 1.6rem 0.8rem;
+        letter-spacing: 0.06em;
       }
     }
 
-    /* 中等屏幕手机/小平板: 481px - 768px, 显示 5 列 */
+    /* 中等屏幕手机/小平板: 宽度在 481px 到 768px 之间时应用 */
     @media (min-width: 481px) and (max-width: 768px) {
       .grid {
-        grid-template-columns: repeat(5, 1fr); /* 核心：这里是 5 列，符合预期 */
-        gap: 18px 10px;
-        padding: 20px 15px;
+        grid-template-columns: repeat(5, 1fr); /* 保持 5 列 */
+        gap: 15px 8px; /* 略微减小间距 */
+        padding: 15px 10px;
+      }
+      /* 图标和标题优化 */
+      .card img {
+        width: 75%; /* 调整图标宽度 */
+        margin-bottom: 5px;
       }
       .card-title {
-        font-size: 12px;
+        font-size: 12px; /* 调整标题字体大小 */
+        font-weight: 500;
       }
-      header {
-        font-size: 2rem; /* 调整标题大小 */
-        padding: 2rem 1rem;
+      header { /* 头部标题调整 */
+        font-size: 1.8rem;
+        padding: 1.8rem 1rem;
       }
     }
 
-    /* 平板/桌面: 769px - 1024px, 显示 6 列 */
+    /* 平板/桌面: 宽度在 769px 到 1024px 之间时应用 */
     @media (min-width: 769px) and (max-width: 1024px) {
       .grid {
-        grid-template-columns: repeat(6, 1fr);
-        gap: 20px 12px;
-        padding: 25px 20px;
+        grid-template-columns: repeat(6, 1fr); /* 保持 6 列 */
+        gap: 18px 10px; /* 略微减小间距 */
+        padding: 20px 15px;
+      }
+      /* 图标和标题优化 */
+      .card img {
+        width: 80%; /* 调整图标宽度 */
+        margin-bottom: 6px;
       }
       .card-title {
-        font-size: 13px;
+        font-size: 13px; /* 调整标题字体大小 */
+        font-weight: 500;
       }
       header {
-        font-size: 2.1rem;
+        font-size: 2rem;
       }
     }
 
-    /* 大屏幕桌面: 1025px - 1440px, 显示 7 列 (略微增加) */
+    /* 大屏幕桌面: 宽度在 1025px 到 1440px 之间时应用 */
     @media (min-width: 1025px) and (max-width: 1440px) {
         .grid {
-            grid-template-columns: repeat(7, 1fr); /* 略微增加到 7 列 */
+            grid-template-columns: repeat(7, 1fr); /* 保持 7 列 */
+            gap: 20px 12px;
+            padding: 25px 20px;
+        }
+        /* 图标和标题优化 */
+        .card img {
+          width: 78%; /* 微调图标宽度 */
+          margin-bottom: 6px;
+        }
+        .card-title {
+            font-size: 14px; /* 微调标题字体大小 */
+            font-weight: 500;
+        }
+    }
+
+    /* 超大屏幕桌面: 宽度在 1441px 及以上时应用 */
+    @media (min-width: 1441px) {
+        .grid {
+            grid-template-columns: repeat(8, 1fr); /* 保持 8 列 */
             gap: 22px 15px;
             padding: 30px 25px;
         }
-        .card-title {
-            font-size: 14px;
-        }
-    }
-
-    /* 超大屏幕桌面: 1441px 以上, 显示 8 列 */
-    @media (min-width: 1441px) {
-        .grid {
-            grid-template-columns: repeat(8, 1fr); /* 进一步增加到 8 列 */
-            gap: 25px 18px;
-            padding: 35px 30px;
+        /* 图标和标题优化 */
+        .card img {
+          width: 75%; /* 微调图标宽度 */
+          margin-bottom: 6px;
         }
         .card-title {
-            font-size: 15px;
+            font-size: 15px; /* 微调标题字体大小 */
+            font-weight: 500;
         }
     }
 
     /* ===== 页脚样式 - 全面优化 ===== */
-    footer { /* 直接针对 footer 标签进行样式设置 */
-      text-align: center; /* 确保所有内容居中 */
-      padding: 0.6rem 1rem 0.6rem; /* 优化: 减小上下内边距，使其更紧凑 */
+    footer { /* 直接针对 <footer> 标签进行样式设置 */
+      text-align: center; /* 确保所有页脚内容水平居中 */
+      padding: 0.6rem 1rem 0.6rem; /* 内边距：上下 0.6rem，左右 1rem，使其更紧凑 */
       font-size: 0.9rem; /* 整体字号略微减小 */
-      color: var(--footer-text-color); /* 使用新的页脚文本颜色变量 */
-      margin-top: 20px; /* 调整与上方内容的距离 */
-      border-top: 1px solid var(--border-color);
-      background-color: var(--header-bg-end-color);
-      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
-      line-height: 1.3; /* 整体行高，适用于页脚所有文本 */
-      display: flex; /* 使用 Flexbox 确保内容垂直居中 */
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      color: var(--footer-text-color); /* 应用页脚文本颜色变量 */
+      margin-top: 20px; /* 页脚与上方内容的距离 */
+      border-top: 1px solid var(--border-color); /* 页脚顶部边框 */
+      background-color: var(--header-bg-end-color); /* 页脚背景色 */
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3); /* 顶部阴影，增加层次感 */
+      line-height: 1.3; /* 整体行高，适用于页脚所有文本，确保紧凑 */
+      display: flex; /* 启用 Flexbox 布局 */
+      flex-direction: column; /* Flex 子项（联系信息块和版权文本）垂直排列 */
+      justify-content: center; /* 垂直居中 Flex 子项 */
+      align-items: center; /* 水平居中 Flex 子项 */
     }
 
-    /* 优化联系信息块 */
+    /* 优化联系信息块 (包含“联系站长”、Telegram、E-mail) */
     .contact-info {
-        display: flex; /* 使用 Flexbox 垂直排列内部 p 标签 */
-        flex-direction: column;
-        align-items: center; /* 确保内部文本和图标居中 */
-        gap: 2px; /* 极小化段落间距 */
+        display: flex; /* 启用 Flexbox 布局 */
+        flex-direction: column; /* 内部 p 标签垂直排列 */
+        align-items: center; /* 确保内部文本和图标水平居中 */
+        gap: 2px; /* 极小化内部 p 标签之间的间距 */
         margin-bottom: 5px; /* 联系信息块与下方版权信息之间的间距 */
         padding: 0; /* 移除原有的内边距 */
     }
 
-    /* 联系信息段落样式 */
+    /* 联系信息块内部所有段落的通用样式 */
     .contact-info p {
-        margin: 0; /* 移除所有默认段落外边距 */
-        padding: 0; /* 移除所有默认内边距 */
+        margin: 0; /* 移除浏览器默认的段落外边距 */
+        padding: 0; /* 移除浏览器默认的内边距 */
         font-size: 0.9rem; /* 统一联系信息字体大小 */
-        color: var(--footer-text-color); /* 使用页脚文本颜色 */
+        color: var(--footer-text-color); /* 应用页脚文本颜色 */
         line-height: 1.2; /* 确保行高紧凑 */
-        display: flex; /* 再次使用flexbox对图标和文本进行对齐 */
-        align-items: center;
-        justify-content: center; /* 确保图标和文本整体居中 */
+        display: flex; /* 启用 Flexbox 布局，用于对齐图标和文本 */
+        align-items: center; /* 垂直居中图标和文本 */
+        justify-content: center; /* 确保图标和文本整体水平居中 */
     }
 
-    /* “联系站长:”标题样式 */
+    /* “联系站长:”标题的特定样式 */
     .contact-info p:first-child {
-        font-weight: 500;
+        font-weight: 500; /* 略微加粗 */
         font-size: 0.95rem; /* 标题略大一点 */
-        color: var(--text-color); /* 标题使用主文本颜色 */
-        margin-bottom: 5px; /* 标题与下方联系方式间距 */
+        color: var(--text-color); /* 标题使用主文本颜色，更突出 */
+        margin-bottom: 5px; /* 标题与下方联系方式的间距 */
     }
 
-    /* 图标样式 */
+    /* 图标样式 (如 Telegram 的飞机图标，E-mail 的信封图标) */
     .contact-info .icon {
         margin-right: 6px; /* 优化: 减小图标与文字的间距 */
         font-size: 1em; /* 图标大小与文字保持一致或略大 */
-        color: var(--footer-icon-color); /* 使用新的图标颜色变量 */
+        color: var(--footer-icon-color); /* 应用页脚图标颜色变量 */
     }
 
-    /* 链接样式 */
+    /* 链接样式 (如 Telegram 和 E-mail 的链接) */
     .contact-info a {
-        color: var(--footer-link-color); /* 使用新的链接颜色变量 */
-        text-decoration: none;
-        transition: color 0.2s ease, text-shadow 0.2s ease;
-        line-height: 1.2; /* 确保链接行高紧凑 */
+        color: var(--footer-link-color); /* 应用页脚链接颜色变量 */
+        text-decoration: none; /* 移除下划线 */
+        transition: color 0.2s ease, text-shadow 0.2s ease; /* 颜色和阴影过渡动画 */
+        line-height: 1.2; /* 确保链接文本行高紧凑 */
     }
 
-    .contact-info a:hover {
+    .contact-info a:hover { /* 链接悬停时的样式 */
         color: #a0c0ff; /* 悬停颜色更亮 */
-        text-shadow: 0 0 5px rgba(160, 192, 255, 0.6); /* 悬停阴影 */
+        text-shadow: 0 0 5px rgba(160, 192, 255, 0.6); /* 悬停时显示柔和的阴影 */
     }
 
     /* 最底部版权/域名信息样式 */
-    .copyright-text { /* 我在 HTML 中为你添加了这个 p 标签 */
+    .copyright-text { /* 应用于显示域名和“无痕浏览”的段落 */
         margin: 0; /* 移除默认外边距 */
         padding: 0; /* 移除默认内边距 */
-        font-size: 0.75rem; /* 字体进一步减小，作为辅助信息 */
-        color: var(--secondary-text-color); /* 使用次要文本颜色 */
+        font-size: 0.75rem; /* 字体进一步减小，作为辅助信息，不抢主次 */
+        color: var(--secondary-text-color); /* 应用次要文本颜色 */
         opacity: 0.7; /* 略微降低透明度 */
         line-height: 1.2; /* 确保行高紧凑 */
         margin-top: 5px; /* 与上方联系信息块的间距 */
@@ -278,117 +308,111 @@
 
 
     /* 加载动画 */
-    #loading-indicator {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.8); /* 背景更深 */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        font-size: 1.8rem; /* 字体更大 */
-        z-index: 9999;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.4s ease, visibility 0.4s ease; /* 过渡更平滑 */
-        flex-direction: column; /* 让文字和点垂直排列 */
+    #loading-indicator { /* 加载指示器容器样式 */
+        position: fixed; /* 固定定位，使其在滚动时也保持在视口内 */
+        top: 0; /* 顶部对齐 */
+        left: 0; /* 左侧对齐 */
+        width: 100%; /* 宽度占满整个视口 */
+        height: 100%; /* 高度占满整个视口 */
+        background-color: rgba(0, 0, 0, 0.8); /* 半透明黑色背景，覆盖页面 */
+        display: flex; /* 启用 Flexbox 布局 */
+        justify-content: center; /* 水平居中内容 */
+        align-items: center; /* 垂直居中内容 */
+        color: white; /* 文本颜色 */
+        font-size: 1.8rem; /* 字体大小 */
+        z-index: 9999; /* 确保在所有其他内容之上 */
+        opacity: 0; /* 默认透明度为 0 (隐藏) */
+        visibility: hidden; /* 默认不可见 */
+        transition: opacity 0.4s ease, visibility 0.4s ease; /* 透明度和可见性过渡动画，平滑显示和隐藏 */
+        flex-direction: column; /* 让加载文字和点垂直排列 */
     }
 
-    #loading-indicator.show {
-        opacity: 1;
-        visibility: visible;
+    #loading-indicator.show { /* 当有 .show 类时显示加载指示器 */
+        opacity: 1; /* 完全不透明 */
+        visibility: visible; /* 可见 */
     }
-    
-    #loading-indicator div {
+    
+    #loading-indicator div { /* 加载点动画的容器 */
         margin-top: 10px; /* 文字和点之间的间距 */
     }
 
-    #loading-indicator span {
-        animation: blink 1s infinite alternate;
+    #loading-indicator span { /* 加载动画中的每个点 */
+        animation: blink 1s infinite alternate; /* 应用 blink 动画，无限循环，交替方向 */
         margin: 0 2px; /* 点之间有小间距 */
     }
 
-    #loading-indicator span:nth-child(2) {
+    #loading-indicator span:nth-child(2) { /* 第二个点的动画延迟 */
         animation-delay: 0.2s;
     }
 
-    #loading-indicator span:nth-child(3) {
+    #loading-indicator span:nth-child(3) { /* 第三个点的动画延迟 */
         animation-delay: 0.4s;
     }
 
-    @keyframes blink {
+    @keyframes blink { /* 定义名为 blink 的关键帧动画 */
         from { opacity: 0.3; } /* 从半透明开始 */
-        to { opacity: 1; }
+        to { opacity: 1; } /* 变为完全不透明 */
     }
   </style>
 </head>
 <body>
-  <header>好爱色·精选APP</header>
-
-  <div id="card-container" class="grid"></div>
-
-  <footer>
-    <div class="contact-info">
-      <p>联系站长:</p>
-      <p><span class="icon">✈️</span> Telegram: <a href="https://t.me/yy21551" target="_blank" rel="noopener noreferrer">@yy21551</a></p>
-      <p><span class="icon">📧</span> E-mail: <a href="mailto:melyy179@gmail.com">melyy179@gmail.com</a></p>
-    </div>
+  <header>好爱色·精选APP</header> <div id="card-container" class="grid"></div> <footer> <div class="contact-info"> <p>联系站长:</p> <p><span class="icon">✈️</span> Telegram: <a href="https://t.me/yy21551" target="_blank" rel="noopener noreferrer">@yy21551</a></p> <p><span class="icon">📧</span> E-mail: <a href="mailto:melyy179@gmail.com">melyy179@gmail.com</a></p> </div>
     <p class="copyright-text">my-landing-page-9ru.pages.dev - 无痕浏览</p>
   </footer>
 
-  <div id="loading-indicator">
-      加载中
-      <div><span>.</span><span>.</span><span>.</span></div>
-  </div>
+  <div id="loading-indicator"> 加载中 <div><span>.</span><span>.</span><span>.</span></div> </div>
 
   <script src="cards-from-guanli.js"></script>
 
   <script>
+    // 当 DOM 内容完全加载并解析后执行脚本
     document.addEventListener('DOMContentLoaded', () => {
-      const cardContainer = document.getElementById('card-container');
-      const loadingIndicator = document.getElementById('loading-indicator');
+      const cardContainer = document.getElementById('card-container'); // 获取卡片容器元素
+      const loadingIndicator = document.getElementById('loading-indicator'); // 获取加载指示器元素
 
+      // 如果加载指示器存在，则显示它
       if (loadingIndicator) {
           loadingIndicator.classList.add('show');
       }
 
-      // 模拟异步加载（如果实际数据加载很快，可以移除 setTimeout）
+      // 模拟异步加载数据。在实际项目中，这里会替换为真实的数据请求（例如 fetch API）
       // 这里的 setTimeout 仅为演示加载动画效果，实际项目中应根据数据加载完成的时机来隐藏
       setTimeout(() => {
+        // 检查卡片容器是否存在，并且 'sites' 变量已定义且为数组
         if (cardContainer && typeof sites !== 'undefined' && Array.isArray(sites)) {
+          // 遍历 'sites' 数组中的每个站点数据
           sites.forEach(site => {
-            const card = document.createElement('a');
-            card.href = site.url;
-            card.target = "_blank";
-            card.rel = "noopener noreferrer";
+            const card = document.createElement('a'); // 创建一个 <a> 标签作为卡片容器
+            card.href = site.url; // 设置链接目标 URL
+            card.target = "_blank"; // 在新标签页打开链接
+            card.rel = "noopener noreferrer"; // 提高安全性，防止钓鱼攻击
 
-            card.classList.add('card');
+            card.classList.add('card'); // 为卡片添加 CSS 类名 'card'
 
-            const img = document.createElement('img');
-            img.src = "logos/" + site.image;
-            img.alt = site.name + ' Logo';
-            img.loading = "lazy"; // 优化图片加载性能
+            const img = document.createElement('img'); // 创建 <img> 标签用于显示 Logo
+            img.src = "logos/" + site.image; // 设置图片源路径
+            img.alt = site.name + ' Logo'; // 设置图片的替代文本，用于无图或无障碍访问
+            img.loading = "lazy"; // 优化图片加载性能：当图片进入视口时才加载
 
-            const title = document.createElement('div');
-            title.classList.add('card-title');
-            title.textContent = site.name;
+            const title = document.createElement('div'); // 创建 <div> 标签用于显示 App 标题
+            title.classList.add('card-title'); // 为标题添加 CSS 类名 'card-title'
+            title.textContent = site.name; // 设置标题文本内容
 
-            card.appendChild(img);
-            card.appendChild(title);
-            cardContainer.appendChild(card);
+            card.appendChild(img); // 将图片添加到卡片中
+            card.appendChild(title); // 将标题添加到卡片中
+            cardContainer.appendChild(card); // 将整个卡片添加到卡片容器中
           });
         } else {
+          // 如果 'sites' 数据未正确加载，输出错误信息到控制台
           console.error("未能找到 card-container 元素或 'sites' 数据未正确加载。请确保 cards-from-guanli.js 正确定义了 'sites' 数组。");
         }
 
+        // 数据加载完成后，隐藏加载指示器
         if (loadingIndicator) {
             loadingIndicator.classList.remove('show');
         }
 
-      }, 600); // 适当延长模拟加载时间，让动画效果更明显
+      }, 600); // 模拟加载延迟 600 毫秒，让加载动画效果更明显
     });
   </script>
 </body>
