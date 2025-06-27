@@ -11,15 +11,15 @@ const adsData = [
     },
     {
         name: "新产品展示",
-        pcImage: "images/ad-new-product-pc.JPG", // 确保此图片存在于您的 images 文件夹中
-        mobileImage: "images/ad-new-product-mobile.JPG", // 确保此图片存在
+        pcImage: "images/ad-new-product-pc.JPG",
+        mobileImage: "images/ad-new-product-mobile.JPG",
         alt: "发现我们令人兴奋的新产品",
         link: "https://example.com/new-product"
     },
     {
         name: "限时优惠",
-        pcImage: "images/ad-special-offer-pc.JPG", // 确保此图片存在
-        mobileImage: "images/ad-special-offer-mobile.JPG", // 确保此图片存在
+        pcImage: "images/ad-special-offer-pc.JPG",
+        mobileImage: "images/ad-special-offer-mobile.JPG",
         alt: "抓住我们的限时特别优惠",
         link: "https://example.com/special-offer"
     }
