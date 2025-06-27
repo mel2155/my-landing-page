@@ -14,6 +14,7 @@
  * 所有重要的 CSS 属性都已添加详细注释。
  */
 
+/* --- */
 /* ===== 主题颜色与全局设置 ===== */
 /*
  * :root 伪类选择器定义了 CSS 变量的根作用域。
@@ -33,8 +34,8 @@
   --border-color: #2F000F; /* 边框/分隔线颜色：与背景和主题色协调的深红棕色，用于分隔内容区域。*/
 
   --card-hover-scale: 1.05; /* 卡片悬浮时的放大比例：鼠标悬停在卡片上时，卡片会放大 5%。*/
-  --grid-gap-vertical: 10px; /* 【再次调整】网格项之间垂直间距默认值，更紧凑。*/
-  --grid-gap-horizontal: 6px; /* 【再次调整】网格项之间水平间距默认值，更紧凑。*/
+  --grid-gap-vertical: 8px; /* 【优化】网格项之间垂直间距默认值，更紧凑。*/
+  --grid-gap-horizontal: 4px; /* 【优化】网格项之间水平间距默认值，更紧凑。*/
 
   --accent-color: #FFD700; /* 强调色：使用金色，与红黑配色形成高级感对比，用于特定按钮或高亮元素，如网站名称。*/
   --header-title-color: #E60044; /* 头部标题颜色：与主要文本颜色保持一致，突出主标题。*/
@@ -56,7 +57,7 @@
  */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
-
+/* --- */
 /* ===== 全局 HTML 元素样式重置与基础设置 ===== */
 /*
  * html 元素是文档的根元素。
@@ -89,6 +90,7 @@ body {
     overflow-x: hidden; /* 防止出现水平滚动条，提升用户体验。*/
 }
 
+/* --- */
 /* ===== 头部 (Header) 样式 (本次重点优化部分) ===== */
 /*
  * header 元素是页面的主头部区域，通常包含网站的品牌信息和导航。
@@ -99,10 +101,9 @@ header {
     background: linear-gradient(to right, var(--header-bg-start-color) 0%, var(--header-bg-end-color) 100%);
     color: #fff; /* 头部内部文本颜色设置为白色，确保与深色背景对比鲜明，易于阅读。*/
     /*
-     * 再次调整 padding：上下内边距从上次的 2px 进一步减少到 1px，使头部区域更矮，更紧凑。
-     * 这是为了最大程度地减少头部上下的空白。
+     * 再次调整 padding：上下内边距进一步减少到 1px，使头部区域更矮，更紧凑。
      */
-    padding: 1px 0; /* 【再次调整】减小上下内边距 */
+    padding: 1px 0; /* 【优化】减小上下内边距 */
     text-align: center; /* 使头部内的所有行内内容（如文本）水平居中。*/
     font-size: 1.5em; /* 调整：头部整体字体基准大小略微减小 */
     font-weight: bold; /* 头部文本加粗。*/
@@ -112,7 +113,7 @@ header {
     border-bottom-left-radius: 10px; /* 头部底部左侧圆角。*/
     border-bottom-right-radius: 10px; /* 头部底部右侧圆角。*/
     /*
-     * 头部与下方主要内容（特别是广告）之间的间距保持 5px。
+     * 头部与下方主要内容之间的间距。
      */
     margin-bottom: 5px;
 }
@@ -127,59 +128,22 @@ header {
     /*
      * 头部内容左右内边距保持 5px，使其内容更贴近屏幕边缘，减少空白。
      */
-    padding: 0 5px;
+    padding: 0 5px; /* 【优化】减小左右内边距 */
     display: flex; /* 启用 Flexbox 布局，便于内部元素的排列。*/
     flex-direction: column; /* Flex 子元素（如 .site-branding, .site-title, .header-subtitle）垂直排列。*/
     align-items: center; /* 内部元素水平居中对齐（在 flex-direction: column 模式下）。*/
     justify-content: flex-start; /* 内部元素垂直方向起始对齐。*/
 }
 
-/* 网站品牌区域：包含 Logo 和网站名称的容器。这是一个可点击的链接，通常链接到首页。*/
-/* (此部分在您的HTML中未直接使用，但为未来可能添加Logo和品牌名预留) */
-/*
-.site-branding {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: var(--accent-color);
-    margin-bottom: 2px;
-    width: 100%;
-    justify-content: center;
-}
-*/
-
-/* Logo 图片的样式 */
-/* (此部分在您的HTML中未直接使用，但为未来可能添加Logo预留) */
-/*
-.site-logo {
-    height: 30px;
-    width: auto;
-    margin-right: 6px;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-}
-*/
-
-/* 网站名称文本的样式 */
-/* (此部分在您的HTML中未直接使用，但为未来可能添加品牌名预留) */
-/*
-.site-brand-name {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--accent-color);
-    white-space: nowrap;
-}
-*/
-
 /* 主标题 (h1) 的样式 */
 .site-title {
     margin: 0; /* 移除浏览器默认的外边距。*/
     padding: 0; /* 移除浏览器默认的内边距。*/
-    font-size: 1.3em; /* 调整：大幅缩小主标题字体大小，使其更协调 */
+    font-size: 1.3em; /* 【优化】大幅缩小主标题字体大小，使其更协调 */
     color: var(--header-title-color); /* 使用头部标题颜色变量，确保与主题一致。*/
     line-height: 1.2; /* 调整行高，使标题文本更紧凑。*/
     /*
-     * 主标题与副标题的间距保持 3px。
+     * 主标题与副标题的间距。
      */
     margin-bottom: 3px;
 }
@@ -195,15 +159,14 @@ header {
     overflow-x: auto; /* 添加水平滚动条，当内容超出时显示 */
     -webkit-overflow-scrolling: touch; /* 使 iOS 设备上的滚动更流畅 */
     padding: 5px 0; /* 增加一些上下内边距，使滚动区域更明显 */
-    /* 移除之前可能设置的 max-width，让内容可以超出 */
-    max-width: none;
+    max-width: none; /* 移除之前可能设置的 max-width，让内容可以超出 */
     display: block; /* 确保占据一行 */
     width: 100%; /* 确保它能填满父容器以实现滚动 */
     box-sizing: border-box; /* 确保 padding 不会增加宽度 */
     text-align: center; /* 文本居中 */
 }
 
-
+/* --- */
 /* ===== 网格布局 (核心) ===== */
 /*
  * .grid 类应用于图标卡片的容器，定义了其如何使用 CSS Grid 布局排列。
@@ -214,14 +177,15 @@ header {
   grid-template-columns: repeat(6, 1fr); /* 定义列的数量和大小：默认桌面端显示 6 列，每列等宽 (1fr)。*/
   /* gap 属性定义了网格项（卡片）之间的间距。
      使用 CSS 变量，确保垂直间距和水平间距可以统一管理。*/
-  gap: var(--grid-gap-vertical) var(--grid-gap-horizontal); /* 【再次调整】使用更紧凑的间距变量 */
-  padding: 15px 10px; /* 【再次调整】网格容器内部的内边距：上下 15px，左右 10px。*/
+  gap: var(--grid-gap-vertical) var(--grid-gap-horizontal); /* 【优化】使用更紧凑的间距变量 */
+  padding: 12px 8px; /* 【优化】网格容器内部的内边距：上下 12px，左右 8px，更紧凑。*/
   max-width: 1400px; /* 限制网格容器的最大宽度，防止在超宽屏幕上拉伸过宽，保持美观。*/
   margin: 0 auto; /* 水平居中网格容器。*/
   flex-grow: 1; /* 允许网格容器在 Flexbox 父容器 (body) 中占据所有可用垂直空间，
                     这确保了内容区域可以动态填充，并将页脚推到底部。*/
 }
 
+/* --- */
 /* ===== 卡片样式 ===== */
 /*
  * .card 类应用于每个 App 图标卡片。
@@ -237,7 +201,7 @@ header {
   /* transition 属性定义了元素属性变化时的动画效果，使交互更加平滑。
      transform, box-shadow, background-color 属性在 0.3 秒内平滑过渡。*/
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  padding: 3px; /* 【再次调整】卡片内边距，使内容与卡片边缘保持一定距离，更紧凑。*/
+  padding: 2px; /* 【优化】卡片内边距，使内容与卡片边缘保持一定距离，更紧凑。*/
   border-radius: 12px; /* 设置卡片的圆角，使其外观更柔和。*/
   background-color: transparent; /* 卡片背景设置为透明，与页面背景融合。*/
   box-shadow: none; /* 默认不显示阴影。*/
@@ -256,8 +220,8 @@ header {
  * .card img 样式应用于每个卡片内部的 App 图标图片。
  */
 .card img {
-  width: 98%; /* 【再次调整】图标宽度占卡片空间的 98%，让图标更宽。*/
-  height: 100px; /* 【再次调整】增大高度，例如 100px，使其更大。*/
+  width: 98%; /* 【优化】图标宽度占卡片空间的 98%，让图标更宽。*/
+  height: 100px; /* 【优化】增大高度，例如 100px，使其更大。*/
   max-width: 100%; /* 确保图片不会超出其父容器（卡片）的最大宽度。*/
   display: block; /* 将图片设置为块级元素，消除图片下方可能出现的额外空间，便于精确布局。*/
   /*
@@ -269,7 +233,7 @@ header {
   object-position: center; /* 确保图片在其可用空间内水平和垂直居中显示。*/
   background-color: var(--logo-bg-color); /* 应用 Logo 背景色变量 (透明)。*/
   border-radius: 20%; /* 设置图片圆角，使其外观更柔和或适应图标形状。*/
-  margin-bottom: 1px; /* 【再次调整】减小 Logo 和下方标题之间的垂直间距。*/
+  margin-bottom: 0px; /* 【优化】减小 Logo 和下方标题之间的垂直间距。*/
   flex-shrink: 0; /* 防止图片在 Flexbox 容器空间不足时缩小。*/
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 柔和的阴影，增加图标的立体感。*/
 }
@@ -279,7 +243,7 @@ header {
  * .card-title 样式应用于每个卡片下方的 App 标题文本。
  */
 .card-title {
-  font-size: 17px; /* 【再次调整】标题的字体大小，使其更大。*/
+  font-size: 17px; /* 【优化】标题的字体大小，使其更大。*/
   font-weight: 500; /* 字体粗细。*/
   text-align: center; /* 标题文本水平居中。*/
   width: 100%; /* 标题宽度占据卡片空间的 100%。*/
@@ -287,12 +251,13 @@ header {
   overflow: hidden; /* 隐藏超出容器边界的文本。*/
   text-overflow: ellipsis; /* 当文本超出容器时，显示省略号 (...)。*/
   box-sizing: border-box; /* 盒模型设置为边框盒模型，确保 padding 和 border 不会增加元素的总宽度和高度。*/
-  padding: 0 0px; /* 【再次调整】左右内边距为 0px，上下内边距为 0。使文字更紧凑。*/
+  padding: 0; /* 【优化】左右内边距为 0px，上下内边距为 0。使文字更紧凑。*/
   color: var(--text-color); /* 应用主要文本颜色变量。*/
-  line-height: 1.0; /* 【再次调整】调整行高，保持文字更紧凑。*/
+  line-height: 1.0; /* 【优化】调整行高，保持文字更紧凑。*/
 }
 
-/* ===== 页脚样式 (保持不变) ===== */
+/* --- */
+/* ===== 页脚样式 ===== */
 /*
  * footer 元素是页面的底部区域。
  */
@@ -375,7 +340,8 @@ footer {
     margin-top: 5px; /* 与上方联系信息块的间距。*/
 }
 
-/* ===== 加载指示器 (Loading Indicator) 样式 (保持不变) ===== */
+/* --- */
+/* ===== 加载指示器 (Loading Indicator) 样式 ===== */
 /*
  * #loading-indicator 用于在页面内容加载时显示加载动画，提升用户体验。
  */
@@ -434,6 +400,7 @@ footer {
     to { opacity: 1; } /* 变为完全不透明。*/
 }
 
+/* --- */
 /* ===== 响应式调整 (Media Queries) - 主站内容 (本次重点优化 header 部分) ===== */
 /*
  * @media 规则用于根据屏幕宽度调整布局和样式，以适应不同设备（手机、平板、桌面等），
@@ -444,29 +411,13 @@ footer {
 
 /* 最小手机屏幕: 宽度在 480px 及以下时应用这些样式。*/
 @media (max-width: 480px) {
-    /* 头部 Logo 尺寸和间距调整 */
-    /* (您的HTML中没有直接使用.site-logo，但此样式保留以备将来使用) */
-    /*
-    .site-logo {
-        height: 22px;
-        margin-right: 4px;
-    }
-    */
-    /* 网站品牌名称字体大小调整 */
-    /* (您的HTML中没有直接使用.site-brand-name，但此样式保留以备将来使用) */
-    /*
-    .site-brand-name {
-        font-size: 16px;
-    }
-    */
     /* 主标题字体大小调整 */
     .site-title {
-        font-size: 1.1rem; /* 调整：进一步缩小主标题字体 */
+        font-size: 1.1rem; /* 【优化】进一步缩小主标题字体 */
     }
     /* 副标题字体大小调整 */
     .header-subtitle {
-        font-size: 1.0em; /* 【再次调整】增大副标题字体 */
-        /* 保留其他已有的样式 */
+        font-size: 1.0em; /* 【优化】增大副标题字体 */
         white-space: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -476,78 +427,52 @@ footer {
      * 调整头部内边距和下方间距，使其在小屏幕下更紧凑。
      */
     header {
-        padding: 1px 0; /* 调整：进一步减小头部上下内边距 */
-        margin-bottom: 2px; /* 调整：进一步减小头部与下方内容的间距 */
+        padding: 1px 0; /* 【优化】进一步减小头部上下内边距 */
+        margin-bottom: 2px; /* 【优化】进一步减小头部与下方内容的间距 */
     }
     /* 调整头部内容左右内边距，使其更贴合边缘。*/
     .header-content {
-        padding: 0 2px;
+        padding: 0 2px; /* 【优化】更小的左右内边距 */
     }
-    /*
-     * 调整 Logo 和网站名称与下方主标题的间距，使其更紧凑。
-     */
-    /* (您的HTML中没有直接使用.site-branding，但此样式保留以备将来使用) */
-    /*
-    .site-branding {
-        margin-bottom: 1px;
-    }
-    */
     /*
      * 网格布局调整：强制在最小手机屏幕下每行显示 5 个 App 图标。
-     * 这将使 App 排列更紧凑。
      */
     .grid {
-        grid-template-columns: repeat(5, 1fr); /* 调整为 5 列。*/
-        gap: 4px 2px; /* 【再次调整】进一步减小网格间距，使其更紧凑。*/
-        padding: 4px 2px; /* 【再次调整】进一步减小网格容器内边距。*/
+        grid-template-columns: repeat(5, 1fr); /* 【优化】调整为 5 列。*/
+        gap: 4px 2px; /* 【优化】进一步减小网格间距，使其更紧凑。*/
+        padding: 4px 2px; /* 【优化】进一步减小网格容器内边距。*/
     }
     /* 卡片内边距调整 */
     .card {
-        padding: 1px; /* 【再次调整】进一步减小卡片内边距。*/
+        padding: 1px; /* 【优化】进一步减小卡片内边距。*/
     }
     /* 卡片内部图标尺寸调整 */
     .card img {
-        width: 98%; /* 【再次调整】让图标更宽 */
-        height: 60px; /* 【再次调整】增大高度以适应新的列数和间距，确保图标不被裁剪，且整体更小 */
-        margin-bottom: 0px; /* 【再次调整】减小图标和标题的间距。*/
+        width: 98%; /* 【优化】让图标更宽 */
+        height: 60px; /* 【优化】增大高度以适应新的列数和间距，确保图标不被裁剪，且整体更小 */
+        margin-bottom: 0px; /* 【优化】减小图标和标题的间距。*/
     }
     /* 卡片标题字体大小调整 */
     .card-title {
-        font-size: 12px; /* 【再次调整】增大字体大小 */
-        line-height: 1.0; /* 【再次调整】更紧凑的行高 */
-        padding: 0 0px; /* 【再次调整】减小内边距 */
+        font-size: 12px; /* 【优化】增大字体大小 */
+        line-height: 1.0; /* 【优化】更紧凑的行高 */
+        padding: 0; /* 【优化】减小内边距 */
     }
     /* 页脚字体大小调整 (保持不变) */
-    footer { /* 注意：这里是 footer 而不是 .footer */
+    footer {
         font-size: 0.8rem;
     }
 }
 
 /* 中等屏幕手机/小平板: 宽度在 481px 到 768px 之间时应用这些样式。*/
 @media (min-width: 481px) and (max-width: 768px) {
-    /* 头部 Logo 尺寸和间距调整 */
-    /* (您的HTML中没有直接使用.site-logo，但此样式保留以备将来使用) */
-    /*
-    .site-logo {
-        height: 25px;
-        margin-right: 5px;
-    }
-    */
-    /* 网站品牌名称字体大小调整 */
-    /* (您的HTML中没有直接使用.site-brand-name，但此样式保留以备将来使用) */
-    /*
-    .site-brand-name {
-        font-size: 18px;
-    }
-    */
     /* 主标题字体大小调整 */
     .site-title {
-        font-size: 1.3rem; /* 调整：略微缩小主标题字体 */
+        font-size: 1.3rem; /* 【优化】略微缩小主标题字体 */
     }
     /* 副标题字体大小调整 */
     .header-subtitle {
-        font-size: 1.1em; /* 【再次调整】增大副标题字体 */
-        /* 保留其他已有的样式 */
+        font-size: 1.1em; /* 【优化】增大副标题字体 */
         white-space: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -557,74 +482,48 @@ footer {
      * 再次调整头部内边距和下方间距。
      */
     header {
-        padding: 2px 0; /* 调整：减小头部上下内边距 */
-        margin-bottom: 3px; /* 调整：减小头部与下方内容的间距 */
+        padding: 2px 0; /* 【优化】减小头部上下内边距 */
+        margin-bottom: 3px; /* 【优化】减小头部与下方内容的间距 */
     }
     /* 调整头部内容左右内边距。*/
     .header-content {
-        padding: 0 4px; /* 调整：略微减小左右内边距 */
+        padding: 0 4px; /* 【优化】略微减小左右内边距 */
     }
-    /*
-     * 调整 Logo 和网站名称与下方主标题的间距，使其更紧凑。
-     */
-    /* (您的HTML中没有直接使用.site-branding，但此样式保留以备将来使用) */
-    /*
-    .site-branding {
-        margin-bottom: 1px;
-    }
-    */
     /*
      * 网格布局调整：强制在中等屏幕下每行显示 5 个 App 图标。
-     * 这将使 App 排列更紧凑。
      */
     .grid {
-        grid-template-columns: repeat(5, 1fr); /* 调整为 5 列。*/
-        gap: 6px 3px; /* 【再次调整】减小网格间距。*/
-        padding: 6px 3px; /* 【再次调整】减小网格容器内边距。*/
+        grid-template-columns: repeat(5, 1fr); /* 【优化】调整为 5 列。*/
+        gap: 6px 3px; /* 【优化】减小网格间距。*/
+        padding: 6px 3px; /* 【优化】减小网格容器内边距。*/
     }
     /* 卡片内边距调整 */
     .card {
-        padding: 2px; /* 【再次调整】减小卡片内边距 */
+        padding: 2px; /* 【优化】减小卡片内边距 */
     }
     /* 卡片内部图标尺寸调整 */
     .card img {
-        width: 98%; /* 【再次调整】让图标更宽 */
-        height: 75px; /* 【再次调整】增大高度以适应新的列数和间距 */
-        margin-bottom: 0px; /* 【再次调整】减小图标和标题的间距。*/
+        width: 98%; /* 【优化】让图标更宽 */
+        height: 75px; /* 【优化】增大高度以适应新的列数和间距 */
+        margin-bottom: 0px; /* 【优化】减小图标和标题的间距。*/
     }
     /* 卡片标题字体大小调整 */
     .card-title {
-        font-size: 14px; /* 【再次调整】增大字体大小 */
-        line-height: 1.0; /* 【再次调整】更紧凑的行高 */
-        padding: 0 0px; /* 【再次调整】减小内边距 */
+        font-size: 14px; /* 【优化】增大字体大小 */
+        line-height: 1.0; /* 【优化】更紧凑的行高 */
+        padding: 0; /* 【优化】减小内边距 */
     }
 }
 
 /* 平板/桌面: 宽度在 769px 到 1024px 之间时应用这些样式。*/
 @media (min-width: 769px) and (max-width: 1024px) {
-    /* 头部 Logo 尺寸和间距调整 */
-    /* (您的HTML中没有直接使用.site-logo，但此样式保留以备将来使用) */
-    /*
-    .site-logo {
-        height: 30px;
-        margin-right: 7px;
-    }
-    */
-    /* 网站品牌名称字体大小调整 */
-    /* (您的HTML中没有直接使用.site-brand-name，但此样式保留以备将来使用) */
-    /*
-    .site-brand-name {
-        font-size: 20px;
-    }
-    */
     /* 主标题字体大小调整 */
     .site-title {
         font-size: 1.5rem;
     }
     /* 副标题字体大小调整 */
     .header-subtitle {
-        font-size: 1.2em; /* 【再次调整】增大副标题字体 */
-        /* 保留其他已有的样式 */
+        font-size: 1.2em; /* 【优化】增大副标题字体 */
         white-space: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -634,71 +533,46 @@ footer {
      * 再次调整头部内边距。
      */
     header {
-        padding: 3px 0; /* 调整：减小头部上下内边距 */
+        padding: 3px 0; /* 【优化】减小头部上下内边距 */
         margin-bottom: 4px;
     }
     /* 调整头部内容左右内边距。*/
     .header-content {
-        padding: 0 8px; /* 调整：略微减小左右内边距 */
+        padding: 0 8px; /* 【优化】略微减小左右内边距 */
     }
-    /*
-     * 调整 Logo 和网站名称与下方主标题的间距。
-     */
-    /* (您的HTML中没有直接使用.site-branding，但此样式保留以备将来使用) */
-    /*
-    .site-branding {
-        margin-bottom: 2px;
-    }
-    */
     /* 网格布局调整：保持 6 列。*/
     .grid {
         grid-template-columns: repeat(6, 1fr);
-        gap: 8px 4px; /* 【再次调整】减小网格间距 */
-        padding: 10px 8px; /* 【再次调整】减小网格容器内边距 */
+        gap: 8px 4px; /* 【优化】减小网格间距 */
+        padding: 10px 8px; /* 【优化】减小网格容器内边距 */
     }
     /* 卡片内边距调整 */
     .card {
-        padding: 3px; /* 【再次调整】减小卡片内边距 */
+        padding: 2px; /* 【优化】减小卡片内边距 */
     }
     /* 卡片内部图标尺寸调整 */
     .card img {
-        width: 98%; /* 【再次调整】让图标更宽 */
-        height: 90px; /* 【再次调整】增大高度 */
-        margin-bottom: 1px;
+        width: 98%; /* 【优化】让图标更宽 */
+        height: 90px; /* 【优化】增大高度 */
+        margin-bottom: 0px; /* 【优化】减小图标和标题的间距。*/
     }
     /* 卡片标题字体大小调整 */
     .card-title {
-        font-size: 15px; /* 【再次调整】增大字体大小 */
-        line-height: 1.0; /* 【再次调整】更紧凑的行高 */
-        padding: 0 0px; /* 【再次调整】减小内边距 */
+        font-size: 15px; /* 【优化】增大字体大小 */
+        line-height: 1.0; /* 【优化】更紧凑的行高 */
+        padding: 0; /* 【优化】减小内边距 */
     }
 }
 
 /* 大屏幕桌面: 宽度在 1025px 到 1440px 之间时应用这些样式。*/
 @media (min-width: 1025px) and (max-width: 1440px) {
-    /* 头部 Logo 尺寸和间距调整 */
-    /* (您的HTML中没有直接使用.site-logo，但此样式保留以备将来使用) */
-    /*
-    .site-logo {
-        height: 35px;
-        margin-right: 8px;
-    }
-    */
-    /* 网站品牌名称字体大小调整 */
-    /* (您的HTML中没有直接使用.site-brand-name，但此样式保留以备将来使用) */
-    /*
-    .site-brand-name {
-        font-size: 24px;
-    }
-    */
     /* 主标题字体大小调整 */
     .site-title {
         font-size: 1.7rem;
     }
     /* 副标题字体大小调整 */
     .header-subtitle {
-        font-size: 1.3em; /* 【再次调整】增大副标题字体 */
-        /* 保留其他已有的样式 */
+        font-size: 1.3em; /* 【优化】增大副标题字体 */
         white-space: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -708,71 +582,46 @@ footer {
      * 再次调整头部内边距。
      */
     header {
-        padding: 4px 0; /* 调整：减小头部上下内边距 */
+        padding: 4px 0; /* 【优化】减小头部上下内边距 */
         margin-bottom: 5px;
     }
     /* 调整头部内容左右内边距。*/
     .header-content {
-        padding: 0 12px; /* 调整：略微减小左右内边距 */
+        padding: 0 12px; /* 【优化】略微减小左右内边距 */
     }
-    /*
-     * 调整 Logo 和网站名称与下方主标题的间距。
-     */
-    /* (您的HTML中没有直接使用.site-branding，但此样式保留以备将来使用) */
-    /*
-    .site-branding {
-        margin-bottom: 3px;
-    }
-    */
     /* 网格布局调整：保持 7 列。*/
     .grid {
         grid-template-columns: repeat(7, 1fr);
-        gap: 10px 5px; /* 【再次调整】减小网格间距 */
-        padding: 15px 10px; /* 【再次调整】减小网格容器内边距 */
+        gap: 10px 5px; /* 【优化】减小网格间距 */
+        padding: 15px 10px; /* 【优化】减小网格容器内边距 */
     }
     /* 卡片内边距调整 */
     .card {
-        padding: 4px; /* 【再次调整】减小卡片内边距 */
+        padding: 3px; /* 【优化】减小卡片内边距 */
     }
     /* 卡片内部图标尺寸调整 */
     .card img {
-        width: 98%; /* 【再次调整】让图标更宽 */
-        height: 100px; /* 【再次调整】增大高度 */
-        margin-bottom: 1px;
+        width: 98%; /* 【优化】让图标更宽 */
+        height: 100px; /* 【优化】增大高度 */
+        margin-bottom: 0px; /* 【优化】减小图标和标题的间距。*/
     }
     /* 卡片标题字体大小调整 */
     .card-title {
-        font-size: 17px; /* 【再次调整】增大字体大小 */
-        line-height: 1.0; /* 【再次调整】更紧凑的行高 */
-        padding: 0 0px; /* 【再次调整】减小内边距 */
+        font-size: 17px; /* 【优化】增大字体大小 */
+        line-height: 1.0; /* 【优化】更紧凑的行高 */
+        padding: 0; /* 【优化】减小内边距 */
     }
 }
 
 /* 超大屏幕桌面: 宽度在 1441px 及以上时应用这些样式。*/
 @media (min-width: 1441px) {
-    /* 头部 Logo 尺寸和间距调整 */
-    /* (您的HTML中没有直接使用.site-logo，但此样式保留以备将来使用) */
-    /*
-    .site-logo {
-        height: 40px;
-        margin-right: 10px;
-    }
-    */
-    /* 网站品牌名称字体大小调整 */
-    /* (您的HTML中没有直接使用.site-brand-name，但此样式保留以备将来使用) */
-    /*
-    .site-brand-name {
-        font-size: 26px;
-    }
-    */
     /* 主标题字体大小调整 */
     .site-title {
         font-size: 1.9rem;
     }
     /* 副标题字体大小调整 */
     .header-subtitle {
-        font-size: 1.4em; /* 【再次调整】增大副标题字体 */
-        /* 保留其他已有的样式 */
+        font-size: 1.4em; /* 【优化】增大副标题字体 */
         white-space: nowrap;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -782,43 +631,33 @@ footer {
      * 再次调整头部内边距。
      */
     header {
-        padding: 5px 0; /* 调整：减小头部上下内边距 */
+        padding: 5px 0; /* 【优化】减小头部上下内边距 */
         margin-bottom: 5px;
     }
     /* 调整头部内容左右内边距。*/
     .header-content {
-        padding: 0 18px; /* 调整：略微减小左右内边距 */
+        padding: 0 18px; /* 【优化】略微减小左右内边距 */
     }
-    /*
-     * 调整 Logo 和网站名称与下方主标题的间距。
-     */
-    /* (您的HTML中没有直接使用.site-branding，但此样式保留以备将来使用) */
-    /*
-    .site-branding {
-        margin-bottom: 3px;
-    }
-    */
     /* 网格布局调整：增加到 8 列。*/
     .grid {
         grid-template-columns: repeat(8, 1fr);
-        gap: 12px 6px; /* 【再次调整】减小网格间距 */
-        padding: 18px 12px; /* 【再次调整】减小网格容器内边距 */
+        gap: 12px 6px; /* 【优化】减小网格间距 */
+        padding: 18px 12px; /* 【优化】减小网格容器内边距 */
     }
     /* 卡片内边距调整 */
     .card {
-        padding: 5px; /* 【再次调整】保持或微调卡片内边距 */
+        padding: 4px; /* 【优化】保持或微调卡片内边距 */
     }
     /* 卡片内部图标尺寸调整 */
     .card img {
-        width: 98%; /* 【再次调整】让图标更宽 */
-        height: 110px; /* 【再次调整】增大高度 */
-        margin-bottom: 1px;
+        width: 98%; /* 【优化】让图标更宽 */
+        height: 110px; /* 【优化】增大高度 */
+        margin-bottom: 0px; /* 【优化】减小图标和标题的间距。*/
     }
     /* 卡片标题字体大小调整 */
     .card-title {
-        font-size: 18px; /* 【再次调整】增大字体大小 */
-        line-height: 1.0; /* 【再次调整】更紧凑的行高 */
-        padding: 0 0px; /* 【再次调整】减小内边距 */
+        font-size: 18px; /* 【优化】增大字体大小 */
+        line-height: 1.0; /* 【优化】更紧凑的行高 */
+        padding: 0; /* 【优化】减小内边距 */
     }
 }
-
