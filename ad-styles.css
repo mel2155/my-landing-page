@@ -2,28 +2,30 @@
 
 /* 广告容器的通用样式：影响PC端和大屏幕下的广告显示 */
 .ad-container {
-    margin: 15px auto; 
-    width: 90%; 
-    max-width: 970px; 
-    border: 1px solid rgba(255, 255, 255, 0.1); 
-    background-color: rgba(0, 0, 0, 0.3); 
+    margin: 15px auto; /* 自动居中 */
+    width: 90%;
+    max-width: 970px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(0, 0, 0, 0.3);
     text-align: center; /* 确保文字内容居中，但对 flex 内部图片影响不大 */
-    overflow: hidden; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
-    border-radius: 8px; 
-    
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+
     /* 内边距：减少上下内边距，给图片更多垂直空间 */
     padding: 2px 3px; /* 上下 2px，左右 3px，更细致的控制 */
 
-    /* PC端/大屏幕下的最大高度：**核心调整** */
-    /* 我们需要找到一个能刚好容纳您的 PC 横幅的高度。
-       您可以尝试根据您的图片实际像素高度稍微调整。
-       例如，如果您的 PC 图片实际高度是 90px，那么这里的 max-height 设为 90px 或 92px (加上边框和微量内边距) 可能会很合适。
-       我这里给出一些经验值，您可能需要小幅微调。 */
-    max-height: 95px; /* 进一步微调 PC 端最大高度，留更多空间 */
+    /* PC端/大屏幕下的最大高度：**核心优化点**
+       请务必根据您的PC横幅广告图片的实际像素高度进行微调。
+       例如，如果您的PC图片实际高度是 90px，那么这里的 max-height 可以设为 92px 或 93px
+       （包含 1px 边框和 2px 上下内边距，共计 1px + 2px + 2px + 1px = 6px 的额外空间，
+       所以 90px 图片 + 2*1px 边框 + 2*2px 内边距 = 90 + 2 + 4 = 96px，但可能不需要这么精确）。
+       我这里给出一些经验值，通常在图片实际高度基础上增加 2-4px 就足够。
+    */
+    max-height: 92px; /* 建议值：如果PC图片高度约90px，可设为92px。请根据实际图片高度调整！ */
     min-height: 60px; /* 确保最小高度 */
 
-    /* 弹性布局：确保内部图片完美居中 */
+    /* 弹性布局：确保内部图片完美居中，此设置非常关键，请保持不变 */
     display: flex;
     justify-content: center; /* 水平居中 */
     align-items: center;   /* 垂直居中 */
@@ -32,18 +34,16 @@
 
 /* 广告图片通用样式：同时应用于PC端和手机端的广告图片 */
 .ad-container img {
-    display: block; 
-    width: 100%; 
+    display: block;
+    width: 100%;
     height: 100%; /* 让图片高度尽可能填充父容器 */
     max-height: 100%; /* 确保图片不会超出其容器的最大高度 */
-    border-radius: 5px; 
-    /* object-fit: contain; 确保图片在保持自身比例的同时，完整地显示在容器内，不会被拉伸或裁剪 */
-    /* object-fit: cover; 会填充整个容器，但可能会裁剪图片边缘。
-       如果您图片周围有较多空白，且希望图片更大，可以尝试 'cover'。
-       但 'contain' 通常更安全，确保图片完整性。
-       为了更好的居中效果，我们保持 'contain' 并依赖容器的精确高度。
+    border-radius: 5px;
+    /* object-fit: contain; 确保图片在保持自身比例的同时，完整地显示在容器内，不会被拉伸或裁剪。
+       通常这是更安全的选项，以确保图片内容的完整性。
+       如果您希望图片完全填充容器，可以尝试 'object-fit: cover;'，但这可能会裁剪图片边缘。
     */
-    object-fit: contain; 
+    object-fit: contain;
     object-position: center; /* 确保图片在其可用空间内居中 */
     flex-shrink: 0;
     flex-grow: 1; /* 允许图片在 flex 容器内适度增长 */
@@ -58,6 +58,8 @@
     display: none; /* 隐藏手机端图片 */
 }
 
+---
+
 /* 媒体查询：当屏幕宽度小于或等于 768px 时 (针对中等屏幕，如平板横向模式或大屏手机) */
 @media (max-width: 768px) {
     .ad-image-pc {
@@ -68,37 +70,39 @@
     }
     /* 调整中等屏幕下广告容器的样式，使其更适合移动设备 */
     .ad-container {
-        width: 96%; 
-        margin: 8px auto; 
+        width: 96%;
+        margin: 8px auto;
         padding: 1px 2px; /* 调整内边距 */
-        /* 最大高度：针对中等屏幕的广告高度，增加高度以容纳图片 */
-        max-height: 55px; /* 进一步微调，为手机图片留更多空间 */
-        min-height: 40px; 
-        border-radius: 6px; 
+        /* 最大高度：针对中等屏幕的广告高度，请根据实际中屏手机图片高度调整。
+           例如，如果您的中屏手机图片实际高度是 50px，这里可以设为 52px 或 53px。*/
+        max-height: 52px; /* 建议值：如果中屏手机图片高度约50px，可设为52px。请根据实际图片高度调整！ */
+        min-height: 40px;
+        border-radius: 6px;
     }
 }
+
+---
 
 /* 媒体查询：当屏幕宽度小于或等于 480px 时（针对小屏手机，如常见手机纵向模式） */
 @media (max-width: 480px) {
     .ad-image-pc {
-        display: none; 
+        display: none;
     }
     .ad-image-mobile {
-        display: block; 
+        display: block;
     }
     /* 调整小屏手机下广告容器的样式，使其更紧凑 */
     .ad-container {
-        width: 98%; 
-        margin: 5px auto; 
+        width: 98%;
+        margin: 5px auto;
         padding: 1px; /* 调整内边距 */
-        max-height: 45px; /* 进一步微调，为小屏手机图片留更多空间 */
-        min-height: 30px; 
-        border-radius: 5px; 
+        /* 最大高度：针对小屏手机的广告高度，请根据实际小屏手机图片高度调整。
+           例如，如果您的小屏手机图片实际高度是 40px，这里可以设为 42px 或 43px。*/
+        max-height: 42px; /* 建议值：如果小屏手机图片高度约40px，可设为42px。请根据实际图片高度调整！ */
+        min-height: 30px;
+        border-radius: 5px;
     }
     .ad-container img {
         border-radius: 3px;
-    }
-}
-
     }
 }
