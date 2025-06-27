@@ -194,19 +194,63 @@
     }
 
     /* ===== 页脚样式 ===== */
-Footer {
-    text-align: center;
-    padding: 0.8rem 1rem; /* 优化点1: 大幅减小上下内边距，使内容更紧凑。您可以尝试 0.5rem 到 1rem 之间的值。 */
-    font-size: 0.95rem; /* 字号保持不变，或根据需要微调。 */
-    color: var(--secondary-text-color);
-    margin-top: 20px; /* 优化点2: 减小顶部外边距，让页脚更靠近上方内容。从 40px 减到 20px，您可以根据实际情况调整。 */
-    border-top: 1px solid var(--border-color); /* 边框样式保持不变。 */
-    background-color: var(--header-bg-end-color); /* 背景颜色保持不变。 */
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3); /* 阴影保持不变。 */
-    line-height: 1.2; /* 优化点3: 显著减小行高，使页脚内文本行间距更紧密。从 1.6 减到 1.2，或更小（如 1.0）。 */
+/* style.css 文件的内容 */
+
+/* 定义 CSS 变量（如果你的项目中有用到，请保留，否则可以移除）*/
+:root {
+    --secondary-text-color: #cccccc; /* 示例颜色 */
+    --border-color: rgba(255, 255, 255, 0.1); /* 示例颜色 */
+    --header-bg-end-color: #2b0000; /* 示例颜色，与图片背景色类似 */
 }
 
 
+/* 1. 优化整个 Footer 容器的样式 */
+.Footer { /* 注意：如果你的 HTML 中是 <footer class="Footer">，这里要用 .Footer */
+    text-align: center;
+    padding: 0.5rem 1rem 0.8rem; /* 优化点1: 大幅减小上下内边距，使内容更紧凑。您可以尝试 0.5rem 到 1rem 之间的值。 */
+    font-size: 0.95rem; /* 字号保持不变，或根据需要微调。 */
+    color: var(--secondary-text-color);
+    margin-top: 15px; /* 优化点2: 进一步减小与上方内容的距离，从 20px 减到 15px */
+    border-top: 1px solid var(--border-color); /* 边框样式保持不变。 */
+    background-color: var(--header-bg-end-color); /* 背景颜色保持不变。 */
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3); /* 阴影保持不变。 */
+    /* 移除 Footer 上的 line-height，让内部元素的 line-height 单独控制 */
+    /* line-height: 1.2;  // 这一行可以移除，让具体的 p 标签控制行高 */
+}
+
+/* 2. 针对“联系站长”信息的容器进行优化 */
+.contact-info-block {
+    display: flex; /* 使用 Flexbox 布局 */
+    flex-direction: column; /* 垂直排列子元素 */
+    align-items: center; /* 水平居中对齐 */
+    gap: 3px; /* 优化点3: 使用 gap 属性控制子元素之间的间距，非常高效。可以尝试 2px 或 3px */
+    margin-bottom: 8px; /* 优化点4: 控制整个联系信息块与下方域名信息之间的距离。这个值越小，它们越靠近 */
+    margin-top: 0; /* 确保没有不必要的顶部外边距 */
+}
+
+/* 3. 针对“联系站长:”标题的优化 */
+.contact-info-block .contact-title {
+    margin: 0; /* 优化点5: 移除默认的段落外边距 */
+    padding: 0; /* 移除默认内边距 */
+    line-height: 1.2; /* 优化点6: 确保标题行高紧凑 */
+    font-size: 1rem; /* 标题可以略微大一点，或者保持不变 */
+}
+
+/* 4. 针对 Telegram 和 E-mail 这两行的优化 */
+.contact-info-block .contact-item {
+    margin: 0; /* 优化点7: 移除默认的段落外边距 */
+    padding: 0; /* 移除默认内边距 */
+    line-height: 1.2; /* 优化点8: 确保这两行的行高紧凑 */
+}
+
+/* 5. 针对最底部的版权/域名信息的优化 */
+.copyright-text {
+    margin: 0; /* 优化点9: 移除默认的段落外边距，让它更靠近上方内容和页脚底部 */
+    padding: 0; /* 移除默认内边距 */
+    line-height: 1.2; /* 优化点10: 确保这行的行高紧凑 */
+    font-size: 0.85rem; /* 优化点11: 可以适当减小字号，使其更不显眼，同时视觉上更紧凑 */
+    opacity: 0.8; /* 优化点12: 可以稍微降低透明度，使其更像是辅助信息 */
+}
     /* 包裹联系信息的容器样式 */
     .contact-info {
       background-color: transparent; /* 背景透明 */
