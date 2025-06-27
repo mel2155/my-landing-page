@@ -14,10 +14,10 @@
       --logo-bg-color: transparent; /* Logo 背景色设置为透明，方便与图片本身融合 */
       --border-color: #242424; /* 分隔线颜色：更暗，更融入背景 */
       --card-hover-scale: 1.05; /* 卡片悬浮时的放大比例，更自然 */
-      --grid-gap-vertical: 20px; /* 网格项之间垂直间距的默认值 */
-      --grid-gap-horizontal: 15px; /* 网格项之间水平间距的默认值 */
+      --grid-gap-vertical: 20px; /* 网格项之间垂直间距的默认值 (这里会根据屏幕大小覆盖) */
+      --grid-gap-horizontal: 15px; /* 网格项之间水平间距的默认值 (这里会根据屏幕大小覆盖) */
       --accent-color: #7aa1f9; /* 强调色：略微亮化，更具活力，用于链接等 */
-      --header-title-color: #ffffff; /* 头部标题颜色：纯白，更醒目 */
+      --header-title-color: #ffffff; /* 标题颜色：纯白，更醒目 */
 
       /* 页脚新增或调整的颜色变量，用于页脚文本、链接和图标，方便统一管理 */
       --footer-text-color: #d0d0d0; /* 页脚主要文本颜色，比主文本稍暗 */
@@ -62,9 +62,9 @@
     .grid { /* 应用图标卡片的网格容器样式 */
       display: grid; /* 启用 Grid 布局 */
       /* 默认桌面端显示 6 列，每列等宽 */
-      grid-template-columns: repeat(6, 1fr); 
-      gap: var(--grid-gap-vertical) var(--grid-gap-horizontal); /* 设置网格项之间的垂直和水平间距 */
-      padding: 30px 20px; /* 网格容器内边距 */
+      grid-template-columns: repeat(6, 1fr); 
+      gap: 15px 10px; /* 优化: 默认桌面端间距，垂直 15px，水平 10px，更紧凑 */
+      padding: 25px 20px; /* 优化: 减小内边距 */
       max-width: 1400px; /* 网格容器的最大宽度，适应大屏幕 */
       margin: 0 auto; /* 水平居中网格容器 */
       flex-grow: 1; /* 允许网格容器占据所有可用垂直空间（在 flex-direction: column 的 body 中） */
@@ -80,7 +80,7 @@
       justify-content: flex-start; /* 子项垂直向上对齐 */
       /* 动画效果：平滑的形变、阴影和背景色过渡 */
       transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-      padding: 8px; /* 卡片内边距 */
+      padding: 6px; /* 优化: 卡片内边距从 8px 减小到 6px，使内容更紧凑 */
       border-radius: 12px; /* 更圆润的圆角 */
       background-color: transparent; /* 卡片背景透明 */
       box-shadow: none; /* 移除默认阴影 */
@@ -94,29 +94,38 @@
 
     /* ===== Logo图片样式 - 优化 ===== */
     .card img { /* 卡片内部 Logo 图片的样式 */
-      width: 80%; /* 优化点1: 缩小图标宽度，从 90% 调整到 80% */
-      aspect-ratio: 1 / 1; /* 保持图片的宽高比为 1:1 */
-      object-fit: cover; /* 确保图片覆盖整个容器，可能会裁剪 */
+      width: 90%; /* 优化点1: 图标宽度占卡片空间的 90%，让图标更大一些 */
+      /* aspect-ratio: 1 / 1; /* 如果图片本身是正方形，可以保留；如果不规则，为了统一性，暂时移除此行或使用 padding-bottom hack */
+      height: auto; /* 确保高度自适应，保持图片比例 */
+      max-width: 100%; /* 确保图片不会溢出卡片 */
+      /* 新增：如果你的图标有各种宽高比，为了统一显示区域，可以这样设置：*/
+      /* 设置一个固定高度或高度百分比的容器，并用 object-fit: contain */
+      display: block; /* 确保图片是块级元素，便于对齐和边距设置 */
+      /* 核心优化：确保图标完整显示且统一大小区域 */
+      height: 70px; /* 给图片一个固定高度，你可以根据需要调整这个值 */
+      object-fit: contain; /* 确保图片在保持自身比例的同时，完整地显示在 70px 高度内，不会裁剪 */
+      object-position: center; /* 图片在分配空间内居中显示 */
+
       background-color: var(--logo-bg-color); /* 应用 Logo 背景色变量 (透明) */
-      border-radius: 22%; /* 使图标更圆润，或根据设计风格调整 */
-      margin-bottom: 6px; /* 优化点2: 略微减小 Logo 和文字的间距，使其更紧凑 */
+      border-radius: 20%; /* 优化: 圆角略微减小，保持规整感 */
+      margin-bottom: 4px; /* 优化点2: 进一步减小 Logo 和文字的间距 */
       flex-shrink: 0; /* 防止图片在空间不足时缩小 */
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4); /* 优化点3: 略微减弱阴影，让图标看起来更“轻” */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 优化点3: 阴影更柔和 */
     }
 
     /* ===== 标题样式 - 优化 ===== */
     .card-title { /* 卡片下方 App 标题的样式 */
-      font-size: 15px; /* 优化点4: 增大字体大小，从 14px 调整到 15px */
-      font-weight: 500; /* 优化点5: 略微加粗字体，使其更显眼 */
+      font-size: 15px; /* 增大字体大小，更易识别 */
+      font-weight: 500; /* 加粗字体 */
       text-align: center; /* 标题文本居中 */
       width: 100%; /* 标题宽度占据卡片 100% */
       white-space: nowrap; /* 防止文本换行 */
       overflow: hidden; /* 隐藏超出容器的文本 */
       text-overflow: ellipsis; /* 超出部分显示省略号 (...) */
       box-sizing: border-box; /* 盒模型设置为边框盒模型 */
-      padding: 0 4px; /* 增加左右内边距，避免文字贴边 */
+      padding: 0 2px; /* 优化: 左右内边距从 4px 减小到 2px，使文字更贴近边缘 */
       color: var(--text-color); /* 应用主要文本颜色 */
-      line-height: 1.3; /* 优化点6: 调整行高，保持文字紧凑 */
+      line-height: 1.2; /* 优化: 调整行高，保持文字紧凑 */
     }
 
     /* ===== 响应式调整 ===== */
@@ -125,27 +134,28 @@
     /* 最小手机屏幕: 宽度在 480px 及以下时应用 */
     @media (max-width: 480px) {
       .grid { /* 网格布局调整 */
-        grid-template-columns: repeat(5, 1fr); /* 核心优化点: 每行显示 5 个 App 图标 */
-        gap: 10px 6px; /* 进一步减小网格项的垂直和水平间距，适应 5 列布局 */
-        padding: 10px 8px; /* 减小网格容器的内边距 */
+        grid-template-columns: repeat(5, 1fr); /* 每行 5 个 App 图标 */
+        gap: 8px 4px; /* 优化: 进一步减小间距，垂直 8px，水平 4px，更紧凑 */
+        padding: 8px 6px; /* 优化: 减小内边距 */
       }
       .card { /* 卡片内边距调整 */
-        padding: 4px; /* 减小卡片内边距，使内容更紧凑 */
+        padding: 3px; /* 优化: 减小卡片内边距 */
       }
       /* 图标和标题优化 */
-      .card img { /* 手机端图标进一步缩小，为更多列腾出空间 */
-        width: 70%;
-        margin-bottom: 4px;
+      .card img { /* 手机端图标尺寸和间距调整 */
+        width: 85%; /* 优化: 保持大图标 */
+        height: 55px; /* 优化: 适应小屏幕的固定高度 */
+        margin-bottom: 3px; /* 优化: 更小的间距 */
       }
-      .card-title { /* 手机端标题略大，并调整行高 */
-        font-size: 10px;
+      .card-title { /* 手机端标题字体和行高调整 */
+        font-size: 9px; /* 优化: 字体稍微减小一点 */
         font-weight: 500;
-        line-height: 1.2;
+        line-height: 1.1; /* 优化: 更紧凑的行高 */
       }
       header { /* 头部标题在手机端的大小和间距调整 */
-        font-size: 1.6rem;
-        padding: 1.6rem 0.8rem;
-        letter-spacing: 0.06em;
+        font-size: 1.5rem;
+        padding: 1.5rem 0.6rem;
+        letter-spacing: 0.05em;
       }
     }
 
@@ -153,21 +163,25 @@
     @media (min-width: 481px) and (max-width: 768px) {
       .grid {
         grid-template-columns: repeat(5, 1fr); /* 保持 5 列 */
-        gap: 15px 8px; /* 略微减小间距 */
-        padding: 15px 10px;
+        gap: 10px 6px; /* 优化: 间距更小 */
+        padding: 12px 8px; /* 优化: 内边距更小 */
+      }
+      .card {
+        padding: 5px;
       }
       /* 图标和标题优化 */
       .card img {
-        width: 75%; /* 调整图标宽度 */
-        margin-bottom: 5px;
+        width: 85%; /* 优化: 保持大图标 */
+        height: 60px; /* 优化: 适应中等屏幕的固定高度 */
+        margin-bottom: 4px;
       }
       .card-title {
-        font-size: 12px; /* 调整标题字体大小 */
+        font-size: 11px; /* 优化: 字体大小 */
         font-weight: 500;
       }
       header { /* 头部标题调整 */
-        font-size: 1.8rem;
-        padding: 1.8rem 1rem;
+        font-size: 1.7rem;
+        padding: 1.7rem 0.8rem;
       }
     }
 
@@ -175,20 +189,24 @@
     @media (min-width: 769px) and (max-width: 1024px) {
       .grid {
         grid-template-columns: repeat(6, 1fr); /* 保持 6 列 */
-        gap: 18px 10px; /* 略微减小间距 */
-        padding: 20px 15px;
+        gap: 12px 8px; /* 优化: 间距更小 */
+        padding: 18px 12px; /* 优化: 内边距更小 */
+      }
+      .card {
+        padding: 5px;
       }
       /* 图标和标题优化 */
       .card img {
-        width: 80%; /* 调整图标宽度 */
-        margin-bottom: 6px;
+        width: 88%; /* 优化: 保持大图标 */
+        height: 65px; /* 优化: 适应平板屏幕的固定高度 */
+        margin-bottom: 5px;
       }
       .card-title {
-        font-size: 13px; /* 调整标题字体大小 */
+        font-size: 13px; /* 优化: 字体大小 */
         font-weight: 500;
       }
       header {
-        font-size: 2rem;
+        font-size: 1.9rem;
       }
     }
 
@@ -196,16 +214,20 @@
     @media (min-width: 1025px) and (max-width: 1440px) {
         .grid {
             grid-template-columns: repeat(7, 1fr); /* 保持 7 列 */
-            gap: 20px 12px;
-            padding: 25px 20px;
+            gap: 14px 9px; /* 优化: 间距更小 */
+            padding: 22px 16px; /* 优化: 内边距更小 */
+        }
+        .card {
+          padding: 6px;
         }
         /* 图标和标题优化 */
         .card img {
-          width: 78%; /* 微调图标宽度 */
-          margin-bottom: 6px;
+          width: 88%; /* 优化: 保持大图标 */
+          height: 70px; /* 优化: 适应大屏幕的固定高度 */
+          margin-bottom: 5px;
         }
         .card-title {
-            font-size: 14px; /* 微调标题字体大小 */
+            font-size: 14px; /* 优化: 字体大小 */
             font-weight: 500;
         }
     }
@@ -214,16 +236,20 @@
     @media (min-width: 1441px) {
         .grid {
             grid-template-columns: repeat(8, 1fr); /* 保持 8 列 */
-            gap: 22px 15px;
-            padding: 30px 25px;
+            gap: 16px 10px; /* 优化: 间距更小 */
+            padding: 28px 20px; /* 优化: 内边距更小 */
+        }
+        .card {
+          padding: 7px;
         }
         /* 图标和标题优化 */
         .card img {
-          width: 75%; /* 微调图标宽度 */
-          margin-bottom: 6px;
+          width: 90%; /* 优化: 保持大图标 */
+          height: 75px; /* 优化: 适应超大屏幕的固定高度 */
+          margin-bottom: 5px;
         }
         .card-title {
-            font-size: 15px; /* 微调标题字体大小 */
+            font-size: 16px; /* 优化: 字体大小 */
             font-weight: 500;
         }
     }
@@ -331,7 +357,7 @@
         opacity: 1; /* 完全不透明 */
         visibility: visible; /* 可见 */
     }
-    
+    
     #loading-indicator div { /* 加载点动画的容器 */
         margin-top: 10px; /* 文字和点之间的间距 */
     }
@@ -417,3 +443,4 @@
   </script>
 </body>
 </html>
+
