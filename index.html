@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8" /> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
-  <title>好爱色·精选APP</title> 
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>好爱色·精选APP</title> <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
 
   <style>
     /* ===== 主题颜色与全局设置 ===== */
-:root { /* 定义 CSS 变量的根作用域，这些变量可以在整个文档中使用 */
-  --bg-color: #0E000A; /* 优化: 更深邃的背景色，接近纯黑但带一点点紫红，增加奢华感和沉浸感 */
-  --header-bg-start-color: #3C000F; /* 优化: 头部渐变起始色，深酒红色，比之前更沉稳 */
-  --header-bg-end-color: #1A0006; /* 优化: 头部渐变结束色，与背景色系融合 */
+    :root { /* 定义 CSS 变量的根作用域，这些变量可以在整个文档中使用 */
+      --bg-color: #0E000A; /* 更深邃的背景色，接近纯黑但带一点点紫红，增加奢华感和沉浸感 */
+      --header-bg-start-color: #3C000F; /* 头部渐变起始色，深酒红色，比之前更沉稳 */
+      --header-bg-end-color: #1A0006; /* 头部渐变结束色，与背景色系融合 */
 
-  --text-color: #E60044; /* 优化: 诱惑且性感的正红，更具冲击力（如App标题、联系站长标题） */
-  --secondary-text-color: #FF69B4; /* 优化: 柔和的玫红色，用于次要信息，保持柔美感 */
-  
-  --logo-bg-color: transparent; /* Logo 背景色设置为透明 */
-  --border-color: #2F000F; /* 优化: 分隔线颜色，与背景和主题色协调的深红棕色 */
-  
-  --card-hover-scale: 1.05; /* 卡片悬浮时的放大比例 */
-  --grid-gap-vertical: 20px; /* 网格项之间垂直间距默认值 */
-  --grid-gap-horizontal: 15px; /* 网格项之间水平间距默认值 */
-  
-  --accent-color: #FFD700; /* 优化: 强调色使用金色，与红黑配色形成高级感对比，用于特定按钮或高亮 */
-  --header-title-color: #E60044; /* 优化: 头部标题颜色与主要文本颜色保持一致 */
+      --text-color: #E60044; /* 诱惑且性感的正红，更具冲击力（如App标题、联系站长标题） */
+      --secondary-text-color: #FF69B4; /* 柔和的玫红色，用于次要信息，保持柔美感 */
 
-  /* 页脚新增或调整的颜色变量 */
-  --footer-text-color: #F0F0F0; /* 优化: 页脚普通文本颜色改为浅色，确保可读性，与主要红区分 */
-  --footer-link-color: #FFD700; /* 优化: 页脚链接颜色改为金色，与强调色统一，更显眼可点击 */
-  --footer-icon-color: #FFD700; /* 优化: 页脚图标颜色与链接一致 */
-}
+      --logo-bg-color: transparent; /* Logo 背景色设置为透明 */
+      --border-color: #2F000F; /* 分隔线颜色，与背景和主题色协调的深红棕色 */
 
+      --card-hover-scale: 1.05; /* 卡片悬浮时的放大比例 */
+      --grid-gap-vertical: 20px; /* 网格项之间垂直间距默认值 */
+      --grid-gap-horizontal: 15px; /* 网格项之间水平间距默认值 */
+
+      --accent-color: #FFD700; /* 强调色使用金色，与红黑配色形成高级感对比，用于特定按钮或高亮 */
+      --header-title-color: #E60044; /* 头部标题颜色与主要文本颜色保持一致 */
+
+      /* 页脚新增或调整的颜色变量 */
+      --footer-text-color: #F0F0F0; /* 页脚普通文本颜色改为浅色，确保可读性，与主要红区分 */
+      --footer-link-color: #FFD700; /* 页脚链接颜色改为金色，与强调色统一，更显眼可点击 */
+      --footer-icon-color: #FFD700; /* 页脚图标颜色与链接一致 */
+    }
 
     body { /* 页面主体样式 */
       font-family: 'Noto Sans SC', sans-serif; /* 设置主要字体为 Noto Sans SC，备用为无衬线字体 */
@@ -47,7 +43,7 @@
       flex-direction: column; /* Flex 子项垂直排列 */
     }
 
-    /* ===== 头部样式 - 优化 ===== */
+    /* ===== 头部样式 ===== */
     header { /* 头部区域样式 */
       /* 渐变背景：从左上角到右下角，从深紫到深灰，过渡更自然，更具质感 */
       background: linear-gradient(135deg, var(--header-bg-start-color) 0%, var(--header-bg-end-color) 100%);
@@ -70,9 +66,9 @@
     .grid { /* 应用图标卡片的网格容器样式 */
       display: grid; /* 启用 Grid 布局 */
       /* 默认桌面端显示 6 列，每列等宽 */
-      grid-template-columns: repeat(6, 1fr); 
-      gap: 15px 10px; /* 优化: 默认桌面端间距，垂直 15px，水平 10px，更紧凑 */
-      padding: 25px 20px; /* 优化: 减小内边距 */
+      grid-template-columns: repeat(6, 1fr);
+      gap: 15px 10px; /* 默认桌面端间距，垂直 15px，水平 10px，更紧凑 */
+      padding: 25px 20px; /* 减小内边距 */
       max-width: 1400px; /* 网格容器的最大宽度，适应大屏幕 */
       margin: 0 auto; /* 水平居中网格容器 */
       flex-grow: 1; /* 允许网格容器占据所有可用垂直空间（在 flex-direction: column 的 body 中） */
@@ -88,7 +84,7 @@
       justify-content: flex-start; /* 子项垂直向上对齐 */
       /* 动画效果：平滑的形变、阴影和背景色过渡 */
       transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-      padding: 6px; /* 优化: 卡片内边距从 8px 减小到 6px，使内容更紧凑 */
+      padding: 6px; /* 卡片内边距从 8px 减小到 6px，使内容更紧凑 */
       border-radius: 12px; /* 更圆润的圆角 */
       background-color: transparent; /* 卡片背景透明 */
       box-shadow: none; /* 移除默认阴影 */
@@ -100,40 +96,35 @@
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* 悬浮时阴影更明显，但柔和 */
     }
 
-    /* ===== Logo图片样式 - 优化 ===== */
+    /* ===== Logo图片样式 ===== */
     .card img { /* 卡片内部 Logo 图片的样式 */
-      width: 90%; /* 优化点1: 图标宽度占卡片空间的 90%，让图标更大一些 */
-      /* aspect-ratio: 1 / 1; /* 如果图片本身是正方形，可以保留；如果不规则，为了统一性，暂时移除此行或使用 padding-bottom hack */
+      width: 90%; /* 图标宽度占卡片空间的 90%，让图标更大一些 */
       height: auto; /* 确保高度自适应，保持图片比例 */
       max-width: 100%; /* 确保图片不会溢出卡片 */
-      /* 新增：如果你的图标有各种宽高比，为了统一显示区域，可以这样设置：*/
-      /* 设置一个固定高度或高度百分比的容器，并用 object-fit: contain */
       display: block; /* 确保图片是块级元素，便于对齐和边距设置 */
-      /* 核心优化：确保图标完整显示且统一大小区域 */
       height: 70px; /* 给图片一个固定高度，你可以根据需要调整这个值 */
       object-fit: contain; /* 确保图片在保持自身比例的同时，完整地显示在 70px 高度内，不会裁剪 */
       object-position: center; /* 图片在分配空间内居中显示 */
-
       background-color: var(--logo-bg-color); /* 应用 Logo 背景色变量 (透明) */
-      border-radius: 20%; /* 优化: 圆角略微减小，保持规整感 */
-      margin-bottom: 4px; /* 优化点2: 进一步减小 Logo 和文字的间距 */
+      border-radius: 20%; /* 圆角略微减小，保持规整感 */
+      margin-bottom: 4px; /* 进一步减小 Logo 和文字的间距 */
       flex-shrink: 0; /* 防止图片在空间不足时缩小 */
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 优化点3: 阴影更柔和 */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 阴影更柔和 */
     }
 
-    /* ===== 标题样式 - 优化 ===== */
+    /* ===== 标题样式 ===== */
     .card-title { /* 卡片下方 App 标题的样式 */
       font-size: 15px; /* 增大字体大小，更易识别 */
-      font-weight: 500; /* 加粗字体 */
+      font-weight: 500; /* 加粗字体，所有媒体查询中重复的 font-weight 提到这里 */
       text-align: center; /* 标题文本居中 */
       width: 100%; /* 标题宽度占据卡片 100% */
       white-space: nowrap; /* 防止文本换行 */
       overflow: hidden; /* 隐藏超出容器的文本 */
       text-overflow: ellipsis; /* 超出部分显示省略号 (...) */
       box-sizing: border-box; /* 盒模型设置为边框盒模型 */
-      padding: 0 2px; /* 优化: 左右内边距从 4px 减小到 2px，使文字更贴近边缘 */
+      padding: 0 2px; /* 左右内边距从 4px 减小到 2px，使文字更贴近边缘 */
       color: var(--text-color); /* 应用主要文本颜色 */
-      line-height: 1.2; /* 优化: 调整行高，保持文字紧凑 */
+      line-height: 1.2; /* 调整行高，保持文字紧凑 */
     }
 
     /* ===== 响应式调整 ===== */
@@ -143,22 +134,21 @@
     @media (max-width: 480px) {
       .grid { /* 网格布局调整 */
         grid-template-columns: repeat(5, 1fr); /* 每行 5 个 App 图标 */
-        gap: 8px 4px; /* 优化: 进一步减小间距，垂直 8px，水平 4px，更紧凑 */
-        padding: 8px 6px; /* 优化: 减小内边距 */
+        gap: 8px 4px; /* 进一步减小间距，垂直 8px，水平 4px，更紧凑 */
+        padding: 8px 6px; /* 减小内边距 */
       }
       .card { /* 卡片内边距调整 */
-        padding: 3px; /* 优化: 减小卡片内边距 */
+        padding: 3px; /* 减小卡片内边距 */
       }
       /* 图标和标题优化 */
       .card img { /* 手机端图标尺寸和间距调整 */
-        width: 85%; /* 优化: 保持大图标 */
-        height: 55px; /* 优化: 适应小屏幕的固定高度 */
-        margin-bottom: 3px; /* 优化: 更小的间距 */
+        width: 85%; /* 保持大图标 */
+        height: 55px; /* 适应小屏幕的固定高度 */
+        margin-bottom: 3px; /* 更小的间距 */
       }
       .card-title { /* 手机端标题字体和行高调整 */
-        font-size: 9px; /* 优化: 字体稍微减小一点 */
-        font-weight: 500;
-        line-height: 1.1; /* 优化: 更紧凑的行高 */
+        font-size: 9px; /* 字体稍微减小一点 */
+        line-height: 1.1; /* 更紧凑的行高 */
       }
       header { /* 头部标题在手机端的大小和间距调整 */
         font-size: 1.5rem;
@@ -171,21 +161,20 @@
     @media (min-width: 481px) and (max-width: 768px) {
       .grid {
         grid-template-columns: repeat(5, 1fr); /* 保持 5 列 */
-        gap: 10px 6px; /* 优化: 间距更小 */
-        padding: 12px 8px; /* 优化: 内边距更小 */
+        gap: 10px 6px; /* 间距更小 */
+        padding: 12px 8px; /* 内边距更小 */
       }
       .card {
         padding: 5px;
       }
       /* 图标和标题优化 */
       .card img {
-        width: 85%; /* 优化: 保持大图标 */
-        height: 60px; /* 优化: 适应中等屏幕的固定高度 */
+        width: 85%; /* 保持大图标 */
+        height: 60px; /* 适应中等屏幕的固定高度 */
         margin-bottom: 4px;
       }
       .card-title {
-        font-size: 11px; /* 优化: 字体大小 */
-        font-weight: 500;
+        font-size: 11px; /* 字体大小 */
       }
       header { /* 头部标题调整 */
         font-size: 1.7rem;
@@ -197,21 +186,20 @@
     @media (min-width: 769px) and (max-width: 1024px) {
       .grid {
         grid-template-columns: repeat(6, 1fr); /* 保持 6 列 */
-        gap: 12px 8px; /* 优化: 间距更小 */
-        padding: 18px 12px; /* 优化: 内边距更小 */
+        gap: 12px 8px; /* 间距更小 */
+        padding: 18px 12px; /* 内边距更小 */
       }
       .card {
         padding: 5px;
       }
       /* 图标和标题优化 */
       .card img {
-        width: 88%; /* 优化: 保持大图标 */
-        height: 65px; /* 优化: 适应平板屏幕的固定高度 */
+        width: 88%; /* 保持大图标 */
+        height: 65px; /* 适应平板屏幕的固定高度 */
         margin-bottom: 5px;
       }
       .card-title {
-        font-size: 13px; /* 优化: 字体大小 */
-        font-weight: 500;
+        font-size: 13px; /* 字体大小 */
       }
       header {
         font-size: 1.9rem;
@@ -222,21 +210,20 @@
     @media (min-width: 1025px) and (max-width: 1440px) {
         .grid {
             grid-template-columns: repeat(7, 1fr); /* 保持 7 列 */
-            gap: 14px 9px; /* 优化: 间距更小 */
-            padding: 22px 16px; /* 优化: 内边距更小 */
+            gap: 14px 9px; /* 间距更小 */
+            padding: 22px 16px; /* 内边距更小 */
         }
         .card {
           padding: 6px;
         }
         /* 图标和标题优化 */
         .card img {
-          width: 88%; /* 优化: 保持大图标 */
-          height: 70px; /* 优化: 适应大屏幕的固定高度 */
+          width: 88%; /* 保持大图标 */
+          height: 70px; /* 适应大屏幕的固定高度 */
           margin-bottom: 5px;
         }
         .card-title {
-            font-size: 14px; /* 优化: 字体大小 */
-            font-weight: 500;
+            font-size: 14px; /* 字体大小 */
         }
     }
 
@@ -244,28 +231,27 @@
     @media (min-width: 1441px) {
         .grid {
             grid-template-columns: repeat(8, 1fr); /* 保持 8 列 */
-            gap: 16px 10px; /* 优化: 间距更小 */
-            padding: 28px 20px; /* 优化: 内边距更小 */
+            gap: 16px 10px; /* 间距更小 */
+            padding: 28px 20px; /* 内边距更小 */
         }
         .card {
           padding: 7px;
         }
         /* 图标和标题优化 */
         .card img {
-          width: 90%; /* 优化: 保持大图标 */
-          height: 75px; /* 优化: 适应超大屏幕的固定高度 */
+          width: 90%; /* 保持大图标 */
+          height: 75px; /* 适应超大屏幕的固定高度 */
           margin-bottom: 5px;
         }
         .card-title {
-            font-size: 16px; /* 优化: 字体大小 */
-            font-weight: 500;
+            font-size: 16px; /* 字体大小 */
         }
     }
 
-    /* ===== 页脚样式 - 全面优化 ===== */
+    /* ===== 页脚样式 ===== */
     footer { /* 直接针对 <footer> 标签进行样式设置 */
       text-align: center; /* 确保所有页脚内容水平居中 */
-      padding: 0.6rem 1rem 0.6rem; /* 内边距：上下 0.6rem，左右 1rem，使其更紧凑 */
+      padding: 0.6rem 1rem; /* 内边距：上下 0.6rem，左右 1rem，使其更紧凑，统一内边距 */
       font-size: 0.9rem; /* 整体字号略微减小 */
       color: var(--footer-text-color); /* 应用页脚文本颜色变量 */
       margin-top: 20px; /* 页脚与上方内容的距离 */
@@ -311,7 +297,7 @@
 
     /* 图标样式 (如 Telegram 的飞机图标，E-mail 的信封图标) */
     .contact-info .icon {
-        margin-right: 6px; /* 优化: 减小图标与文字的间距 */
+        margin-right: 6px; /* 减小图标与文字的间距 */
         font-size: 1em; /* 图标大小与文字保持一致或略大 */
         color: var(--footer-icon-color); /* 应用页脚图标颜色变量 */
     }
@@ -340,7 +326,6 @@
         margin-top: 5px; /* 与上方联系信息块的间距 */
     }
 
-
     /* 加载动画 */
     #loading-indicator { /* 加载指示器容器样式 */
         position: fixed; /* 固定定位，使其在滚动时也保持在视口内 */
@@ -365,8 +350,8 @@
         opacity: 1; /* 完全不透明 */
         visibility: visible; /* 可见 */
     }
-    
-    #loading-indicator div { /* 加载点动画的容器 */
+
+    #loading-indicator .spinner-dots { /* 加载点动画的容器，为加载点创建一个单独的容器类名 */
         margin-top: 10px; /* 文字和点之间的间距 */
     }
 
@@ -390,15 +375,16 @@
   </style>
 </head>
 <body>
-  <header>好爱色·精选APP</header> <div id="card-container" class="grid"></div> <footer> <div class="contact-info"> <p>联系站长:</p> <p><span class="icon">✈️</span> Telegram: <a href="https://t.me/yy21551" target="_blank" rel="noopener noreferrer">@yy21551</a></p> <p><span class="icon">📧</span> E-mail: <a href="mailto:melyy179@gmail.com">melyy179@gmail.com</a></p> </div>
+  <header>好爱色·精选APP</header> <div id="card-container" class="grid"></div> <footer> <div class="contact-info"> <p>联系站长:</p> <p><span class="icon" aria-hidden="true">✈️</span> Telegram: <a href="https://t.me/yy21551" target="_blank" rel="noopener noreferrer">@yy21551</a></p>
+      <p><span class="icon" aria-hidden="true">📧</span> E-mail: <a href="mailto:melyy179@gmail.com">melyy179@gmail.com</a></p>
+    </div>
     <p class="copyright-text">本页为成人内容导航平台 · 所有链接均跳转至第三方 · 请在法律允许范围内理性访问</p>
   </footer>
 
-  <div id="loading-indicator"> 加载中 <div><span>.</span><span>.</span><span>.</span></div> </div>
+  <div id="loading-indicator"> 加载中 <div class="spinner-dots"> <span>.</span><span>.</span><span>.</span> </div>
+  </div>
 
-  <script src="cards-from-guanli.js"></script>
-
-  <script>
+  <script src="cards-from-guanli.js"></script> <script>
     // 当 DOM 内容完全加载并解析后执行脚本
     document.addEventListener('DOMContentLoaded', () => {
       const cardContainer = document.getElementById('card-container'); // 获取卡片容器元素
@@ -414,13 +400,15 @@
       setTimeout(() => {
         // 检查卡片容器是否存在，并且 'sites' 变量已定义且为数组
         if (cardContainer && typeof sites !== 'undefined' && Array.isArray(sites)) {
+          // 创建 DocumentFragment 提高 DOM 操作性能，避免多次重绘和回流
+          const fragment = document.createDocumentFragment();
+
           // 遍历 'sites' 数组中的每个站点数据
           sites.forEach(site => {
             const card = document.createElement('a'); // 创建一个 <a> 标签作为卡片容器
             card.href = site.url; // 设置链接目标 URL
             card.target = "_blank"; // 在新标签页打开链接
             card.rel = "noopener noreferrer"; // 提高安全性，防止钓鱼攻击
-
             card.classList.add('card'); // 为卡片添加 CSS 类名 'card'
 
             const img = document.createElement('img'); // 创建 <img> 标签用于显示 Logo
@@ -434,8 +422,9 @@
 
             card.appendChild(img); // 将图片添加到卡片中
             card.appendChild(title); // 将标题添加到卡片中
-            cardContainer.appendChild(card); // 将整个卡片添加到卡片容器中
+            fragment.appendChild(card); // 将卡片添加到 DocumentFragment，而不是直接添加到 DOM
           });
+          cardContainer.appendChild(fragment); // 一次性将 DocumentFragment 添加到 DOM，提高渲染效率
         } else {
           // 如果 'sites' 数据未正确加载，输出错误信息到控制台
           console.error("未能找到 card-container 元素或 'sites' 数据未正确加载。请确保 cards-from-guanli.js 正确定义了 'sites' 数组。");
