@@ -25,8 +25,6 @@
 
 /* 引入谷歌字体，放在 @import 规则中更符合 CSS 最佳实践 */
 /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap'); */ 
-/* 注意：如果您在 index.html 中已经通过 <link> 标签引入了，这里可以删除这行 @import。
-   如果想由 CSS 统一管理字体，请在 index.html 中移除 <link> 标签，并取消这里 @import 的注释。 */
 
 
 /* body 的样式代码块 - 已更新为使用 CSS 变量 */
@@ -42,45 +40,36 @@ body {
     min-height: 100vh; /* 确保body至少占据整个视口高度 */
 }
 
-/* header 的样式代码块 - 已更新为使用 CSS 变量 */
+/* header 的样式代码块 - **已调整，头部高度更短** */
 header {
-    /* 背景渐变：使用定义的头部渐变颜色变量 */
     background: linear-gradient(to right, var(--header-bg-start-color) 0%, var(--header-bg-end-color) 100%);
-    
     color: #fff; /* 头部文字颜色为白色，确保与深色背景对比鲜明 */
-    padding: 20px 0; /* 上下内边距，增加头部高度，左右为0 */
-    text-align: center; /* 头部内部内容（标题、副标题）居中对齐 */
-    font-size: 2.2em; /* 增大头部区域的整体字体基准大小 */
-    font-weight: bold; /* 字体加粗 */
-    
-    /* 阴影效果：在头部下方添加柔和阴影，增加层次感和浮动效果 */
+    padding: 15px 0; /* 上下内边距减小，使头部更短 */
+    text-align: center; 
+    font-size: 1.8em; /* 减小头部整体字体基准大小 */
+    font-weight: bold; 
     box-shadow: 0 2px 10px rgba(0,0,0,0.5); 
-    
-    position: relative; /* 为头部内部可能的定位元素（如副标题）提供参考 */
-    z-index: 10; /* 确保头部在页面其他内容之上 */
-    
-    /* 圆角：为头部的底部边缘添加圆角，使外观更柔和 */
+    position: relative; 
+    z-index: 10; 
     border-bottom-left-radius: 10px; 
     border-bottom-right-radius: 10px; 
-    
-    /* 间距：头部与下方广告横幅之间的外边距 */
     margin-bottom: 20px; 
 }
 
 /* header h1 的样式代码块 - 已更新为使用 CSS 变量 */
 header h1 {
-    margin: 0; /* 移除H1标签默认的上下外边距，避免多余空间 */
-    padding: 0; /* 移除H1标签默认的内边距 */
-    font-size: 1.2em; /* 调整H1内部字体大小，使其相对于header父级的em单位 */
-    color: var(--header-title-color); /* 使用定义的头部标题颜色变量 */
+    margin: 0; 
+    padding: 0; 
+    font-size: 1em; /* 相对于父级 header 的 em 单位，保持比例 */
+    color: var(--header-title-color); 
 }
 
 /* .header-subtitle 的样式代码块 - 已更新为使用 CSS 变量 */
 .header-subtitle {
-    font-size: 0.7em; /* 副标题字体大小 */
-    color: var(--secondary-text-color); /* 使用定义的次要文本颜色变量 */
-    margin-top: 5px; /* 副标题与主标题之间的上外边距 */
-    font-weight: normal; /* 副标题不加粗 */
+    font-size: 0.6em; /* 副标题字体大小略微减小 */
+    color: var(--secondary-text-color); 
+    margin-top: 3px; /* 副标题与主标题之间的上外边距减小 */
+    font-weight: normal; 
 }
 
 /* ===== 网格布局 (核心) ===== */
@@ -172,8 +161,8 @@ header h1 {
     line-height: 1.1; /* 更紧凑的行高 */
   }
   header { /* 头部标题在手机端的大小和间距调整 */
-    font-size: 1.5rem;
-    padding: 1.5rem 0.6rem;
+    font-size: 1.2rem; /* 进一步减小手机端头部字体 */
+    padding: 1rem 0.6rem; /* 进一步减小手机端头部内边距 */
     letter-spacing: 0.05em;
   }
 }
@@ -198,8 +187,8 @@ header h1 {
     font-size: 11px; /* 字体大小 */
   }
   header { /* 头部标题调整 */
-    font-size: 1.7rem;
-    padding: 1.7rem 0.8rem;
+    font-size: 1.5rem; /* 进一步减小头部字体 */
+    padding: 1.2rem 0.8rem; /* 进一步减小头部内边距 */
   }
 }
 
@@ -223,7 +212,7 @@ header h1 {
     font-size: 13px; /* 字体大小 */
   }
   header {
-    font-size: 1.9rem;
+    font-size: 1.7rem; /* 进一步减小头部字体 */
   }
 }
 
