@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // 4. 定义不同设备的广告图片路径和共同的点击链接
         // **** 请根据您实际的图片文件名替换下面的值！****
         // 例如：'images/my-pc-ad-banner.jpg' 和 'images/my-mobile-ad-banner.png'
-        const pcImageUrl = 'images/ad-banner-pc.jpg';   // <-- 您的 PC 端广告图片路径
-        const mobileImageUrl = 'images/ad-banner-mobile.jpg'; // <-- 您的手机端广告图片路径
+        const pcImageUrl = 'images/ad-banner-pc.JPG';   // <-- 您的 PC 端广告图片路径
+        const mobileImageUrl = 'images/ad-banner-mobile.JPG'; // <-- 您的手机端广告图片路径
         const clickUrl = 'https://cs-site-cloud-deploy.pages.dev';             // <-- 广告点击后跳转的URL
 
         // 创建一个链接元素，它将同时包裹 PC 和手机端的图片。
