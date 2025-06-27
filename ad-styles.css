@@ -1,108 +1,159 @@
 /* ===== 广告样式 - ad-styles.css ===== */
 
-/* 广告容器的通用样式：影响PC端和大屏幕下的广告显示 */
+/*
+ * 广告容器的通用样式定义
+ * 这些样式主要影响在PC端和较大屏幕下的广告显示行为和外观。
+ */
 .ad-container {
-    margin: 15px auto; /* 自动居中 */
-    width: 90%;
-    max-width: 970px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background-color: rgba(0, 0, 0, 0.3);
-    text-align: center; /* 确保文字内容居中，但对 flex 内部图片影响不大 */
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    border-radius: 8px;
+    /* 自动居中显示容器，并设置上下外边距 */
+    margin: 15px auto; 
 
-    /* 内边距：减少上下内边距，给图片更多垂直空间 */
-    padding: 2px 3px; /* 上下 2px，左右 3px，更细致的控制 */
+    /* 设置容器的宽度，使其占据父容器的 90% 宽度 */
+    width: 90%; 
+    /* 限制容器的最大宽度，防止在超大屏幕上拉伸过宽，保持美观 */
+    max-width: 970px; 
 
-    /* PC端/大屏幕下的最大高度：**核心优化点**
-       请务必根据您的PC横幅广告图片的实际像素高度进行微调。
-       例如，如果您的PC图片实际高度是 90px，那么这里的 max-height 可以设为 92px 或 93px
-       （包含 1px 边框和 2px 上下内边距，共计 1px + 2px + 2px + 1px = 6px 的额外空间，
-       所以 90px 图片 + 2*1px 边框 + 2*2px 内边距 = 90 + 2 + 4 = 96px，但可能不需要这么精确）。
-       我这里给出一些经验值，通常在图片实际高度基础上增加 2-4px 就足够。
+    /* 添加一个轻微透明的白色边框，增加视觉层次感 */
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    /* 设置半透明的黑色背景色 */
+    background-color: rgba(0, 0, 0, 0.3); 
+
+    /* 确保容器内的文本内容居中对齐。
+       注意：对于 flex 布局内部的图片居中，text-align 影响不大，主要由 flex 属性控制。 */
+    text-align: center; 
+    /* 隐藏任何超出容器边界的内容，确保布局整洁 */
+    overflow: hidden; 
+
+    /* 添加柔和的阴影效果，使容器看起来有立体感 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
+    /* 稍微圆化容器的边角，提升视觉柔和度 */
+    border-radius: 8px; 
+    
+    /* 内边距：调整容器内部内容与边框之间的空间。
+       上下 2px，左右 3px。较小的上下内边距是为了给内部图片留出更多垂直空间。 */
+    padding: 2px 3px; 
+
+    /* PC端/大屏幕下的最大高度：**这是关键的调整点！**
+       这里的目标是让容器高度能“刚好”包住您的 PC 横幅图片，减少上下空白。
+       计算方式：图片实际高度 + 2 * 边框宽度 (1px) + 2 * 上下内边距 (2px)。
+       假设您的 PC 横幅图片实际高度是 90px：90px + 1px*2 + 2px*2 = 90 + 2 + 4 = 96px。
+       如果您的图片实际高度不是 90px，请根据您图片的实际高度进行相应调整。
     */
-    max-height: 92px; /* 建议值：如果PC图片高度约90px，可设为92px。请根据实际图片高度调整！ */
-    min-height: 60px; /* 确保最小高度 */
+    max-height: 96px; /* 默认值：基于图片高度约 90px 调整 */
+    /* 确保容器有一个最小高度，即使内容很少也不会塌陷 */
+    min-height: 60px; 
 
-    /* 弹性布局：确保内部图片完美居中，此设置非常关键，请保持不变 */
+    /* 弹性布局：这是实现内部图片垂直和水平居中的核心。 */
     display: flex;
-    justify-content: center; /* 水平居中 */
-    align-items: center;   /* 垂直居中 */
-    flex-wrap: nowrap;     /* 防止内容换行，确保单行显示 */
+    /* justify-content: center;：水平方向上居中对齐 flex 项目（这里是图片） */
+    justify-content: center; 
+    /* align-items: center;：垂直方向上居中对齐 flex 项目（这里是图片） */
+    align-items: center;   
+    /* flex-wrap: nowrap;：防止 flex 项目（图片）换行，确保始终单行显示 */
+    flex-wrap: nowrap;     
 }
 
-/* 广告图片通用样式：同时应用于PC端和手机端的广告图片 */
+/* 广告图片通用样式：同时应用于PC端和手机端的广告图片，确保它们在容器内正确显示 */
 .ad-container img {
-    display: block;
-    width: 100%;
-    height: 100%; /* 让图片高度尽可能填充父容器 */
-    max-height: 100%; /* 确保图片不会超出其容器的最大高度 */
-    border-radius: 5px;
-    /* object-fit: contain; 确保图片在保持自身比例的同时，完整地显示在容器内，不会被拉伸或裁剪。
-       通常这是更安全的选项，以确保图片内容的完整性。
-       如果您希望图片完全填充容器，可以尝试 'object-fit: cover;'，但这可能会裁剪图片边缘。
+    /* 将图片设置为块级元素，消除图片下方可能出现的额外空间 */
+    display: block; 
+    /* 使图片宽度填充其父容器（.ad-container）的 100% 宽度 */
+    width: 100%; 
+    /* 使图片高度填充其父容器（.ad-container）的 100% 高度 */
+    height: 100%; 
+    /* 确保图片不会超出其父容器的最大高度 */
+    max-height: 100%; 
+    /* 稍微圆化图片的边角 */
+    border-radius: 5px; 
+    
+    /* object-fit: contain;：
+       确保图片在保持自身宽高比的同时，完整地显示在容器内，不会被拉伸或裁剪。
+       这意味着图片可能会在容器内留下空白，但图片内容会完全可见。
+       如果您希望图片完全覆盖容器（可能会裁剪图片边缘），可以尝试 'object-fit: cover;'。
+       当前选择 'contain' 通常更安全，确保图片完整性，并依靠容器的精确 max-height 来消除上下空白。
     */
-    object-fit: contain;
-    object-position: center; /* 确保图片在其可用空间内居中 */
+    object-fit: contain; 
+    /* 确保图片在其可用空间内居中对齐 */
+    object-position: center; 
+    /* flex-shrink: 0;：防止图片在容器空间不足时缩小 */
     flex-shrink: 0;
-    flex-grow: 1; /* 允许图片在 flex 容器内适度增长 */
+    /* flex-grow: 1;：允许图片在 flex 容器内有额外空间时适度增长 */
+    flex-grow: 1; 
 }
 
 /* 默认情况下：在PC端视口（屏幕宽度大于768px）显示PC广告图片，隐藏手机广告图片 */
 .ad-image-pc {
-    display: block; /* 显示 PC 端图片 */
+    display: block; /* 在PC端显示 PC 端图片 */
 }
 
 .ad-image-mobile {
-    display: none; /* 隐藏手机端图片 */
+    display: none; /* 在PC端隐藏手机端图片 */
 }
 
----
+/* --- 媒体查询：响应式设计断点 --- */
 
-/* 媒体查询：当屏幕宽度小于或等于 768px 时 (针对中等屏幕，如平板横向模式或大屏手机) */
+/* 媒体查询：当屏幕宽度小于或等于 768px 时
+ * 针对中等屏幕设备，如平板电脑的横向模式或大屏幕手机。
+ */
 @media (max-width: 768px) {
+    /* 在中等屏幕上隐藏 PC 端图片 */
     .ad-image-pc {
-        display: none; /* 在中等屏幕上隐藏 PC 端图片 */
+        display: none; 
     }
+    /* 在中等屏幕上显示手机端图片 */
     .ad-image-mobile {
-        display: block; /* 在中等屏幕上显示手机端图片 */
+        display: block; 
     }
+    
     /* 调整中等屏幕下广告容器的样式，使其更适合移动设备 */
     .ad-container {
-        width: 96%;
-        margin: 8px auto;
-        padding: 1px 2px; /* 调整内边距 */
-        /* 最大高度：针对中等屏幕的广告高度，请根据实际中屏手机图片高度调整。
-           例如，如果您的中屏手机图片实际高度是 50px，这里可以设为 52px 或 53px。*/
-        max-height: 52px; /* 建议值：如果中屏手机图片高度约50px，可设为52px。请根据实际图片高度调整！ */
-        min-height: 40px;
-        border-radius: 6px;
+        width: 96%; /* 宽度略微增加，适应移动设备屏幕 */
+        margin: 8px auto; /* 调整上下外边距，使其更紧凑 */
+        padding: 1px 2px; /* 调整内边距，减少上下空间 */
+        
+        /* 最大高度：针对中等屏幕的广告高度，使其更贴合移动图片。
+           计算方式：图片实际高度 + 2 * 边框宽度 (1px) + 2 * 上下内边距 (1px)。
+           假设您的中屏手机图片实际高度是 50px：50px + 1px*2 + 1px*2 = 50 + 2 + 2 = 54px。
+           请根据您实际使用的中屏手机图片的高度进行调整。
+        */
+        max-height: 54px; /* 默认值：基于图片高度约 50px 调整 */
+        min-height: 40px; /* 确保最小高度 */
+        border-radius: 6px; /* 稍微减小圆角半径 */
     }
 }
 
----
-
-/* 媒体查询：当屏幕宽度小于或等于 480px 时（针对小屏手机，如常见手机纵向模式） */
+/* 媒体查询：当屏幕宽度小于或等于 480px 时
+ * 针对小屏手机设备，如常见手机的纵向模式。
+ */
 @media (max-width: 480px) {
+    /* 在小屏手机上隐藏 PC 端图片 */
     .ad-image-pc {
-        display: none;
+        display: none; 
     }
+    /* 在小屏手机上显示手机端图片 */
     .ad-image-mobile {
-        display: block;
+        display: block; 
     }
+    
     /* 调整小屏手机下广告容器的样式，使其更紧凑 */
     .ad-container {
-        width: 98%;
-        margin: 5px auto;
-        padding: 1px; /* 调整内边距 */
-        /* 最大高度：针对小屏手机的广告高度，请根据实际小屏手机图片高度调整。
-           例如，如果您的小屏手机图片实际高度是 40px，这里可以设为 42px 或 43px。*/
-        max-height: 42px; /* 建议值：如果小屏手机图片高度约40px，可设为42px。请根据实际图片高度调整！ */
-        min-height: 30px;
-        border-radius: 5px;
+        width: 98%; /* 宽度进一步增加，适应更小的移动设备屏幕 */
+        margin: 5px auto; /* 进一步调整外边距，使其更紧凑 */
+        padding: 1px; /* 调整内边距，上下左右都为 1px */
+        
+        /* 最大高度：针对小屏手机的广告高度，使其更贴合小屏图片。
+           计算方式：图片实际高度 + 2 * 边框宽度 (1px) + 2 * 上下内边距 (1px)。
+           假设您的小屏手机图片实际高度是 40px：40px + 1px*2 + 1px*2 = 40 + 2 + 2 = 44px。
+           请根据您实际使用的小屏手机图片的高度进行调整。
+        */
+        max-height: 44px; /* 默认值：基于图片高度约 40px 调整 */
+        min-height: 30px; /* 确保最小高度 */
+        border-radius: 5px; /* 进一步减小圆角半径 */
     }
+    /* 调整小屏手机下广告图片的圆角半径，使其更适应紧凑的布局 */
     .ad-container img {
         border-radius: 3px;
     }
+}
+
 }
