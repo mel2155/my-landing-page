@@ -9,14 +9,14 @@ document.addEventListener('DOMContentLoaded', function() {
     adDiv.className = 'ad-container';
 
     // 2. 查找您要插入广告的位置
-    // 这里我们选择查找 class 为 'header' 的 div 元素。
+    // 这里我们选择查找 <header> 标签。
     // 广告将被插入到这个元素之后。
-    const headerDiv = document.querySelector('.header');
+    const headerElement = document.querySelector('header'); // *** 修改这里：从 .header 改为 header ***
 
     // 检查是否成功找到了目标插入位置的元素
-    if (headerDiv) {
-        // 3. 在找到的元素（headerDiv）之后插入广告位（adDiv）
-        headerDiv.after(adDiv);
+    if (headerElement) { // *** 修改这里：从 headerDiv 改为 headerElement ***
+        // 3. 在找到的元素（headerElement）之后插入广告位（adDiv）
+        headerElement.after(adDiv); // *** 修改这里：从 headerDiv 改为 headerElement ***
 
         // 4. 定义不同设备的广告图片路径和共同的点击链接
         // **** 请根据您实际的图片文件名替换下面的值！****
@@ -61,7 +61,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
     } else {
-        // 如果没有找到 `.header` 元素，则在控制台发出警告
-        console.warn("未找到 .header 元素，广告位无法插入。请检查 HTML 结构或目标选择器。");
+        // 如果没有找到 `<header>` 元素，则在控制台发出警告
+        console.warn("未找到 <header> 元素，广告位无法插入。请检查 HTML 结构或目标选择器。");
     }
 });
+
