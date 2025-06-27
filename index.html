@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>精选站点导航 (纯CSS优化版)</title>
+  <title>好爱色精选导航</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
   
   <style>
@@ -142,20 +142,70 @@
     /* ===== 页脚样式 ===== */
     footer {
       text-align: center;
-      padding: 1.5rem;
+      padding: 1.5rem; /* 保持原有的内边距 */
       font-size: 0.9rem;
       color: var(--secondary-text-color);
       margin-top: 30px; /* 增加顶部外边距，拉开与内容的距离 */
       border-top: 1px solid var(--border-color); /* 增加顶部边框 */
+      
+      /* 优化底部联系方式的样式 */
+      display: flex; /* 使用 Flexbox 进行内部对齐 */
+      flex-direction: column; /* 内容垂直堆叠 */
+      align-items: center; /* 水平居中 */
+      justify-content: center; /* 垂直居中（如果footer有高度） */
+    }
+
+    /* 包裹联系信息的容器样式 */
+    .contact-info {
+      background-color: var(--header-bg-color); /* 使用头部背景色作为联系信息的背景 */
+      padding: 1rem 1.5rem; /* 增加内边距 */
+      border-radius: 8px; /* 圆角效果 */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* 增加一点阴影，提升立体感 */
+      margin-top: 15px; /* 与页脚顶部边框拉开距离 */
+      display: inline-block; /* 让背景只包裹内容 */
+      max-width: 80%; /* 防止在小屏幕上过宽 */
+      line-height: 1.8; /* 增加行高，提升可读性 */
+    }
+
+    .contact-info a {
+      color: var(--text-color); /* 链接颜色使用主文本色，与整体协调 */
+      text-decoration: none; /* 移除下划线 */
+      transition: color 0.2s ease;
+    }
+
+    .contact-info a:hover {
+      color: #5b87e4; /* 悬浮时变色，例如一个柔和的蓝色 */
+    }
+
+    .contact-info p {
+      display: flex; /* 使用flexbox对齐图标和文本 */
+      align-items: center; /* 垂直居中对齐 */
+      justify-content: center; /* 水平居中 */
+      margin-bottom: 5px; /* 段落间距 */
+    }
+
+    .contact-info p:last-child {
+      margin-bottom: 0; /* 最后一个段落不需要底部间距 */
+    }
+
+    .contact-info .icon {
+      margin-right: 8px; /* 图标与文本的间距 */
+      font-size: 1.1em; /* 图标大小 */
     }
   </style>
 </head>
 <body>
-  <header>精选站点导航</header>
+  <header>好爱色精选APP</header>
   
   <div id="card-container" class="grid"></div>
 
-  <footer>联系站长: Telegram: @yy21551 | E-mail: melyy179@gmail.com</footer>
+  <footer>
+    <div class="contact-info">
+      <p>联系站长:</p>
+      <p><span class="icon">✈️</span> Telegram: <a href="https://t.me/yy21551" target="_blank" rel="noopener noreferrer">@yy21551</a></p>
+      <p><span class="icon">📧</span> E-mail: <a href="mailto:melyy179@gmail.com">melyy179@gmail.com</a></p>
+    </div>
+    </footer>
   
   <script src="cards-from-guanli.js"></script> 
   
