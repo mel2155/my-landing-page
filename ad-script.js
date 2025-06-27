@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 例如：'images/my-pc-ad-banner.jpg' 和 'images/my-mobile-ad-banner.png'
         const pcImageUrl = 'images/ad-banner-pc.jpg';   // <-- 您的 PC 端广告图片路径
         const mobileImageUrl = 'images/ad-banner-mobile.jpg'; // <-- 您的手机端广告图片路径
-        const clickUrl = 'http://123.com';             // <-- 广告点击后跳转的URL
+        const clickUrl = 'https://cs-site-cloud-deploy.pages.dev';             // <-- 广告点击后跳转的URL
 
         // 创建一个链接元素，它将同时包裹 PC 和手机端的图片。
         // 这样，无论显示哪张图片，点击时都会跳转到同一个链接。
