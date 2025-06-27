@@ -3,115 +3,140 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>好爱色•导航站 (优化版)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <title>精选站点导航 (纯CSS优化版)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  
   <style>
-    /* ===== CSS 变量定义 (方便统一管理主题) ===== */
+    /* ===== 主题颜色与全局设置 ===== */
     :root {
-      --bg-gradient-start: #6a11cb;
-      --bg-gradient-end: #2575fc;
-      --header-gradient-start: rgba(255, 255, 255, 0.2);
-      --header-gradient-end: rgba(255, 255, 255, 0.1);
-      --card-bg-color: rgba(255, 255, 255, 0.15);
-      --card-border-color: rgba(255, 255, 255, 0.2);
-      --card-shadow-color: rgba(0, 0, 0, 0.1);
-      --text-color-light: #f0f0f0;
-      --text-color-dark: #ffffff;
-      --footer-text-color: rgba(255, 255, 255, 0.7);
+      --bg-color: #1a1a1a; /* 深邃的背景色 */
+      --header-bg-color: #2c2c2c; /* 头部背景色 */
+      --text-color: #e0e0e0; /* 主要文本颜色 */
+      --secondary-text-color: #777; /* 次要文本颜色 (如页脚) */
+      --logo-bg-color: #2c2c2c; /* Logo 背景色 */
+      --border-color: #333; /* 分隔线颜色 */
+      --card-hover-scale: 1.05; /* 卡片悬浮放大比例 */
+      --grid-gap-vertical: 20px; /* 网格垂直间距 */
+      --grid-gap-horizontal: 12px; /* 网格水平间距 */
     }
 
-    /* ===== 全局样式重置与基础设定 ===== */
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Noto Sans SC', sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
-      background-attachment: fixed; /* 背景固定，滚动时不移动 */
-      color: var(--text-color-light);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6; /* 增加行高，提升可读性 */
+      -webkit-font-smoothing: antialiased; /* 字体抗锯齿，使字体更平滑 */
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* ===== 头部样式优化 ===== */
+    /* ===== 头部样式 ===== */
     header {
-      background: linear-gradient(to right, var(--header-gradient-start), var(--header-gradient-end));
-      color: var(--text-color-dark);
+      background-color: var(--header-bg-color);
+      color: var(--text-color); /* 头部文字颜色与主题文字色保持一致 */
       text-align: center;
-      padding: 2rem 1.5rem;
-      font-size: 2.2rem;
-      font-weight: 700;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      border-bottom: 1px solid var(--card-border-color);
+      padding: 1.2rem 1rem; /* 增加上下内边距 */
+      font-size: 1.6rem; /* 稍微调大标题字号 */
+      font-weight: 700; /* 加粗标题 */
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 头部阴影，增加层次感 */
     }
 
-    /* ===== 网格容器与响应式布局 ===== */
+    /* ===== 网格布局 (核心) ===== */
     .grid {
       display: grid;
-      /* 优化列宽，让卡片在移动端不会显得太小 */
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 20px; /* 统一间距 */
-      padding: 24px;
-      max-width: 1200px;
+      /* 核心：更灵活的列数，确保每列最小宽度，自动填充 */
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); 
+      gap: var(--grid-gap-vertical) var(--grid-gap-horizontal);
+      padding: 20px;
+      max-width: 1200px; /* 增加最大宽度，适应更大屏幕 */
       margin: 0 auto;
-      width: 100%;
-      box-sizing: border-box; /* 确保 padding 不会撑大宽度 */
-      flex-grow: 1; /* 让内容区占据剩余空间 */
     }
 
-    /* ===== 卡片样式 (玻璃拟态核心) ===== */
+    /* ===== 卡片样式 ===== */
     .card {
-      background: var(--card-bg-color);
-      border-radius: 15px; /* 更圆润的边角 */
       text-decoration: none;
-      color: var(--text-color-light);
-      box-shadow: 0 8px 32px 0 var(--card-shadow-color);
-      backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid var(--card-border-color);
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: var(--text-color);
       display: flex;
       flex-direction: column;
-      /* 动画效果 */
-      animation: fadeIn 0.5s ease-in-out forwards;
-      opacity: 0; /* 初始状态透明 */
-      transform: translateY(20px);
+      align-items: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease; /* 增加阴影过渡 */
+      padding: 5px; /* 增加点击区域，使卡片看起来不那么紧凑 */
+      border-radius: 8px; /* 统一卡片圆角 */
     }
 
     .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.2);
+      transform: scale(var(--card-hover-scale));
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* 悬浮时增加阴影效果 */
+    }
+
+    /* ===== Logo图片样式 ===== */
+    .card img {
+      width: 85%; 
+      aspect-ratio: 1 / 1; 
+      object-fit: contain; 
+      background-color: var(--logo-bg-color);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      flex-shrink: 0; /* 防止图片在flex容器中缩小 */
+    }
+
+    /* ===== 标题样式 ===== */
+    .card-title {
+      font-size: 13px; /* 稍微调大一点，提升可读性 */
+      text-align: center;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      box-sizing: border-box; /* 确保padding不会撑开元素 */
+      padding: 0 2px; /* 左右增加一点点内边距，防止文字紧贴边缘 */
+    }
+
+    /* ===== 响应式调整 ===== */
+    /* 小屏幕手机: 320px - 480px, 显示4列 */
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px 10px; /* 减小间距，适应小屏 */
+      }
+      .card-title {
+        font-size: 11px; /* 进一步减小字号 */
+      }
+    }
+
+    /* 中等屏幕手机/小平板: 481px - 768px, 显示6列 */
+    @media (min-width: 481px) and (max-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 20px 12px;
+      }
+      .card-title {
+        font-size: 13px;
+      }
     }
     
-    /* 为JS动态添加的每个卡片设置不同的入场延迟 */
-    .card:nth-child(1) { animation-delay: 0.05s; }
-    .card:nth-child(2) { animation-delay: 0.1s; }
-    .card:nth-child(3) { animation-delay: 0.15s; }
-    .card:nth-child(4) { animation-delay: 0.2s; }
-    .card:nth-child(5) { animation-delay: 0.25s; }
-    .card:nth-child(6) { animation-delay: 0.3s; }
-    /* ...可以根据需要继续添加 */
-
-    .card img {
-      width: 100%;
-      height: 110px; /* 调整图片高度 */
-      object-fit: cover;
-      /* 图片底部添加柔和的蒙版，使其与文字部分过渡更自然 */
-      -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%);
-      mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%);
+    /* 平板/桌面: 769px - 1024px, 显示8列 */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .grid {
+        grid-template-columns: repeat(8, 1fr);
+        gap: 24px 16px;
+      }
+      .card-title {
+        font-size: 14px;
+      }
     }
 
-    .card-title {
-      font-size: 15px;
-      font-weight: 600;
-      padding: 1rem;
-      line-height: 1.4;
-      flex-grow: 1; /* 占据剩余空间，实现等高效果 */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+    /* 大屏幕桌面: 1025px 以上, 显示10列 */
+    @media (min-width: 1025px) {
+      .grid {
+        grid-template-columns: repeat(10, 1fr);
+        gap: 24px 16px;
+      }
+      .card-title {
+        font-size: 14px;
+      }
     }
 
     /* ===== 页脚样式 ===== */
@@ -119,43 +144,58 @@
       text-align: center;
       padding: 1.5rem;
       font-size: 0.9rem;
-      color: var(--footer-text-color);
-      background: rgba(0, 0, 0, 0.2);
-    }
-    
-    /* ===== 动画定义 ===== */
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* ===== 响应式微调 ===== */
-    @media (max-width: 480px) {
-      header {
-        font-size: 1.8rem;
-        padding: 1.5rem 1rem;
-      }
-      .grid {
-        padding: 16px;
-        gap: 16px;
-        /* 在极小屏幕上，确保至少有两列，更好看 */
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .card-title {
-        font-size: 14px;
-      }
+      color: var(--secondary-text-color);
+      margin-top: 30px; /* 增加顶部外边距，拉开与内容的距离 */
+      border-top: 1px solid var(--border-color); /* 增加顶部边框 */
     }
   </style>
 </head>
 <body>
   <header>精选站点导航</header>
-
-  <main id="card-container" class="grid"></main>
+  
+  <div id="card-container" class="grid"></div>
 
   <footer>联系站长: Telegram: @yy21551 | E-mail: melyy179@gmail.com</footer>
+  
+  <script src="cards-from-guanli.js"></script> 
+  
+  <script>
+    // 这段 JavaScript 代码负责从 cards-from-guanli.js 获取数据并动态生成卡片。
+    // 请确保 cards-from-guanli.js 导出一个名为 'sites' 的数组，
+    // 每个对象包含 image, name, url 属性。
 
-  <script src="cards-from-guanli.js"></script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cardContainer = document.getElementById('card-container');
+      // 检查 sites 变量是否存在且是数组
+      // sites 变量将由 cards-from-guanli.js 文件提供
+      if (cardContainer && typeof sites !== 'undefined' && Array.isArray(sites)) {
+        sites.forEach(site => {
+          const card = document.createElement('a');
+          card.href = site.url;
+          card.target = "_blank"; // 在新标签页打开
+          card.rel = "noopener noreferrer"; // 提高安全性
+
+          card.classList.add('card');
+
+          const img = document.createElement('img');
+          // 图片路径假设它们位于网站根目录下的 'logos' 文件夹中
+          // 例如：如果 site.image 是 "tiktok.png"，则 src 会变成 "logos/tiktok.png"
+          img.src = "logos/" + site.image; 
+          img.alt = site.name + ' Logo'; // 为图片添加 alt 属性，用于无障碍和SEO
+          img.loading = "lazy"; // 图片懒加载
+
+          const title = document.createElement('div');
+          title.classList.add('card-title');
+          title.textContent = site.name;
+
+          card.appendChild(img);
+          card.appendChild(title);
+          cardContainer.appendChild(card);
+        });
+      } else {
+        console.error("未能找到 card-container 元素或 'sites' 数据未正确加载。请确保 cards-from-guanli.js 正确定义了 'sites' 数组。");
+      }
+    });
+  </script>
 </body>
 </html>
