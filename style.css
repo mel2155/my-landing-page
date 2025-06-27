@@ -82,7 +82,7 @@ body {
     overflow-x: hidden; /* 防止出现水平滚动条，提升用户体验。*/
 }
 
-/* ===== 头部 (Header) 样式 ===== */
+/* ===== 头部 (Header) 样式 (重点修改部分) ===== */
 /*
  * header 元素是页面的主头部区域，通常包含网站的品牌信息和导航。
  */
@@ -92,12 +92,13 @@ header {
     background: linear-gradient(to right, var(--header-bg-start-color) 0%, var(--header-bg-end-color) 100%);
     color: #fff; /* 头部内部文本颜色设置为白色，确保与深色背景对比鲜明，易于阅读。*/
     /*
-     * 调整 padding：上下内边距从 15px 减少到 10px，使头部变矮。
+     * 调整 padding：上下内边距进一步减少到 8px，使头部更矮。
      * 这是为了让头部看起来更紧凑，并为下方内容留出更多空间。
      */
-    padding: 10px 0; 
+    padding: 8px 0;
     text-align: center; /* 使头部内的所有行内内容（如文本）水平居中。*/
-    font-size: 1.8em; /* 头部整体字体基准大小。这里的 'em' 是相对于父元素 (body) 的字体大小。*/
+    /* 调整头部整体字体基准大小，使其更小。*/
+    font-size: 1.6em;
     font-weight: bold; /* 头部文本加粗。*/
     box-shadow: 0 2px 10px rgba(0,0,0,0.5); /* 柔和的底部阴影，增加头部的立体感和层次感。*/
     position: relative; /* 相对定位，为了使 z-index 属性能够生效。*/
@@ -105,10 +106,10 @@ header {
     border-bottom-left-radius: 10px; /* 头部底部左侧圆角。*/
     border-bottom-right-radius: 10px; /* 头部底部右侧圆角。*/
     /*
-     * 调整 margin-bottom：从 20px 减少到 10px，使头部与下方主要内容（特别是广告）之间的间距更小，
+     * 再次调整 margin-bottom：从 10px 减少到 5px，使头部与下方主要内容（特别是广告）之间的间距更小，
      * 使它们看起来更贴近。
      */
-    margin-bottom: 10px; 
+    margin-bottom: 5px;
 }
 
 /*
@@ -131,16 +132,19 @@ header {
     align-items: center; /* 垂直居中对齐 Logo 和名称，使它们在高度上对齐。*/
     text-decoration: none; /* 移除链接默认的下划线。*/
     color: var(--accent-color); /* 继承强调色，使网站名称突出，与主题色保持一致。*/
-    margin-bottom: 10px; /* 在网站品牌区域和下方的主标题之间创建间距。*/
+    /* 调整 Logo 和名称与下方主标题的间距。*/
+    margin-bottom: 5px;
     width: 100%; /* 占据父容器的 100% 宽度，以便于居中。*/
     justify-content: center; /* 水平居中 Logo 和名称。*/
 }
 
 /* Logo 图片的样式 */
 .site-logo {
-    height: 40px; /* Logo 的固定高度。您可以根据您的实际 Logo 图片和设计需求调整这个值。*/
+    /* 缩小 Logo 的高度。*/
+    height: 35px;
     width: auto; /* 宽度自适应，保持图片的原始宽高比，避免图片变形。*/
-    margin-right: 10px; /* Logo 图片和网站名称文本之间的水平间距。*/
+    /* 缩小 Logo 和网站名称文本之间的间距。*/
+    margin-right: 8px;
     /*
      * image-rendering 属性用于优化图像在不同缩放级别下的渲染质量。
      * -webkit-optimize-contrast：Webkit 浏览器特有，用于优化对比度。
@@ -155,7 +159,8 @@ header {
 
 /* 网站名称文本的样式 */
 .site-brand-name {
-    font-size: 28px; /* 网站名称的字体大小。*/
+    /* 缩小网站名称的字体大小。*/
+    font-size: 24px;
     font-weight: 700; /* 字体加粗。*/
     color: var(--accent-color); /* 使用强调色 (金色)，使网站名称在视觉上突出。*/
     white-space: nowrap; /* 防止网站名称文本在空间不足时换行，保持单行显示。*/
@@ -165,23 +170,27 @@ header {
 .site-title {
     margin: 0; /* 移除浏览器默认的外边距。*/
     padding: 0; /* 移除浏览器默认的内边距。*/
-    font-size: 1.8em; /* 相对于父级 header 的字体基准大小。*/
+    /* 缩小主标题字体大小。*/
+    font-size: 1.5em;
     color: var(--header-title-color); /* 使用头部标题颜色变量，确保与主题一致。*/
     line-height: 1.2; /* 调整行高，使标题文本更紧凑。*/
-    margin-bottom: 5px; /* 主标题与副标题之间的间距。*/
+    /* 调整主标题与副标题的间距。*/
+    margin-bottom: 3px;
 }
 
 /* 副标题的样式 */
 .header-subtitle {
-    font-size: 0.8em; /* 副标题字体大小略微减小，相对于父级 header 的字体基准大小。*/
+    /* 缩小副标题字体大小。*/
+    font-size: 0.7em;
     color: var(--secondary-text-color); /* 使用次要文本颜色变量，使其在视觉上与主标题区分。*/
-    margin-top: 3px; /* 副标题与主标题之间的上外边距。*/
+    /* 调整副标题与主标题的间距。*/
+    margin-top: 2px;
     font-weight: normal; /* 副标题不加粗。*/
     opacity: 0.8; /* 略微降低透明度，使其看起来不那么突出，作为辅助信息。*/
 }
 
 
-/* ===== 网格布局 (核心) ===== */
+/* ===== 网格布局 (核心) (保持不变) ===== */
 /*
  * .grid 类应用于图标卡片的容器，定义了其如何使用 CSS Grid 布局排列。
  * Grid 布局非常适合创建二维（行和列）的页面布局。
@@ -199,7 +208,7 @@ header {
                     这确保了内容区域可以动态填充，并将页脚推到底部。*/
 }
 
-/* ===== 卡片样式 ===== */
+/* ===== 卡片样式 (保持不变) ===== */
 /*
  * .card 类应用于每个 App 图标卡片。
  * 它作为一个链接 (<a> 标签)，包含了图片和标题。
@@ -228,7 +237,7 @@ header {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* 悬浮时显示更明显但柔和的阴影，增加深度感。*/
 }
 
-/* ===== Logo图片样式 (卡片内部的图标) ===== */
+/* ===== Logo图片样式 (卡片内部的图标) (保持不变) ===== */
 /*
  * .card img 样式应用于每个卡片内部的 App 图标图片。
  */
@@ -237,7 +246,7 @@ header {
   height: 70px; /* 固定图标高度，确保所有图标在视觉上大小一致，避免布局跳动。
                    您可能需要根据实际图标的宽高比和设计需求调整此值。*/
   max-width: 100%; /* 确保图片不会超出其父容器（卡片）的最大宽度。*/
-  display: block; /* 将图片设置为块级元素，便于精确控制其外边距和对齐。*/
+  display: block; /* 将图片设置为块级元素，消除图片下方可能出现的额外空间，便于精确布局。*/
   /*
    * object-fit: contain;：
    * 确保图片在保持自身宽高比的同时，完整地显示在分配的 70px 高度内，不会被裁剪或拉伸。
@@ -252,7 +261,7 @@ header {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 柔和的阴影，增加图标的立体感。*/
 }
 
-/* ===== 标题样式 (卡片下方的 App 标题) ===== */
+/* ===== 标题样式 (卡片下方的 App 标题) (保持不变) ===== */
 /*
  * .card-title 样式应用于每个卡片下方的 App 标题文本。
  */
@@ -270,7 +279,7 @@ header {
   line-height: 1.2; /* 调整行高，保持文字紧凑。*/
 }
 
-/* ===== 页脚样式 ===== */
+/* ===== 页脚样式 (保持不变) ===== */
 /*
  * footer 元素是页面的底部区域。
  */
@@ -353,7 +362,7 @@ footer {
     margin-top: 5px; /* 与上方联系信息块的间距。*/
 }
 
-/* ===== 加载指示器 (Loading Indicator) 样式 ===== */
+/* ===== 加载指示器 (Loading Indicator) 样式 (保持不变) ===== */
 /*
  * #loading-indicator 用于在页面内容加载时显示加载动画，提升用户体验。
  */
@@ -412,7 +421,7 @@ footer {
     to { opacity: 1; } /* 变为完全不透明。*/
 }
 
-/* ===== 响应式调整 (Media Queries) - 主站内容 ===== */
+/* ===== 响应式调整 (Media Queries) - 主站内容 (重点修改 header 部分) ===== */
 /*
  * @media 规则用于根据屏幕宽度调整布局和样式，以适应不同设备（手机、平板、桌面等），
  * 确保网站在不同尺寸的屏幕上都能提供良好的用户体验。
@@ -424,220 +433,143 @@ footer {
 @media (max-width: 480px) {
     /* 头部 Logo 尺寸和间距调整 */
     .site-logo {
-        height: 30px; /* 缩小 Logo 高度。*/
-        margin-right: 5px;
+        height: 25px; /* 进一步缩小 Logo 高度。*/
+        margin-right: 4px;
     }
     .site-brand-name {
-        font-size: 20px; /* 缩小网站名称字体。*/
+        font-size: 18px; /* 进一步缩小网站名称字体。*/
     }
     /* 主标题字体大小调整 */
     .site-title {
-        font-size: 1.4rem; /* 调整为 rem 单位，与 html 根字体大小挂钩。*/
+        font-size: 1.2rem; /* 进一步缩小。*/
     }
     /* 副标题字体大小调整 */
     .header-subtitle {
-        font-size: 0.7em; 
+        font-size: 0.6em; /* 进一步缩小。*/
     }
     /* 头部内边距和下方间距调整，使其在小屏幕下更紧凑。*/
     header { 
-        padding: 8px 0; /* 减小头部上下内边距。*/
-        margin-bottom: 8px; /* 减小头部与下方内容的间距。*/
+        padding: 6px 0; /* 进一步减小头部上下内边距。*/
+        margin-bottom: 4px; /* 进一步减小头部与下方内容的间距。*/
     } 
-    /* 网格布局调整：每行显示 4 个 App 图标，提高图标大小和可点击区域。*/
-    .grid { 
-        grid-template-columns: repeat(4, 1fr); 
-        gap: 12px 6px; /* 调整间距。*/
-        padding: 10px 8px; /* 调整内边距。*/
-    }
-    /* 卡片内边距调整 */
-    .card { 
-        padding: 5px; 
-    }
-    /* 卡片内部图标尺寸调整 */
-    .card img { 
-        width: 85%; 
-        height: 60px; /* 调整高度以适应新的列数和间距，确保图标不被裁剪。*/
-        margin-bottom: 4px; 
-    }
-    /* 卡片标题字体大小调整 */
-    .card-title { 
-        font-size: 10px; /* 字体稍微减小一点。*/
-        line-height: 1.1; 
-    }
-    /* 页脚字体大小调整 */
-    .footer {
-        font-size: 0.8rem;
-    }
+    .grid { grid-template-columns: repeat(4, 1fr); gap: 12px 6px; padding: 10px 8px; }
+    .card { padding: 5px; }
+    .card img { width: 85%; height: 60px; margin-bottom: 4px; }
+    .card-title { font-size: 10px; line-height: 1.1; }
+    .footer { font-size: 0.8rem; }
 }
 
 /* 中等屏幕手机/小平板: 宽度在 481px 到 768px 之间时应用这些样式。*/
 @media (min-width: 481px) and (max-width: 768px) {
     /* 头部 Logo 尺寸和间距调整 */
     .site-logo {
-        height: 35px; 
-        margin-right: 8px;
+        height: 30px;
+        margin-right: 6px;
     }
     .site-brand-name {
-        font-size: 24px; 
+        font-size: 20px;
     }
     /* 主标题字体大小调整 */
     .site-title {
-        font-size: 1.6rem; 
+        font-size: 1.4rem;
     }
     /* 副标题字体大小调整 */
     .header-subtitle {
-        font-size: 0.75em; 
+        font-size: 0.65em;
     }
     /* 头部内边距和下方间距调整。*/
     header { 
-        padding: 9px 0; 
-        margin-bottom: 9px; 
-    } 
-    /* 网格布局调整：保持 5 列。*/
-    .grid {
-        grid-template-columns: repeat(5, 1fr); 
-        gap: 15px 8px; 
-        padding: 15px 10px; 
-    }
-    /* 卡片内边距调整 */
-    .card {
-        padding: 6px;
-    }
-    /* 卡片内部图标尺寸调整 */
-    .card img {
-        width: 85%; 
-        height: 65px; /* 适应中等屏幕的固定高度。*/
+        padding: 7px 0;
         margin-bottom: 4px;
-    }
-    /* 卡片标题字体大小调整 */
-    .card-title {
-        font-size: 12px; 
-    }
+    } 
+    .grid { grid-template-columns: repeat(5, 1fr); gap: 15px 8px; padding: 15px 10px; }
+    .card { padding: 6px; }
+    .card img { width: 85%; height: 65px; margin-bottom: 4px; }
+    .card-title { font-size: 12px; }
 }
 
 /* 平板/桌面: 宽度在 769px 到 1024px 之间时应用这些样式。*/
 @media (min-width: 769px) and (max-width: 1024px) {
     /* 头部 Logo 尺寸和间距调整 */
     .site-logo {
-        height: 40px; 
-        margin-right: 10px;
+        height: 35px;
+        margin-right: 8px;
     }
     .site-brand-name {
-        font-size: 26px; 
+        font-size: 22px;
     }
     /* 主标题字体大小调整 */
     .site-title {
-        font-size: 1.8rem; 
+        font-size: 1.6rem;
     }
     /* 副标题字体大小调整 */
     .header-subtitle {
-        font-size: 0.8em; 
+        font-size: 0.75em;
     }
     /* 头部内边距和下方间距调整。*/
     header { 
-        padding: 10px 0; 
-        margin-bottom: 10px; 
-    } 
-    /* 网格布局调整：保持 6 列。*/
-    .grid {
-        grid-template-columns: repeat(6, 1fr); 
-        gap: 18px 10px; 
-        padding: 20px 15px; 
-    }
-    /* 卡片内边距调整 */
-    .card {
-        padding: 7px;
-    }
-    /* 卡片内部图标尺寸调整 */
-    .card img {
-        width: 88%; 
-        height: 70px; 
+        padding: 8px 0;
         margin-bottom: 5px;
-    }
-    /* 卡片标题字体大小调整 */
-    .card-title {
-        font-size: 14px; 
-    }
+    } 
+    .grid { grid-template-columns: repeat(6, 1fr); gap: 18px 10px; padding: 20px 15px; }
+    .card { padding: 7px; }
+    .card img { width: 88%; height: 70px; margin-bottom: 5px; }
+    .card-title { font-size: 14px; }
 }
 
-/* 大屏幕桌面: 宽度在 1025px 到 1440px 之间时应用这些样式。*/
+/* 大屏幕桌面: 宽度在 1025px 到 1440px 之间时应用 */
 @media (min-width: 1025px) and (max-width: 1440px) {
     /* 头部 Logo 尺寸和间距调整 */
     .site-logo {
-        height: 45px; 
-        margin-right: 12px;
+        height: 40px;
+        margin-right: 10px;
     }
     .site-brand-name {
-        font-size: 30px; 
+        font-size: 26px;
     }
     /* 主标题字体大小调整 */
     .site-title {
-        font-size: 2rem; 
+        font-size: 1.8rem;
     }
     /* 副标题字体大小调整 */
     .header-subtitle {
-        font-size: 0.85em; 
+        font-size: 0.8em;
     }
     /* 头部内边距和下方间距调整。*/
     header { 
-        padding: 10px 0; 
-        margin-bottom: 10px; 
+        padding: 8px 0;
+        margin-bottom: 5px;
     } 
-    /* 网格布局调整：增加到 7 列。*/
-    .grid {
-        grid-template-columns: repeat(7, 1fr); 
-        gap: 20px 12px;
-        padding: 25px 18px;
-    }
-    /* 卡片内部图标尺寸调整 */
-    .card img {
-      width: 88%; 
-      height: 75px;
-      margin-bottom: 5px;
-    }
-    /* 卡片标题字体大小调整 */
-    .card-title {
-        font-size: 15px;
-    }
+    .grid { grid-template-columns: repeat(7, 1fr); gap: 20px 12px; padding: 25px 18px; }
+    .card img { width: 88%; height: 75px; margin-bottom: 5px; }
+    .card-title { font-size: 15px; }
 }
 
-/* 超大屏幕桌面: 宽度在 1441px 及以上时应用这些样式。*/
+/* 超大屏幕桌面: 宽度在 1441px 及以上时应用 */
 @media (min-width: 1441px) {
     /* 头部 Logo 尺寸和间距调整 */
     .site-logo {
-        height: 50px; 
-        margin-right: 15px;
+        height: 45px;
+        margin-right: 12px;
     }
     .site-brand-name {
-        font-size: 32px; 
+        font-size: 28px;
     }
     /* 主标题字体大小调整 */
     .site-title {
-        font-size: 2.2rem; 
+        font-size: 2rem;
     }
     /* 副标题字体大小调整 */
     .header-subtitle {
-        font-size: 0.9em; 
+        font-size: 0.85em;
     }
     /* 头部内边距和下方间距调整。*/
     header { 
-        padding: 10px 0; 
-        margin-bottom: 10px; 
+        padding: 8px 0;
+        margin-bottom: 5px;
     } 
-    /* 网格布局调整：增加到 8 列。*/
-    .grid {
-        grid-template-columns: repeat(8, 1fr);
-        gap: 22px 15px;
-        padding: 30px 22px;
-    }
-    /* 卡片内部图标尺寸调整 */
-    .card img {
-      width: 90%;
-      height: 80px;
-      margin-bottom: 5px;
-    }
-    /* 卡片标题字体大小调整 */
-    .card-title {
-        font-size: 16px;
-    }
+    .grid { grid-template-columns: repeat(8, 1fr); gap: 22px 15px; padding: 30px 22px; }
+    .card img { width: 90%; height: 80px; margin-bottom: 5px; }
+    .card-title { font-size: 16px; }
 }
+
