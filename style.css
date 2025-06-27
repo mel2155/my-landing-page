@@ -20,10 +20,10 @@
  * 方便统一管理网站的主题颜色、尺寸等，提高可维护性和灵活性。
  * 更改这里的变量值，会影响所有使用这些变量的地方，非常适合快速调整网站主题。
  */
-:root { 
+:root { 
   --bg-color: #0E000A; /* 主背景色：深邃的背景色，接近纯黑但带一点点紫红，增加奢华感和沉浸感。*/
-  --header-bg-start-color: #3C000F; /* 头部渐变起始色：深酒红色，比之前更沉稳。*/
-  --header-bg-end-color: #1A0006; /* 头部渐变结束色：与背景色系融合，使头部背景有深度感。*/
+  --header-bg-start-color: #4a0070; /* 头部渐变起始色：改为更显眼的紫色。*/
+  --header-bg-end-color: #9d31a8; /* 头部渐变结束色：改为更柔和的紫色，与起始色形成渐变。*/
 
   --text-color: #E60044; /* 主要文本颜色：诱惑且性感的正红，更具冲击力（如App标题、联系站长标题）。*/
   --secondary-text-color: #FF69B4; /* 次要文本颜色：柔和的玫红色，用于次要信息，保持柔美感。*/
@@ -36,7 +36,7 @@
   --grid-gap-horizontal: 15px; /* 网格项之间水平间距默认值。*/
 
   --accent-color: #FFD700; /* 强调色：使用金色，与红黑配色形成高级感对比，用于特定按钮或高亮元素，如网站名称。*/
-  --header-title-color: #E60044; /* 头部标题颜色：与主要文本颜色保持一致，突出主标题。*/
+  --header-title-color: #FFFFFF; /* 头部标题颜色：改为白色，在紫色渐变背景下更突出。*/
 
   /* 页脚相关颜色变量，使页脚颜色独立于主内容，保持统一风格。*/
   --footer-text-color: #F0F0F0; /* 页脚普通文本颜色：浅色，确保可读性，与主要红色区分。*/
@@ -54,7 +54,7 @@
  * 这里用于导入 Google Fonts 的 'Noto Sans SC' 字体。
  */
 /* 注意：Font Awesome 已经通过 HTML head 引入，此处不再重复导入 */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap'); 
 
 
 /* ===== 全局 HTML 元素样式重置与基础设置 ===== */
@@ -65,7 +65,7 @@
  * 方便在响应式设计中统一调整字体大小和布局。
  */
 html {
-    font-size: 16px; 
+    font-size: 16px; 
 }
 
 /*
@@ -78,7 +78,7 @@ body {
     /* 字体栈：优先使用 Noto Sans SC (中文)，如果不可用，则回退到 'Segoe UI'，
        再回退到通用字体 Tahoma, Geneva, Verdana, 最后是无衬线字体 (sans-serif)。
        确保在不同系统和设备上都有可读性好的字体。*/
-    font-family: 'Noto Sans SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    font-family: 'Noto Sans SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     margin: 0; /* 移除浏览器默认的 body 外边距，确保内容紧贴视口边缘。*/
     padding: 0; /* 移除浏览器默认的 body 内边距。*/
     line-height: 1.6; /* 设置行高，提高文本可读性，使文字之间有足够的垂直空间。*/
@@ -94,88 +94,74 @@ body {
  * header 元素是页面的主头部区域，通常包含网站的品牌信息和导航。
  */
 header {
-    /* 背景渐变：从左到右，从 --header-bg-start-color 到 --header-bg-end-color。
+    /* 背景渐变：从左到右，从 var(--header-bg-start-color) 到 var(--header-bg-end-color)。
        这为头部提供了一个平滑且有层次感的背景效果。*/
     background: linear-gradient(to right, var(--header-bg-start-color) 0%, var(--header-bg-end-color) 100%);
     color: #fff; /* 头部内部文本颜色设置为白色，确保与深色背景对比鲜明，易于阅读。*/
-    /*
-     * 极致紧凑的 padding：上下内边距进一步减少到 1px，让头部区域几乎只包含内容。
+    /* * 优化点：调整 padding，为文本标题提供更舒适的上下空间，让头部显得更大气。
      */
-    padding: 1px 0; 
+    padding: 25px 0; /* 增加上下内边距，使头部更高大 */
     text-align: center; /* 使头部内的所有行内内容（如文本）水平居中。*/
-    font-size: 1.6em; /* 头部整体字体基准大小（主要影响副标题）。*/
-    font-weight: bold; /* 头部文本加粗。*/
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5); /* 柔和的底部阴影，增加头部的立体感和层次感。*/
+    /* font-size 和 font-weight 移除，这些将由 .site-title-text 和 .header-subtitle 具体定义 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* 柔和的底部阴影，增加头部的立体感和层次感。*/
     position: relative; /* 相对定位，为了使 z-index 属性能够生效。*/
     z-index: 10; /* 设置堆叠顺序，确保头部在其他内容（如加载指示器之外的）之上。*/
     border-bottom-left-radius: 10px; /* 头部底部左侧圆角。*/
     border-bottom-right-radius: 10px; /* 头部底部右侧圆角。*/
-    /*
-     * 头部与下方主要内容（特别是广告）之间的间距保持 5px。
+    /* * 头部与下方主要内容（特别是广告）之间的间距。
      */
-    margin-bottom: 5px; 
+    margin-bottom: 20px; /* 增加与下方内容的间距，使其更独立 */
 }
 
 /*
  * .header-content 类用于限制头部内容的宽度并居中显示。
- * 它作为一个 Flexbox 容器，更好地组织内部的 Logo 和副标题。
+ * 它作为一个 Flexbox 容器，更好地组织内部的文本标题和副标题。
  */
 .header-content {
     max-width: 1200px; /* 限制头部内容的最大宽度，防止在超宽屏幕上内容过度拉伸。*/
     margin: 0 auto; /* 水平居中头部内容。*/
-    /*
-     * 头部内容左右内边距保持 5px，使其内容更贴近屏幕边缘，减少空白。
+    /* * 优化点：调整头部内容左右内边距，使其内容更贴近屏幕边缘，减少空白。
      */
-    padding: 0 5px; 
+    padding: 0 15px; /* 左右内边距调整 */
     display: flex; /* 启用 Flexbox 布局，便于内部元素的排列。*/
-    flex-direction: column; /* Flex 子元素（Logo和副标题）垂直排列。*/
+    flex-direction: column; /* Flex 子元素（文本标题和副标题）垂直排列。*/
     align-items: center; /* 内部元素水平居中对齐（在 flex-direction: column 模式下）。*/
-    justify-content: flex-start; /* 内部元素垂直方向起始对齐。*/
+    justify-content: center; /* 内部元素垂直方向居中对齐。*/
 }
 
-/* 网站品牌区域：包含新的集成Logo的链接容器 */
-.site-branding-single-logo {
-    display: flex; /* 启用Flexbox，以确保内部的img可以被flex属性影响 */
-    align-items: center; /* 垂直居中对齐 Logo */
-    justify-content: center; /* 水平居中 Logo */
-    text-decoration: none; /* 移除链接默认的下划线 */
-    /*
-     * 移除与下方副标题的额外垂直间距，让Logo和副标题更紧凑。
-     */
-    margin-bottom: 0px; 
-    width: 100%; /* 占据父容器的 100% 宽度，以便于居中。*/
-}
-
-/* 新的集成Logo图片样式 */
-.site-logo-integrated {
-    height: 40px; /* 默认Logo高度，您可能需要根据裁剪后的实际Logo尺寸微调 */
-    width: auto; /* 宽度自适应，保持图片的原始宽高比，避免图片变形 */
-    /*
-     * image-rendering 属性用于优化图像在不同缩放级别下的渲染质量。
-     * -webkit-optimize-contrast：Webkit 浏览器特有，用于优化对比度。
-     * crisp-edges：尝试保留像素的锐利边缘，避免模糊，适用于像素艺术或图标。
-     */
-    image-rendering: -webkit-optimize-contrast; 
-    image-rendering: crisp-edges; 
-    display: block; /* 确保图片是块级元素，便于精确控制外边距和布局 */
-    margin: 0; /* 确保Logo图片自身没有默认的外边距 */
-    padding: 0; /* 确保Logo图片自身没有默认的内边距 */
-}
-
-
-/* 副标题的样式 */
-.header-subtitle {
-    font-size: 0.7em; /* 副标题字体大小。*/
-    color: var(--secondary-text-color); /* 使用次要文本颜色变量，使其在视觉上与主标题区分。*/
-    /*
-     * 调整副标题与上方Logo的间距，使其紧贴Logo。
-     */
-    margin-top: 0px; /* 进一步减小与上方Logo的间距，几乎为0 */
-    margin-bottom: 0px; /* 移除底部外边距，确保与下方内容紧凑 */
-    padding: 0; /* 移除内边距 */
-    font-weight: normal; /* 副标题不加粗。*/
-    opacity: 0.8; /* 略微降低透明度，使其看起来不那么突出，作为辅助信息。*/
+/* 优化点：添加新的网站主标题 (好爱色 · 精选APP) 的样式 */
+.site-title-text {
+    font-family: 'Noto Sans SC', sans-serif; /* 确保使用Google字体 */
+    font-size: 2.8em; /* 显著增大标题字体 */
+    font-weight: 700; /* 加粗 */
+    color: var(--header-title-color); /* 使用新的头部标题颜色变量 (白色) */
+    margin: 0; /* 移除默认外边距 */
+    padding: 0; /* 移除默认内边距 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); /* 添加文字阴影，增强立体感 */
+    letter-spacing: 1px; /* 增加字母间距，提升美观度 */
+    white-space: nowrap; /* 防止标题在小屏幕上换行 */
+    overflow: hidden; /* 隐藏超出部分 */
+    text-overflow: ellipsis; /* 超出显示省略号 */
     line-height: 1.2; /* 紧凑行高 */
+}
+
+/* 优化点：调整副标题的样式 */
+.header-subtitle {
+    font-family: 'Noto Sans SC', sans-serif; /* 确保使用Google字体 */
+    font-size: 1.1em; /* 副标题字体大小 */
+    font-weight: 300; /* 稍微细一些 */
+    color: var(--secondary-text-color); /* 保持使用次要文本颜色变量 */
+    margin-top: 8px; /* 与主标题的间距 */
+    margin-bottom: 0; /* 移除底部外边距 */
+    padding: 0; /* 移除内边距 */
+    line-height: 1.5; /* 行高调整 */
+    opacity: 0.9; /* 略微降低透明度，使其看起来不那么突出，作为辅助信息。*/
+}
+
+/* 优化点：隐藏旧的图片Logo相关样式，确保它们不再显示 */
+.site-branding-single-logo,
+.site-logo-integrated {
+    display: none !important; /* 使用 !important 确保覆盖所有其他样式，彻底隐藏图片Logo */
 }
 
 
@@ -184,12 +170,12 @@ header {
  * .grid 类应用于图标卡片的容器，定义了其如何使用 CSS Grid 布局排列。
  * Grid 布局非常适合创建二维（行和列）的页面布局。
  */
-.grid { 
+.grid { 
   display: grid; /* 启用 Grid 布局。这是确保多列显示的关键 */
   grid-template-columns: repeat(6, 1fr); /* 定义列的数量和大小：默认桌面端显示 6 列，每列等宽 (1fr)。*/
   /* gap 属性定义了网格项（卡片）之间的间距。
      使用 CSS 变量，确保垂直间距和水平间距可以统一管理。*/
-  gap: var(--grid-gap-vertical) var(--grid-gap-horizontal); 
+  gap: var(--grid-gap-vertical) var(--grid-gap-horizontal); 
   padding: 25px 20px; /* 网格容器内部的内边距：上下 25px，左右 20px。*/
   max-width: 1400px; /* 限制网格容器的最大宽度，防止在超宽屏幕上拉伸过宽，保持美观。*/
   margin: 0 auto; /* 水平居中网格容器。*/
@@ -204,7 +190,7 @@ header {
  * 请注意：卡片的具体HTML结构由 cards-from-guanli.js 动态生成，
  * 但只要生成的HTML符合 .card > img + h2.card-title 的模式，这些样式就会生效。
  */
-.card { 
+.card { 
   text-decoration: none; /* 移除链接默认的下划线。*/
   color: var(--text-color); /* 应用主要文本颜色变量，用于卡片标题。*/
   display: flex; /* 启用 Flexbox 布局，便于内部元素（图片和标题）的排列。*/
@@ -222,7 +208,7 @@ header {
 }
 
 /* 卡片悬浮时的样式：当鼠标悬停在卡片上时应用。*/
-.card:hover { 
+.card:hover { 
   transform: scale(var(--card-hover-scale)); /* 应用定义的放大比例变量，使卡片轻微放大。*/
   background-color: rgba(255, 255, 255, 0.07); /* 悬浮时显示略深的半透明背景，提供视觉反馈。*/
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* 悬浮时显示更明显但柔和的阴影，增加深度感。*/
@@ -232,7 +218,7 @@ header {
 /*
  * .card img 样式应用于每个卡片内部的 App 图标图片。
  */
-.card img { 
+.card img { 
   width: 90%; /* 图标宽度占卡片空间的 90%，使图标在卡片中显得更大。*/
   height: 70px; /* 固定图标高度，确保所有图标在视觉上大小一致，避免布局跳动。
                    您可能需要根据实际图标的宽高比和设计需求调整此值。*/
@@ -243,7 +229,7 @@ header {
    * 确保图片在保持自身宽高比的同时，完整地显示在分配的 70px 高度内，不会被裁剪或拉伸。
    * 这意味着图片可能会在可用空间内留下空白，但其内容会完全可见。
    */
-  object-fit: contain; 
+  object-fit: contain; 
   object-position: center; /* 确保图片在其可用空间内水平和垂直居中显示。*/
   background-color: var(--logo-bg-color); /* 应用 Logo 背景色变量 (透明)。*/
   border-radius: 20%; /* 设置图片圆角，使其外观更柔和或适应图标形状。*/
@@ -256,7 +242,7 @@ header {
 /*
  * .card-title 样式应用于每个卡片下方的 App 标题文本。
  */
-.card-title { 
+.card-title { 
   font-size: 15px; /* 标题的字体大小。*/
   font-weight: 500; /* 字体粗细。*/
   text-align: center; /* 标题文本水平居中。*/
@@ -274,7 +260,7 @@ header {
 /*
  * footer 元素是页面的底部区域。
  */
-footer { 
+footer { 
   text-align: center; /* 确保页脚内的所有内容水平居中。*/
   padding: 0.6rem 1rem; /* 内边距：上下 0.6rem，左右 1rem，使其更紧凑。*/
   font-size: 0.9rem; /* 整体字号略微减小，作为辅助信息。*/
@@ -327,7 +313,7 @@ footer {
     font-size: 1em; /* 图标大小与文字保持一致或略大。*/
     color: var(--footer-icon-color); /* 应用页脚图标颜色变量。*/
     /* Font Awesome 图标默认会有一些内边距，移除它以保持紧凑 */
-    padding: 0; 
+    padding: 0; 
     line-height: 1; /* 确保图标行高紧凑 */
     display: inline-flex; /* 使图标本身也是一个flex容器，更精确控制对齐 */
     align-items: center; /* 垂直居中图标内容 */
@@ -339,18 +325,18 @@ footer {
     color: var(--footer-link-color); /* 应用页脚链接颜色变量。*/
     text-decoration: none; /* 移除下划线。*/
     /* 颜色和文本阴影的过渡动画，使悬停效果更平滑。*/
-    transition: color 0.2s ease, text-shadow 0.2s ease; 
+    transition: color 0.2s ease, text-shadow 0.2s ease; 
     line-height: 1.2; /* 确保链接文本行高紧凑。*/
 }
 
 /* 链接悬停时的样式 */
-.contact-info a:hover { 
+.contact-info a:hover { 
     color: #a0c0ff; /* 悬停时颜色变为更亮的蓝色。*/
     text-shadow: 0 0 5px rgba(160, 192, 255, 0.6); /* 悬停时显示柔和的蓝色阴影。*/
 }
 
 /* 最底部版权/域名信息样式 */
-.copyright-text { 
+.copyright-text { 
     margin: 0; /* 移除默认外边距。*/
     padding: 0; /* 移除默认内边距。*/
     font-size: 0.75rem; /* 字体进一步减小，作为辅助信息，不抢主次。*/
@@ -364,7 +350,7 @@ footer {
 /*
  * #loading-indicator 用于在页面内容加载时显示加载动画，提升用户体验。
  */
-#loading-indicator { 
+#loading-indicator { 
     position: fixed; /* 固定定位，使其在滚动时也保持在视口内，覆盖整个页面。*/
     top: 0; /* 顶部对齐。*/
     left: 0; /* 左侧对齐。*/
@@ -381,40 +367,40 @@ footer {
     opacity: 0; /* 默认透明度为 0 (隐藏)，通过 JavaScript 控制显示。*/
     visibility: hidden; /* 默认不可见，配合 opacity 实现平滑显示/隐藏。*/
     /* 透明度和可见性的过渡动画，使加载指示器平滑地出现和消失。*/
-    transition: opacity 0.4s ease, visibility 0.4s ease; 
+    transition: opacity 0.4s ease, visibility 0.4s ease; 
 }
 
 /* 当有 .show 类时显示加载指示器，由 JavaScript 动态添加。*/
-#loading-indicator.show { 
+#loading-indicator.show { 
     opacity: 1; /* 完全不透明。*/
     visibility: visible; /* 可见。*/
 }
 
 /* 加载点动画的容器 */
-#loading-indicator .spinner-dots { 
+#loading-indicator .spinner-dots { 
     margin-top: 10px; /* 文字和点之间的间距。*/
     color: var(--loading-spinner-color); /* 使用变量定义点颜色。*/
 }
 
 /* 加载动画中的每个点 */
-#loading-indicator span { 
+#loading-indicator span { 
     animation: blink 1s infinite alternate; /* 应用名为 'blink' 的动画，无限循环，交替透明度。*/
     margin: 0 2px; /* 点之间有小间距。*/
     display: inline-block; /* 确保点可以应用 margin 属性。*/
 }
 
 /* 为第二个点设置动画延迟，创建错位效果 */
-#loading-indicator span:nth-child(2) { 
+#loading-indicator span:nth-child(2) { 
     animation-delay: 0.2s;
 }
 
 /* 为第三个点设置动画延迟，创建错位效果 */
-#loading-indicator span:nth-child(3) { 
+#loading-indicator span:nth-child(3) { 
     animation-delay: 0.4s;
 }
 
 /* 定义名为 'blink' 的关键帧动画 */
-@keyframes blink { 
+@keyframes blink { 
     from { opacity: 0.3; } /* 从半透明开始。*/
     to { opacity: 1; } /* 变为完全不透明。*/
 }
@@ -428,48 +414,56 @@ footer {
 /* 最小手机屏幕: 宽度在 480px 及以下时应用这些样式。*/
 @media (max-width: 480px) {
     /* 头部 Logo 尺寸调整 */
+    /* 优化点：隐藏旧的图片Logo相关样式，确保它们不再显示 */
+    .site-branding-single-logo,
     .site-logo-integrated {
-        height: 30px; /* 在小屏幕下适当缩小Logo高度 */
+        display: none !important; 
     }
     /*
-     * 进一步调整头部内边距和下方间距，使其在小屏幕下更紧凑。
+     * 优化点：调整头部内边距和下方间距，使其在小屏幕下更紧凑。
      */
-    header { 
-        padding: 0px 0; /* 极致减小头部上下内边距。*/
-        margin-bottom: 3px; /* 进一步减小头部与下方内容的间距。*/
-    } 
+    header { 
+        padding: 15px 0; /* 手机端上下内边距可以小一些 */
+        margin-bottom: 15px; /* 手机端与下方内容的间距 */
+    } 
     /* 调整头部内容左右内边距，使其更贴合边缘。*/
     .header-content {
-        padding: 0 2px; 
+        padding: 0 10px; 
     }
-    /* 副标题字体大小调整 */
+    /* 优化点：手机端标题字体适当缩小 */
+    .site-title-text {
+        font-size: 1.8em; 
+        letter-spacing: 0.5px;
+    }
+    /* 优化点：手机端副标题字体适当缩小 */
     .header-subtitle {
-        font-size: 0.55em; /* 进一步缩小。*/
-        margin-top: 0px; /* 紧贴Logo */
+        font-size: 0.9em;
+        margin-top: 5px;
     }
+
     /*
      * 网格布局调整：强制在最小手机屏幕下每行显示 5 个 App 图标。
      * 这将使 App 排列更紧凑。
      */
-    .grid { 
+    .grid { 
         grid-template-columns: repeat(5, 1fr); /* 调整为 5 列。*/
         gap: 8px 4px; /* 进一步减小网格间距，使其更紧凑。*/
         padding: 8px 4px; /* 进一步减小网格容器内边距。*/
     }
     /* 卡片内边距调整 */
-    .card { 
+    .card { 
         padding: 4px; /* 进一步减小卡片内边距。*/
     }
     /* 卡片内部图标尺寸调整 */
-    .card img { 
+    .card img { 
         width: 90%; /* 适当调整宽度以适应新列数。*/
         height: 50px; /* 调整高度以适应新的列数和间距，确保图标不被裁剪，且整体更小。*/
         margin-bottom: 3px; /* 减小图标和标题的间距。*/
     }
     /* 卡片标题字体大小调整 */
-    .card-title { 
+    .card-title { 
         font-size: 9px; /* 字体进一步减小，适应更紧凑布局。*/
-        line-height: 1.1; 
+        line-height: 1.1; 
     }
     /* 页脚字体大小调整 (保持不变) */
     .footer {
@@ -479,25 +473,30 @@ footer {
 
 /* 中等屏幕手机/小平板: 宽度在 481px 到 768px 之间时应用这些样式。*/
 @media (min-width: 481px) and (max-width: 768px) {
-    /* 头部 Logo 尺寸调整 */
+    /* 优化点：隐藏旧的图片Logo相关样式，确保它们不再显示 */
+    .site-branding-single-logo,
     .site-logo-integrated {
-        height: 35px; /* 适当调整Logo高度 */
+        display: none !important;
     }
     /*
-     * 再次调整头部内边距和下方间距。
+     * 优化点：再次调整头部内边距和下方间距。
      */
-    header { 
-        padding: 1px 0; /* 进一步减小头部上下内边距。*/
-        margin-bottom: 4px; /* 进一步减小头部与下方内容的间距。*/
-    } 
+    header { 
+        padding: 20px 0; /* 调整头部上下内边距。*/
+        margin-bottom: 18px; /* 调整头部与下方内容的间距。*/
+    } 
     /* 调整头部内容左右内边距。*/
     .header-content {
-        padding: 0 5px; 
+        padding: 0 10px; 
     }
-    /* 副标题字体大小调整 */
+    /* 优化点：调整标题字体大小 */
+    .site-title-text {
+        font-size: 2.2em;
+    }
+    /* 优化点：调整副标题字体大小 */
     .header-subtitle {
-        font-size: 0.6em;
-        margin-top: 0px; /* 紧贴Logo */
+        font-size: 1em;
+        margin-top: 6px;
     }
     /*
      * 网格布局调整：强制在中等屏幕下每行显示 5 个 App 图标。
@@ -514,7 +513,7 @@ footer {
     }
     /* 卡片内部图标尺寸调整 */
     .card img {
-        width: 90%; 
+        width: 90%; 
         height: 60px;
         margin-bottom: 3px;
     }
@@ -526,25 +525,30 @@ footer {
 
 /* 平板/桌面: 宽度在 769px 到 1024px 之间时应用这些样式。*/
 @media (min-width: 769px) and (max-width: 1024px) {
-    /* 头部 Logo 尺寸调整 */
+    /* 优化点：隐藏旧的图片Logo相关样式，确保它们不再显示 */
+    .site-branding-single-logo,
     .site-logo-integrated {
-        height: 45px; /* 适当调整Logo高度 */
+        display: none !important;
     }
     /*
-     * 再次调整头部内边距。
+     * 优化点：再次调整头部内边距。
      */
-    header { 
-        padding: 2px 0; /* 减小头部上下内边距。*/
-        margin-bottom: 5px;
-    } 
+    header { 
+        padding: 25px 0; /* 调整头部上下内边距。*/
+        margin-bottom: 20px;
+    } 
     /* 调整头部内容左右内边距。*/
     .header-content {
-        padding: 0 10px;
+        padding: 0 15px;
     }
-    /* 副标题字体大小调整 */
+    /* 优化点：调整标题字体大小 */
+    .site-title-text {
+        font-size: 2.5em;
+    }
+    /* 优化点：调整副标题字体大小 */
     .header-subtitle {
-        font-size: 0.7em;
-        margin-top: 1px; /* 紧贴Logo */
+        font-size: 1.05em;
+        margin-top: 8px;
     }
     /* 网格布局调整：保持 6 列。*/
     .grid {
@@ -558,7 +562,7 @@ footer {
     }
     /* 卡片内部图标尺寸调整 */
     .card img {
-        width: 88%; 
+        width: 88%; 
         height: 70px;
         margin-bottom: 5px;
     }
@@ -570,25 +574,30 @@ footer {
 
 /* 大屏幕桌面: 宽度在 1025px 到 1440px 之间时应用这些样式。*/
 @media (min-width: 1025px) and (max-width: 1440px) {
-    /* 头部 Logo 尺寸调整 */
+    /* 优化点：隐藏旧的图片Logo相关样式，确保它们不再显示 */
+    .site-branding-single-logo,
     .site-logo-integrated {
-        height: 50px; /* 适当调整Logo高度 */
+        display: none !important;
     }
     /*
-     * 再次调整头部内边距。
+     * 优化点：再次调整头部内边距。
      */
-    header { 
-        padding: 3px 0; /* 减小头部上下内边距。*/
-        margin-bottom: 5px;
-    } 
+    header { 
+        padding: 30px 0; /* 调整头部上下内边距。*/
+        margin-bottom: 25px;
+    } 
     /* 调整头部内容左右内边距。*/
     .header-content {
-        padding: 0 15px;
+        padding: 0 20px;
     }
-    /* 副标题字体大小调整 */
+    /* 优化点：调整标题字体大小 */
+    .site-title-text {
+        font-size: 2.8em;
+    }
+    /* 优化点：调整副标题字体大小 */
     .header-subtitle {
-        font-size: 0.75em;
-        margin-top: 2px; /* 紧贴Logo */
+        font-size: 1.1em;
+        margin-top: 10px;
     }
     /* 网格布局调整：增加到 7 列。*/
     .grid {
@@ -598,7 +607,7 @@ footer {
     }
     /* 卡片内部图标尺寸调整 */
     .card img {
-      width: 88%; 
+      width: 88%; 
       height: 75px;
       margin-bottom: 5px;
     }
@@ -610,25 +619,30 @@ footer {
 
 /* 超大屏幕桌面: 宽度在 1441px 及以上时应用这些样式。*/
 @media (min-width: 1441px) {
-    /* 头部 Logo 尺寸调整 */
+    /* 优化点：隐藏旧的图片Logo相关样式，确保它们不再显示 */
+    .site-branding-single-logo,
     .site-logo-integrated {
-        height: 55px; /* 适当调整Logo高度 */
+        display: none !important;
     }
     /*
-     * 再次调整头部内边距。
+     * 优化点：再次调整头部内边距。
      */
-    header { 
-        padding: 4px 0; /* 减小头部上下内边距。*/
-        margin-bottom: 5px;
-    } 
+    header { 
+        padding: 35px 0; /* 调整头部上下内边距。*/
+        margin-bottom: 30px;
+    } 
     /* 调整头部内容左右内边距。*/
     .header-content {
-        padding: 0 20px;
+        padding: 0 25px;
     }
-    /* 副标题字体大小调整 */
+    /* 优化点：调整标题字体大小 */
+    .site-title-text {
+        font-size: 3.2em;
+    }
+    /* 优化点：调整副标题字体大小 */
     .header-subtitle {
-        font-size: 0.8em;
-        margin-top: 3px; /* 紧贴Logo */
+        font-size: 1.2em;
+        margin-top: 12px;
     }
     /* 网格布局调整：增加到 8 列。*/
     .grid {
