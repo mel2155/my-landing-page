@@ -1,63 +1,100 @@
-// ad-script.js - 广告脚本文件
+// ad-script.js
+// 这个文件包含显示广告的逻辑
 
-// 当HTML文档加载和解析完毕后执行脚本
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. 创建广告容器元素 (外层包裹)
-    const adContainer = document.createElement('div');
-    adContainer.classList.add('ad-container'); // 添加CSS类名，用于 ad-styles.css 中的样式控制
+    const adContainer = document.querySelector('.ad-container');
 
-    // 2. 创建广告链接元素 (点击图片后会跳转到此链接)
-    const adLinkContainer = document.createElement('a');
-    // 定义广告点击后跳转的URL。**请务必将此URL替换为您的实际广告跳转链接！**
-    const clickUrl = 'https://cs-site-cloud-deploy.pages.dev'; // <--- **在这里修改您的广告链接**
-    adLinkContainer.href = clickUrl;
-    adLinkContainer.target = '_blank'; // 设置点击链接在新标签页打开
+    // adsData 变量在 ads-data.js 中定义，并且因为它先加载，所以在这里是可用的。
 
-    // 3. 创建PC端广告图片元素
-    const pcAdImage = document.createElement('img');
-    pcAdImage.classList.add('ad-image-pc'); // 添加CSS类名，用于在CSS中区分PC端图片
-
-    // 4. 创建手机端广告图片元素
-    const mobileAdImage = document.createElement('img');
-    mobileAdImage.classList.add('ad-image-mobile'); // 添加CSS类名，用于在CSS中区分手机端图片
-
-    // 5. 定义不同设备的广告图片路径
-    // **重要：请确保这里的图片文件名（包括大小写）与您 'images/' 文件夹中的实际文件名称完全匹配！**
-    // 假设您的图片文件扩展名是 .JPG。如果不是，请修改这里的 .JPG 为您实际的扩展名（例如 .png, .jpg）。
-    const pcImageUrl = 'images/ad-banner-pc.JPG';   // PC端广告图片的相对路径
-    const mobileImageUrl = 'images/ad-banner-mobile.JPG'; // 手机端广告图片的相对路径
-
-    pcAdImage.src = pcImageUrl; // 设置PC端图片的源文件
-    mobileAdImage.src = mobileImageUrl; // 设置手机端图片的源文件
-
-    // 6. 添加图片无法加载时的替代文本 (对用户友好，也有利于搜索引擎优化)
-    pcAdImage.alt = "PC端广告横幅，点击了解更多"; 
-    mobileAdImage.alt = "手机端广告横幅，点击了解更多"; 
-
-    // 7. 将图片元素添加到广告链接容器中
-    adLinkContainer.appendChild(pcAdImage);
-    adLinkContainer.appendChild(mobileAdImage);
-
-    // 8. 将广告链接容器添加到主广告容器中
-    adContainer.appendChild(adLinkContainer);
-
-    // 9. 确定广告插入位置
-    // 目标：将广告插入到 <header> 标签之后、id为 "card-container" 的 App 卡片区域之前。
-    const cardContainer = document.getElementById('card-container'); // 获取App卡片容器元素
-
-    if (cardContainer) {
-        const headerElement = document.querySelector('header'); // 获取页面中的第一个 <header> 标签元素
-
-        if (headerElement) {
-            // 如果找到了header元素，将广告容器插入到header元素之后
-            headerElement.after(adContainer);
-        } else {
-            // 如果没有找到header元素，作为备用方案，将广告插入到App卡片容器之前
-            cardContainer.parentNode.insertBefore(adContainer, cardContainer);
-            console.warn("未找到 'header' 元素，广告已作为备用方案插入到 'card-container' 之前。");
+    /**
+     * 函数：displayAds
+     * 作用：在 adContainer 中显示广告。
+     * 默认情况下，它显示 adsData 数组中的第一个广告。
+     * 您可以修改此函数以实现随机显示、轮播等功能。
+     * @param {Array} adArray - 包含广告数据的数组。
+     */
+    function displayAds(adArray) {
+        if (!adContainer) {
+            console.error('未在 DOM 中找到广告容器 (.ad-container)。');
+            return;
         }
-    } else {
-        console.warn("未找到 'card-container' 元素，广告可能无法插入。请检查HTML结构是否正确。");
-    }
-});
 
+        // 清除广告容器中任何现有内容
+        adContainer.innerHTML = '';
+
+        // 对于此示例，我们显示数组中的第一个广告。
+        // 您可以更改 'adArray[0]' 以实现不同的逻辑（例如，随机、轮播）。
+        const adToDisplay = adArray[0]; 
+
+        if (adToDisplay) {
+            // 为广告链接创建锚点标签
+            const adLinkElement = document.createElement('a');
+            adLinkElement.href = adToDisplay.link;
+            adLinkElement.target = "_blank"; // 在新标签页中打开链接
+            adLinkElement.rel = "noopener noreferrer"; // 安全最佳实践
+
+            // 创建PC版广告图片
+            const pcImg = document.createElement('img');
+            pcImg.src = adToDisplay.pcImage;
+            pcImg.alt = adToDisplay.alt + " (PC 版本)";
+            pcImg.classList.add('ad-image-pc'); // 应用PC端样式/响应式CSS类
+
+            // 创建移动版广告图片
+            const mobileImg = document.createElement('img');
+            mobileImg.src = adToDisplay.mobileImage;
+            mobileImg.alt = adToDisplay.alt + " (移动版本)";
+            mobileImg.classList.add('ad-image-mobile'); // 应用移动端样式/响应式CSS类
+
+            // 将两个图片版本都添加到锚点标签中
+            adLinkElement.appendChild(pcImg);
+            adLinkElement.appendChild(mobileImg);
+
+            // 将整个广告元素（链接 + 图片）添加到广告容器中
+            adContainer.appendChild(adLinkElement);
+        } else {
+            console.warn('adArray 中没有可供显示的广告。');
+        }
+    }
+
+    // 页面加载时调用函数显示广告
+    displayAds(adsData); // 这里直接使用 adsData 变量
+
+    /*
+    // --- 可选：实现广告轮播 ---
+    // 此示例将每10秒轮播一次您的广告。
+    let currentAdIndex = 0;
+    setInterval(() => {
+        currentAdIndex = (currentAdIndex + 1) % adsData.length; // 循环切换广告
+        adContainer.innerHTML = ''; // 清除之前的广告
+        const adToDisplay = adsData[currentAdIndex];
+        if (adToDisplay) {
+            const adLinkElement = document.createElement('a');
+            adLinkElement.href = adToDisplay.link;
+            adLinkElement.target = "_blank";
+            adLinkElement.rel = "noopener noreferrer";
+
+            const pcImg = document.createElement('img');
+            pcImg.src = adToDisplay.pcImage;
+            pcImg.alt = adToDisplay.alt + " (PC 版本)";
+            pcImg.classList.add('ad-image-pc');
+
+            const mobileImg = document.createElement('img');
+            mobileImg.src = adToDisplay.mobileImage;
+            mobileImg.alt = adToDisplay.alt + " (移动版本)";
+            mobileImg.classList.add('ad-image-mobile');
+
+            adLinkElement.appendChild(pcImg);
+            adLinkElement.appendChild(mobileImg);
+            adContainer.appendChild(adLinkElement);
+        }
+    }, 10000); // 每10秒轮播一次（10000毫秒）
+    */
+
+    /*
+    // --- 可选：页面加载时显示随机广告 ---
+    // 此示例将从您的数组中随机选择一个广告进行显示。
+    // 如果您更喜欢随机显示，请取消此部分的注释并注释掉初始的 `displayAds(adsData);` 调用。
+    // const randomIndex = Math.floor(Math.random() * adsData.length);
+    // displayAds([adsData[randomIndex]]); // 仅传递包含所选随机广告的数组
+    */
+});
