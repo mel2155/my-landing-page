@@ -7,34 +7,46 @@
     max-width: 970px; 
     border: 1px solid rgba(255, 255, 255, 0.1); 
     background-color: rgba(0, 0, 0, 0.3); 
-    text-align: center; 
+    text-align: center; /* 确保文字内容居中，但对 flex 内部图片影响不大 */
     overflow: hidden; 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
     border-radius: 8px; 
-    /* 增加内边距，给图片更多呼吸空间，但又不能太多导致容器过高 */
-    padding: 3px; 
+    
+    /* 内边距：减少上下内边距，给图片更多垂直空间 */
+    padding: 2px 3px; /* 上下 2px，左右 3px，更细致的控制 */
 
-    /* PC端/大屏幕下的最大高度：**关键调整**，增加高度以容纳图片 */
-    /* 建议值：根据您的广告图实际高度微调，目标是刚好容纳一张图。 */
-    max-height: 100px; /* 增加到 100px，让图片有更大空间 */
-    /* 最小高度：确保在极端情况下也有一定高度，防止内容完全消失 */
-    min-height: 60px; /* 相应增加 */
+    /* PC端/大屏幕下的最大高度：**核心调整** */
+    /* 我们需要找到一个能刚好容纳您的 PC 横幅的高度。
+       您可以尝试根据您的图片实际像素高度稍微调整。
+       例如，如果您的 PC 图片实际高度是 90px，那么这里的 max-height 设为 90px 或 92px (加上边框和微量内边距) 可能会很合适。
+       我这里给出一些经验值，您可能需要小幅微调。 */
+    max-height: 95px; /* 进一步微调 PC 端最大高度，留更多空间 */
+    min-height: 60px; /* 确保最小高度 */
 
-    /* 弹性布局：确保内部图片居中且垂直对齐，这有助于解决重叠问题 */
+    /* 弹性布局：确保内部图片完美居中 */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* 水平居中 */
+    align-items: center;   /* 垂直居中 */
+    flex-wrap: nowrap;     /* 防止内容换行，确保单行显示 */
 }
 
 /* 广告图片通用样式：同时应用于PC端和手机端的广告图片 */
 .ad-container img {
     display: block; 
     width: 100%; 
-    height: auto; /* 保持 auto 确保比例，但容器的 max-height 会限制其最终显示高度 */
+    height: 100%; /* 让图片高度尽可能填充父容器 */
+    max-height: 100%; /* 确保图片不会超出其容器的最大高度 */
     border-radius: 5px; 
-    object-fit: contain; /* 确保图片在保持自身比例的同时，完整地显示在容器内，不会被拉伸或裁剪 */
-    object-position: center; 
+    /* object-fit: contain; 确保图片在保持自身比例的同时，完整地显示在容器内，不会被拉伸或裁剪 */
+    /* object-fit: cover; 会填充整个容器，但可能会裁剪图片边缘。
+       如果您图片周围有较多空白，且希望图片更大，可以尝试 'cover'。
+       但 'contain' 通常更安全，确保图片完整性。
+       为了更好的居中效果，我们保持 'contain' 并依赖容器的精确高度。
+    */
+    object-fit: contain; 
+    object-position: center; /* 确保图片在其可用空间内居中 */
     flex-shrink: 0;
+    flex-grow: 1; /* 允许图片在 flex 容器内适度增长 */
 }
 
 /* 默认情况下：在PC端视口（屏幕宽度大于768px）显示PC广告图片，隐藏手机广告图片 */
@@ -58,10 +70,10 @@
     .ad-container {
         width: 96%; 
         margin: 8px auto; 
-        padding: 2px; /* 增加内边距 */
+        padding: 1px 2px; /* 调整内边距 */
         /* 最大高度：针对中等屏幕的广告高度，增加高度以容纳图片 */
-        max-height: 60px; /* 增加到 60px */
-        min-height: 45px; /* 相应增加 */
+        max-height: 55px; /* 进一步微调，为手机图片留更多空间 */
+        min-height: 40px; 
         border-radius: 6px; 
     }
 }
@@ -78,12 +90,15 @@
     .ad-container {
         width: 98%; 
         margin: 5px auto; 
-        padding: 1px; /* 增加内边距 */
-        max-height: 50px; /* 增加到 50px */
-        min-height: 35px; /* 相应增加 */
+        padding: 1px; /* 调整内边距 */
+        max-height: 45px; /* 进一步微调，为小屏手机图片留更多空间 */
+        min-height: 30px; 
         border-radius: 5px; 
     }
     .ad-container img {
         border-radius: 3px;
+    }
+}
+
     }
 }
