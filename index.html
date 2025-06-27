@@ -9,24 +9,29 @@
   <style>
     /* ===== 主题颜色与全局设置 ===== */
 :root { /* 定义 CSS 变量的根作用域，这些变量可以在整个文档中使用 */
-  --bg-color: #15050A; /* 页面背景色：深、纯粹，提升沉浸感 */
-  --header-bg-start-color: #4A000F; /* 头部背景渐变起始色：深紫，与网站主题呼应 */
-  --header-bg-end-color: #2A0008; /* 头部背景渐变结束色：深灰，平滑过渡 */
-  --text-color: #FF0000; /* 优化: 主要文本颜色改为鲜艳的正红色 (如App小字) */
-  --secondary-text-color: #FF5555; /* 优化: 次要文本颜色改为略浅的红色，用于辅助信息 */
-  --logo-bg-color: transparent; /* Logo 背景色设置为透明，方便与图片本身融合 */
-  --border-color: #242424; /* 分隔线颜色：更暗，更融入背景 */
-  --card-hover-scale: 1.05; /* 卡片悬浮时的放大比例，更自然 */
-  --grid-gap-vertical: 20px; /* 网格项之间垂直间距的默认值 (这里会根据屏幕大小覆盖) */
-  --grid-gap-horizontal: 15px; /* 网格项之间水平间距的默认值 (这里会根据屏幕大小覆盖) */
-  --accent-color: #FF6666; /* 优化: 强调色改为红色系，与整体主题协调 */
-  --header-title-color: #FF0000; /* 优化: 头部标题颜色改为鲜艳的正红色 */
+  --bg-color: #0E000A; /* 优化: 更深邃的背景色，接近纯黑但带一点点紫红，增加奢华感和沉浸感 */
+  --header-bg-start-color: #3C000F; /* 优化: 头部渐变起始色，深酒红色，比之前更沉稳 */
+  --header-bg-end-color: #1A0006; /* 优化: 头部渐变结束色，与背景色系融合 */
 
-  /* 页脚新增或调整的颜色变量，用于页脚文本、链接和图标，方便统一管理 */
-  --footer-text-color: #FF0000; /* 优化: 页脚主要文本颜色也改为主要文本的红色 */
-  --footer-link-color: #FF8888; /* 优化: 页脚链接颜色改为更浅的红色，更柔和，保持可点击性区分 */
-  --footer-icon-color: #FF8888; /* 优化: 页脚图标颜色与链接一致 */
+  --text-color: #E60044; /* 优化: 诱惑且性感的正红，更具冲击力（如App标题、联系站长标题） */
+  --secondary-text-color: #FF69B4; /* 优化: 柔和的玫红色，用于次要信息，保持柔美感 */
+  
+  --logo-bg-color: transparent; /* Logo 背景色设置为透明 */
+  --border-color: #2F000F; /* 优化: 分隔线颜色，与背景和主题色协调的深红棕色 */
+  
+  --card-hover-scale: 1.05; /* 卡片悬浮时的放大比例 */
+  --grid-gap-vertical: 20px; /* 网格项之间垂直间距默认值 */
+  --grid-gap-horizontal: 15px; /* 网格项之间水平间距默认值 */
+  
+  --accent-color: #FFD700; /* 优化: 强调色使用金色，与红黑配色形成高级感对比，用于特定按钮或高亮 */
+  --header-title-color: #E60044; /* 优化: 头部标题颜色与主要文本颜色保持一致 */
+
+  /* 页脚新增或调整的颜色变量 */
+  --footer-text-color: #F0F0F0; /* 优化: 页脚普通文本颜色改为浅色，确保可读性，与主要红区分 */
+  --footer-link-color: #FFD700; /* 优化: 页脚链接颜色改为金色，与强调色统一，更显眼可点击 */
+  --footer-icon-color: #FFD700; /* 优化: 页脚图标颜色与链接一致 */
 }
+
 
     body { /* 页面主体样式 */
       font-family: 'Noto Sans SC', sans-serif; /* 设置主要字体为 Noto Sans SC，备用为无衬线字体 */
