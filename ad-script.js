@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 2. 创建广告链接元素 (点击图片后会跳转到此链接)
     const adLinkContainer = document.createElement('a');
     // 定义广告点击后跳转的URL。**请务必将此URL替换为您的实际广告跳转链接！**
-    const clickUrl = 'http://your-ad-link.com'; // <--- **在这里修改您的广告链接**
+    const clickUrl = 'https://cs-site-cloud-deploy.pages.dev'; // <--- **在这里修改您的广告链接**
     adLinkContainer.href = clickUrl;
     adLinkContainer.target = '_blank'; // 设置点击链接在新标签页打开
 
