@@ -12,13 +12,13 @@
       --bg-color: #121212; /* 更深的背景色，增加沉浸感 */
       --header-bg-color: #1f1f1f; /* 头部背景色，与主背景有微妙区分 */
       --text-color: #e0e0e0; /* 主要文本颜色 */
-      --secondary-text-color: #999; /* 次要文本颜色 (如页脚) */
-      --logo-bg-color: #282828; /* Logo 背景色，与头部背景协调 */
-      --border-color: #383838; /* 分隔线颜色，更柔和 */
-      --card-hover-scale: 1.07; /* 卡片悬浮放大比例，更明显 */
-      --grid-gap-vertical: 24px; /* 网格垂直间距，更宽敞 */
-      --grid-gap-horizontal: 16px; /* 网格水平间距，更宽敞 */
-      --accent-color: #6a9ee8; /* 新增强调色，用于链接悬停等 */
+      --secondary-text-color: #888; /* 次要文本颜色 (如页脚，更柔和) */
+      --logo-bg-color: transparent; /* Logo 背景色设置为透明 */
+      --border-color: #282828; /* 分隔线颜色，更柔和，接近背景 */
+      --card-hover-scale: 1.08; /* 卡片悬浮放大比例，更明显 */
+      --grid-gap-vertical: 16px; /* 网格垂直间距，更紧凑 */
+      --grid-gap-horizontal: 10px; /* 网格水平间距，更紧凑 */
+      --accent-color: #6a9ee8; /* 强调色，用于链接悬停等 */
     }
 
     body {
@@ -40,23 +40,23 @@
       background-color: var(--header-bg-color);
       color: var(--text-color);
       text-align: center;
-      padding: 1.5rem 1rem; /* 增加上下内边距 */
-      font-size: 1.8rem; /* 稍微调大标题字号 */
-      font-weight: 700; /* 加粗标题 */
+      padding: 1.5rem 1rem;
+      font-size: 1.8rem;
+      font-weight: 700;
       border-bottom: 1px solid var(--border-color);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* 头部阴影，更深更突出 */
-      letter-spacing: 0.05em; /* 增加字母间距，提升标题质感 */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      letter-spacing: 0.05em;
     }
 
     /* ===== 网格布局 (核心) ===== */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); /* 微调最小宽度 */
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* 进一步微调最小宽度 */
       gap: var(--grid-gap-vertical) var(--grid-gap-horizontal);
-      padding: 30px 20px; /* 增加上下内边距 */
-      max-width: 1300px; /* 增加最大宽度，适应更大屏幕 */
+      padding: 25px 15px; /* 减小内边距，使内容更紧凑 */
+      max-width: 1200px; /* 调整最大宽度 */
       margin: 0 auto;
-      flex-grow: 1; /* 让网格内容区域填充可用空间 */
+      flex-grow: 1;
     }
 
     /* ===== 卡片样式 ===== */
@@ -66,43 +66,45 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start; /* 顶部对齐 */
-      transition: transform 0.25s ease, box-shadow 0.25s ease; /* 过渡更流畅 */
-      padding: 10px; /* 增加卡片内边距，使内容不那么拥挤 */
-      border-radius: 12px; /* 统一卡片圆角，更圆润 */
-      background-color: var(--header-bg-color); /* 卡片背景色与头部呼应 */
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* 卡片默认阴影 */
+      justify-content: flex-start;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+      padding: 6px; /* 减小卡片内边距，更紧凑 */
+      border-radius: 10px; /* 圆角适中 */
+      background-color: transparent; /* 卡片背景透明 */
+      box-shadow: none; /* 移除默认阴影 */
     }
 
     .card:hover {
       transform: scale(var(--card-hover-scale));
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* 悬浮时阴影更明显 */
-      background-color: #333; /* 悬浮时背景色微变 */
+      background-color: rgba(255, 255, 255, 0.05); /* 悬浮时显示半透明背景 */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* 悬浮时添加阴影 */
     }
 
     /* ===== Logo图片样式 ===== */
     .card img {
-      width: 90%; /* 稍微增大图片比例 */
+      width: 95%; /* 稍微增大图片比例，几乎填满卡片宽度 */
       aspect-ratio: 1 / 1; 
-      object-fit: contain; 
-      background-color: var(--logo-bg-color);
-      border-radius: 10px; /* 略小于卡片的圆角 */
-      margin-bottom: 10px; /* Logo和文字的间距 */
+      object-fit: cover; /* 确保图片覆盖区域，可能需要裁切 */
+      background-color: transparent; /* Logo 背景色透明 */
+      border-radius: 20%; /* 使图标更圆润，或使用 5px 保持方形，取决于喜好 */
+      margin-bottom: 6px; /* Logo和文字的间距 */
       flex-shrink: 0;
-      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2); /* 图片内阴影，增加深度 */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 图标增加一点阴影 */
     }
 
     /* ===== 标题样式 ===== */
     .card-title {
-      font-size: 14px; /* 调大字体，提升可读性 */
-      font-weight: 500; /* 标题字重适中 */
+      font-size: 13px; /* 字体大小适中 */
+      font-weight: 400; /* 字重更细 */
       text-align: center;
       width: 100%;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       box-sizing: border-box;
-      padding: 0 4px; /* 左右增加内边距 */
+      padding: 0 2px;
+      color: var(--text-color); /* 确保字体颜色 */
+      line-height: 1.3; /* 调整行高 */
     }
 
     /* ===== 响应式调整 ===== */
@@ -110,11 +112,14 @@
     @media (max-width: 480px) {
       .grid {
         grid-template-columns: repeat(4, 1fr);
-        gap: 18px 10px; /* 减小间距，适应小屏 */
-        padding: 20px 15px;
+        gap: 15px 8px; /* 减小间距，适应小屏 */
+        padding: 15px 10px;
+      }
+      .card {
+        padding: 5px;
       }
       .card-title {
-        font-size: 11px; /* 进一步减小字号 */
+        font-size: 10px; /* 进一步减小字号 */
       }
       header {
         font-size: 1.4rem;
@@ -126,11 +131,11 @@
     @media (min-width: 481px) and (max-width: 768px) {
       .grid {
         grid-template-columns: repeat(6, 1fr);
-        gap: 22px 14px;
-        padding: 25px 20px;
+        gap: 18px 10px;
+        padding: 20px 15px;
       }
       .card-title {
-        font-size: 13px;
+        font-size: 12px;
       }
     }
     
@@ -138,11 +143,11 @@
     @media (min-width: 769px) and (max-width: 1024px) {
       .grid {
         grid-template-columns: repeat(8, 1fr);
-        gap: 26px 18px;
-        padding: 30px 25px;
+        gap: 20px 12px;
+        padding: 25px 20px;
       }
       .card-title {
-        font-size: 14px;
+        font-size: 13px;
       }
     }
 
@@ -150,8 +155,8 @@
     @media (min-width: 1025px) {
       .grid {
         grid-template-columns: repeat(10, 1fr);
-        gap: 28px 20px;
-        padding: 40px 30px;
+        gap: 22px 14px;
+        padding: 30px 25px;
       }
       .card-title {
         font-size: 14px;
@@ -161,69 +166,67 @@
     /* ===== 页脚样式 ===== */
     footer {
       text-align: center;
-      padding: 2rem 1.5rem; /* 增加上下内边距 */
-      font-size: 0.95rem; /* 稍微调大字体 */
+      padding: 1.5rem 1rem; /* 调整页脚内边距，更紧凑 */
+      font-size: 0.9rem;
       color: var(--secondary-text-color);
-      margin-top: 40px; /* 增加顶部外边距，拉开与内容的距离 */
-      border-top: 1px solid var(--border-color); /* 增加顶部边框 */
-      background-color: var(--header-bg-color); /* 页脚背景色与头部呼应 */
-      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.4); /* 页脚阴影 */
-      
-      /* 优化底部联系方式的样式 */
-      display: flex; /* 使用 Flexbox 进行内部对齐 */
-      flex-direction: column; /* 内容垂直堆叠 */
-      align-items: center; /* 水平居中 */
-      justify-content: center; /* 垂直居中 */
+      margin-top: 30px; /* 调整顶部外边距 */
+      border-top: 1px solid var(--border-color); /* 边框更细、更融入背景 */
+      background-color: transparent; /* 页脚背景透明 */
+      box-shadow: none; /* 移除阴影 */
+      line-height: 1.5; /* 调整行高 */
     }
 
-    /* 包裹联系信息的容器样式 */
+    /* 包裹联系信息的容器样式 - 透明化处理 */
     .contact-info {
-      background-color: #252525; /* 联系信息背景色，比页脚稍深一点，增加层次感 */
-      padding: 1.2rem 2rem; /* 增加内边距 */
-      border-radius: 10px; /* 更圆润的圆角 */
-      box-shadow: 0 3px 15px rgba(0, 0, 0, 0.4); /* 增加一点阴影，提升立体感 */
-      margin-bottom: 15px; /* 与可能的版权信息（如果您添加）的间距 */
-      display: inline-block; /* 让背景只包裹内容 */
-      max-width: 90%; /* 防止在小屏幕上过宽 */
-      line-height: 1.8; /* 增加行高，提升可读性 */
-      border: 1px solid var(--border-color); /* 添加细微边框 */
+      background-color: transparent; /* 背景透明 */
+      padding: 0.5rem 0; /* 减小内边距，更紧凑 */
+      border-radius: 0; /* 移除圆角 */
+      box-shadow: none; /* 移除阴影 */
+      margin-bottom: 0; /* 移除底部外边距 */
+      display: inline-block;
+      max-width: 90%;
+      line-height: 1.6; /* 调整行高 */
+      border: none; /* 移除边框 */
     }
 
     .contact-info a {
-      color: var(--accent-color); /* 链接颜色使用强调色 */
-      text-decoration: none; /* 移除下划线 */
+      color: var(--accent-color);
+      text-decoration: none;
       transition: color 0.2s ease, text-shadow 0.2s ease;
     }
 
     .contact-info a:hover {
-      color: #8ac0ff; /* 悬浮时变亮 */
-      text-shadow: 0 0 5px rgba(138, 192, 255, 0.5); /* 悬浮时文字阴影 */
+      color: #8ac0ff;
+      text-shadow: 0 0 5px rgba(138, 192, 255, 0.5);
     }
 
     .contact-info p {
-      display: flex; /* 使用flexbox对齐图标和文本 */
-      align-items: center; /* 垂直居中对齐 */
-      justify-content: center; /* 水平居中 */
-      margin-bottom: 8px; /* 段落间距 */
-      color: var(--text-color); /* 联系方式文本颜色使用主文本色 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px; /* 段落间距更小 */
+      color: var(--secondary-text-color); /* 联系方式文本颜色使用次要文本色，更柔和 */
+      font-size: 0.9rem; /* 字体更小巧 */
     }
 
     .contact-info p:first-child {
-        font-weight: 500; /* 联系站长加粗 */
-        margin-bottom: 10px;
+        font-weight: 400; /* 联系站长字重适中 */
+        margin-bottom: 6px; /* 稍微大一点的间距 */
+        color: var(--text-color); /* 联系站长文本颜色使用主文本色 */
+        font-size: 1rem; /* 稍微大一点 */
     }
 
-    .contact-info p:last-of-type { /* 修正为最后一个 p 标签 */
-      margin-bottom: 0; /* 最后一个段落不需要底部间距 */
+    .contact-info p:last-of-type {
+      margin-bottom: 0;
     }
 
     .contact-info .icon {
-      margin-right: 10px; /* 图标与文本的间距 */
-      font-size: 1.2em; /* 图标大小，稍微增大 */
-      color: var(--accent-color); /* 图标颜色使用强调色 */
+      margin-right: 8px; /* 图标与文本的间距 */
+      font-size: 1.1em; /* 图标大小 */
+      color: var(--accent-color);
     }
 
-    /* 加载动画 (可选) - 可以在 JS 加载数据时显示 */
+    /* 加载动画 (可选) */
     #loading-indicator {
         position: fixed;
         top: 0;
@@ -237,7 +240,7 @@
         color: white;
         font-size: 1.5rem;
         z-index: 9999;
-        opacity: 0; /* 默认隐藏 */
+        opacity: 0;
         visibility: hidden;
         transition: opacity 0.3s ease, visibility 0.3s ease;
     }
@@ -247,7 +250,6 @@
         visibility: visible;
     }
 
-    /* 简单的加载动画点 */
     #loading-indicator span {
         animation: blink 1s infinite alternate;
     }
@@ -286,39 +288,29 @@
   <script src="cards-from-guanli.js"></script> 
   
   <script>
-    // 这段 JavaScript 代码负责从 cards-from-guanli.js 获取数据并动态生成卡片。
-    // 请确保 cards-from-guanli.js 导出一个名为 'sites' 的数组，
-    // 每个对象包含 image, name, url 属性。
-
     document.addEventListener('DOMContentLoaded', () => {
       const cardContainer = document.getElementById('card-container');
       const loadingIndicator = document.getElementById('loading-indicator');
 
-      // 显示加载指示器
       if (loadingIndicator) {
           loadingIndicator.classList.add('show');
       }
 
       // 模拟异步加载（如果实际数据加载很快，可以移除 setTimeout）
-      // 或者将其放在实际的数据加载回调中
-      setTimeout(() => { // 实际应用中，这里应是数据加载完成后的回调
-        // 检查 sites 变量是否存在且是数组
-        // sites 变量将由 cards-from-guanli.js 文件提供
+      setTimeout(() => {
         if (cardContainer && typeof sites !== 'undefined' && Array.isArray(sites)) {
           sites.forEach(site => {
             const card = document.createElement('a');
             card.href = site.url;
-            card.target = "_blank"; // 在新标签页打开
-            card.rel = "noopener noreferrer"; // 提高安全性
+            card.target = "_blank";
+            card.rel = "noopener noreferrer";
 
             card.classList.add('card');
 
             const img = document.createElement('img');
-            // 图片路径假设它们位于网站根目录下的 'logos' 文件夹中
-            // 例如：如果 site.image 是 "tiktok.png"，则 src 会变成 "logos/tiktok.png"
             img.src = "logos/" + site.image; 
-            img.alt = site.name + ' Logo'; // 为图片添加 alt 属性，用于无障碍和SEO
-            img.loading = "lazy"; // 图片懒加载
+            img.alt = site.name + ' Logo';
+            img.loading = "lazy";
 
             const title = document.createElement('div');
             title.classList.add('card-title');
@@ -332,14 +324,14 @@
           console.error("未能找到 card-container 元素或 'sites' 数据未正确加载。请确保 cards-from-guanli.js 正确定义了 'sites' 数组。");
         }
 
-        // 隐藏加载指示器
         if (loadingIndicator) {
             loadingIndicator.classList.remove('show');
         }
 
-      }, 300); // 模拟 300 毫秒的加载时间，实际使用时应移除或调整
+      }, 300);
     });
   </script>
 </body>
 </html>
+
 
