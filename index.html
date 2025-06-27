@@ -21,6 +21,11 @@
       --grid-gap-horizontal: 15px; /* 网格水平间距，略微增大，更清晰 */
       --accent-color: #7aa1f9; /* 强调色，略微亮化，更具活力 */
       --header-title-color: #ffffff; /* 标题颜色纯白，更醒目 */
+
+      /* 页脚新增或调整的变量 */
+      --footer-text-color: #d0d0d0; /* 页脚文本颜色，比主文本稍暗 */
+      --footer-link-color: #8cafff; /* 页脚链接颜色，更柔和的蓝色 */
+      --footer-icon-color: #8cafff; /* 页脚图标颜色，与链接一致 */
     }
 
     body {
@@ -193,111 +198,84 @@
         }
     }
 
-    /* ===== 页脚样式 ===== */
-/* style.css 文件的内容 */
-
-/* 定义 CSS 变量（如果你的项目中有用到，请保留，否则可以移除）*/
-:root {
-    --secondary-text-color: #cccccc; /* 示例颜色 */
-    --border-color: rgba(255, 255, 255, 0.1); /* 示例颜色 */
-    --header-bg-end-color: #2b0000; /* 示例颜色，与图片背景色类似 */
-}
-
-
-/* 1. 优化整个 Footer 容器的样式 */
-.Footer { /* 注意：如果你的 HTML 中是 <footer class="Footer">，这里要用 .Footer */
-    text-align: center;
-    padding: 0.5rem 1rem 0.8rem; /* 优化点1: 大幅减小上下内边距，使内容更紧凑。您可以尝试 0.5rem 到 1rem 之间的值。 */
-    font-size: 0.95rem; /* 字号保持不变，或根据需要微调。 */
-    color: var(--secondary-text-color);
-    margin-top: 15px; /* 优化点2: 进一步减小与上方内容的距离，从 20px 减到 15px */
-    border-top: 1px solid var(--border-color); /* 边框样式保持不变。 */
-    background-color: var(--header-bg-end-color); /* 背景颜色保持不变。 */
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3); /* 阴影保持不变。 */
-    /* 移除 Footer 上的 line-height，让内部元素的 line-height 单独控制 */
-    /* line-height: 1.2;  // 这一行可以移除，让具体的 p 标签控制行高 */
-}
-
-/* 2. 针对“联系站长”信息的容器进行优化 */
-.contact-info-block {
-    display: flex; /* 使用 Flexbox 布局 */
-    flex-direction: column; /* 垂直排列子元素 */
-    align-items: center; /* 水平居中对齐 */
-    gap: 3px; /* 优化点3: 使用 gap 属性控制子元素之间的间距，非常高效。可以尝试 2px 或 3px */
-    margin-bottom: 8px; /* 优化点4: 控制整个联系信息块与下方域名信息之间的距离。这个值越小，它们越靠近 */
-    margin-top: 0; /* 确保没有不必要的顶部外边距 */
-}
-
-/* 3. 针对“联系站长:”标题的优化 */
-.contact-info-block .contact-title {
-    margin: 0; /* 优化点5: 移除默认的段落外边距 */
-    padding: 0; /* 移除默认内边距 */
-    line-height: 1.2; /* 优化点6: 确保标题行高紧凑 */
-    font-size: 1rem; /* 标题可以略微大一点，或者保持不变 */
-}
-
-/* 4. 针对 Telegram 和 E-mail 这两行的优化 */
-.contact-info-block .contact-item {
-    margin: 0; /* 优化点7: 移除默认的段落外边距 */
-    padding: 0; /* 移除默认内边距 */
-    line-height: 1.2; /* 优化点8: 确保这两行的行高紧凑 */
-}
-
-/* 5. 针对最底部的版权/域名信息的优化 */
-.copyright-text {
-    margin: 0; /* 优化点9: 移除默认的段落外边距，让它更靠近上方内容和页脚底部 */
-    padding: 0; /* 移除默认内边距 */
-    line-height: 1.2; /* 优化点10: 确保这行的行高紧凑 */
-    font-size: 0.85rem; /* 优化点11: 可以适当减小字号，使其更不显眼，同时视觉上更紧凑 */
-    opacity: 0.8; /* 优化点12: 可以稍微降低透明度，使其更像是辅助信息 */
-}
-    /* 包裹联系信息的容器样式 */
-    .contact-info {
-      background-color: transparent; /* 背景透明 */
-      padding: 0.8rem 0; /* 略微增加内边距 */
-      margin-bottom: 0;
-      display: inline-block;
-      max-width: 95%;
-      line-height: 1.7; /* 调整行高 */
-      border: none;
+    /* ===== 页脚样式 - 全面优化 ===== */
+    footer { /* 直接针对 footer 标签进行样式设置 */
+      text-align: center; /* 确保所有内容居中 */
+      padding: 0.6rem 1rem 0.6rem; /* 优化: 减小上下内边距，使其更紧凑 */
+      font-size: 0.9rem; /* 整体字号略微减小 */
+      color: var(--footer-text-color); /* 使用新的页脚文本颜色变量 */
+      margin-top: 20px; /* 调整与上方内容的距离 */
+      border-top: 1px solid var(--border-color);
+      background-color: var(--header-bg-end-color);
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+      line-height: 1.3; /* 整体行高，适用于页脚所有文本 */
+      display: flex; /* 使用 Flexbox 确保内容垂直居中 */
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
+    /* 优化联系信息块 */
+    .contact-info {
+        display: flex; /* 使用 Flexbox 垂直排列内部 p 标签 */
+        flex-direction: column;
+        align-items: center; /* 确保内部文本和图标居中 */
+        gap: 2px; /* 极小化段落间距 */
+        margin-bottom: 5px; /* 联系信息块与下方版权信息之间的间距 */
+        padding: 0; /* 移除原有的内边距 */
+    }
+
+    /* 联系信息段落样式 */
+    .contact-info p {
+        margin: 0; /* 移除所有默认段落外边距 */
+        padding: 0; /* 移除所有默认内边距 */
+        font-size: 0.9rem; /* 统一联系信息字体大小 */
+        color: var(--footer-text-color); /* 使用页脚文本颜色 */
+        line-height: 1.2; /* 确保行高紧凑 */
+        display: flex; /* 再次使用flexbox对图标和文本进行对齐 */
+        align-items: center;
+        justify-content: center; /* 确保图标和文本整体居中 */
+    }
+
+    /* “联系站长:”标题样式 */
+    .contact-info p:first-child {
+        font-weight: 500;
+        font-size: 0.95rem; /* 标题略大一点 */
+        color: var(--text-color); /* 标题使用主文本颜色 */
+        margin-bottom: 5px; /* 标题与下方联系方式间距 */
+    }
+
+    /* 图标样式 */
+    .contact-info .icon {
+        margin-right: 6px; /* 优化: 减小图标与文字的间距 */
+        font-size: 1em; /* 图标大小与文字保持一致或略大 */
+        color: var(--footer-icon-color); /* 使用新的图标颜色变量 */
+    }
+
+    /* 链接样式 */
     .contact-info a {
-      color: var(--accent-color);
-      text-decoration: none;
-      transition: color 0.2s ease, text-shadow 0.2s ease;
+        color: var(--footer-link-color); /* 使用新的链接颜色变量 */
+        text-decoration: none;
+        transition: color 0.2s ease, text-shadow 0.2s ease;
+        line-height: 1.2; /* 确保链接行高紧凑 */
     }
 
     .contact-info a:hover {
-      color: #9ac2ff; /* 悬停颜色更亮 */
-      text-shadow: 0 0 8px rgba(154, 194, 255, 0.6); /* 悬停阴影更明显 */
+        color: #a0c0ff; /* 悬停颜色更亮 */
+        text-shadow: 0 0 5px rgba(160, 192, 255, 0.6); /* 悬停阴影 */
     }
 
-    .contact-info p {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 5px; /* 段落间距更小 */
-      color: var(--secondary-text-color);
-      font-size: 0.95rem; /* 字体更小巧 */
+    /* 最底部版权/域名信息样式 */
+    .copyright-text { /* 我在 HTML 中为你添加了这个 p 标签 */
+        margin: 0; /* 移除默认外边距 */
+        padding: 0; /* 移除默认内边距 */
+        font-size: 0.75rem; /* 字体进一步减小，作为辅助信息 */
+        color: var(--secondary-text-color); /* 使用次要文本颜色 */
+        opacity: 0.7; /* 略微降低透明度 */
+        line-height: 1.2; /* 确保行高紧凑 */
+        margin-top: 5px; /* 与上方联系信息块的间距 */
     }
 
-    .contact-info p:first-child {
-        font-weight: 500; /* 联系站长字重略微加粗 */
-        margin-bottom: 8px; /* 稍微大一点的间距 */
-        color: var(--text-color); /* 联系站长文本颜色使用主文本色 */
-        font-size: 1.05rem; /* 稍微大一点 */
-    }
-
-    .contact-info p:last-of-type {
-      margin-bottom: 0;
-    }
-
-    .contact-info .icon {
-      margin-right: 10px; /* 图标与文本的间距 */
-      font-size: 1.2em; /* 图标大小 */
-      color: var(--accent-color);
-    }
 
     /* 加载动画 */
     #loading-indicator {
@@ -358,6 +336,7 @@
       <p><span class="icon">✈️</span> Telegram: <a href="https://t.me/yy21551" target="_blank" rel="noopener noreferrer">@yy21551</a></p>
       <p><span class="icon">📧</span> E-mail: <a href="mailto:melyy179@gmail.com">melyy179@gmail.com</a></p>
     </div>
+    <p class="copyright-text">my-landing-page-9ru.pages.dev - 无痕浏览</p>
   </footer>
 
   <div id="loading-indicator">
