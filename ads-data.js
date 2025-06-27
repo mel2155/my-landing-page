@@ -1,35 +1,27 @@
-// ad-script.js
-// 这个脚本负责从 adsData 数组加载广告并动态插入到页面中。
+// ads-data.js
+// 这个文件专门用于存储广告数据
 
-document.addEventListener('DOMContentLoaded', () => {
-    const adsContainer = document.getElementById('ads-container');
-
-    if (!adsContainer || !adsData || adsData.length === 0) {
-        console.log('未找到广告容器或广告数据。');
-        return;
+const adsData = [
+    {
+        name: "主要推广广告",
+        pcImage: "images/ad-banner-pc.JPG",    // PC端广告图片的路径
+        mobileImage: "images/ad-banner-mobile.JPG", // 移动端广告图片的路径
+        alt: "Haohaise.tv 的主要推广广告",
+        link: "https://example.com/main-promo" // 此广告应链接到的URL
+    },
+    {
+        name: "新产品展示",
+        pcImage: "images/ad-new-product-pc.JPG", // 确保此图片存在于您的 images 文件夹中
+        mobileImage: "images/ad-new-product-mobile.JPG", // 确保此图片存在
+        alt: "发现我们令人兴奋的新产品",
+        link: "https://example.com/new-product"
+    },
+    {
+        name: "限时优惠",
+        pcImage: "images/ad-special-offer-pc.JPG", // 确保此图片存在
+        mobileImage: "images/ad-special-offer-mobile.JPG", // 确保此图片存在
+        alt: "抓住我们的限时特别优惠",
+        link: "https://example.com/special-offer"
     }
-
-    // 遍历 adsData 数组，为每个广告创建一个 HTML 元素
-    adsData.forEach(ad => {
-        const adLink = document.createElement('a');
-        adLink.href = ad.link;
-        adLink.target = '_blank'; // 在新标签页打开链接
-
-        // 创建手机端图片
-        const mobileImg = document.createElement('img');
-        mobileImg.src = ad.mobileSrc;
-        mobileImg.alt = ad.alt;
-        mobileImg.classList.add('ad-banner', 'mobile-ad'); // 添加类名以便应用 CSS 样式
-
-        // 创建 PC 端图片
-        const pcImg = document.createElement('img');
-        pcImg.src = ad.pcSrc;
-        pcImg.alt = ad.alt;
-        pcImg.classList.add('ad-banner', 'pc-ad'); // 添加类名以便应用 CSS 样式
-
-        adLink.appendChild(mobileImg);
-        adLink.appendChild(pcImg);
-
-        adsContainer.appendChild(adLink);
-    });
-});
+    // 根据需要添加更多广告对象
+];
