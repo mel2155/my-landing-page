@@ -1,16 +1,57 @@
 /* ad-styles.css */
 
+/* 广告容器的通用样式 */
 .ad-container {
-    margin: 20px auto; /* 上下外边距20px，左右自动居中 */
-    width: 320px; /* 示例宽度，根据广告实际尺寸调整 */
-    height: 100px; /* 示例高度，根据广告实际尺寸调整 */
-    background-color: #ffe0b2; /* 浅橙色背景，用于标识广告位 */
-    border: 1px dashed #ff9800; /* 虚线边框 */
-    display: flex; /* 使用 flexbox 居中内容 */
-    align-items: center; /* 垂直居中 */
-    justify-content: center; /* 水平居中 */
-    font-size: 16px;
-    color: #d32f2f; /* 红色文字 */
-    text-align: center;
-    /* 实际广告加载后，这些背景和边框通常可以移除或调整 */
+    margin: 25px auto; /* 上下外边距25px，左右自动居中，使其在页面中居中显示 */
+    width: 90%; /* 默认宽度为父容器的90%，在PC端和自适应时使用 */
+    max-width: 970px; /* 限制PC端广告的最大宽度，常见横幅广告尺寸 */
+    border: 1px dashed #a7a7a7; /* 虚线边框，视觉上区分广告区域 */
+    background-color: #fff; /* 背景色为白色 */
+    text-align: center; /* 内部内容（图片）居中对齐 */
+    overflow: hidden; /* 确保内容（图片）不会溢出容器 */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15); /* 轻微的阴影效果，增加立体感 */
+    border-radius: 5px; /* 边框圆角 */
+    padding: 5px; /* 容器内边距，让广告图片与边框有一定间隔 */
+}
+
+/* 广告图片通用样式（应用于 ad-image-pc 和 ad-image-mobile） */
+.ad-container img {
+    display: block; /* 移除图片默认的底部额外空白，使其独占一行 */
+    width: 100%; /* 图片宽度撑满其父容器（adLinkContainer），实现响应式 */
+    height: auto; /* 高度自动调整，保持图片原始比例，避免拉伸变形 */
+    border-radius: 3px; /* 图片的轻微圆角 */
+}
+
+/* 默认情况下：显示 PC 端广告图片，隐藏手机端广告图片 */
+/* 这是PC端视口（屏幕宽度大于768px）的默认行为 */
+.ad-image-pc {
+    display: block; /* 显示 PC 端图片 */
+}
+
+.ad-image-mobile {
+    display: none; /* 隐藏手机端图片 */
+}
+
+/* 媒体查询：当屏幕宽度小于或等于 768px 时（典型的移动设备断点） */
+@media (max-width: 768px) {
+    .ad-image-pc {
+        display: none; /* 在移动设备上隐藏 PC 端图片 */
+    }
+    .ad-image-mobile {
+        display: block; /* 在移动设备上显示手机端图片 */
+    }
+    /* 调整手机端广告容器的样式，使其更适合移动屏幕 */
+    .ad-container {
+        width: 95%; /* 手机端容器宽度可以更宽，利用屏幕空间 */
+        margin: 15px auto; /* 调整手机端上下外边距 */
+        padding: 3px; /* 手机端内边距可以小一点，更紧凑 */
+    }
+}
+
+/* （可选）你可以添加一个更小的断点，例如针对小屏手机 */
+@media (max-width: 480px) {
+    .ad-container {
+        width: 98%; /* 在更小的屏幕上，广告容器几乎占满整个宽度 */
+        margin: 10px auto; /* 进一步调整外边距 */
+    }
 }
