@@ -1,256 +1,528 @@
+
 /* ===== 主题颜色与全局设置 ===== */
-:root { /* 定义 CSS 变量的根作用域，这些变量可以在整个文档中使用 */
-  --bg-color: #0E000A; /* 更深邃的背景色，接近纯黑但带一点点紫红，增加奢华感和沉浸感 */
-  --header-bg-start-color: #3C000F; /* 头部渐变起始色，深酒红色，比之前更沉稳 */
-  --header-bg-end-color: #1A0006; /* 头部渐变结束色，与背景色系融合 */
+/* :root 伪类定义了 CSS 变量的根作用域，这些变量可以在整个文档中使用，方便主题管理和快速修改 */
+:root { 
+  --bg-color: #0E000A; /* 主背景色：深邃的背景色，接近纯黑但带一点点紫红，增加奢华感和沉浸感 */
+  --header-bg-start-color: #3C000F; /* 头部渐变起始色：深酒红色，比之前更沉稳 */
+  --header-bg-end-color: #1A0006; /* 头部渐变结束色：与背景色系融合 */
 
-  --text-color: #E60044; /* 诱惑且性感的正红，更具冲击力（如App标题、联系站长标题） */
-  --secondary-text-color: #FF69B4; /* 柔和的玫红色，用于次要信息，保持柔美感 */
+  --text-color: #E60044; /* 主要文本颜色：诱惑且性感的正红，更具冲击力（如App标题、联系站长标题） */
+  --secondary-text-color: #FF69B4; /* 次要文本颜色：柔和的玫红色，用于次要信息，保持柔美感 */
 
-  --logo-bg-color: transparent; /* Logo 背景色设置为透明 */
-  --border-color: #2F000F; /* 分隔线颜色，与背景和主题色协调的深红棕色 */
+  --logo-bg-color: transparent; /* Logo 背景色：设置为透明 */
+  --border-color: #2F000F; /* 边框/分隔线颜色：与背景和主题色协调的深红棕色 */
 
   --card-hover-scale: 1.05; /* 卡片悬浮时的放大比例 */
   --grid-gap-vertical: 20px; /* 网格项之间垂直间距默认值 */
   --grid-gap-horizontal: 15px; /* 网格项之间水平间距默认值 */
 
-  --accent-color: #FFD700; /* 强调色使用金色，与红黑配色形成高级感对比，用于特定按钮或高亮 */
-  --header-title-color: #E60044; /* 头部标题颜色与主要文本颜色保持一致 */
+  --accent-color: #FFD700; /* 强调色：使用金色，与红黑配色形成高级感对比，用于特定按钮或高亮 */
+  --header-title-color: #E60044; /* 头部标题颜色：与主要文本颜色保持一致 */
 
-  /* 页脚新增或调整的颜色变量 */
-  --footer-text-color: #F0F0F0; /* 页脚普通文本颜色改为浅色，确保可读性，与主要红区分 */
-  --footer-link-color: #FFD700; /* 页脚链接颜色改为金色，与强调色统一，更显眼可点击 */
-  --footer-icon-color: #FFD700; /* 页脚图标颜色与链接一致 */
+  /* 页脚相关颜色变量 */
+  --footer-text-color: #F0F0F0; /* 页脚普通文本颜色：浅色，确保可读性，与主要红区分 */
+  --footer-link-color: #FFD700; /* 页脚链接颜色：金色，与强调色统一，更显眼可点击 */
+  --footer-icon-color: #FFD700; /* 页脚图标颜色：与链接一致 */
+
+  /* 加载指示器文本颜色，为了清晰度，这里使用白色 */
+  --loading-text-color: #FFFFFF;
+  /* 加载指示器点颜色，与强调色保持一致 */
+  --loading-spinner-color: var(--accent-color);
 }
 
-/* 引入谷歌字体，放在 @import 规则中更符合 CSS 最佳实践 */
-/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap'); */ 
+/* 引入谷歌字体，放在顶部更符合 CSS 最佳实践。
+   @import url() 通常放在文件顶部，在任何样式规则之前。 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap'); 
 
 
-/* body 的样式代码块 - 已更新为使用 CSS 变量 */
+/* ===== 全局 HTML 元素样式重置与基础设置 ===== */
+html {
+    /* 确保根字体大小为 16px，以便 rem 单位基于此计算 */
+    font-size: 16px; 
+}
+
 body {
     background-color: var(--bg-color); /* 使用定义的背景色变量 */
-    color: #f5f5f5; /* 默认字体颜色为浅色，可根据需要改为 var(--text-color) 或 var(--secondary-text-color) */
+    color: #f5f5f5; /* 默认字体颜色为浅色，可根据需要改为 var(--secondary-text-color) */
     font-family: 'Noto Sans SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 优先使用 Noto Sans SC，其次是通用无衬线字体 */
-    margin: 0; /* 移除默认的body外边距 */
-    padding: 0; /* 移除默认的body内边距 */
+    margin: 0; /* 移除浏览器默认的body外边距 */
+    padding: 0; /* 移除浏览器默认的body内边距 */
     line-height: 1.6; /* 行高，提高文本可读性 */
     display: flex; /* 将body设置为 flex 容器 */
     flex-direction: column; /* 子元素垂直排列 */
-    min-height: 100vh; /* 确保body至少占据整个视口高度 */
+    min-height: 100vh; /* 确保body至少占据整个视口高度，使页脚始终位于底部 */
+    overflow-x: hidden; /* 防止水平滚动条 */
 }
 
-/* header 的样式代码块 - **已调整，头部高度更短** */
+/* ===== 头部 (Header) 样式 ===== */
 header {
+    /* 背景渐变，从起始色到结束色 */
     background: linear-gradient(to right, var(--header-bg-start-color) 0%, var(--header-bg-end-color) 100%);
     color: #fff; /* 头部文字颜色为白色，确保与深色背景对比鲜明 */
     padding: 15px 0; /* 上下内边距减小，使头部更短 */
     text-align: center; 
-    font-size: 1.8em; /* 减小头部整体字体基准大小 */
+    font-size: 1.8em; /* 减小头部整体字体基准大小，这里的 em 已经基于 html 的 16px */
     font-weight: bold; 
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5); 
-    position: relative; 
-    z-index: 10; 
-    border-bottom-left-radius: 10px; 
-    border-bottom-right-radius: 10px; 
-    margin-bottom: 20px; 
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5); /* 柔和的底部阴影 */
+    position: relative; /* 相对定位，为了 z-index 能生效 */
+    z-index: 10; /* 确保头部在其他内容之上 */
+    border-bottom-left-radius: 10px; /* 底部左圆角 */
+    border-bottom-right-radius: 10px; /* 底部右圆角 */
+    margin-bottom: 20px; /* 头部与下方内容的间距 */
 }
 
-/* header h1 的样式代码块 - 已更新为使用 CSS 变量 */
-header h1 {
-    margin: 0; 
-    padding: 0; 
-    font-size: 1em; /* 相对于父级 header 的 em 单位，保持比例 */
-    color: var(--header-title-color); 
+.header-content {
+    max-width: 1200px; /* 限制头部内容的最大宽度 */
+    margin: 0 auto; /* 水平居中头部内容 */
+    padding: 0 15px; /* 左右内边距 */
+    display: flex; /* 使用 Flexbox 进行布局 */
+    flex-direction: column; /* 内部元素垂直排列 */
+    align-items: center; /* 内部元素水平居中 */
+    justify-content: flex-start; /* 内部元素垂直方向起始对齐 */
 }
 
-/* .header-subtitle 的样式代码块 - 已更新为使用 CSS 变量 */
+/* 网站品牌区域：包含 Logo 和网站名称的可点击容器 */
+.site-branding {
+    display: flex; /* 使 Logo 和名称水平排列 */
+    align-items: center; /* 垂直居中对齐 Logo 和名称 */
+    text-decoration: none; /* 移除链接下划线 */
+    color: var(--accent-color); /* 继承强调色，使名称突出 */
+    margin-bottom: 10px; /* 与下方标题的间距 */
+    width: 100%; /* 占据父容器宽度 */
+    justify-content: center; /* 水平居中 */
+}
+
+/* Logo 图片的样式 */
+.site-logo {
+    height: 40px; /* 默认 Logo 高度，您可以根据实际图片调整 */
+    width: auto; /* 宽度自适应，保持图片比例 */
+    margin-right: 10px; /* Logo 和名称之间的间距 */
+    /* 确保 Logo 在高分辨率屏幕下清晰 */
+    image-rendering: -webkit-optimize-contrast; 
+    image-rendering: crisp-edges; 
+    /* image-rendering: pixelated; 仅当Logo是像素图时使用此属性 */
+}
+
+/* 网站名称的样式 */
+.site-brand-name {
+    font-size: 28px; /* 网站名称字体大小 */
+    font-weight: 700; /* 加粗 */
+    color: var(--accent-color); /* 示例颜色：金色，与主题强调色统一 */
+    white-space: nowrap; /* 防止名称换行 */
+}
+
+/* 主标题的样式 */
+.site-title {
+    margin: 0; /* 移除默认外边距 */
+    padding: 0; /* 移除默认内边距 */
+    font-size: 1.8em; /* 相对于父级 header 的 em 单位，保持比例 */
+    color: var(--header-title-color); /* 使用头部标题颜色变量 */
+    line-height: 1.2;
+    margin-bottom: 5px; /* 调整间距 */
+}
+
+/* 副标题的样式 */
 .header-subtitle {
-    font-size: 0.6em; /* 副标题字体大小略微减小 */
-    color: var(--secondary-text-color); 
-    margin-top: 3px; /* 副标题与主标题之间的上外边距减小 */
+    font-size: 0.8em; /* 副标题字体大小略微减小，相对于父级 header 的 em 单位 */
+    color: var(--secondary-text-color); /* 使用次要文本颜色变量 */
+    margin-top: 3px; /* 副标题与主标题之间的上外边距 */
     font-weight: normal; 
+    opacity: 0.8;
 }
+
+/* ===== 广告容器样式 (通常单独在一个 CSS 文件中，但应与此处主题变量配合) ===== */
+/* 如果 ad-styles.css 存在，此部分应移到 ad-styles.css 中 */
+/* 考虑到您要求在一个文件中优化，这里暂时保留 */
+.ad-container {
+    margin: 15px auto; 
+    width: 90%; 
+    max-width: 970px; 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    background-color: rgba(0, 0, 0, 0.3); 
+    text-align: center; 
+    overflow: hidden; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
+    border-radius: 8px; 
+    padding: 2px 3px; 
+    /* PC端默认最大高度，为了避免裁剪，这里给一个相对宽松的值，您仍需根据图片实际高度微调 */
+    max-height: 100px; /* 考虑图片高度90px + 2*1px边框 + 2*2px内边距 = 96px，留一点余量 */
+    min-height: 60px; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    flex-wrap: nowrap;     
+}
+
+.ad-container img {
+    display: block; 
+    width: 100%; 
+    height: 100%; 
+    max-height: 100%; 
+    border-radius: 5px; 
+    object-fit: contain; 
+    object-position: center; 
+    flex-shrink: 0;
+    flex-grow: 1; 
+    /* 微调图片位置，向上移动 */
+    transform: translateY(-2px); 
+}
+
+.ad-image-pc { display: block; }
+.ad-image-mobile { display: none; }
+
 
 /* ===== 网格布局 (核心) ===== */
-.grid { /* 应用图标卡片的网格容器样式 */
-  display: grid; /* 启用 Grid 布局 */
-  /* 默认桌面端显示 6 列，每列等宽 */
-  grid-template-columns: repeat(6, 1fr);
-  gap: 15px 10px; /* 默认桌面端间距，垂直 15px，水平 10px，更紧凑 */
-  padding: 25px 20px; /* 减小内边距 */
-  max-width: 1400px; /* 网格容器的最大宽度，适应大屏幕 */
-  margin: 0 auto; /* 水平居中网格容器 */
-  flex-grow: 1; /* 允许网格容器占据所有可用垂直空间（在 flex-direction: column 的 body 中） */
+.grid { 
+  display: grid; 
+  grid-template-columns: repeat(6, 1fr); /* 默认桌面端 6 列 */
+  gap: var(--grid-gap-vertical) var(--grid-gap-horizontal); /* 使用变量设置间距 */
+  padding: 25px 20px; 
+  max-width: 1400px; 
+  margin: 0 auto; 
+  flex-grow: 1; /* 允许网格容器占据所有可用垂直空间 */
 }
 
 /* ===== 卡片样式 ===== */
-.card { /* 每个 App 图标卡片的样式 */
-  text-decoration: none; /* 移除链接下划线 */
-  color: var(--text-color); /* 应用主要文本颜色 */
-  display: flex; /* 启用 Flexbox 布局 */
-  flex-direction: column; /* Flex 子项（图片和标题）垂直排列 */
-  align-items: center; /* 子项水平居中 */
-  justify-content: flex-start; /* 子项垂直向上对齐 */
-  /* 动画效果：平滑的形变、阴影和背景色过渡 */
+.card { 
+  text-decoration: none; 
+  color: var(--text-color); 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: flex-start; 
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  padding: 6px; /* 卡片内边距从 8px 减小到 6px，使内容更紧凑 */
-  border-radius: 12px; /* 更圆润的圆角 */
-  background-color: transparent; /* 卡片背景透明 */
-  box-shadow: none; /* 移除默认阴影 */
+  padding: 6px; 
+  border-radius: 12px; 
+  background-color: transparent; 
+  box-shadow: none; 
+  cursor: pointer; /* 添加 pointer 光标，明确可点击 */
 }
 
-.card:hover { /* 卡片悬浮时的样式 */
-  transform: scale(var(--card-hover-scale)); /* 应用放大比例变量 */
-  background-color: rgba(255, 255, 255, 0.07); /* 悬浮时显示略深的半透明背景 */
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* 悬浮时阴影更明显，但柔和 */
+.card:hover { 
+  transform: scale(var(--card-hover-scale)); 
+  background-color: rgba(255, 255, 255, 0.07); 
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); 
 }
 
-/* ===== Logo图片样式 ===== */
-.card img { /* 卡片内部 Logo 图片的样式 */
-  width: 90%; /* 图标宽度占卡片空间的 90%，让图标更大一些 */
-  height: auto; /* 确保高度自适应，保持图片比例 */
-  max-width: 100%; /* 确保图片不会溢出卡片 */
-  display: block; /* 确保图片是块级元素，便于对齐和边距设置 */
-  height: 70px; /* 给图片一个固定高度，你可以根据需要调整这个值 */
-  object-fit: contain; /* 确保图片在保持自身比例的同时，完整地显示在 70px 高度内，不会裁剪 */
-  object-position: center; /* 图片在分配空间内居中显示 */
-  background-color: var(--logo-bg-color); /* 应用 Logo 背景色变量 (透明) */
-  border-radius: 20%; /* 圆角略微减小，保持规整感 */
-  margin-bottom: 4px; /* 进一步减小 Logo 和文字的间距 */
-  flex-shrink: 0; /* 防止图片在空间不足时缩小 */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 阴影更柔和 */
+/* ===== Logo图片样式 (卡片内部) ===== */
+.card img { 
+  width: 90%; 
+  height: 70px; /* 固定高度，确保图标尺寸一致 */
+  max-width: 100%; 
+  display: block; 
+  object-fit: contain; /* 确保图片在保持自身比例的同时，完整地显示在固定高度内，不会裁剪 */
+  object-position: center; 
+  background-color: var(--logo-bg-color); 
+  border-radius: 20%; 
+  margin-bottom: 4px; 
+  flex-shrink: 0; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); 
 }
 
-/* ===== 标题样式 ===== */
-.card-title { /* 卡片下方 App 标题的样式 */
-  font-size: 15px; /* 增大字体大小，更易识别 */
-  font-weight: 500; /* 加粗字体，所有媒体查询中重复的 font-weight 提到这里 */
-  text-align: center; /* 标题文本居中 */
-  width: 100%; /* 标题宽度占据卡片 100% */
-  white-space: nowrap; /* 防止文本换行 */
-  overflow: hidden; /* 隐藏超出容器的文本 */
-  text-overflow: ellipsis; /* 超出部分显示省略号 (...) */
-  box-sizing: border-box; /* 盒模型设置为边框盒模型 */
-  padding: 0 2px; /* 左右内边距从 4px 减小到 2px，使文字更贴近边缘 */
-  color: var(--text-color); /* 应用主要文本颜色 */
-  line-height: 1.2; /* 调整行高，保持文字紧凑 */
+/* ===== 标题样式 (卡片内部) ===== */
+.card-title { 
+  font-size: 15px; 
+  font-weight: 500; 
+  text-align: center; 
+  width: 100%; 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  box-sizing: border-box; 
+  padding: 0 2px; 
+  color: var(--text-color); 
+  line-height: 1.2; 
 }
 
-/* ===== 响应式调整 ===== */
-/* 使用 @media 规则根据屏幕宽度调整布局和样式，以适应不同设备 */
+/* ===== 页脚样式 ===== */
+footer { 
+  text-align: center; 
+  padding: 0.6rem 1rem; 
+  font-size: 0.9rem; 
+  color: var(--footer-text-color); 
+  margin-top: 20px; 
+  border-top: 1px solid var(--border-color); 
+  background-color: var(--header-bg-end-color); 
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3); 
+  line-height: 1.3; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+.contact-info {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 2px; 
+    margin-bottom: 5px; 
+    padding: 0; 
+}
+
+.contact-info p {
+    margin: 0; 
+    padding: 0; 
+    font-size: 0.9rem; 
+    color: var(--footer-text-color); 
+    line-height: 1.2; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.contact-info p:first-child {
+    font-weight: 500; 
+    font-size: 0.95rem; 
+    color: var(--text-color); 
+    margin-bottom: 5px; 
+}
+
+.contact-info .icon {
+    margin-right: 6px; 
+    font-size: 1em; 
+    color: var(--footer-icon-color); 
+}
+
+.contact-info a {
+    color: var(--footer-link-color); 
+    text-decoration: none; 
+    transition: color 0.2s ease, text-shadow 0.2s ease; 
+    line-height: 1.2; 
+}
+
+.contact-info a:hover { 
+    color: #a0c0ff; /* 悬停颜色 */
+    text-shadow: 0 0 5px rgba(160, 192, 255, 0.6); 
+}
+
+.copyright-text { 
+    margin: 0; 
+    padding: 0; 
+    font-size: 0.75rem; 
+    color: var(--secondary-text-color); 
+    opacity: 0.7; 
+    line-height: 1.2; 
+    margin-top: 5px; 
+}
+
+/* ===== 加载指示器 (Loading Indicator) 样式 ===== */
+#loading-indicator { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.8); 
+    display: flex; 
+    flex-direction: column; /* 让加载文字和点垂直排列 */
+    justify-content: center; 
+    align-items: center; 
+    color: var(--loading-text-color); /* 使用变量定义文本颜色 */
+    font-size: 1.8rem; 
+    z-index: 9999; 
+    opacity: 0; 
+    visibility: hidden; 
+    transition: opacity 0.4s ease, visibility 0.4s ease; 
+}
+
+#loading-indicator.show { 
+    opacity: 1; 
+    visibility: visible; 
+}
+
+#loading-indicator .spinner-dots { 
+    margin-top: 10px; 
+    color: var(--loading-spinner-color); /* 使用变量定义点颜色 */
+}
+
+#loading-indicator span { 
+    animation: blink 1s infinite alternate; 
+    margin: 0 2px; 
+    display: inline-block; /* 确保点可以应用 margin */
+}
+
+#loading-indicator span:nth-child(2) { 
+    animation-delay: 0.2s;
+}
+
+#loading-indicator span:nth-child(3) { 
+    animation-delay: 0.4s;
+}
+
+/* 定义名为 blink 的关键帧动画 */
+@keyframes blink { 
+    from { opacity: 0.3; } 
+    to { opacity: 1; } 
+}
+
+/* ===== 响应式调整 (Media Queries) ===== */
 
 /* 最小手机屏幕: 宽度在 480px 及以下时应用 */
 @media (max-width: 480px) {
-  .grid { /* 网格布局调整 */
-    grid-template-columns: repeat(5, 1fr); /* 每行 5 个 App 图标 */
-    gap: 8px 4px; /* 进一步减小间距，垂直 8px，水平 4px，更紧凑 */
-    padding: 8px 6px; /* 减小内边距 */
-  }
-  .card { /* 卡片内边距调整 */
-    padding: 3px; /* 减小卡片内边距 */
-  }
-  /* 图标和标题优化 */
-  .card img { /* 手机端图标尺寸和间距调整 */
-    width: 85%; /* 保持大图标 */
-    height: 55px; /* 适应小屏幕的固定高度 */
-    margin-bottom: 3px; /* 更小的间距 */
-  }
-  .card-title { /* 手机端标题字体和行高调整 */
-    font-size: 9px; /* 字体稍微减小一点 */
-    line-height: 1.1; /* 更紧凑的行高 */
-  }
-  header { /* 头部标题在手机端的大小和间距调整 */
-    font-size: 1.2rem; /* 进一步减小手机端头部字体 */
-    padding: 1rem 0.6rem; /* 进一步减小手机端头部内边距 */
-    letter-spacing: 0.05em;
-  }
+    .site-logo {
+        height: 30px; 
+        margin-right: 5px;
+    }
+    .site-brand-name {
+        font-size: 20px; 
+    }
+    .site-title {
+        font-size: 1.4rem; /* 调整为 rem 单位，与 html 根字体大小挂钩 */
+    }
+    .header-subtitle {
+        font-size: 0.7em; 
+    }
+    header { 
+        padding: 0.8rem 0; /* 减小头部内边距 */
+    }
+    .grid { 
+        grid-template-columns: repeat(4, 1fr); /* 调整为 4 列，提高图标大小 */
+        gap: 12px 6px; /* 调整间距 */
+        padding: 10px 8px; 
+    }
+    .card { 
+        padding: 5px; 
+    }
+    .card img { 
+        width: 85%; 
+        height: 60px; /* 调整高度以适应新的列数和间距，确保不裁剪 */
+        margin-bottom: 4px; 
+    }
+    .card-title { 
+        font-size: 10px; /* 字体稍微减小一点 */
+        line-height: 1.1; 
+    }
+    .footer {
+        font-size: 0.8rem;
+    }
 }
 
 /* 中等屏幕手机/小平板: 宽度在 481px 到 768px 之间时应用 */
 @media (min-width: 481px) and (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(5, 1fr); /* 保持 5 列 */
-    gap: 10px 6px; /* 间距更小 */
-    padding: 12px 8px; /* 内边距更小 */
-  }
-  .card {
-    padding: 5px;
-  }
-  /* 图标和标题优化 */
-  .card img {
-    width: 85%; /* 保持大图标 */
-    height: 60px; /* 适应中等屏幕的固定高度 */
-    margin-bottom: 4px;
-  }
-  .card-title {
-    font-size: 11px; /* 字体大小 */
-  }
-  header { /* 头部标题调整 */
-    font-size: 1.5rem; /* 进一步减小头部字体 */
-    padding: 1.2rem 0.8rem; /* 进一步减小头部内边距 */
-  }
+    .site-logo {
+        height: 35px; 
+        margin-right: 8px;
+    }
+    .site-brand-name {
+        font-size: 24px; 
+    }
+    .site-title {
+        font-size: 1.6rem; 
+    }
+    .header-subtitle {
+        font-size: 0.75em; 
+    }
+    header { 
+        padding: 1rem 0; 
+    }
+    .grid {
+        grid-template-columns: repeat(5, 1fr); /* 保持 5 列 */
+        gap: 15px 8px; 
+        padding: 15px 10px; 
+    }
+    .card {
+        padding: 6px;
+    }
+    .card img {
+        width: 85%; 
+        height: 65px; /* 适应中等屏幕的固定高度 */
+        margin-bottom: 4px;
+    }
+    .card-title {
+        font-size: 12px; 
+    }
 }
 
 /* 平板/桌面: 宽度在 769px 到 1024px 之间时应用 */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(6, 1fr); /* 保持 6 列 */
-    gap: 12px 8px; /* 间距更小 */
-    padding: 18px 12px; /* 内边距更小 */
-  }
-  .card {
-    padding: 5px;
-  }
-  /* 图标和标题优化 */
-  .card img {
-    width: 88%; /* 保持大图标 */
-    height: 65px; /* 适应平板屏幕的固定高度 */
-    margin-bottom: 5px;
-  }
-  .card-title {
-    font-size: 13px; /* 字体大小 */
-  }
-  header {
-    font-size: 1.7rem; /* 进一步减小头部字体 */
-  }
+    .site-logo {
+        height: 40px; 
+        margin-right: 10px;
+    }
+    .site-brand-name {
+        font-size: 26px; 
+    }
+    .site-title {
+        font-size: 1.8rem; 
+    }
+    .header-subtitle {
+        font-size: 0.8em; 
+    }
+    header { 
+        padding: 1.2rem 0; 
+    }
+    .grid {
+        grid-template-columns: repeat(6, 1fr); 
+        gap: 18px 10px; 
+        padding: 20px 15px; 
+    }
+    .card {
+        padding: 7px;
+    }
+    .card img {
+        width: 88%; 
+        height: 70px; 
+        margin-bottom: 5px;
+    }
+    .card-title {
+        font-size: 14px; 
+    }
 }
 
 /* 大屏幕桌面: 宽度在 1025px 到 1440px 之间时应用 */
 @media (min-width: 1025px) and (max-width: 1440px) {
+    .site-logo {
+        height: 45px; 
+        margin-right: 12px;
+    }
+    .site-brand-name {
+        font-size: 30px; 
+    }
+    .site-title {
+        font-size: 2rem; 
+    }
+    .header-subtitle {
+        font-size: 0.85em; 
+    }
     .grid {
-        grid-template-columns: repeat(7, 1fr); /* 保持 7 列 */
-        gap: 14px 9px;
-        padding: 22px 16px;
+        grid-template-columns: repeat(7, 1fr); 
+        gap: 20px 12px;
+        padding: 25px 18px;
     }
-    .card {
-      padding: 6px;
-    }
-    /* 图标和标题优化 */
     .card img {
-      width: 88%; /* 保持大图标 */
-      height: 70px;
+      width: 88%; 
+      height: 75px;
       margin-bottom: 5px;
     }
     .card-title {
-        font-size: 14px;
+        font-size: 15px;
     }
 }
 
 /* 超大屏幕桌面: 宽度在 1441px 及以上时应用 */
 @media (min-width: 1441px) {
+    .site-logo {
+        height: 50px; 
+        margin-right: 15px;
+    }
+    .site-brand-name {
+        font-size: 32px; 
+    }
+    .site-title {
+        font-size: 2.2rem; 
+    }
+    .header-subtitle {
+        font-size: 0.9em; 
+    }
     .grid {
         grid-template-columns: repeat(8, 1fr);
-        gap: 16px 10px;
-        padding: 28px 20px;
+        gap: 22px 15px;
+        padding: 30px 22px;
     }
-    .card {
-      padding: 7px;
-    }
-    /* 图标和标题优化 */
     .card img {
       width: 90%;
-      height: 75px;
+      height: 80px;
       margin-bottom: 5px;
     }
     .card-title {
@@ -258,127 +530,40 @@ header h1 {
     }
 }
 
-/* ===== 页脚样式 ===== */
-footer { /* 直接针对 <footer> 标签进行样式设置 */
-  text-align: center; /* 确保所有页脚内容水平居中 */
-  padding: 0.6rem 1rem; /* 内边距：上下 0.6rem，左右 1rem，使其更紧凑，统一内边距 */
-  font-size: 0.9rem; /* 整体字号略微减小 */
-  color: var(--footer-text-color); /* 应用页脚文本颜色变量 */
-  margin-top: 20px; /* 页脚与上方内容的距离 */
-  border-top: 1px solid var(--border-color); /* 页脚顶部边框 */
-  background-color: var(--header-bg-end-color); /* 页脚背景色 */
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3); /* 顶部阴影，增加层次感 */
-  line-height: 1.3; /* 整体行高，适用于页脚所有文本，确保紧凑 */
-  display: flex; /* 启用 Flexbox 布局 */
-  flex-direction: column; /* Flex 子项（联系信息块和版权文本）垂直排列 */
-  justify-content: center; /* 垂直居中 Flex 子项 */
-  align-items: center; /* 水平居中 Flex 子项 */
+/* 媒体查询：广告容器的响应式调整 */
+/* 如果 ad-styles.css 存在，此部分应移到 ad-styles.css 中 */
+/* 考虑到您要求在一个文件中优化，这里暂时保留 */
+@media (max-width: 768px) {
+    .ad-image-pc { display: none; }
+    .ad-image-mobile { display: block; }
+    
+    .ad-container {
+        width: 96%; 
+        margin: 8px auto; 
+        padding: 1px 2px; 
+        max-height: 58px; /* 适应移动端图片高度，避免裁剪 */
+        min-height: 40px; 
+        border-radius: 6px; 
+    }
+    .ad-container img {
+        transform: translateY(-1px); 
+    }
 }
 
-/* 优化联系信息块 (包含“联系站长”、Telegram、E-mail) */
-.contact-info {
-    display: flex; /* 启用 Flexbox 布局 */
-    flex-direction: column; /* 内部 p 标签垂直排列 */
-    align-items: center; /* 确保内部文本和图标水平居中 */
-    gap: 2px; /* 极小化内部 p 标签之间的间距 */
-    margin-bottom: 5px; /* 联系信息块与下方版权信息之间的间距 */
-    padding: 0; /* 移除原有的内边距 */
-}
-
-/* 联系信息块内部所有段落的通用样式 */
-.contact-info p {
-    margin: 0; /* 移除浏览器默认的段落外边距 */
-    padding: 0; /* 移除浏览器默认的内边距 */
-    font-size: 0.9rem; /* 统一联系信息字体大小 */
-    color: var(--footer-text-color); /* 应用页脚文本颜色 */
-    line-height: 1.2; /* 确保行高紧凑 */
-    display: flex; /* 启用 Flexbox 布局，用于对齐图标和文本 */
-    align-items: center; /* 垂直居中图标和文本 */
-    justify-content: center; /* 确保图标和文本整体水平居中 */
-}
-
-/* “联系站长:”标题的特定样式 */
-.contact-info p:first-child {
-    font-weight: 500; /* 略微加粗 */
-    font-size: 0.95rem; /* 标题略大一点 */
-    color: var(--text-color); /* 标题使用主文本颜色，更突出 */
-    margin-bottom: 5px; /* 标题与下方联系方式的间距 */
-}
-
-/* 图标样式 (如 Telegram 的飞机图标，E-mail 的信封图标) */
-.contact-info .icon {
-    margin-right: 6px; /* 减小图标与文字的间距 */
-    font-size: 1em; /* 图标大小与文字保持一致或略大 */
-    color: var(--footer-icon-color); /* 应用页脚图标颜色变量 */
-}
-
-/* 链接样式 (如 Telegram 和 E-mail 的链接) */
-.contact-info a {
-    color: var(--footer-link-color); /* 应用页脚链接颜色变量 */
-    text-decoration: none; /* 移除下划线 */
-    transition: color 0.2s ease, text-shadow 0.2s ease; /* 颜色和阴影过渡动画 */
-    line-height: 1.2; /* 确保链接文本行高紧凑 */
-}
-
-.contact-info a:hover { /* 链接悬停时的样式 */
-    color: #a0c0ff; /* 悬停颜色更亮 */
-    text-shadow: 0 0 5px rgba(160, 192, 255, 0.6); /* 悬停时显示柔和的阴影 */
-}
-
-/* 最底部版权/域名信息样式 */
-.copyright-text { /* 应用于显示域名和“无痕浏览”的段落 */
-    margin: 0; /* 移除默认外边距 */
-    padding: 0; /* 移除默认内边距 */
-    font-size: 0.75rem; /* 字体进一步减小，作为辅助信息，不抢主次 */
-    color: var(--secondary-text-color); /* 应用次要文本颜色 */
-    opacity: 0.7; /* 略微降低透明度 */
-    line-height: 1.2; /* 确保行高紧凑 */
-    margin-top: 5px; /* 与上方联系信息块的间距 */
-}
-
-/* 加载动画 */
-#loading-indicator { /* 加载指示器容器样式 */
-    position: fixed; /* 固定定位，使其在滚动时也保持在视口内 */
-    top: 0; /* 顶部对齐 */
-    left: 0; /* 左侧对齐 */
-    width: 100%; /* 宽度占满整个视口 */
-    height: 100%; /* 高度占满整个视口 */
-    background-color: rgba(0, 0, 0, 0.8); /* 半透明黑色背景，覆盖页面 */
-    display: flex; /* 启用 Flexbox 布局 */
-    justify-content: center; /* 水平居中内容 */
-    align-items: center; /* 垂直居中内容 */
-    color: white; /* 文本颜色 */
-    font-size: 1.8rem; /* 字体大小 */
-    z-index: 9999; /* 确保在所有其他内容之上 */
-    opacity: 0; /* 默认透明度为 0 (隐藏) */
-    visibility: hidden; /* 默认不可见 */
-    transition: opacity 0.4s ease, visibility 0.4s ease; /* 透明度和可见性过渡动画，平滑显示和隐藏 */
-    flex-direction: column; /* 让加载文字和点垂直排列 */
-}
-
-#loading-indicator.show { /* 当有 .show 类时显示加载指示器 */
-    opacity: 1; /* 完全不透明 */
-    visibility: visible; /* 可见 */
-}
-
-#loading-indicator .spinner-dots { /* 加载点动画的容器，为加载点创建一个单独的容器类名 */
-    margin-top: 10px; /* 文字和点之间的间距 */
-}
-
-#loading-indicator span { /* 加载动画中的每个点 */
-    animation: blink 1s infinite alternate; /* 应用 blink 动画，无限循环，交替方向 */
-    margin: 0 2px; /* 点之间有小间距 */
-}
-
-#loading-indicator span:nth-child(2) { /* 第二个点的动画延迟 */
-    animation-delay: 0.2s;
-}
-
-#loading-indicator span:nth-child(3) { /* 第三个点的动画延迟 */
-    animation-delay: 0.4s;
-}
-
-@keyframes blink { /* 定义名为 blink 的关键帧动画 */
-    from { opacity: 0.3; } /* 从半透明开始 */
-    to { opacity: 1; } /* 变为完全不透明 */
+@media (max-width: 480px) {
+    .ad-image-pc { display: none; }
+    .ad-image-mobile { display: block; }
+    
+    .ad-container {
+        width: 98%; 
+        margin: 5px auto; 
+        padding: 1px; 
+        max-height: 48px; /* 适应小屏手机图片高度，避免裁剪 */
+        min-height: 30px; 
+        border-radius: 5px; 
+    }
+    .ad-container img {
+        border-radius: 3px;
+        transform: translateY(-0.5px); 
+    }
 }
