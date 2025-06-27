@@ -10,6 +10,7 @@
  * 4. 优化头部内容与屏幕左右边缘的贴合度，减少左右空白。
  * 5. 调整头部字体大小，使其更协调，避免过大。
  * 6. **【新增】App 图标和名称的尺寸调整，使其更大且更紧凑，减少空白区域。**
+ * 7. **【新增】副标题 ("为您量身定制...") 字体增大并添加水平滚动效果。**
  * 所有重要的 CSS 属性都已添加详细注释。
  */
 
@@ -185,14 +186,21 @@ header {
 
 /* 副标题的样式 */
 .header-subtitle {
-    font-size: 0.65em; /* 调整：略微缩小副标题字体大小 */
-    color: var(--secondary-text-color); /* 使用次要文本颜色变量，使其在视觉上与主标题区分。*/
-    /*
-     * 副标题与主标题的间距保持 2px。
-     */
-    margin-top: 2px;
-    font-weight: normal; /* 副标题不加粗。*/
-    opacity: 0.8; /* 略微降低透明度，使其看起来不那么突出，作为辅助信息。*/
+    /* font-size 将在媒体查询中调整 */
+    color: var(--secondary-text-color);
+    margin-top: 5px; /* 略微增加与主标题的间距，以便更突出 */
+    font-weight: normal;
+    opacity: 0.9; /* 略微增加不透明度 */
+    white-space: nowrap; /* 防止文本换行 */
+    overflow-x: auto; /* 添加水平滚动条，当内容超出时显示 */
+    -webkit-overflow-scrolling: touch; /* 使 iOS 设备上的滚动更流畅 */
+    padding: 5px 0; /* 增加一些上下内边距，使滚动区域更明显 */
+    /* 移除之前可能设置的 max-width，让内容可以超出 */
+    max-width: none;
+    display: block; /* 确保占据一行 */
+    width: 100%; /* 确保它能填满父容器以实现滚动 */
+    box-sizing: border-box; /* 确保 padding 不会增加宽度 */
+    text-align: center; /* 文本居中 */
 }
 
 
@@ -457,7 +465,12 @@ footer {
     }
     /* 副标题字体大小调整 */
     .header-subtitle {
-        font-size: 0.55em; /* 调整：进一步缩小副标题字体 */
+        font-size: 0.9em; /* 【调整】增大副标题字体 */
+        /* 保留其他已有的样式 */
+        white-space: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 5px 0;
     }
     /*
      * 调整头部内边距和下方间距，使其在小屏幕下更紧凑。
@@ -533,7 +546,12 @@ footer {
     }
     /* 副标题字体大小调整 */
     .header-subtitle {
-        font-size: 0.6em; /* 调整：略微缩小副标题字体 */
+        font-size: 1.0em; /* 【调整】增大副标题字体 */
+        /* 保留其他已有的样式 */
+        white-space: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 5px 0;
     }
     /*
      * 再次调整头部内边距和下方间距。
@@ -605,7 +623,12 @@ footer {
     }
     /* 副标题字体大小调整 */
     .header-subtitle {
-        font-size: 0.7em;
+        font-size: 1.1em; /* 【调整】增大副标题字体 */
+        /* 保留其他已有的样式 */
+        white-space: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 5px 0;
     }
     /*
      * 再次调整头部内边距。
@@ -674,7 +697,12 @@ footer {
     }
     /* 副标题字体大小调整 */
     .header-subtitle {
-        font-size: 0.75em;
+        font-size: 1.2em; /* 【调整】增大副标题字体 */
+        /* 保留其他已有的样式 */
+        white-space: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 5px 0;
     }
     /*
      * 再次调整头部内边距。
@@ -743,7 +771,12 @@ footer {
     }
     /* 副标题字体大小调整 */
     .header-subtitle {
-        font-size: 0.8em;
+        font-size: 1.3em; /* 【调整】增大副标题字体 */
+        /* 保留其他已有的样式 */
+        white-space: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 5px 0;
     }
     /*
      * 再次调整头部内边距。
@@ -788,4 +821,3 @@ footer {
         padding: 0 1px; /* 【调整】减小内边距 */
     }
 }
-
