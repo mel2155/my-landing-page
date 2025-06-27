@@ -194,17 +194,18 @@
     }
 
     /* ===== 页脚样式 ===== */
-    footer {
-      text-align: center;
-      padding: 1.8rem 1rem; /* 调整页脚内边距，更舒适 */
-      font-size: 0.95rem; /* 略微增大字号 */
-      color: var(--secondary-text-color);
-      margin-top: 40px; /* 增加顶部外边距，与内容区拉开距离 */
-      border-top: 1px solid var(--border-color); /* 边框更细、更融入背景 */
-      background-color: var(--header-bg-end-color); /* 页脚背景与头部结束色保持一致，更协调 */
-      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3); /* 顶部阴影，增加层次感 */
-      line-height: 1.6; /* 调整行高 */
-    }
+Footer {
+    text-align: center;
+    padding: 0.8rem 1rem; /* 优化点1: 大幅减小上下内边距，使内容更紧凑。您可以尝试 0.5rem 到 1rem 之间的值。 */
+    font-size: 0.95rem; /* 字号保持不变，或根据需要微调。 */
+    color: var(--secondary-text-color);
+    margin-top: 20px; /* 优化点2: 减小顶部外边距，让页脚更靠近上方内容。从 40px 减到 20px，您可以根据实际情况调整。 */
+    border-top: 1px solid var(--border-color); /* 边框样式保持不变。 */
+    background-color: var(--header-bg-end-color); /* 背景颜色保持不变。 */
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3); /* 阴影保持不变。 */
+    line-height: 1.2; /* 优化点3: 显著减小行高，使页脚内文本行间距更紧密。从 1.6 减到 1.2，或更小（如 1.0）。 */
+}
+
 
     /* 包裹联系信息的容器样式 */
     .contact-info {
