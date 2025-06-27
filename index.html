@@ -8,25 +8,25 @@
 
   <style>
     /* ===== 主题颜色与全局设置 ===== */
-    :root { /* 定义 CSS 变量的根作用域，这些变量可以在整个文档中使用 */
-      --bg-color: #15050A; /* 页面背景色：深、纯粹，提升沉浸感 */
-      --header-bg-start-color: #4A000F; /* 头部背景渐变起始色：深紫，与网站主题呼应 */
-      --header-bg-end-color: #2A0008; /* 头部背景渐变结束色：深灰，平滑过渡 */
-      --text-color: #FF3B30; /* 主要文本颜色：更亮，对比度更好 */
-      --secondary-text-color: #FF6666; /* 次要文本颜色：柔和，不抢主色，用于辅助信息 */
-      --logo-bg-color: transparent; /* Logo 背景色设置为透明，方便与图片本身融合 */
-      --border-color: #242424; /* 分隔线颜色：更暗，更融入背景 */
-      --card-hover-scale: 1.05; /* 卡片悬浮时的放大比例，更自然 */
-      --grid-gap-vertical: 20px; /* 网格项之间垂直间距的默认值 (这里会根据屏幕大小覆盖) */
-      --grid-gap-horizontal: 15px; /* 网格项之间水平间距的默认值 (这里会根据屏幕大小覆盖) */
-      --accent-color: #7aa1f9; /* 强调色：略微亮化，更具活力，用于链接等 */
-      --header-title-color: #ffffff; /* 标题颜色：纯白，更醒目 */
+:root { /* 定义 CSS 变量的根作用域，这些变量可以在整个文档中使用 */
+  --bg-color: #15050A; /* 页面背景色：深、纯粹，提升沉浸感 */
+  --header-bg-start-color: #4A000F; /* 头部背景渐变起始色：深紫，与网站主题呼应 */
+  --header-bg-end-color: #2A0008; /* 头部背景渐变结束色：深灰，平滑过渡 */
+  --text-color: #FF0000; /* 优化: 主要文本颜色改为鲜艳的正红色 (如App小字) */
+  --secondary-text-color: #FF5555; /* 优化: 次要文本颜色改为略浅的红色，用于辅助信息 */
+  --logo-bg-color: transparent; /* Logo 背景色设置为透明，方便与图片本身融合 */
+  --border-color: #242424; /* 分隔线颜色：更暗，更融入背景 */
+  --card-hover-scale: 1.05; /* 卡片悬浮时的放大比例，更自然 */
+  --grid-gap-vertical: 20px; /* 网格项之间垂直间距的默认值 (这里会根据屏幕大小覆盖) */
+  --grid-gap-horizontal: 15px; /* 网格项之间水平间距的默认值 (这里会根据屏幕大小覆盖) */
+  --accent-color: #FF6666; /* 优化: 强调色改为红色系，与整体主题协调 */
+  --header-title-color: #FF0000; /* 优化: 头部标题颜色改为鲜艳的正红色 */
 
-      /* 页脚新增或调整的颜色变量，用于页脚文本、链接和图标，方便统一管理 */
-      --footer-text-color: #d0d0d0; /* 页脚主要文本颜色，比主文本稍暗 */
-      --footer-link-color: #8cafff; /* 页脚链接颜色，更柔和的蓝色 */
-      --footer-icon-color: #8cafff; /* 页脚图标颜色，与链接一致 */
-    }
+  /* 页脚新增或调整的颜色变量，用于页脚文本、链接和图标，方便统一管理 */
+  --footer-text-color: #FF0000; /* 优化: 页脚主要文本颜色也改为主要文本的红色 */
+  --footer-link-color: #FF8888; /* 优化: 页脚链接颜色改为更浅的红色，更柔和，保持可点击性区分 */
+  --footer-icon-color: #FF8888; /* 优化: 页脚图标颜色与链接一致 */
+}
 
     body { /* 页面主体样式 */
       font-family: 'Noto Sans SC', sans-serif; /* 设置主要字体为 Noto Sans SC，备用为无衬线字体 */
