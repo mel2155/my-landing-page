@@ -1,11 +1,34 @@
 /*
- * ad-styles.css
- * 这是专门用于广告横幅的样式文件。
+ * ad-styles.css - 广告横幅的样式文件。
  * 与主站样式 (style.css) 分离，便于模块化管理和维护。
  *
- * 最近的更新主要优化了广告容器和图片的响应式高度和垂直对齐 (transform: translateY)，
- * 旨在解决在不同缩放比例下广告显示不规则的问题。所有重要的 CSS 属性都已添加详细注释。
+ * 优化说明：
+ * - 引入 CSS 变量，便于统一管理间距、圆角和图片高度。
+ * - 优化了广告容器的 Flexbox 布局，确保图片在不同尺寸下都能居中。
+ * - 响应式断点保持不变，但样式调整更具针对性。
+ * - 移除了多余的边框和内边距，使广告与内容融合更紧凑。
  */
+
+/* ===== CSS 变量定义 ===== */
+/* 这些变量可以在整个样式表中使用，便于统一修改和管理。*/
+:root {
+    --ad-container-max-width: 970px; /* 广告容器的最大宽度 */
+    --ad-container-pc-height: 90px; /* PC端广告容器的固定高度（根据图片实际高度） */
+    --ad-container-mid-mobile-height: 50px; /* 中等屏幕手机广告容器的高度 */
+    --ad-container-small-mobile-height: 40px; /* 小屏手机广告容器的高度 */
+
+    --ad-margin-pc: 10px auto; /* PC端上下外边距 */
+    --ad-margin-mid-mobile: 4px auto; /* 中等屏幕手机上下外边距 */
+    --ad-margin-small-mobile: 2px auto; /* 小屏手机上下外边距 */
+
+    --ad-border-radius: 8px; /* 容器默认圆角 */
+    --ad-image-border-radius: 5px; /* 图片默认圆角 */
+
+    --ad-bg-color: rgba(0, 0, 0, 0.2); /* 广告容器背景色 */
+    --ad-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 广告容器阴影 */
+    --image-vertical-offset: -0.5px; /* 图片垂直微调量 */
+}
+
 
 /* ===== 广告容器的通用样式定义 ===== */
 /*
@@ -13,72 +36,57 @@
  * 这些样式主要影响在 PC 端和较大屏幕下的广告显示行为和外观。
  */
 .ad-container {
-    margin: 10px auto; /* 调整：上下外边距从 15px 减少到 10px，使广告条与头部/内容更紧凑。*/
-    width: 90%; /* 设置容器的宽度，使其占据父容器的 90% 宽度，通常是页面的主内容区域。*/
-    max-width: 970px; /* 限制容器的最大宽度，防止在超大屏幕上拉伸过宽，保持广告的视觉美观和可读性。*/
-    /* 调整：移除边框。如果需要边框，可以将其颜色设置为与背景融合的颜色，或更细微。
-       如果希望有视觉分隔，但不是红色边框，可以考虑更柔和的颜色，或者使用 inset 类型的 box-shadow 模拟。*/
-    border: none; /* 调整：移除边框，消除您看到的红线。如果需要，可改为 1px solid transparent; */
-    background-color: rgba(0, 0, 0, 0.2); /* 调整：背景色略微变浅，使其更融入页面，但仍有区分度。*/
-    text-align: center; /* 确保容器内的文本内容居中对齐（尽管这里主要包含图片，但作为通用属性保留）。*/
-    overflow: hidden; /* 隐藏任何超出容器边界的内容，确保布局整洁，特别是广告图片可能溢出时。*/
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 调整：阴影更柔和，减少立体感，与紧凑的头部风格更统一。*/
-    border-radius: 8px; /* 稍微圆化容器的边角，提升视觉柔和度。*/
-    /* 调整：内边距设置为 0 或极小值，让图片尽量填充整个容器，减少空白。
-       如果广告图片本身四周有留白，这些留白也会包含在图片中。*/
-    padding: 0; /* 调整：移除所有内边距，让图片紧贴容器边缘。*/
+    margin: var(--ad-margin-pc); /* 上下外边距 */
+    width: 90%; /* 容器宽度 */
+    max-width: var(--ad-container-max-width); /* 限制容器最大宽度 */
+    border: none; /* 移除边框 */
+    background-color: var(--ad-bg-color); /* 背景色 */
+    text-align: center; /* 文本居中 */
+    overflow: hidden; /* 隐藏溢出内容 */
+    box-shadow: var(--ad-box-shadow); /* 柔和阴影 */
+    border-radius: var(--ad-border-radius); /* 容器圆角 */
+    padding: 0; /* 移除内边距，让图片紧贴边缘 */
 
-    /* 根据广告图片实际高度（例如，PC端可能为 90px 或 60px）进行调整。
-       由于移除了 padding 和 border，max-height 可以直接设置为图片预期高度。
-       如果您的PC横幅图片实际高度是 90px，这里就是 90px。如果图片是 60px，就设置为 60px。
-       假设PC横幅图片主要设计为 90px 高度。*/
-    max-height: 90px; /* 调整：精确到图片的实际高度，消除多余空白。*/
-    min-height: 50px; /* 调整：适当减小最小高度，使其更紧凑。*/
+    /* 设定PC端容器高度，精确到图片的实际高度 */
+    height: var(--ad-container-pc-height);
+    min-height: 50px; /* 最小高度 */
 
-    display: flex; /* 弹性布局：这是实现内部图片垂直和水平居中的核心。*/
-    justify-content: center; /* 水平方向上居中对齐 Flex 项目（这里是广告图片）。*/
-    align-items: center;   /* 垂直方向上居中对齐 Flex 项目（这里是广告图片）。*/
-    flex-wrap: nowrap;     /* 防止 Flex 项目（广告图片）换行，确保始终单行显示。*/
+    display: flex; /* 弹性布局，用于内部图片居中 */
+    justify-content: center; /* 水平居中 */
+    align-items: center;   /* 垂直居中 */
+    flex-wrap: nowrap;     /* 防止图片换行 */
 }
 
-/* 广告图片通用样式：同时应用于PC端和手机端的广告图片，确保它们在容器内正确显示 */
+/* 广告图片通用样式：同时应用于PC端和手机端的广告图片 */
 .ad-container img {
-    display: block; /* 将图片设置为块级元素，消除图片下方可能出现的额外空间，便于精确布局。*/
-    width: 100%; /* 使图片宽度填充其父容器 (.ad-container) 的 100% 宽度。*/
-    height: 100%; /* 使图片高度填充其父容器 (.ad-container) 的 100% 高度。*/
-    max-height: 100%; /* 确保图片不会超出其父容器的最大高度。*/
-    border-radius: 5px; /* 稍微圆化图片的边角，与容器的圆角相呼应。*/
-    object-fit: contain; /* 确保图片在保持自身宽高比的同时，完整地显示在容器内，不会被拉伸或裁剪。
-                           这意味着图片可能会在容器内留下空白，但图片内容会完全可见。*/
-    object-position: center; /* 确保图片在其可用空间内居中对齐。*/
-    flex-shrink: 0; /* 防止图片在 Flexbox 容器空间不足时缩小。*/
-    flex-grow: 1; /* 允许图片在 Flexbox 容器内有额外空间时适度增长。*/
+    display: block; /* 块级元素 */
+    width: 100%; /* 宽度填充父容器 */
+    height: 100%; /* 高度填充父容器 */
+    max-height: 100%; /* 确保不超过容器高度 */
+    border-radius: var(--ad-image-border-radius); /* 图片圆角 */
+    object-fit: contain; /* 保持宽高比，完整显示 */
+    object-position: center; /* 图片内容居中 */
+    flex-shrink: 0; /* 防止图片在空间不足时缩小 */
+    flex-grow: 1; /* 允许图片在有空间时增长 */
 
-    /* === 向上微调图片位置 === */
-    /*
-     * 使用 transform: translateY() 可以将图片沿 Y 轴（垂直方向）移动。
-     * 负值会向上移动。这个微调通常用于解决图片在容器中可能存在的细微视觉偏差，使其看起来更居中。
-     * 值的大小（例如 -0.5px）是基于您之前提供的截图和对齐需求进行的微调。
-     * 如果图片仍然不完全居中或出现裁剪，您可以尝试调整此值，例如 `-1px` 或 `0px`。
-     */
-    transform: translateY(-0.5px);
+    /* 向上微调图片位置，解决细微视觉偏差 */
+    transform: translateY(var(--image-vertical-offset));
 }
 
-/* 默认情况下：在PC端视口（屏幕宽度大于768px）显示PC广告图片，隐藏手机广告图片 */
+/* 默认情况 (PC端视口): 显示PC广告图片，隐藏手机广告图片 */
 .ad-image-pc {
-    display: block; /* 在 PC 端显示 PC 端图片。*/
+    display: block;
 }
 .ad-image-mobile {
-    display: none; /* 在 PC 端隐藏手机端图片。*/
+    display: none;
 }
+
 
 /* --- 媒体查询：响应式设计断点 --- */
 
-/* 媒体查询：当屏幕宽度小于或等于 768px 时 (中等屏幕手机/小平板)
- * 在此断点，广告将切换到移动端图片，并调整容器大小，以适应中等尺寸的移动设备。
- */
+/* 媒体查询：当屏幕宽度小于或等于 768px 时 (中等屏幕手机/小平板) */
 @media (max-width: 768px) {
-    /* 在中等屏幕上隐藏 PC 端图片，显示移动端图片。*/
+    /* 显示移动端图片，隐藏PC端图片 */
     .ad-image-pc {
         display: none;
     }
@@ -86,30 +94,24 @@
         display: block;
     }
 
-    /* 调整中等屏幕下广告容器的样式，使其更适合移动设备。*/
+    /* 调整中等屏幕下广告容器的样式 */
     .ad-container {
-        width: 96%; /* 宽度略微增加，适应移动设备屏幕，通常移动端广告会更宽。*/
-        margin: 4px auto; /* 调整：上下外边距从 6px 减少到 4px。*/
-        padding: 0; /* 调整：移除所有内边距。*/
-
-        /* 假设手机横幅图片实际高度约为 50px。*/
-        max-height: 50px; /* 调整：精确到图片的实际高度。*/
-        min-height: 35px; /* 调整：适当减小最小高度。*/
-        border-radius: 6px;
+        width: 96%; /* 宽度略微增加 */
+        margin: var(--ad-margin-mid-mobile); /* 上下外边距 */
+        height: var(--ad-container-mid-mobile-height); /* 固定高度 */
+        min-height: 35px; /* 最小高度 */
+        border-radius: 6px; /* 调整圆角 */
     }
 
-    /* === 中等屏幕下图片向上微调 === */
-    /* 针对中等屏幕进行微调，确保图片在容器中正确居中。*/
+    /* 中等屏幕下图片微调保持一致 */
     .ad-container img {
-        transform: translateY(-0.5px);
+        transform: translateY(var(--image-vertical-offset));
     }
 }
 
-/* 媒体查询：当屏幕宽度小于或等于 480px 时 (小屏手机)
- * 在此断点，广告容器会进一步缩小，以适应更小尺寸的手机屏幕。
- */
+/* 媒体查询：当屏幕宽度小于或等于 480px 时 (小屏手机) */
 @media (max-width: 480px) {
-    /* 在小屏手机上隐藏 PC 端图片，显示移动端图片。*/
+    /* 显示移动端图片，隐藏PC端图片 (与上一个断点保持一致) */
     .ad-image-pc {
         display: none;
     }
@@ -117,22 +119,19 @@
         display: block;
     }
 
-    /* 调整小屏手机下广告容器的样式，使其更紧凑。*/
+    /* 调整小屏手机下广告容器的样式 */
     .ad-container {
-        width: 98%; /* 宽度进一步增加，适应更小的移动设备屏幕。*/
-        margin: 2px auto; /* 调整：上下外边距从 4px 减少到 2px。*/
-        padding: 0; /* 调整：移除所有内边距。*/
-
-        /* 假设手机横幅图片实际高度约为 40px。*/
-        max-height: 40px; /* 调整：精确到图片的实际高度。*/
-        min-height: 25px; /* 调整：适当减小最小高度。*/
-        border-radius: 5px;
+        width: 98%; /* 宽度进一步增加 */
+        margin: var(--ad-margin-small-mobile); /* 上下外边距 */
+        height: var(--ad-container-small-mobile-height); /* 固定高度 */
+        min-height: 25px; /* 最小高度 */
+        border-radius: 5px; /* 调整圆角 */
     }
-    /* 调整小屏手机下广告图片的圆角半径，使其更适应紧凑的布局。*/
+
+    /* 调整小屏手机下广告图片的圆角半径 */
     .ad-container img {
         border-radius: 3px;
-        /* === 小屏幕下图片向上微调 === */
-        /* 针对小屏幕进行微调，确保图片在容器中正确居中。*/
-        transform: translateY(-0.5px);
+        /* 小屏幕下图片微调保持一致 */
+        transform: translateY(var(--image-vertical-offset));
     }
 }
