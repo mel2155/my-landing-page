@@ -1,0 +1,16 @@
+/* ad-styles.css */
+
+.ad-container {
+    margin: 20px auto; /* 上下外边距20px，左右自动居中 */
+    width: 320px; /* 示例宽度，根据广告实际尺寸调整 */
+    height: 100px; /* 示例高度，根据广告实际尺寸调整 */
+    background-color: #ffe0b2; /* 浅橙色背景，用于标识广告位 */
+    border: 1px dashed #ff9800; /* 虚线边框 */
+    display: flex; /* 使用 flexbox 居中内容 */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    font-size: 16px;
+    color: #d32f2f; /* 红色文字 */
+    text-align: center;
+    /* 实际广告加载后，这些背景和边框通常可以移除或调整 */
+}
