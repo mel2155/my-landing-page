@@ -5,6 +5,7 @@
  * 优化说明：
  * - 引入 CSS 变量，便于统一管理间距、圆角和图片高度。
  * - 优化了广告容器的 Flexbox 布局，确保图片在不同尺寸下都能居中。
+ * - **主要调整：增加了 .ad-container 的宽度百分比，以减少左右留白，使广告看起来更宽。**
  * - 响应式断点保持不变，但样式调整更具针对性。
  * - 移除了多余的边框和内边距，使广告与内容融合更紧凑。
  */
@@ -16,6 +17,12 @@
     --ad-container-pc-height: 90px; /* PC端广告容器的固定高度（根据图片实际高度） */
     --ad-container-mid-mobile-height: 50px; /* 中等屏幕手机广告容器的高度 */
     --ad-container-small-mobile-height: 40px; /* 小屏手机广告容器的高度 */
+
+    /* 调整：增加了宽度百分比，减少左右留白，让广告看起来更宽 */
+    --ad-container-pc-width: 95%; /* PC端宽度从 90% 调整为 95% */
+    --ad-container-mid-mobile-width: 98%; /* 中等屏幕手机宽度从 96% 调整为 98% */
+    --ad-container-small-mobile-width: 99%; /* 小屏手机宽度从 98% 调整为 99% */
+
 
     --ad-margin-pc: 10px auto; /* PC端上下外边距 */
     --ad-margin-mid-mobile: 4px auto; /* 中等屏幕手机上下外边距 */
@@ -37,7 +44,7 @@
  */
 .ad-container {
     margin: var(--ad-margin-pc); /* 上下外边距 */
-    width: 90%; /* 容器宽度 */
+    width: var(--ad-container-pc-width); /* PC端容器宽度 */ /* <-- 使用变量 */
     max-width: var(--ad-container-max-width); /* 限制容器最大宽度 */
     border: none; /* 移除边框 */
     background-color: var(--ad-bg-color); /* 背景色 */
@@ -96,7 +103,7 @@
 
     /* 调整中等屏幕下广告容器的样式 */
     .ad-container {
-        width: 96%; /* 宽度略微增加 */
+        width: var(--ad-container-mid-mobile-width); /* <-- 使用变量 */
         margin: var(--ad-margin-mid-mobile); /* 上下外边距 */
         height: var(--ad-container-mid-mobile-height); /* 固定高度 */
         min-height: 35px; /* 最小高度 */
@@ -121,7 +128,7 @@
 
     /* 调整小屏手机下广告容器的样式 */
     .ad-container {
-        width: 98%; /* 宽度进一步增加 */
+        width: var(--ad-container-small-mobile-width); /* <-- 使用变量 */
         margin: var(--ad-margin-small-mobile); /* 上下外边距 */
         height: var(--ad-container-small-mobile-height); /* 固定高度 */
         min-height: 25px; /* 最小高度 */
