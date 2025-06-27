@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>好爱色·精选APP</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
-  
+
   <style>
     /* ===== 主题颜色与全局设置 ===== */
     :root {
       --bg-color: #121212; /* 更深的背景色，增加沉浸感 */
-      --header-bg-color: #1f1f1f; /* 头部背景色，与主背景有微妙区分 */
+      --header-bg-start-color: #3a0052; /* 头部背景渐变起始色 */
+      --header-bg-end-color: #1f1f1f; /* 头部背景渐变结束色 */
       --text-color: #e0e0e0; /* 主要文本颜色 */
       --secondary-text-color: #888; /* 次要文本颜色 (如页脚，更柔和) */
       --logo-bg-color: transparent; /* Logo 背景色设置为透明 */
@@ -19,6 +20,7 @@
       --grid-gap-vertical: 16px; /* 网格垂直间距，更紧凑 */
       --grid-gap-horizontal: 10px; /* 网格水平间距，更紧凑 */
       --accent-color: #6a9ee8; /* 强调色，用于链接悬停等 */
+      --header-title-color: #fff; /* 标题颜色改为纯白，更醒目 */
     }
 
     body {
@@ -35,24 +37,25 @@
       flex-direction: column;
     }
 
-    /* ===== 头部样式 ===== */
+    /* ===== 头部样式 - 优化 ===== */
     header {
-      background-color: var(--header-bg-color);
-      color: var(--text-color);
+      background: linear-gradient(135deg, var(--header-bg-start-color) 0%, var(--header-bg-end-color) 100%); /* 渐变背景 */
+      color: var(--header-title-color); /* 标题颜色 */
       text-align: center;
-      padding: 1.5rem 1rem;
-      font-size: 1.8rem;
-      font-weight: 700;
+      padding: 2rem 1rem; /* 增加内边距 */
+      font-size: 2.2rem; /* 增大字体 */
+      font-weight: 700; /* 加粗 */
       border-bottom: 1px solid var(--border-color);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-      letter-spacing: 0.05em;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* 更明显的阴影 */
+      letter-spacing: 0.1em; /* 增加字间距 */
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* 柔和的文字阴影 */
     }
 
     /* ===== 网格布局 (核心) ===== */
     .grid {
       display: grid;
       /* 核心修改：每行固定为 5 个 App */
-      grid-template-columns: repeat(5, 1fr); 
+      grid-template-columns: repeat(5, 1fr);
       gap: var(--grid-gap-vertical) var(--grid-gap-horizontal);
       padding: 25px 15px; /* 减小内边距，使内容更紧凑 */
       max-width: 1200px; /* 保持最大宽度 */
@@ -84,7 +87,7 @@
     /* ===== Logo图片样式 ===== */
     .card img {
       width: 95%; /* 稍微增大图片比例，几乎填满卡片宽度 */
-      aspect-ratio: 1 / 1; 
+      aspect-ratio: 1 / 1;
       object-fit: cover; /* 确保图片覆盖区域，可能需要裁切 */
       background-color: transparent; /* Logo 背景色透明 */
       border-radius: 20%; /* 使图标更圆润，或使用 5px 保持方形，取决于喜好 */
@@ -125,8 +128,8 @@
         font-size: 10px; /* 进一步减小字号 */
       }
       header {
-        font-size: 1.4rem;
-        padding: 1rem;
+        font-size: 1.6rem; /* 调整手机端标题大小 */
+        padding: 1.5rem 1rem;
       }
     }
 
@@ -140,17 +143,23 @@
       .card-title {
         font-size: 12px;
       }
+      header {
+        font-size: 1.8rem; /* 调整标题大小 */
+      }
     }
-    
+
     /* 平板/桌面: 769px - 1024px, 显示 6 列 (为了平衡，从5列跳到6列) */
     @media (min-width: 769px) and (max-width: 1024px) {
       .grid {
-        grid-template-columns: repeat(6, 1fr); 
+        grid-template-columns: repeat(6, 1fr);
         gap: 20px 12px;
         padding: 25px 20px;
       }
       .card-title {
         font-size: 13px;
+      }
+      header {
+        font-size: 2rem; /* 调整标题大小 */
       }
     }
 
@@ -273,7 +282,7 @@
 </head>
 <body>
   <header>好爱色·精选APP</header>
-  
+
   <div id="card-container" class="grid"></div>
 
   <footer>
@@ -283,13 +292,13 @@
       <p><span class="icon">📧</span> E-mail: <a href="mailto:melyy179@gmail.com">melyy179@gmail.com</a></p>
     </div>
     </footer>
-  
+
   <div id="loading-indicator">
       加载中<span>.</span><span>.</span><span>.</span>
   </div>
 
-  <script src="cards-from-guanli.js"></script> 
-  
+  <script src="cards-from-guanli.js"></script>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const cardContainer = document.getElementById('card-container');
@@ -311,7 +320,7 @@
             card.classList.add('card');
 
             const img = document.createElement('img');
-            img.src = "logos/" + site.image; 
+            img.src = "logos/" + site.image;
             img.alt = site.name + ' Logo';
             img.loading = "lazy";
 
@@ -336,3 +345,4 @@
   </script>
 </body>
 </html>
+
