@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,12 +7,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet" />
   
   <link rel="stylesheet" href="style.css" />
-  
   <link rel="stylesheet" href="ad-styles.css" />
 </head>
 <body>
 <header class="main-header">
   <div class="header-content">
+    <a href="/" class="site-branding"> <img src="images/your-logo.png" alt="好爱色·精选APP Logo" class="site-logo"> <span class="site-brand-name">好爱色·精选APP</span> </a>
     <h1 class="site-title">好爱色 · 臻选私享</h1>
     <p class="header-subtitle">为您量身定制，探索极致感官盛宴。</p> 
   </div>
@@ -28,7 +28,7 @@
     <p class="copyright-text">本页为成人内容导航平台 · 所有链接均跳转至第三方 · 请在法律允许范围内理性访问</p>
   </footer>
 
-  <div id="loading-indicator">
+  <div id="loading-indicator" aria-live="polite">
     加载中
     <div class="spinner-dots">
         <span>.</span><span>.</span><span>.</span>
@@ -38,6 +38,8 @@
   <script src="cards-from-guanli.js"></script>
   <script src="script.js"></script>
   <script src="ad-script.js"></script>
+
 </body>
 </html>
+
 
