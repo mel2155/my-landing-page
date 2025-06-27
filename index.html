@@ -51,10 +51,11 @@
     /* ===== 网格布局 (核心) ===== */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* 进一步微调最小宽度 */
+      /* 核心修改：每行固定为 5 个 App */
+      grid-template-columns: repeat(5, 1fr); 
       gap: var(--grid-gap-vertical) var(--grid-gap-horizontal);
       padding: 25px 15px; /* 减小内边距，使内容更紧凑 */
-      max-width: 1200px; /* 调整最大宽度 */
+      max-width: 1200px; /* 保持最大宽度 */
       margin: 0 auto;
       flex-grow: 1;
     }
@@ -108,7 +109,9 @@
     }
 
     /* ===== 响应式调整 ===== */
-    /* 最小手机屏幕: 320px - 480px, 显示4列 */
+    /* 核心修改：针对不同屏幕宽度，精确控制列数 */
+
+    /* 最小手机屏幕: 320px - 480px, 显示 4 列 */
     @media (max-width: 480px) {
       .grid {
         grid-template-columns: repeat(4, 1fr);
@@ -127,11 +130,11 @@
       }
     }
 
-    /* 中等屏幕手机/小平板: 481px - 768px, 显示6列 */
+    /* 中等屏幕手机/小平板: 481px - 768px, 显示 5 列 */
     @media (min-width: 481px) and (max-width: 768px) {
       .grid {
-        grid-template-columns: repeat(6, 1fr);
-        gap: 18px 10px;
+        grid-template-columns: repeat(5, 1fr); /* 核心：这里是 5 列 */
+        gap: 18px 10px; /* 调整间距 */
         padding: 20px 15px;
       }
       .card-title {
@@ -139,10 +142,10 @@
       }
     }
     
-    /* 平板/桌面: 769px - 1024px, 显示8列 */
+    /* 平板/桌面: 769px - 1024px, 显示 6 列 (为了平衡，从5列跳到6列) */
     @media (min-width: 769px) and (max-width: 1024px) {
       .grid {
-        grid-template-columns: repeat(8, 1fr);
+        grid-template-columns: repeat(6, 1fr); 
         gap: 20px 12px;
         padding: 25px 20px;
       }
@@ -151,10 +154,10 @@
       }
     }
 
-    /* 大屏幕桌面: 1025px 以上, 显示10列 */
+    /* 大屏幕桌面: 1025px 以上, 显示 8 列 (可以根据屏幕宽度决定是否固定为 5 列，或者更多) */
     @media (min-width: 1025px) {
       .grid {
-        grid-template-columns: repeat(10, 1fr);
+        grid-template-columns: repeat(8, 1fr); /* 大屏幕可以显示更多，例如 8 列 */
         gap: 22px 14px;
         padding: 30px 25px;
       }
@@ -333,5 +336,3 @@
   </script>
 </body>
 </html>
-
-
