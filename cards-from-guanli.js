@@ -1,4 +1,4 @@
-// sitesData.js 或者 cards-from-guanli.js
+// cards-from-guanli.js
 
 const sites = [
     {"image": "tiktok.png", "name": "TikTok成人版", "url": "https://c75c.pqbraspk.xyz/chan/GS2461/cAsTp"},
@@ -37,4 +37,5 @@ const sites = [
     {"image": "xz.png", "name": " xvideo", "url": "https://1bb.gpvbunl.cc/chan/xv0022/cH5F"},
     {"image": "myfq.png", "name": "蚂蚁翻墙", "url": "https://063.barrtaq.cc/c-18844/a-bSDAu"}
 ];
+
 
