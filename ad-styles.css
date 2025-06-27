@@ -11,17 +11,14 @@
     overflow: hidden; 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); 
     border-radius: 8px; 
-    /* 调整为更小的内边距，减少额外空间 */
-    padding: 2px; 
+    /* 增加内边距，给图片更多呼吸空间，但又不能太多导致容器过高 */
+    padding: 3px; 
 
-    /* PC端/大屏幕下的最大高度：关键调整 */
-    /* 请根据您的PC横幅图片的实际高度和期望的视觉效果灵活调整此值。
-       如果广告仍然显得太高或有空白，请尝试减小这个值。
-       如果图片被裁剪，可能需要稍微增大。
-    */
-    max-height: 80px; /* 再次微调，通常横幅广告高度在 60-90px 之间 */
+    /* PC端/大屏幕下的最大高度：**关键调整**，增加高度以容纳图片 */
+    /* 建议值：根据您的广告图实际高度微调，目标是刚好容纳一张图。 */
+    max-height: 100px; /* 增加到 100px，让图片有更大空间 */
     /* 最小高度：确保在极端情况下也有一定高度，防止内容完全消失 */
-    min-height: 50px; 
+    min-height: 60px; /* 相应增加 */
 
     /* 弹性布局：确保内部图片居中且垂直对齐，这有助于解决重叠问题 */
     display: flex;
@@ -35,14 +32,8 @@
     width: 100%; 
     height: auto; /* 保持 auto 确保比例，但容器的 max-height 会限制其最终显示高度 */
     border-radius: 5px; 
-    /* 确保图片在保持自身比例的同时，完整地显示在容器内，不会被拉伸或裁剪得很难看 */
-    /* 如果发现图片边缘有裁剪，可以尝试将 object-fit 改为 'contain'，
-       但请务必配合 ad-container 的 max-height 进行精确调整。
-       目前来看，'contain' 更符合您的需求。
-    */
-    object-fit: contain; 
+    object-fit: contain; /* 确保图片在保持自身比例的同时，完整地显示在容器内，不会被拉伸或裁剪 */
     object-position: center; 
-    /* 确保图片不会被容器的 flex 属性过度收缩 */
     flex-shrink: 0;
 }
 
@@ -67,10 +58,10 @@
     .ad-container {
         width: 96%; 
         margin: 8px auto; 
-        padding: 1px; /* 进一步减小内边距 */
-        /* 最大高度：针对中等屏幕的广告高度，请根据实际手机横幅图片微调此值 */
-        max-height: 48px; /* 再次微调，减少冗余高度，确保单图显示正常 */
-        min-height: 38px; 
+        padding: 2px; /* 增加内边距 */
+        /* 最大高度：针对中等屏幕的广告高度，增加高度以容纳图片 */
+        max-height: 60px; /* 增加到 60px */
+        min-height: 45px; /* 相应增加 */
         border-radius: 6px; 
     }
 }
@@ -87,13 +78,12 @@
     .ad-container {
         width: 98%; 
         margin: 5px auto; 
-        max-height: 38px; /* 再次微调，减少冗余高度，确保单图显示正常 */
-        min-height: 28px; 
+        padding: 1px; /* 增加内边距 */
+        max-height: 50px; /* 增加到 50px */
+        min-height: 35px; /* 相应增加 */
         border-radius: 5px; 
     }
     .ad-container img {
         border-radius: 3px;
     }
-}
-
 }
