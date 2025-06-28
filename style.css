@@ -123,50 +123,45 @@ header {
  * .header-content 类用于限制头部内容的宽度并居中显示。
  * 它作为一个 Flexbox 容器，更好地组织内部的 Logo 和标题。
  */
+
+/* ✅ 头部内容容器：布局不变，最大宽度限制与居中对齐 */
 .header-content {
     max-width: 1200px; /* 限制头部内容的最大宽度，防止在超宽屏幕上内容过度拉伸。*/
     margin: 0 auto; /* 水平居中头部内容。*/
-    /*
-     * 头部内容左右内边距保持 5px，使其内容更贴近屏幕边缘，减少空白。
-     */
-    padding: 0 5px; /* 【优化】减小左右内边距 */
+    padding: 0 5px; /* 左右边距更贴边 */
     display: flex; /* 启用 Flexbox 布局，便于内部元素的排列。*/
-    flex-direction: column; /* Flex 子元素（如 .site-branding, .site-title, .header-subtitle）垂直排列。*/
-    align-items: center; /* 内部元素水平居中对齐（在 flex-direction: column 模式下）。*/
-    justify-content: flex-start; /* 内部元素垂直方向起始对齐。*/
+    flex-direction: column; /* 垂直排列标题与副标题 */
+    align-items: center; /* 居中对齐 */
+    justify-content: flex-start;
 }
 
-/* 主标题 (h1) 的样式 */
+/* ✅ 主标题样式 - 更紧凑 */
 .site-title {
-    margin: 0; /* 移除浏览器默认的外边距。*/
-    padding: 0; /* 移除浏览器默认的内边距。*/
-    font-size: 1.3em; /* 【优化】大幅缩小主标题字体大小，使其更协调 */
-    color: var(--header-title-color); /* 使用头部标题颜色变量，确保与主题一致。*/
-    line-height: 1.2; /* 调整行高，使标题文本更紧凑。*/
-    /*
-     * 主标题与副标题的间距。
-     */
-    margin-bottom: 3px;
+    margin: 0;
+    padding: 0;
+    font-size: 1.15em; /* 原 1.3em → 更紧凑 */
+    color: var(--header-title-color);
+    line-height: 1.1;  /* 原 1.2 → 更贴合 */
+    margin-bottom: 2px; /* 与副标题间距更小 */
 }
 
-/* 副标题的样式 */
+/* ✅ 副标题样式 - 字体更小，padding 更紧凑 */
 .header-subtitle {
-    /* font-size 将在媒体查询中调整 */
+    font-size: 0.95em; /* 更小的字号 */
     color: var(--secondary-text-color);
-    margin-top: 5px; /* 略微增加与主标题的间距，以便更突出 */
+    margin-top: 4px;
     font-weight: normal;
-    opacity: 0.9; /* 略微增加不透明度 */
-    white-space: nowrap; /* 防止文本换行 */
-    overflow-x: auto; /* 添加水平滚动条，当内容超出时显示 */
-    -webkit-overflow-scrolling: touch; /* 使 iOS 设备上的滚动更流畅 */
-    padding: 5px 0; /* 增加一些上下内边距，使滚动区域更明显 */
-    max-width: none; /* 移除之前可能设置的 max-width，让内容可以超出 */
-    display: block; /* 确保占据一行 */
-    width: 100%; /* 确保它能填满父容器以实现滚动 */
-    box-sizing: border-box; /* 确保 padding 不会增加宽度 */
-    text-align: center; /* 文本居中 */
+    opacity: 0.9;
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 3px 0; /* 上下间距更小 */
+    max-width: none;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
 }
-
 /* --- */
 /* ===== 网格布局 (核心) ===== */
 /*
