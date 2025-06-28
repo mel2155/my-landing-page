@@ -3,62 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>haoaise.tv - 精品应用推荐</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <meta name="description" content="haoaise.tv - 探索成人娱乐与博彩的终极平台，尽享激情与乐趣">
+    <meta name="keywords" content="成人应用, 博彩平台, 禁漫天堂, 开云体育, 绅士推荐">
+    <meta property="og:title" content="haoaise.tv - 每一秒都好爱色">
+    <meta property="og:image" content="/images/og-image.jpg">
+    <meta property="og:description" content="发现最热门的成人内容与博彩平台，尽在haoaise.tv">
+    <title>haoaise.tv - 绅士专属激情体验</title>
+    <link rel="sitemap" href="/sitemap.xml">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="ad-styles.css">
 </head>
 <body>
-
- <header>
-  <div class="header-content">
-  <h1 class="site-title">haoaise.tv - 每一秒都好爱色</h1>
-
-  <div class="scroll-wrapper" id="subtitle-scroll">
-  <div class="scroll-fade-left"></div>
-  <div class="scroll-fade-right"></div>
-  <div class="scroll-text">
-    ❤️ 大胆探索，释放你的真实渴望 ｜ 🔥 私密推荐，只为真正懂的人 ｜ 💋 无限畅享，前所未有的激情体验 ｜ 🎯 绅士专属推荐，尽在 haoaise.tv ❤️
-  </div>
-</div>
-</header>
+    <canvas id="background-canvas"></canvas>
+    <div id="age-verification" class="modal" aria-live="polite">
+        <div class="modal-content">
+            <h2>🔥 欢迎体验</h2>
+            <p>本网站含成人内容，请确认您年满18岁</p>
+            <button onclick="verifyAge(true)">我已满18岁</button>
+            <button onclick="verifyAge(false)">我未满18岁</button>
+        </div>
+    </div>
+    <div id="disclaimer" class="disclaimer">
+        <p>本网站含成人内容及博彩推广，链接跳转第三方，请自行甄别。建议使用安全浏览器。</p>
+    </div>
+    <header>
+        <div class="header-content">
+            <h1 class="site-title">haoaise.tv - 每一秒都好爱色</h1>
+            <div class="scroll-wrapper" id="subtitle-scroll">
+                <div class="scroll-fade-left"></div>
+                <div class="scroll-fade-right"></div>
+                <div class="scroll-text">
+                    🔥 释放你的渴望，探索绅士专属世界 | 💋 顶级成人内容与博彩体验 | 🎯 立即加入，畅享无限激情 🔥
+                </div>
+            </div>
+        </div>
+    </header>
     <main>
-        <div class="ad-container">
-            </div>
-
-        <div id="card-container" class="grid">
-            </div>
+        <div class="ad-container" aria-live="polite"></div>
+        <div id="card-container" class="grid"></div>
+        <button id="load-more" class="load-more">加载更多精彩</button>
+        <a href="https://t.me/yy21551" class="explore-button" target="_blank" rel="noopener noreferrer">了解详情</a>
     </main>
-
     <footer>
         <div class="contact-info">
-            <p>联系站长:</p>
-            <p>
-                <span class="icon"><i class="fab fa-telegram-plane"></i></span>
-                Telegram: <a href="https://t.me/yy21551" target="_blank" rel="noopener noreferrer">@yy21551</a>
-            </p>
-            <p>
-                <span class="icon"><i class="fas fa-envelope"></i></span>
-                E-mail: <a href="mailto:melyy179@gmail.com">melyy179@gmail.com</a>
-            </p>
+            <p>联系我们:</p>
+            <p><span class="icon"><i class="fab fa-telegram-plane"></i></span> Telegram: <a href="https://t.me/yy21551" target="_blank" rel="noopener noreferrer">@yy21551</a></p>
+            <p><span class="icon"><i class="fas fa-envelope"></i></span> E-mail: <a href="mailto:melyy179@gmail.com">melyy179@gmail.com</a></p>
         </div>
-        <p class="copyright-text">本页含成人内容，链接跳转第三方，请自行甄别。</p>
         <p class="copyright-text">© 2025 haoaise.tv · All Rights Reserved.</p>
     </footer>
-
-    <div id="loading-indicator" aria-live="polite">
+    <div id="loading-indicator" aria-live="polite" role="status">
         正在加载
         <div class="spinner-dots">
             <span>.</span><span>.</span><span>.</span>
         </div>
     </div>
-
     <script src="content-list.js"></script>
     <script src="script.js"></script>
     <script src="ads-data.js"></script>
-    <script src="ad-script.js"></script> </body>
+    <script src="ad-script.js"></script>
+</body>
 </html>
