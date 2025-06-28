@@ -1,68 +1,95 @@
-/* ad-styles.css */
+/*
+ * ad-styles.css - 广告横幅样式文件（终极优化）
+ * ✅ 支持响应式、自动高度、图片不裁切、PC与移动自动切图
+ */
+
+/* ===== CSS 变量定义 ===== */
 :root {
-    --ad-max-width: 1000px;
-    --ad-width: 95%;
-    --ad-margin: 12px auto;
-    --ad-radius: 8px;
-    --ad-img-radius: 6px;
-    --ad-bg: rgba(255, 255, 255, 0.05);
-    --ad-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    --ad-glow: 0 0 15px rgba(255, 61, 110, 0.5);
+  --ad-max-width: 970px;
+
+  /* 宽度百分比控制左右留白 */
+  --ad-pc-width: 95%;
+  --ad-mid-width: 98%;
+  --ad-mobile-width: 99%;
+
+  /* 间距控制 */
+  --ad-margin-pc: 20px auto;
+  --ad-margin-mid: 14px auto;
+  --ad-margin-mobile: 10px auto;
+
+  /* 圆角 & 背景 */
+  --ad-radius: 8px;
+  --ad-img-radius: 6px;
+
+  --ad-bg: rgba(0, 0, 0, 0.15);
+  --ad-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+
+  --ad-img-offset-y: -0.5px;
 }
 
+/* ===== 广告容器主样式（PC端）===== */
 .ad-container {
-    width: var(--ad-width);
-    max-width: var(--ad-max-width);
-    margin: var(--ad-margin);
-    background: var(--ad-bg);
-    backdrop-filter: blur(5px);
-    border-radius: var(--ad-radius);
-    box-shadow: var(--ad-shadow);
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    min-height: 60px;
-    transition: opacity 0.5s ease, box-shadow 0.3s ease;
+  width: var(--ad-pc-width);
+  max-width: var(--ad-max-width);
+  margin: var(--ad-margin-pc);
+  padding: 0;
+  background: var(--ad-bg);
+  border-radius: var(--ad-radius);
+  box-shadow: var(--ad-shadow);
+  overflow: hidden;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: auto;        /* ✅ 自动适应高度 */
+  min-height: 40px;    /* ✅ 防止塌陷 */
 }
 
-.ad-container:hover {
-    box-shadow: var(--ad-glow);
-}
-
+/* ===== 广告图片通用样式 ===== */
 .ad-container img {
-    width: 100%;
-    height: auto;
-    max-height: 120px;
-    object-fit: contain;
-    border-radius: var(--ad-img-radius);
-    transition: opacity 0.5s ease;
+  display: block;
+  width: 100%;
+  height: auto;                          /* ✅ 保持图片真实比例 */
+  max-height: 120px;                    /* ✅ 限制图片最高高度防爆屏 */
+  object-fit: contain;
+  object-position: center;
+  border-radius: var(--ad-img-radius);
+  transform: translateY(var(--ad-img-offset-y));
+
+  flex-shrink: 0;
+  flex-grow: 1;
 }
 
+/* 默认显示 PC 图片，隐藏 mobile 图片 */
 .ad-image-pc { display: block; }
 .ad-image-mobile { display: none; }
 
+/* ===== 中等屏幕（≤768px）===== */
 @media (max-width: 768px) {
-    .ad-container {
-        width: 98%;
-        margin: 10px auto;
-        border-radius: 6px;
-    }
-    .ad-container img {
-        max-height: 90px;
-    }
-    .ad-image-pc { display: none; }
-    .ad-image-mobile { display: block; }
+  .ad-container {
+    width: var(--ad-mid-width);
+    margin: var(--ad-margin-mid);
+    border-radius: 6px;
+  }
+  .ad-container img {
+    max-height: 90px;
+    border-radius: 5px;
+  }
+  .ad-image-pc { display: none; }
+  .ad-image-mobile { display: block; }
 }
 
+/* ===== 小屏手机（≤480px）===== */
 @media (max-width: 480px) {
-    .ad-container {
-        width: 100%;
-        margin: 8px auto;
-        border-radius: 5px;
-    }
-    .ad-container img {
-        max-height: 70px;
-    }
+  .ad-container {
+    width: var(--ad-mobile-width);
+    margin: var(--ad-margin-mobile);
+    border-radius: 5px;
+  }
+  .ad-container img {
+    max-height: 72px;
+    border-radius: 4px;
+  }
 }
