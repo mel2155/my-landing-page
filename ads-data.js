@@ -4,9 +4,9 @@
 const adsData = [
     {
         name: "主要推广广告",
-        pcImage: "images/ad-banner-pc.jpg.mp4",    // PC端广告图片的路径
-        mobileImage: "images/ad-banner-mobile.jpg.mp4", // 移动端广告图片的路径
-        alt: "Haohaise.tv 的主要推广广告",
+        pcImage: "images/ad-banner-pc.gif",    // PC端广告图片的路径
+        mobileImage: "ad-banner-mobile.gif", // 移动端广告图片的路径
+        alt: "haohaise.tv 的主要推广广告",
         link: "https://cs-site-cloud-deploy.pages.dev" // 此广告应链接到的URL，请替换为您的实际链接
     },
     // 如果您有更多广告，可以在这里添加更多对象
