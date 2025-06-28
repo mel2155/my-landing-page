@@ -665,7 +665,7 @@ footer {
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
-  padding: 1rem 0;
+  padding: 0.4rem 0; /* ✅ 上下间距更窄，更紧凑 */
   white-space: nowrap;
   background: transparent;
 }
