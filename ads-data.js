@@ -1,18 +1,18 @@
 // ads-data.js
-// 这个文件专门用于存储广告数据
+// 广告数据数组，供 ad-script.js 使用
+
 const adsData = [
     {
         name: "主要推广广告",
-        pcImage: "images/ad-banner-pc.gif",          // ✅ PC端图片路径
-        mobileImage: "images/ad-banner-mobile.gif",  // ✅ 移动端图片路径
-        alt: "haohaise.tv 的主要推广广告",             // ✅ 图片 ALT 文本
-        link: "https://cs-site-cloud-deploy.pages.dev" // ✅ 广告跳转链接
+        pcImage: "images/ad-banner-pc.gif",            // ✅ PC 图
+        mobileImage: "images/ad-banner-mobile.gif",    // ✅ Mobile 图
+        alt: "haohaise.tv 的主要推广广告",
+        link: "https://cs-site-cloud-deploy.pages.dev" // ✅ 跳转链接
     }
-];
 
- // 如果您有更多广告，可以在这里添加更多对象
- /*
-    {
+    // ✅ 如需添加更多广告，请取消注释以下项并修改：
+    /*
+    ,{
         name: "第二个广告",
         pcImage: "images/your-second-ad-pc.JPG",
         mobileImage: "images/your-second-ad-mobile.JPG",
