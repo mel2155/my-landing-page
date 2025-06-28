@@ -673,27 +673,18 @@ footer {
 #subtitle-scroll .scroll-text {
   display: inline-block;
   color: #e91e63;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 600;
   white-space: nowrap;
-  padding-left: 0;
-  animation: none;
+  padding-left: 100%;
+  animation: subtitle-scroll-global 18s linear infinite;
   transition: all 0.3s ease;
   font-family: 'Montserrat', 'Segoe UI', 'PingFang SC', sans-serif;
 }
 
-/* 移动端滚动激活 */
-@media screen and (max-width: 768px) {
-  #subtitle-scroll .scroll-text {
-    padding-left: 100%;
-    animation: subtitle-scroll-mobile 18s linear infinite;
-    font-size: 1.8rem;
-  }
-
-  @keyframes subtitle-scroll-mobile {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
-  }
+@keyframes subtitle-scroll-global {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }
 
 /* 悬停暂停 */
