@@ -1,144 +1,115 @@
 /*
- * ad-styles.css - 广告横幅的样式文件。
- * 与主站样式 (style.css) 分离，便于模块化管理和维护。
- *
- * 优化说明：
- * - 引入 CSS 变量，便于统一管理间距、圆角和图片高度。
- * - 优化了广告容器的 Flexbox 布局，确保图片在不同尺寸下都能居中。
- * - **主要调整：增加了 .ad-container 的宽度百分比，以减少左右留白，使广告看起来更宽。**
- * - 响应式断点保持不变，但样式调整更具针对性。
- * - 移除了多余的边框和内边距，使广告与内容融合更紧凑。
+ * ad-styles.css - 广告横幅的样式文件（优化版）
+ * ✅ 调整广告区域上下间距更窄，容器高度更紧凑，适配 PC 和移动端。
  */
 
 /* ===== CSS 变量定义 ===== */
-/* 这些变量可以在整个样式表中使用，便于统一修改和管理。*/
 :root {
-    --ad-container-max-width: 970px; /* 广告容器的最大宽度 */
-    --ad-container-pc-height: 90px; /* PC端广告容器的固定高度（根据图片实际高度） */
-    --ad-container-mid-mobile-height: 50px; /* 中等屏幕手机广告容器的高度 */
-    --ad-container-small-mobile-height: 40px; /* 小屏手机广告容器的高度 */
+  --ad-container-max-width: 970px;                 /* 最大宽度限制 */
+  --ad-container-pc-height: 80px;                  /* PC端广告高度（原 90px） */
+  --ad-container-mid-mobile-height: 48px;          /* 中等设备高度 */
+  --ad-container-small-mobile-height: 38px;        /* 小屏手机高度 */
 
-    /* 调整：增加了宽度百分比，减少左右留白，让广告看起来更宽 */
-    --ad-container-pc-width: 95%; /* PC端宽度从 90% 调整为 95% */
-    --ad-container-mid-mobile-width: 98%; /* 中等屏幕手机宽度从 96% 调整为 98% */
-    --ad-container-small-mobile-width: 99%; /* 小屏手机宽度从 98% 调整为 99% */
+  --ad-container-pc-width: 95%;
+  --ad-container-mid-mobile-width: 98%;
+  --ad-container-small-mobile-width: 99%;
 
+  --ad-margin-pc: 4px auto;                        /* ✅ 上下间距缩小 */
+  --ad-margin-mid-mobile: 2px auto;
+  --ad-margin-small-mobile: 1px auto;
 
-    --ad-margin-pc: 10px auto; /* PC端上下外边距 */
-    --ad-margin-mid-mobile: 4px auto; /* 中等屏幕手机上下外边距 */
-    --ad-margin-small-mobile: 2px auto; /* 小屏手机上下外边距 */
+  --ad-border-radius: 8px;
+  --ad-image-border-radius: 5px;
 
-    --ad-border-radius: 8px; /* 容器默认圆角 */
-    --ad-image-border-radius: 5px; /* 图片默认圆角 */
-
-    --ad-bg-color: rgba(0, 0, 0, 0.2); /* 广告容器背景色 */
-    --ad-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 广告容器阴影 */
-    --image-vertical-offset: -0.5px; /* 图片垂直微调量 */
+  --ad-bg-color: rgba(0, 0, 0, 0.2);
+  --ad-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --image-vertical-offset: -0.5px;
 }
 
-
-/* ===== 广告容器的通用样式定义 ===== */
-/*
- * .ad-container 类应用于包含广告图片或内容的容器。
- * 这些样式主要影响在 PC 端和较大屏幕下的广告显示行为和外观。
- */
+/* ===== 广告容器主样式 ===== */
 .ad-container {
-    margin: var(--ad-margin-pc); /* 上下外边距 */
-    width: var(--ad-container-pc-width); /* PC端容器宽度 */ /* <-- 使用变量 */
-    max-width: var(--ad-container-max-width); /* 限制容器最大宽度 */
-    border: none; /* 移除边框 */
-    background-color: var(--ad-bg-color); /* 背景色 */
-    text-align: center; /* 文本居中 */
-    overflow: hidden; /* 隐藏溢出内容 */
-    box-shadow: var(--ad-box-shadow); /* 柔和阴影 */
-    border-radius: var(--ad-border-radius); /* 容器圆角 */
-    padding: 0; /* 移除内边距，让图片紧贴边缘 */
+  margin: var(--ad-margin-pc);
+  width: var(--ad-container-pc-width);
+  max-width: var(--ad-container-max-width);
+  height: var(--ad-container-pc-height);
+  min-height: 50px;
+  padding: 0;
+  border: none;
+  border-radius: var(--ad-border-radius);
+  background-color: var(--ad-bg-color);
+  box-shadow: var(--ad-box-shadow);
+  overflow: hidden;
+  text-align: center;
 
-    /* 设定PC端容器高度，精确到图片的实际高度 */
-    height: var(--ad-container-pc-height);
-    min-height: 50px; /* 最小高度 */
-
-    display: flex; /* 弹性布局，用于内部图片居中 */
-    justify-content: center; /* 水平居中 */
-    align-items: center;   /* 垂直居中 */
-    flex-wrap: nowrap;     /* 防止图片换行 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
-/* 广告图片通用样式：同时应用于PC端和手机端的广告图片 */
+/* 广告图片通用样式 */
 .ad-container img {
-    display: block; /* 块级元素 */
-    width: 100%; /* 宽度填充父容器 */
-    height: 100%; /* 高度填充父容器 */
-    max-height: 100%; /* 确保不超过容器高度 */
-    border-radius: var(--ad-image-border-radius); /* 图片圆角 */
-    object-fit: contain; /* 保持宽高比，完整显示 */
-    object-position: center; /* 图片内容居中 */
-    flex-shrink: 0; /* 防止图片在空间不足时缩小 */
-    flex-grow: 1; /* 允许图片在有空间时增长 */
-
-    /* 向上微调图片位置，解决细微视觉偏差 */
-    transform: translateY(var(--image-vertical-offset));
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: var(--ad-image-border-radius);
+  flex-grow: 1;
+  flex-shrink: 0;
+  transform: translateY(var(--image-vertical-offset));
 }
 
-/* 默认情况 (PC端视口): 显示PC广告图片，隐藏手机广告图片 */
+/* 默认仅显示 PC 图片 */
 .ad-image-pc {
-    display: block;
+  display: block;
 }
 .ad-image-mobile {
-    display: none;
+  display: none;
 }
 
-
-/* --- 媒体查询：响应式设计断点 --- */
-
-/* 媒体查询：当屏幕宽度小于或等于 768px 时 (中等屏幕手机/小平板) */
+/* ===== 中等屏幕设备：768px 以下 ===== */
 @media (max-width: 768px) {
-    /* 显示移动端图片，隐藏PC端图片 */
-    .ad-image-pc {
-        display: none;
-    }
-    .ad-image-mobile {
-        display: block;
-    }
+  .ad-image-pc {
+    display: none;
+  }
+  .ad-image-mobile {
+    display: block;
+  }
 
-    /* 调整中等屏幕下广告容器的样式 */
-    .ad-container {
-        width: var(--ad-container-mid-mobile-width); /* <-- 使用变量 */
-        margin: var(--ad-margin-mid-mobile); /* 上下外边距 */
-        height: var(--ad-container-mid-mobile-height); /* 固定高度 */
-        min-height: 35px; /* 最小高度 */
-        border-radius: 6px; /* 调整圆角 */
-    }
+  .ad-container {
+    width: var(--ad-container-mid-mobile-width);
+    height: var(--ad-container-mid-mobile-height);
+    min-height: 35px;
+    margin: var(--ad-margin-mid-mobile);
+    border-radius: 6px;
+  }
 
-    /* 中等屏幕下图片微调保持一致 */
-    .ad-container img {
-        transform: translateY(var(--image-vertical-offset));
-    }
+  .ad-container img {
+    transform: translateY(var(--image-vertical-offset));
+  }
 }
 
-/* 媒体查询：当屏幕宽度小于或等于 480px 时 (小屏手机) */
+/* ===== 小屏手机设备：480px 以下 ===== */
 @media (max-width: 480px) {
-    /* 显示移动端图片，隐藏PC端图片 (与上一个断点保持一致) */
-    .ad-image-pc {
-        display: none;
-    }
-    .ad-image-mobile {
-        display: block;
-    }
+  .ad-image-pc {
+    display: none;
+  }
+  .ad-image-mobile {
+    display: block;
+  }
 
-    /* 调整小屏手机下广告容器的样式 */
-    .ad-container {
-        width: var(--ad-container-small-mobile-width); /* <-- 使用变量 */
-        margin: var(--ad-margin-small-mobile); /* 上下外边距 */
-        height: var(--ad-container-small-mobile-height); /* 固定高度 */
-        min-height: 25px; /* 最小高度 */
-        border-radius: 5px; /* 调整圆角 */
-    }
+  .ad-container {
+    width: var(--ad-container-small-mobile-width);
+    height: var(--ad-container-small-mobile-height);
+    min-height: 25px;
+    margin: var(--ad-margin-small-mobile);
+    border-radius: 5px;
+  }
 
-    /* 调整小屏手机下广告图片的圆角半径 */
-    .ad-container img {
-        border-radius: 3px;
-        /* 小屏幕下图片微调保持一致 */
-        transform: translateY(var(--image-vertical-offset));
-    }
+  .ad-container img {
+    border-radius: 3px;
+    transform: translateY(var(--image-vertical-offset));
+  }
 }
