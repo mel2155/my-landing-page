@@ -662,3 +662,37 @@ footer {
         padding: 0; /* 【优化】减小内边距 */
     }
 }
+
+
+
+.scroll-wrapper {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0.5rem 0;
+  background: transparent;
+  white-space: nowrap;
+}
+
+.scroll-text {
+  display: inline-block;
+  color: #444;
+  font-size: 1rem;
+  white-space: nowrap;
+  padding-left: 0;
+  animation: none;
+}
+
+/* 移动端滚动样式 */
+@media screen and (max-width: 768px) {
+  .scroll-text {
+    padding-left: 100%;
+    animation: scroll-mobile 18s linear infinite;
+    font-size: 0.9rem;
+  }
+
+  @keyframes scroll-mobile {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+}
