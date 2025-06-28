@@ -664,34 +664,40 @@ footer {
 }
 
 
-
-.scroll-wrapper {
+/* 🔥 专属：滚动字幕区域（不影响其他样式） */
+#subtitle-scroll.scroll-wrapper {
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
-  padding: 0.5rem 0;
+  padding: 0.6rem 0;
   background: transparent;
   white-space: nowrap;
 }
 
-.scroll-text {
+#subtitle-scroll .scroll-text {
   display: inline-block;
   color: #444;
   font-size: 1rem;
   white-space: nowrap;
   padding-left: 0;
   animation: none;
+  transition: all 0.3s ease;
 }
 
-/* 移动端滚动样式 */
+/* 悬停暂停滚动 */
+#subtitle-scroll .scroll-text:hover {
+  animation-play-state: paused;
+}
+
+/* 移动端激活滚动动画 */
 @media screen and (max-width: 768px) {
-  .scroll-text {
+  #subtitle-scroll .scroll-text {
     padding-left: 100%;
-    animation: scroll-mobile 18s linear infinite;
+    animation: subtitle-scroll-mobile 18s linear infinite;
     font-size: 0.9rem;
   }
 
-  @keyframes scroll-mobile {
+  @keyframes subtitle-scroll-mobile {
     0%   { transform: translateX(0); }
     100% { transform: translateX(-100%); }
   }
