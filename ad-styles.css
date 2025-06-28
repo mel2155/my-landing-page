@@ -13,10 +13,10 @@
   --ad-container-pc-width: 95%;
   --ad-container-mid-mobile-width: 98%;
   --ad-container-small-mobile-width: 99%;
-
-  --ad-margin-pc: 4px auto;                        /* ✅ 上下间距缩小 */
-  --ad-margin-mid-mobile: 2px auto;
-  --ad-margin-small-mobile: 1px auto;
+  
+  --ad-margin-pc: 24px auto;        /* 增加 PC 上下留白 */
+  --ad-margin-mid-mobile: 12px auto; /* 中等手机上下更明显 */
+  --ad-margin-small-mobile: 8px auto; /* 小屏设备也加宽一点 */
 
   --ad-border-radius: 8px;
   --ad-image-border-radius: 5px;
