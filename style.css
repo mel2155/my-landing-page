@@ -664,41 +664,65 @@ footer {
 }
 
 
-/* 🔥 专属：滚动字幕区域（不影响其他样式） */
+/* 🎯 滚动字幕 + 诱导样式增强 */
 #subtitle-scroll.scroll-wrapper {
+  position: relative;
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
-  padding: 0.6rem 0;
-  background: transparent;
+  padding: 1rem 0;
   white-space: nowrap;
+  background: transparent;
 }
 
 #subtitle-scroll .scroll-text {
   display: inline-block;
-  color: #444;
-  font-size: 1rem;
+  color: #e91e63;
+  font-size: 2rem;
+  font-weight: 600;
   white-space: nowrap;
   padding-left: 0;
   animation: none;
   transition: all 0.3s ease;
+  font-family: 'Montserrat', 'Segoe UI', 'PingFang SC', sans-serif;
 }
 
-/* 悬停暂停滚动 */
-#subtitle-scroll .scroll-text:hover {
-  animation-play-state: paused;
-}
-
-/* 移动端激活滚动动画 */
+/* 移动端滚动激活 */
 @media screen and (max-width: 768px) {
   #subtitle-scroll .scroll-text {
     padding-left: 100%;
     animation: subtitle-scroll-mobile 18s linear infinite;
-    font-size: 0.9rem;
+    font-size: 1.8rem;
   }
 
   @keyframes subtitle-scroll-mobile {
     0%   { transform: translateX(0); }
     100% { transform: translateX(-100%); }
   }
+}
+
+/* 悬停暂停 */
+#subtitle-scroll .scroll-text:hover {
+  animation-play-state: paused;
+}
+
+/* 💡 左右渐变遮罩 */
+.scroll-fade-left,
+.scroll-fade-right {
+  position: absolute;
+  top: 0;
+  width: 40px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.scroll-fade-left {
+  left: 0;
+  background: linear-gradient(to right, #fff, transparent);
+}
+
+.scroll-fade-right {
+  right: 0;
+  background: linear-gradient(to left, #fff, transparent);
 }
