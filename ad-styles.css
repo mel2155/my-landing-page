@@ -1,23 +1,21 @@
 /*
  * ad-styles.css - 广告横幅样式文件（终极优化）
- * ✅ 支持响应式、自动高度、图片不裁切、PC与移动自动切图
+ * ✅ 支持响应式、自动高度、PC 与移动自动切图
+ * ✅ PC 图片真实尺寸 970×60，Mobile 为 750×100
  */
 
 /* ===== CSS 变量定义 ===== */
 :root {
   --ad-max-width: 970px;
 
-  /* 宽度百分比控制左右留白 */
   --ad-pc-width: 95%;
   --ad-mid-width: 98%;
   --ad-mobile-width: 99%;
 
-  /* 间距控制 */
   --ad-margin-pc: 20px auto;
   --ad-margin-mid: 14px auto;
   --ad-margin-mobile: 10px auto;
 
-  /* 圆角 & 背景 */
   --ad-radius: 8px;
   --ad-img-radius: 6px;
 
@@ -43,27 +41,26 @@
   justify-content: center;
   align-items: center;
 
-  height: auto;        /* ✅ 自动适应高度 */
-  min-height: 40px;    /* ✅ 防止塌陷 */
+  height: auto;
+  min-height: 40px;
 }
 
-/* ===== 广告图片通用样式 ===== */
-.ad-container img {
+/* ===== PC 广告图样式 ===== */
+.ad-container img.ad-image-pc {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 120px;
-  object-fit: cover; /* ✅ 关键：铺满整个容器宽度 */
-  object-position: center;
+  max-height: none;
   border-radius: var(--ad-img-radius);
   transform: translateY(var(--ad-img-offset-y));
   flex-shrink: 0;
   flex-grow: 1;
 }
 
-/* 默认显示 PC 图片，隐藏 mobile 图片 */
-.ad-image-pc { display: block; }
-.ad-image-mobile { display: none; }
+/* ===== 默认隐藏移动图 ===== */
+.ad-container img.ad-image-mobile {
+  display: none;
+}
 
 /* ===== 中等屏幕（≤768px）===== */
 @media (max-width: 768px) {
@@ -72,12 +69,20 @@
     margin: var(--ad-margin-mid);
     border-radius: 6px;
   }
-  .ad-container img {
-    max-height: 90px;
-    border-radius: 5px;
+
+  .ad-container img.ad-image-pc {
+    display: none;
   }
-  .ad-image-pc { display: none; }
-  .ad-image-mobile { display: block; }
+
+  .ad-container img.ad-image-mobile {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 100px;
+    object-fit: contain;
+    border-radius: 5px;
+    transform: translateY(var(--ad-img-offset-y));
+  }
 }
 
 /* ===== 小屏手机（≤480px）===== */
@@ -87,8 +92,9 @@
     margin: var(--ad-margin-mobile);
     border-radius: 5px;
   }
-  .ad-container img {
-    max-height: 72px;
+
+  .ad-container img.ad-image-mobile {
+    max-height: 90px;
     border-radius: 4px;
   }
 }
