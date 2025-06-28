@@ -48,16 +48,18 @@
 /* ===== PC 广告图样式 ===== */
 .ad-container img.ad-image-pc {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
   max-height: none;
+  object-fit: unset;
+  object-position: center;
+  margin: 0 auto;
   border-radius: var(--ad-img-radius);
   transform: translateY(var(--ad-img-offset-y));
-  flex-shrink: 0;
-  flex-grow: 1;
 }
 
-/* ===== 默认隐藏移动图 ===== */
+/* 默认隐藏移动端广告图 */
 .ad-container img.ad-image-mobile {
   display: none;
 }
@@ -80,6 +82,7 @@
     height: auto;
     max-height: 100px;
     object-fit: contain;
+    object-position: center;
     border-radius: 5px;
     transform: translateY(var(--ad-img-offset-y));
   }
