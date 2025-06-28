@@ -263,14 +263,14 @@ footer {
   font-size: 0.9rem; /* 整体字号略微减小，作为辅助信息。*/
   color: var(--footer-text-color); /* 应用页脚文本颜色变量。*/
   margin-top: 20px; /* 页脚与上方内容的距离。*/
-  border-top: 1px solid var(--border-color); /* 页脚顶部边框，与主题色协调。*/
-  background-color: var(--header-bg-end-color); /* 页脚背景色，与头部渐变结束色保持一致，形成视觉上的呼应。*/
+  border-top: none; /* 🚫 去除顶部边框线 */
+  background-color: var(--header-bg-end-color); /* 页脚背景色，与头部渐变结束色保持一致。*/
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3); /* 顶部阴影，增加层次感。*/
-  line-height: 1.3; /* 整体行高，适用于页脚所有文本，确保紧凑。*/
+  line-height: 1.3; /* 整体行高，确保紧凑。*/
   display: flex; /* 启用 Flexbox 布局。*/
-  flex-direction: column; /* Flex 子元素（联系信息块和版权文本）垂直排列。*/
-  justify-content: center; /* 垂直居中 Flex 子元素。*/
-  align-items: center; /* 水平居中 Flex 子元素。*/
+  flex-direction: column; /* 子元素垂直排列。*/
+  justify-content: center; /* 垂直居中。*/
+  align-items: center; /* 水平居中。*/
 }
 
 /* .contact-info 类用于包裹联系信息（“联系站长”、Telegram、E-mail）。*/
