@@ -51,13 +51,12 @@
 .ad-container img {
   display: block;
   width: 100%;
-  height: auto;                          /* ✅ 保持图片真实比例 */
-  max-height: 120px;                    /* ✅ 限制图片最高高度防爆屏 */
-  object-fit: contain;
+  height: auto;
+  max-height: 120px;
+  object-fit: cover; /* ✅ 关键：铺满整个容器宽度 */
   object-position: center;
   border-radius: var(--ad-img-radius);
   transform: translateY(var(--ad-img-offset-y));
-
   flex-shrink: 0;
   flex-grow: 1;
 }
