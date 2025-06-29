@@ -1,4 +1,4 @@
-// ad-script.js - 终极优化版：只加载一张图，自动识别设备类型
+// ad-script.js - 最终优化版：自适应设备 + 自动切图 + 响应式
 
 document.addEventListener('DOMContentLoaded', function () {
   const adContainer = document.querySelector('.ad-container');
@@ -40,17 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // 首次加载执行
   displayAds(adsData);
 
-  // ✅ 可选：窗口缩放时重新渲染广告（避免从横屏变竖屏显示错图）
+  // 监听窗口变化，自动切图
   window.addEventListener('resize', () => {
     displayAds(adsData);
   });
-
-  /*
-  // ✅ 可选：启用轮播（每 10 秒切换一次广告）
-  let currentAdIndex = 0;
-  setInterval(() => {
-    currentAdIndex = (currentAdIndex + 1) % adsData.length;
-    displayAds([adsData[currentAdIndex]]);
-  }, 10000);
-  */
 });
