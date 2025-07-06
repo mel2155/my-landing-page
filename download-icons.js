@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!site || !site.url) return;
 
       const icon = document.createElement('img');
-      icon.src = "download-logo.png";  // 图标文件在根目录
+      icon.src = "images/download-logo.png";  // 图标文件在根目录
       icon.alt = "点击下载";
       icon.className = "download-icon";
 
