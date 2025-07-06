@@ -30,11 +30,13 @@
 .ad-wrapper img.ad-image-pc {
   width: 100%;
   height: auto;
+  max-height: 180px;           /* ✅ 限制最大高度，防止拉长 */
   display: block;
   object-fit: contain;
   object-position: center;
   border-radius: 10px;
 }
+
 
 /* 默认隐藏移动图 */
 .ad-wrapper img.ad-image-mobile {
