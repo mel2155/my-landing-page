@@ -48,5 +48,5 @@ document.addEventListener('DOMContentLoaded', () => {
         loadingIndicator.classList.remove('show');
     }
 
-  }, 600); // 模拟加载延迟 600 毫秒，让加载动画效果更明显
+  }, 1500); // 模拟加载延迟 1500 毫秒，让加载动画效果更明显
 });
