@@ -1,28 +1,33 @@
 /*
  * ad-styles.css - 广告横幅样式文件（最终推荐版）
- * ✅ 横幅拉满宽度（100%）
- * ✅ 保留圆角、阴影，整体更有层次
- * ✅ 移动端自动切图，最大高度限制
+ * ✅ 广告自动切图（PC / 移动）
+ * ✅ 多广告上下排列
+ * ✅ 保留圆角 + 阴影 + 间距 + 响应式
  */
 
-/* ===== 通用广告容器样式 ===== */
+/* ===== 广告容器：外层容器，包含多个广告 ===== */
 .ad-container {
   width: 100%;
   max-width: 100%;
   margin: 20px auto;
   padding: 0;
+  display: flex;
+  flex-direction: column; /* ✅ 关键：垂直排列多个广告 */
+  gap: 12px;               /* ✅ 广告之间的间距 */
+}
+
+/* ===== 每一个广告单元（包裹一个广告） ===== */
+.ad-wrapper {
+  width: 100%;
   background: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* PC端广告图样式 */
-.ad-container img.ad-image-pc {
+.ad-wrapper img.ad-image-pc {
   width: 100%;
   height: auto;
   display: block;
@@ -32,22 +37,21 @@
 }
 
 /* 默认隐藏移动图 */
-.ad-container img.ad-image-mobile {
+.ad-wrapper img.ad-image-mobile {
   display: none;
 }
 
 /* ===== 中等屏幕及以下（≤768px）===== */
 @media (max-width: 768px) {
-  .ad-container {
-    margin: 14px auto;
+  .ad-wrapper {
     border-radius: 6px;
   }
 
-  .ad-container img.ad-image-pc {
+  .ad-wrapper img.ad-image-pc {
     display: none;
   }
 
-  .ad-container img.ad-image-mobile {
+  .ad-wrapper img.ad-image-mobile {
     display: block;
     width: 100%;
     height: auto;
@@ -60,20 +64,12 @@
 
 /* ===== 小屏手机（≤480px）===== */
 @media (max-width: 480px) {
-  .ad-container {
-    margin: 10px auto;
+  .ad-wrapper {
     border-radius: 4px;
   }
 
-  .ad-container img.ad-image-mobile {
+  .ad-wrapper img.ad-image-mobile {
     max-height: 90px;
     border-radius: 4px;
   }
 }
-/* ✅ 多个广告上下排列包裹容器 */
-.ad-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 10px; /* 广告之间的间距 */
-}
-
