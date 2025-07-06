@@ -1,7 +1,7 @@
 .download-icon {
-  width: 20px;
-  height: 20px;
-  margin: 4px auto 2px;  /* 上 4px，下 2px */
+  width: 18px;
+  height: 18px;
+  margin: 2px auto 0;  /* 上下距离都更小 */
   display: block;
   cursor: pointer;
   transition: transform 0.2s ease;
