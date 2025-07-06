@@ -1,12 +1,8 @@
 .download-icon {
-  width: 22px;
-  height: 22px;
-  margin: 6px auto 0;
+  width: 20px;
+  height: 20px;
+  margin: 4px auto 2px;  /* 上 4px，下 2px */
   display: block;
   cursor: pointer;
   transition: transform 0.2s ease;
-}
-
-.download-icon:hover {
-  transform: scale(1.1);
 }
