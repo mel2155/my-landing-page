@@ -1,4 +1,4 @@
-// ad-script.js - 最终优化版：自适应设备 + 自动切图 + 响应式
+// ad-script.js - 最终优化版：自适应设备 + 自动切图 + 响应式 + 多广告支持
 
 document.addEventListener('DOMContentLoaded', function () {
   const adContainer = document.querySelector('.ad-container');
@@ -15,32 +15,29 @@ document.addEventListener('DOMContentLoaded', function () {
   function displayAds(adArray) {
     if (!adContainer || adArray.length === 0) return;
 
-    const ad = adArray[0]; // 默认显示第一条
+    adContainer.innerHTML = ''; // 清空容器
 
-    // 清空广告容器
-    adContainer.innerHTML = '';
+    adArray.forEach((ad) => {
+      const adLink = document.createElement('a');
+      adLink.href = ad.link;
+      adLink.target = '_blank';
+      adLink.rel = 'noopener noreferrer';
 
-    // 创建 <a> 标签
-    const adLink = document.createElement('a');
-    adLink.href = ad.link;
-    adLink.target = '_blank';
-    adLink.rel = 'noopener noreferrer';
+      const img = document.createElement('img');
+      img.src = isMobileView() ? ad.mobileImage : ad.pcImage;
+      img.alt = ad.alt || '广告';
+      img.classList.add(isMobileView() ? 'ad-image-mobile' : 'ad-image-pc');
+      img.style.width = '100%'; // 可选样式
 
-    // 创建图片（仅加载一张）
-    const img = document.createElement('img');
-    img.src = isMobileView() ? ad.mobileImage : ad.pcImage;
-    img.alt = ad.alt || '广告';
-    img.classList.add(isMobileView() ? 'ad-image-mobile' : 'ad-image-pc');
-
-    // 插入 DOM
-    adLink.appendChild(img);
-    adContainer.appendChild(adLink);
+      adLink.appendChild(img);
+      adContainer.appendChild(adLink);
+    });
   }
 
-  // 首次加载执行
+  // 首次加载
   displayAds(adsData);
 
-  // 监听窗口变化，自动切图
+  // 响应式监听
   window.addEventListener('resize', () => {
     displayAds(adsData);
   });
