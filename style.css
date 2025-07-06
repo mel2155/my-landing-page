@@ -46,7 +46,7 @@
   --footer-icon-color: #FFD700; /* 页脚图标颜色：与链接颜色一致，保持视觉连贯性。*/
 
   /* 加载指示器相关颜色变量。*/
-  --loading-text-color: #FFFFFF; /* 加载指示器文本颜色：通常使用白色，确保在深色背景下清晰可见。*/
+  --loading-text-color: #E60044; /* 加载指示器文本颜色：通常使用白色，确保在深色背景下清晰可见。*/
   --loading-spinner-color: var(--accent-color); /* 加载指示器点颜色：与强调色保持一致，增加品牌识别度。*/
 }
 
