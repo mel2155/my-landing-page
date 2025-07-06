@@ -70,3 +70,10 @@
     border-radius: 4px;
   }
 }
+/* ✅ 多个广告上下排列包裹容器 */
+.ad-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* 广告之间的间距 */
+}
+
