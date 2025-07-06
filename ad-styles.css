@@ -1,24 +1,30 @@
 /*
- * ad-styles.css - 广告横幅样式文件（最终推荐版）
- * ✅ 横幅拉满宽度（100%）
- * ✅ 保留圆角、阴影，整体更有层次
- * ✅ 移动端自动切图，最大高度限制
+ * ad-styles.css - 广告横幅样式（最终推荐版）
+ * ✅ 多广告上下排列
+ * ✅ PC/移动端自适应切图
+ * ✅ 圆角 + 阴影 + 最大宽度限制
  */
 
-/* ===== 通用广告容器样式 ===== */
+/* 包裹所有广告的容器（可选） */
+.ad-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* 每个广告上下间距 */
+  padding: 10px 0;
+}
+
+/* 广告容器样式（单条） */
 .ad-container {
   width: 100%;
   max-width: 100%;
-  margin: 20px auto;
+  margin: 0 auto;
   padding: 0;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.05);
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   overflow: hidden;
   text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block; /* ✅ 关键：不使用 flex 横向排列 */
 }
 
 /* PC端广告图样式 */
@@ -26,7 +32,6 @@
   width: 100%;
   height: auto;
   display: block;
-  max-width: 100%;
   object-fit: contain;
   object-position: center;
   border-radius: 10px;
@@ -40,7 +45,6 @@
 /* ===== 中等屏幕及以下（≤768px）===== */
 @media (max-width: 768px) {
   .ad-container {
-    margin: 14px auto;
     border-radius: 6px;
   }
 
@@ -62,7 +66,6 @@
 /* ===== 小屏手机（≤480px）===== */
 @media (max-width: 480px) {
   .ad-container {
-    margin: 10px auto;
     border-radius: 4px;
   }
 
