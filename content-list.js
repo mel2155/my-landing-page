@@ -13,7 +13,7 @@ const sites = [
   {"image": "dymax.png",      "name": "抖音Max",          "url": "https://apu96.xyz"},
   {"image": "pilipili.png",   "name": "pilipili二次元",   "url": "https://apu97.xyz"},
   {"image": "ttt.png",        "name": "汤头条",           "url": "https://apu98.xyz"},
-  {"image": "xnjlb.png",      "name": "gay男同乐园",       "url": "https://e50b.tclhxmv.top/chan/xb3859/czTvz"},
+  {"image": "xnjlb.png",      "name": "小蓝俱乐部",       "url": "https://apu99.xyz"},
   {"image": "youtube.png",    "name": "YouTube成人版",     "url": "https://upu10.cc"},
   {"image": "50dh.png",       "name": "50度灰",           "url": "https://upu100.cc"},
   {"image": "91av.png",       "name": "91AV",             "url": "https://upu11.cc"},
