@@ -6,7 +6,7 @@ const sites = [
   {"image": "91qy.png",       "name": "91妻友",           "url": "https://apu88.xyz"},
   {"image": "Pornhub.png",    "name": "PornHub",          "url": "https://apu89.xyz"},
   {"image": "bkmh.gif",     "name": "哔咔漫画",     "url": "https://c09nn07.braktokritalklasix.com/hy/41396/arq19bk"},
-  {"image": "hjsqpj.jif",    "name": "海角社区破解",          "url": "https://c09nn07.quokoprostosnorlo.com/hy/41402/g1uhjsq"},
+  {"image": "hjsqpj.gif",    "name": "海角社区破解",          "url": "https://c09nn07.quokoprostosnorlo.com/hy/41402/g1uhjsq"},
   {"image": "51mh2.gif",     "name": "51漫画",           "url": "https://c09nn07.frozatremzoveltra.com/ck/41400/xeumh"},
   {"image": "bld.gif",       "name": "不撸帝",           "url": "https://c09nn07.quokoprostosnorlo.com/ck/41394/6umibld"},
   {"image": "hjllsq.png",     "name": "海角乱伦社区",      "url": "https://apu90.xyz"},
