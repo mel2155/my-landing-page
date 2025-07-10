@@ -7,7 +7,7 @@ const adsData = [
         pcImage: "images/ad-banner-pc.gif",          
         mobileImage: "images/ad-banner-mobile.gif",   
         alt: "haohaise.tv 的主要推广广告",
-        link: "https://cs-site-cloud-deploy.pages.dev" 
+        link: "https://kyyl.im" 
     }
 
 
