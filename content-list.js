@@ -8,7 +8,6 @@ const sites = [
   { "image": "bkmh.gif",       "name": "哔咔漫画",         "url": "https://c09nn07.braktokritalklasix.com/hy/41396/arq19bk" },
   { "image": "Pornhub.gif",    "name": "PornHub",          "url": "https://9a702.xkmqpqxy.top/chan/GS1000/agtRG" },
   { "image": "51mh2.gif",      "name": "51漫画",           "url": "https://c09nn07.frozatremzoveltra.com/ck/41400/xeumh" },
-  { "image": "hjsqpj.gif",     "name": "海角社区破解",      "url": "https://c09nn07.quokoprostosnorlo.com/hy/41402/g1uhjsq" },
   { "image": "51pc.png",       "name": "51品茶",           "url": "https://e40ec.hdpaurw.top/?code=bqgkF&c=18844" },
   { "image": "aiss.png",       "name": "ai色色",           "url": "https://cdd46.azuruhx.top/aff-JCVd" },
   { "image": "91dsp.png",      "name": "91短视频",         "url": "https://afc07.eczbhqm.com/chan-5028/aff-mhY87" },
