@@ -1,5 +1,4 @@
-// ads-data.js
-
+//ads-data.js
 
 const adsData = [
     {
@@ -10,13 +9,15 @@ const adsData = [
         link: "https://kyyl.im" 
     }
 
-
-   // ,{
+    /*
+    ,{
         name: "第二个广告",
         pcImage: "images/134498.gif",
         mobileImage: "images/43057.gif",
         alt: "第二个广告的描述",
         link: "https://example.com/second-ad-link"
     }
+    */
 
 ];
+
