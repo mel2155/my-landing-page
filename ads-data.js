@@ -11,7 +11,7 @@ const adsData = [
     }
 
 
-    ,{
+   // ,{
         name: "第二个广告",
         pcImage: "images/134498.gif",
         mobileImage: "images/43057.gif",
