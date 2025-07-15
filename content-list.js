@@ -1,6 +1,7 @@
 const sites = [
   { "image": "tiktok.gif",     "name": "TikTok成人版",     "url": "https://392.nppuszo.cc/chan/GS2461/cAsTp" },
   { "image": "jmtt.gif",       "name": "禁漫天堂",         "url": "https://132.zvfvief.org/chan/jm1300/5rmW" },
+  { "image": "https://fd1f.7wys59t.xyz/fd/100-100.gif",       "name": "凤蝶直播",         "url": "https://alb-0t7gk6494see5s0jmx.ap-northeast-2.alb.aliyuncsslbintl.com:6523/7.html?channelCode=alilogo" },
   { "image": "hjllsq.gif",     "name": "海角乱伦社区",      "url": "https://6639.caaxfyd.cc/aff-ekUuZ" },
   { "image": "51dm.gif",       "name": "51动漫",           "url": "https://3bc.aefvxkm.cc/?code=bJMDj&c=18844" },
   { "image": "txvlog.gif",     "name": "糖心vlog",         "url": "https://c09nn07.vornishamdovatrix.com/hy/41398/6agtrtx" },
