@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // 遍历 'sites' 数组中的每个站点数据
       sites.forEach(site => {
         const card = document.createElement('a'); // 创建一个 <a> 标签作为卡片容器
-        card.href = site.url; // 设置链接目标 URL
+        img.src = site.image.startsWith('http') ? site.image : 'logos/' + site.image; // 设置链接目标 URL
         card.target = "_blank"; // 在新标签页打开链接
         card.rel = "noopener noreferrer"; // 提高安全性，防止钓鱼攻击
         card.classList.add('card'); // 为卡片添加 CSS 类名 'card'
