@@ -44,5 +44,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (loadingIndicator) {
       loadingIndicator.classList.remove('show');
     }
-  }, 1000); // 模拟延迟，真实环境可移除
+  }, 800); // 模拟延迟，真实环境可移除
 });
