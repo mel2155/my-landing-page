@@ -1,7 +1,7 @@
 const sites = [
-  { "image": "tiktok.gif",     "name": "TikTok成人版",     "url": "https://2c4e.cvjlonz.cc/chan/GS2461/cAsTp" },
+  { "image": "tiktok.gif",     "name": "TikTok成人版",     "url": "https://0ed0.tvugxnzn.cc/chan/GS2461/cAsTp" },
   { "image": "jmtt.gif",       "name": "禁漫天堂",         "url": "https://132.zvfvief.org/chan/jm1300/5rmW" },
-  { "image": "hjllsq.gif",     "name": "海角乱伦社区",      "url": "https://6639.caaxfyd.cc/aff-ekUuZ" },
+  { "image": "hjllsq.gif",     "name": "海角乱伦社区",      "url": "https://956e.ujhfprdj.cc/aff-ekUuZ },
   { "image": "51dm.gif",       "name": "51动漫",           "url": "https://3bc.aefvxkm.cc/?code=bJMDj&c=18844" },
   { "image": "txvlog.gif",     "name": "糖心vlog",         "url": "https://c09nn07.vornishamdovatrix.com/hy/41398/6agtrtx" },
   { "image": "91qy.png",       "name": "91妻友",           "url": "https://e29e.yhdyblm.com/aff-cfHS7" },
@@ -13,7 +13,7 @@ const sites = [
   { "image": "91dsp.png",      "name": "91短视频",         "url": "https://196.eczbhqm.com/chan-5028/aff-mhY87" },
   { "image": "91porn.png",     "name": "91PORN",           "url": "https://f892.tyubfrim.top/chan/GS0710/nN9s" },
   { "image": "awjq.png",       "name": "暗网禁区",         "url": "https://180c.bryodxhe.cc/aff-dHXe9" },
-  { "image": "dymax.gif",      "name": "抖音Max",          "url": "https://e2811.wcbjxdf.com/chan/max1559/KD4j" },
+  { "image": "dymax.gif",      "name": "抖音Max",          "url": "https://0461.udbzouan.cc/chan/max1559/KD4j" },
   { "image": "pilipili.png",   "name": "pilipili二次元",   "url": "https://279.ndejhjt.cc/?code=arGSB&c=18844" },
   { "image": "ttt.png",        "name": "汤头条",           "url": "https://a2468.atbedzbs.top/chan/a15235/jxTf3" },
   { "image": "xnjlb.gif",      "name": "小蓝俱乐部",       "url": "https://5820.pnglifba.cc/chan/xb3859/czTvz" },
