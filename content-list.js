@@ -16,7 +16,7 @@ const sites = [
   { "image": "dymax.gif",      "name": "抖音Max",          "url": "https://e2811.wcbjxdf.com/chan/max1559/KD4j" },
   { "image": "pilipili.png",   "name": "pilipili二次元",   "url": "https://279.ndejhjt.cc/?code=arGSB&c=18844" },
   { "image": "ttt.png",        "name": "汤头条",           "url": "https://a2468.atbedzbs.top/chan/a15235/jxTf3" },
-  { "image": "xnjlb.gif",      "name": "小蓝俱乐部",       "url": "https://fea.tclhxmv.top/chan/xb3859/czTvz" },
+  { "image": "xnjlb.gif",      "name": "小蓝俱乐部",       "url": "https://5820.pnglifba.cc/chan/xb3859/czTvz" },
   { "image": "youtube.png",    "name": "YouTube成人版",   "url": "https://31d.ednkgilc.xyz/aff-7z3y" },
   { "image": "50dh.png",       "name": "50度灰",           "url": "https://4428.ehviidc.cc/chan/h57170/559dw" },
   { "image": "91av.png",       "name": "91AV",             "url": "https://8aa.nxuaqlgk.cc/chan-8644/aff-hA2Rw" },
