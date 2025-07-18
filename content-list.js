@@ -12,7 +12,7 @@ const sites = [
   { "image": "aiss.png",       "name": "ai色色",           "url": "https://f827.dkzdvmb.cc/aff-JCVd" },
   { "image": "91dsp.png",      "name": "91短视频",         "url": "https://196.eczbhqm.com/chan-5028/aff-mhY87" },
   { "image": "91porn.png",     "name": "91PORN",           "url": "https://f892.tyubfrim.top/chan/GS0710/nN9s" },
-  { "image": "awjq.png",       "name": "暗网禁区",         "url": "https://180c.bryodxhe.cc/aff-dHXe9" },
+  { "image": "awjq.png",       "name": "暗网禁区",         "url": "https://9590.dyyfmxfu.top/aff-dHXe9" },
   { "image": "dymax.gif",      "name": "抖音Max",          "url": "https://0461.udbzouan.cc/chan/max1559/KD4j" },
   { "image": "pilipili.png",   "name": "pilipili二次元",   "url": "https://279.ndejhjt.cc/?code=arGSB&c=18844" },
   { "image": "ttt.png",        "name": "汤头条",           "url": "https://a2468.atbedzbs.top/chan/a15235/jxTf3" },
