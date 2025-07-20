@@ -1,5 +1,5 @@
 const sites = [
-  { "image": "tiktok.gif",     "name": "TikTok成人版",     "url": "https://0ed0.tvugxnzn.cc/chan/GS2461/cAsTp" },
+  { "image": "tiktok.gif",     "name": "TikTok成人版",     "url": "https://b20c.tvugxnzn.cc/chan/GS2461/cAsTp" },
   { "image": "jmtt.gif",       "name": "禁漫天堂",         "url": "https://132.zvfvief.org/chan/jm1300/5rmW" },
   { "image": "hjllsq.gif",     "name": "海角乱伦社区",      "url": "https://3a71.qfadvoi.top/aff-ekUuZ"},
   { "image": "51dm.gif",       "name": "51动漫",           "url": "https://3bc.aefvxkm.cc/?code=bJMDj&c=18844" },
