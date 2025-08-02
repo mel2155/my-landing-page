@@ -128,7 +128,7 @@ header {
 .header-content {
     max-width: 1200px; /* 限制头部内容的最大宽度，防止在超宽屏幕上内容过度拉伸。*/
     margin: 0 auto; /* 水平居中头部内容。*/
-    padding: 0 5px; /* 左右边距更贴边 */
+    padding: 2px 5px; /* 左右边距更贴边 */
     display: flex; /* 启用 Flexbox 布局，便于内部元素的排列。*/
     flex-direction: column; /* 垂直排列标题与副标题 */
     align-items: center; /* 居中对齐 */
