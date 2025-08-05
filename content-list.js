@@ -1,7 +1,7 @@
 const sites = [
   { "image": "tiktok.gif",     "name": "TikTok成人版",     "url": "https://tpv10.cc" },
   { "image": "txvlog.gif",     "name": "糖心vlog",         "url": "https://woh02szd.brovakbblavryc8lnvikrilvax.com/hy/41398/6agtrtx" },
-  { "image": "jmtt.gif",       "name": "禁漫天堂",         "url": "https://0eae.fjmzqbeg.top/chan/jm1300/5rmW" },
+  { "image": "jmtt.gif",       "name": "禁漫天堂",         "url": "https://f2cd.tfhoyxft.biz/chan/jm1300/5rmW" },
   { "image": "hjllsq.gif",     "name": "海角乱伦社区",      "url": "https://e98a.soetrwe.org/aff-ekUuZ"},
   { "image": "bkmh.gif",       "name": "哔咔漫画",         "url": "https://adh.grgrovryc8jlbiniznobluvon.com/hy/41396/arq19bk" },
   { "image": "91qy.png",       "name": "91妻友",           "url": "https://ad1.lpgylbv.com/aff-cfHS7" },
