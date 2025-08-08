@@ -18,4 +18,5 @@ const sites = [
   { "image": "pilipili.png",   "name": "pilipili二次元",   "url": "https://a09.ndejhjt.cc/?code=arGSB&c=18844" },
   { "image": "clsq.png",       "name": "草榴社区",         "url": "https://a62b.zymnvro.top/aff-a4phK" },
   { "image": "51pc.png",       "name": "51品茶",           "url": "https://d076.fokkpsdq.top/?code=bqgkF&c=18844" },
+  { "image": "bld.gif",       "name": "不撸帝",           "url": "https://uzhgfe.obiv6wlf97aw.vip/blued-6umibld" },
 ];
