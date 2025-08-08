@@ -8,7 +8,7 @@ const sites = [
   { "image": "51dm.gif",       "name": "51动漫",           "url": "https://1743.hsuokfs.cc/?code=bJMDj&c=18844" },
   { "image": "Pornhub.gif",    "name": "PornHub",          "url": "https://6afa.gzwgglu.top/chan/GS1000/agtRG" },
   { "image": "51mh2.gif",      "name": "51漫画",           "url": "https://woh03szd.fylslovryc8lntekorfarnik.com/ck/41400/xeumh" },
-  { "image": "hj.png",         "name": "海角社区",        "url": "https://woh03szd.xurtsnovryc8lrvakadrumbek.com/hy/41402/g1uhjsq" },
+  { "image": "hj.gif",         "name": "海角社区",        "url": "https://woh03szd.xurtsnovryc8lrvakadrumbek.com/hy/41402/g1uhjsq" },
   { "image": "xxb.png",         "name": "杏吧",             "url": "https://woh04szd.fentdrovryc8lfakrozibrek.com/ky/41504/iq1gybxb" },
   { "image": "xnjlb.gif",      "name": "小蓝俱乐部",       "url": "https://34cb.sxrkcig.biz/chan/xb3859/czTvz" },
   { "image": "91dsp.png",      "name": "91短视频",         "url": "https://8487.idvwfgm.top/chan-5028/aff-mhY87" },
