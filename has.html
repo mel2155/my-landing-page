@@ -4,684 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>haoaise.tv - 精品应用推荐</title>
-
+    
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
     
     <style>
-/*
- * style.css
- * 这是网站的主要样式文件，包含了全局设置、头部、内容网格、卡片、页脚以及加载指示器的样式。
- * 不包含广告相关的样式，广告样式在 ad-styles.css 中独立管理。
- *
- * 最近的更新主要集中在：
- * 1. 进一步收窄头部 (header) 的上下空白区域，使其更紧凑。
- * 2. 优化头部内部元素（如 Logo、标题）的垂直间距，使其更贴合。
- * 3. 手机端 (max-width: 768px 及以下) 的 App 网格布局保持每行显示 5 个 App，更紧凑。
- * 4. 优化头部内容与屏幕左右边缘的贴合度，减少左右空白。
- * 5. 调整头部字体大小，使其更协调，避免过大。
- * 6. 【重点调整】App 图标和名称的尺寸再次增大，并进一步优化紧凑度。
- * 7. 副标题 ("为您量身定制...") 字体增大并添加水平滚动效果。
- * 所有重要的 CSS 属性都已添加详细注释。
- */
-
-/* --- */
-/* ===== 主题颜色与全局设置 ===== */
-/*
- * :root 伪类选择器定义了 CSS 变量的根作用域。
- * 这些变量（也称为 CSS 自定义属性）可以在整个文档中被重复使用，
- * 方便统一管理网站的主题颜色、尺寸等，提高可维护性和灵活性。
- * 更改这里的变量值，会影响所有使用这些变量的地方，非常适合快速调整网站主题。
- */
 :root {
-  --bg-color: #0E000A; /* 主背景色：深邃的背景色，接近纯黑但带一点点紫红，增加奢华感和沉浸感。*/
-  --header-bg-start-color: #3C000F; /* 头部渐变起始色：深酒红色，比之前更沉稳。*/
-  --header-bg-end-color: #1A0006; /* 头部渐变结束色：与背景色系融合，使头部背景有深度感。*/
-
-  --text-color: #E60044; /* 主要文本颜色：诱惑且性感的正红，更具冲击力（如App标题、联系站长标题）。*/
-  --secondary-text-color: #FF69B4; /* 次要文本颜色：柔和的玫红色，用于次要信息，保持柔美感。*/
-
-  --logo-bg-color: transparent; /* Logo 背景色：设置为透明，确保 Logo 能与任何背景无缝融合。*/
-  --border-color: #2F000F; /* 边框/分隔线颜色：与背景和主题色协调的深红棕色，用于分隔内容区域。*/
-
-  --card-hover-scale: 1.05; /* 卡片悬浮时的放大比例：鼠标悬停在卡片上时，卡片会放大 5%。*/
-  --grid-gap-vertical: 8px; /* 【优化】网格项之间垂直间距默认值，更紧凑。*/
-  --grid-gap-horizontal: 4px; /* 【优化】网格项之间水平间距默认值，更紧凑。*/
-
-  --accent-color: #FFD700; /* 强调色：使用金色，与红黑配色形成高级感对比，用于特定按钮或高亮元素，如网站名称。*/
-  --header-title-color: #E60044; /* 头部标题颜色：与主要文本颜色保持一致，突出主标题。*/
-
-  /* 页脚相关颜色变量，使页脚颜色独立于主内容，保持统一风格。*/
-  --footer-text-color: #F0F0F0; /* 页脚普通文本颜色：浅色，确保可读性，与主要红色区分。*/
-  --footer-link-color: #FFD700; /* 页脚链接颜色：金色，与强调色统一，更显眼可点击。*/
-  --footer-icon-color: #FFD700; /* 页脚图标颜色：与链接颜色一致，保持视觉连贯性。*/
-
-  /* 加载指示器相关颜色变量。*/
-  --loading-text-color: #E60044; /* 加载指示器文本颜色：通常使用白色，确保在深色背景下清晰可见。*/
-  --loading-spinner-color: var(--accent-color); /* 加载指示器点颜色：与强调色保持一致，增加品牌识别度。*/
+  --bg-color: #0E000A;
+  --header-bg-start-color: #3C000F;
+  --header-bg-end-color: #1A0006;
+  --text-color: #E60044;
+  --secondary-text-color: #FF69B4;
+  --card-hover-scale: 1.05;
+  --grid-gap-vertical: 8px;
+  --grid-gap-horizontal: 4px;
+  --accent-color: #FFD700;
+  --footer-text-color: #F0F0F0;
+  --footer-link-color: #FFD700;
+  --footer-icon-color: #FFD700;
 }
-
-/*
- * @import 规则用于从其他 CSS 文件或外部源导入样式表。
- * 通常放在文件顶部，在任何样式规则之前，以确保导入的样式能够被正确解析。
- * 这里用于导入 Google Fonts 的 'Noto Sans SC' 字体。
- */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
-
-/* --- */
-/* ===== 全局 HTML 元素样式重置与基础设置 ===== */
-/*
- * html 元素是文档的根元素。
- * 设置其 font-size 为 16px，是为了建立一个基准单位。
- * 这样，所有的 rem 单位（root em）都会相对于这个 16px 进行计算，
- * 方便在响应式设计中统一调整字体大小和布局。
- */
-html {
-    font-size: 16px;
-}
-
-/*
- * body 元素包含了 HTML 文档的所有可见内容。
- * 这里的样式设置了网站的整体外观和布局基础。
- */
+html { font-size: 16px; }
 body {
-    background-color: var(--bg-color); /* 应用主题变量中定义的背景色。*/
-    color: #f5f5f5; /* 默认字体颜色为浅灰色，确保在深色背景下有良好的对比度。*/
-    /* 字体栈：优先使用 Noto Sans SC (中文)，如果不可用，则回退到 'Segoe UI'，
-       再回退到通用字体 Tahoma, Geneva, Verdana, 最后是无衬线字体 (sans-serif)。
-       确保在不同系统和设备上都有可读性好的字体。*/
-    font-family: 'Noto Sans SC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0; /* 移除浏览器默认的 body 外边距，确保内容紧贴视口边缘。*/
-    padding: 0; /* 移除浏览器默认的 body 内边距。*/
-    line-height: 1.6; /* 设置行高，提高文本可读性，使文字之间有足够的垂直空间。*/
-    display: flex; /* 将 body 设置为 Flexbox 容器，便于布局管理。*/
-    flex-direction: column; /* Flex 子元素（如 header, main, footer）垂直排列。*/
-    min-height: 100vh; /* 确保 body 至少占据整个视口高度 (viewport height)，
-                           这样即使内容不足，页脚也能保持在底部。*/
-    overflow-x: hidden; /* 防止出现水平滚动条，提升用户体验。*/
+  background-color: var(--bg-color);
+  color: #f5f5f5;
+  font-family: 'Noto Sans SC', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
-
-/* --- */
-/* ===== 头部 (Header) 样式 (本次重点优化部分) ===== */
-/*
- * header 元素是页面的主头部区域，通常包含网站的品牌信息和导航。
- */
 header {
-    /* 背景渐变：从左到右，从 --header-bg-start-color 到 --header-bg-end-color。
-       这为头部提供了一个平滑且有层次感的背景效果。*/
-    background: linear-gradient(to right, var(--header-bg-start-color) 0%, var(--header-bg-end-color) 100%);
-    color: #fff; /* 头部内部文本颜色设置为白色，确保与深色背景对比鲜明，易于阅读。*/
-    /*
-     * 再次调整 padding：上下内边距进一步减少到 1px，使头部区域更矮，更紧凑。
-     */
-    padding: 1px 0; /* 【优化】减小上下内边距 */
-    text-align: center; /* 使头部内的所有行内内容（如文本）水平居中。*/
-    font-size: 1.5em; /* 调整：头部整体字体基准大小略微减小 */
-    font-weight: bold; /* 头部文本加粗。*/
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5); /* 柔和的底部阴影，增加头部的立体感和层次感。*/
-    position: relative; /* 相对定位，为了使 z-index 属性能够生效。*/
-    z-index: 10; /* 设置堆叠顺序，确保头部在其他内容（如加载指示器之外的）之上。*/
-    border-bottom-left-radius: 10px; /* 头部底部左侧圆角。*/
-    border-bottom-right-radius: 10px; /* 头部底部右侧圆角。*/
-    /*
-     * 头部与下方主要内容之间的间距。
-     */
-    margin-bottom: 2px;
-
+  background: linear-gradient(to right, var(--header-bg-start-color) 0%, var(--header-bg-end-color) 100%);
+  color: #fff;
+  padding: 1px 0;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 10;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-bottom: 2px;
 }
-
-/*
- * .header-content 类用于限制头部内容的宽度并居中显示。
- * 它作为一个 Flexbox 容器，更好地组织内部的 Logo 和标题。
- */
-
-/* ✅ 头部内容容器：布局不变，最大宽度限制与居中对齐 */
 .header-content {
-    max-width: 1200px; /* 限制头部内容的最大宽度，防止在超宽屏幕上内容过度拉伸。*/
-    margin: 0 auto; /* 水平居中头部内容。*/
-    padding: 2px 5px; /* 左右边距更贴边 */
-    display: flex; /* 启用 Flexbox 布局，便于内部元素的排列。*/
-    flex-direction: column; /* 垂直排列标题与副标题 */
-    align-items: center; /* 居中对齐 */
-    justify-content: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
-
-/* ✅ 主标题样式 - 更紧凑 */
-.site-title {
-    margin: 0;
-    padding: 0;
-    font-size: 1.15em; /* 原 1.3em → 更紧凑 */
-    color: var(--header-title-color);
-    line-height: 1.1;  /* 原 1.2 → 更贴合 */
-    margin-bottom: 2px; /* 与副标题间距更小 */
-}
-
-/* ✅ 副标题样式 - 字体更小，padding 更紧凑 */
-.header-subtitle {
-    font-size: 0.95em; /* 更小的字号 */
-    color: var(--secondary-text-color);
-    margin-top: 4px;
-    font-weight: normal;
-    opacity: 0.9;
-    white-space: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 3px 0; /* 上下间距更小 */
-    max-width: none;
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: center;
-}
-/* --- */
-/* ===== 网格布局 (核心) ===== */
-/*
- * .grid 类应用于图标卡片的容器，定义了其如何使用 CSS Grid 布局排列。
- * Grid 布局非常适合创建二维（行和列）的页面布局。
- */
-.grid {
-  display: grid; /* 启用 Grid 布局。*/
-  grid-template-columns: repeat(6, 1fr); /* 定义列的数量和大小：默认桌面端显示 6 列，每列等宽 (1fr)。*/
-  /* gap 属性定义了网格项（卡片）之间的间距。
-     使用 CSS 变量，确保垂直间距和水平间距可以统一管理。*/
-  gap: var(--grid-gap-vertical) var(--grid-gap-horizontal); /* 【优化】使用更紧凑的间距变量 */
-  padding: 12px 8px; /* 【优化】网格容器内部的内边距：上下 12px，左右 8px，更紧凑。*/
-  max-width: 1400px; /* 限制网格容器的最大宽度，防止在超宽屏幕上拉伸过宽，保持美观。*/
-  margin: 0 auto; /* 水平居中网格容器。*/
-  flex-grow: 1; /* 允许网格容器在 Flexbox 父容器 (body) 中占据所有可用垂直空间，
-                    这确保了内容区域可以动态填充，并将页脚推到底部。*/
-}
-
-/* --- */
-/* ===== 卡片样式 ===== */
-/*
- * .card 类应用于每个 App 图标卡片。
- * 它作为一个链接 (<a> 标签)，包含了图片和标题。
- */
-.card {
-  text-decoration: none; /* 移除链接默认的下划线。*/
-  color: var(--text-color); /* 应用主要文本颜色变量，用于卡片标题。*/
-  display: flex; /* 启用 Flexbox 布局，便于内部元素（图片和标题）的排列。*/
-  flex-direction: column; /* Flex 子元素（图片和标题）垂直排列。*/
-  align-items: center; /* 子元素水平居中对齐。*/
-  justify-content: flex-start; /* 子元素垂直向上对齐。*/
-  /* transition 属性定义了元素属性变化时的动画效果，使交互更加平滑。
-     transform, box-shadow, background-color 属性在 0.3 秒内平滑过渡。*/
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  padding: 2px; /* 【优化】卡片内边距，使内容与卡片边缘保持一定距离，更紧凑。*/
-  border-radius: 12px; /* 设置卡片的圆角，使其外观更柔和。*/
-  background-color: transparent; /* 卡片背景设置为透明，与页面背景融合。*/
-  box-shadow: none; /* 默认不显示阴影。*/
-  cursor: pointer; /* 将鼠标光标变为手型，明确表示卡片是可点击的。*/
-}
-
-/* 卡片悬浮时的样式：当鼠标悬停在卡片上时应用。*/
-.card:hover {
-  transform: scale(var(--card-hover-scale)); /* 应用定义的放大比例变量，使卡片轻微放大。*/
-  background-color: rgba(255, 255, 255, 0.07); /* 悬浮时显示略深的半透明背景，提供视觉反馈。*/
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* 悬浮时显示更明显但柔和的阴影，增加深度感。*/
-}
-
-/* ===== Logo图片样式 (卡片内部的图标) ===== */
-/*
- * .card img 样式应用于每个卡片内部的 App 图标图片。
- */
-.card img {
-  width: 98%; /* 【优化】图标宽度占卡片空间的 98%，让图标更宽。*/
-  height: 100px; /* 【优化】增大高度，例如 100px，使其更大。*/
-  max-width: 100%; /* 确保图片不会超出其父容器（卡片）的最大宽度。*/
-  display: block; /* 将图片设置为块级元素，消除图片下方可能出现的额外空间，便于精确布局。*/
-  /*
-   * object-fit: contain;：
-   * 确保图片在保持自身宽高比的同时，完整地显示在分配的 95px 高度内，不会被裁剪或拉伸。
-   * 这意味着图片可能会在可用空间内留下空白，但其内容会完全可见。
-   */
-  object-fit: contain;
-  object-position: center; /* 确保图片在其可用空间内水平和垂直居中显示。*/
-  background-color: var(--logo-bg-color); /* 应用 Logo 背景色变量 (透明)。*/
-  border-radius: 20%; /* 设置图片圆角，使其外观更柔和或适应图标形状。*/
-  margin-bottom: 0px; /* 【优化】减小 Logo 和下方标题之间的垂直间距。*/
-  flex-shrink: 0; /* 防止图片在 Flexbox 容器空间不足时缩小。*/
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* 柔和的阴影，增加图标的立体感。*/
-}
-
-/* ===== 标题样式 (卡片下方的 App 标题) ===== */
-/*
- * .card-title 样式应用于每个卡片下方的 App 标题文本。
- */
-.card-title {
-  font-size: 17px; /* 【优化】标题的字体大小，使其更大。*/
-  font-weight: 500; /* 字体粗细。*/
-  text-align: center; /* 标题文本水平居中。*/
-  width: 100%; /* 标题宽度占据卡片空间的 100%。*/
-  white-space: nowrap; /* 防止文本换行，确保标题始终显示在一行。*/
-  overflow: hidden; /* 隐藏超出容器边界的文本。*/
-  text-overflow: ellipsis; /* 当文本超出容器时，显示省略号 (...)。*/
-  box-sizing: border-box; /* 盒模型设置为边框盒模型，确保 padding 和 border 不会增加元素的总宽度和高度。*/
-  padding: 0; /* 【优化】左右内边距为 0px，上下内边距为 0。使文字更紧凑。*/
-  color: var(--text-color); /* 应用主要文本颜色变量。*/
-  line-height: 1.0; /* 【优化】调整行高，保持文字更紧凑。*/
-}
-
-/* --- */
-/* ===== 页脚样式 ===== */
-/*
- * footer 元素是页面的底部区域。
- */
-footer {
-  text-align: center; /* 确保页脚内的所有内容水平居中。*/
-  padding: 0.6rem 1rem; /* 内边距：上下 0.6rem，左右 1rem，使其更紧凑。*/
-  font-size: 0.9rem; /* 整体字号略微减小，作为辅助信息。*/
-  color: var(--footer-text-color); /* 应用页脚文本颜色变量。*/
-  margin-top: 20px; /* 页脚与上方内容的距离。*/
-  border-top: none; /* 🚫 去除顶部边框线 */
-  background-color: var(--header-bg-end-color); /* 页脚背景色，与头部渐变结束色保持一致。*/
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3); /* 顶部阴影，增加层次感。*/
-  line-height: 1.3; /* 整体行高，确保紧凑。*/
-  display: flex; /* 启用 Flexbox 布局。*/
-  flex-direction: column; /* 子元素垂直排列。*/
-  justify-content: center; /* 垂直居中。*/
-  align-items: center; /* 水平居中。*/
-}
-
-/* .contact-info 类用于包裹联系信息（“联系站长”、Telegram、E-mail）。*/
-.contact-info {
-    display: flex; /* 启用 Flexbox 布局。*/
-    flex-direction: column; /* 内部 p 标签垂直排列。*/
-    align-items: center; /* 确保内部文本和图标水平居中。*/
-    gap: 2px; /* 极小化内部 p 标签之间的垂直间距。*/
-    margin-bottom: 5px; /* 联系信息块与下方版权信息之间的间距。*/
-    padding: 0; /* 移除内边距。*/
-}
-
-/* 联系信息块内部所有段落的通用样式 */
-.contact-info p {
-    margin: 0; /* 移除浏览器默认的段落外边距。*/
-    padding: 0; /* 移除浏览器默认的内边距。*/
-    font-size: 0.9rem; /* 统一联系信息字体大小。*/
-    color: var(--footer-text-color); /* 应用页脚文本颜色。*/
-    line-height: 1.2; /* 确保行高紧凑。*/
-    display: flex; /* 启用 Flexbox 布局，用于对齐图标和文本。*/
-    align-items: center; /* 垂直居中图标和文本。*/
-    justify-content: center; /* 确保图标和文本整体水平居中。*/
-}
-
-/* “联系站长:”标题的特定样式，使其在视觉上更突出。*/
-.contact-info p:first-child {
-    font-weight: 500; /* 略微加粗。*/
-    font-size: 0.95rem; /* 标题略大一点。*/
-    color: var(--text-color); /* 标题使用主文本颜色，更突出。*/
-    margin-bottom: 5px; /* 标题与下方联系方式的间距。*/
-}
-
-/* 图标样式 (如 Telegram 的飞机图标，E-mail 的信封图标) */
-.contact-info .icon {
-    margin-right: 6px; /* 减小图标与文字的间距。*/
-    font-size: 1em; /* 图标大小与文字保持一致或略大。*/
-    color: var(--footer-icon-color); /* 应用页脚图标颜色变量。*/
-}
-
-/* 链接样式 (如 Telegram 和 E-mail 的链接) */
-.contact-info a {
-    color: var(--footer-link-color); /* 应用页脚链接颜色变量。*/
-    text-decoration: none; /* 移除下划线。*/
-    /* 颜色和文本阴影的过渡动画，使悬停效果更平滑。*/
-    transition: color 0.2s ease, text-shadow 0.2s ease;
-    line-height: 1.2; /* 确保链接文本行高紧凑。*/
-}
-
-/* 链接悬停时的样式 */
-.contact-info a:hover {
-    color: #a0c0ff; /* 悬停时颜色变为更亮的蓝色。*/
-    text-shadow: 0 0 5px rgba(160, 192, 255, 0.6); /* 悬停时显示柔和的蓝色阴影。*/
-}
-
-/* 最底部版权/域名信息样式 */
-.copyright-text {
-    margin: 0; /* 移除默认外边距。*/
-    padding: 0; /* 移除默认内边距。*/
-    font-size: 0.75rem; /* 字体进一步减小，作为辅助信息，不抢主次。*/
-    color: var(--secondary-text-color); /* 应用次要文本颜色。*/
-    opacity: 0.7; /* 略微降低透明度。*/
-    line-height: 1.2; /* 确保行高紧凑。*/
-    margin-top: 5px; /* 与上方联系信息块的间距。*/
-}
-
-/* --- */
-/* ===== 加载指示器 (Loading Indicator) 样式 ===== */
-/*
- * #loading-indicator 用于在页面内容加载时显示加载动画，提升用户体验。
- */
-#loading-indicator {
-    position: fixed; /* 固定定位，使其在滚动时也保持在视口内，覆盖整个页面。*/
-    top: 0; /* 顶部对齐。*/
-    left: 0; /* 左侧对齐。*/
-    width: 100%; /* 宽度占满整个视口。*/
-    height: 100%; /* 高度占满整个视口。*/
-    background-color: rgba(0, 0, 0, 0.8); /* 半透明黑色背景，覆盖页面，使下方内容模糊化。*/
-    display: flex; /* 启用 Flexbox 布局。*/
-    flex-direction: column; /* 让加载文字和点垂直排列。*/
-    justify-content: center; /* 水平居中内容（在 flex-direction: column 模式下，相当于垂直居中）。*/
-    align-items: center; /* 垂直居中内容（在 flex-direction: column 模式下，相当于水平居中）。*/
-    color: var(--loading-text-color); /* 文本颜色使用变量。*/
-    font-size: 1.8rem; /* 字体大小。*/
-    z-index: 9999; /* 确保在所有其他内容之上，防止被覆盖。*/
-    opacity: 0; /* 默认透明度为 0 (隐藏)，通过 JavaScript 控制显示。*/
-    visibility: hidden; /* 默认不可见，配合 opacity 实现平滑显示/隐藏。*/
-    /* 透明度和可见性的过渡动画，使加载指示器平滑地出现和消失。*/
-    transition: opacity 0.4s ease, visibility 0.4s ease;
-}
-
-/* 当有 .show 类时显示加载指示器，由 JavaScript 动态添加。*/
-#loading-indicator.show {
-    opacity: 1; /* 完全不透明。*/
-    visibility: visible; /* 可见。*/
-}
-
-/* 加载点动画的容器 */
-#loading-indicator .spinner-dots {
-    margin-top: 10px; /* 文字和点之间的间距。*/
-    color: var(--loading-spinner-color); /* 使用变量定义点颜色。*/
-}
-
-/* 加载动画中的每个点 */
-#loading-indicator span {
-    animation: blink 1s infinite alternate; /* 应用名为 'blink' 的动画，无限循环，交替透明度。*/
-    margin: 0 2px; /* 点之间有小间距。*/
-    display: inline-block; /* 确保点可以应用 margin 属性。*/
-}
-
-/* 为第二个点设置动画延迟，创建错位效果 */
-#loading-indicator span:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-/* 为第三个点设置动画延迟，创建错位效果 */
-#loading-indicator span:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-/* 定义名为 'blink' 的关键帧动画 */
-@keyframes blink {
-    from { opacity: 0.3; } /* 从半透明开始。*/
-    to { opacity: 1; } /* 变为完全不透明。*/
-}
-
-/* --- */
-/* ===== 响应式调整 (Media Queries) - 主站内容 (本次重点优化 header 部分) ===== */
-/*
- * @media 规则用于根据屏幕宽度调整布局和样式，以适应不同设备（手机、平板、桌面等），
- * 确保网站在不同尺寸的屏幕上都能提供良好的用户体验。
- * 在每个媒体查询中，头部 (header) 的 padding 和 margin-bottom 也进行了相应的调整，
- * 以确保在小屏幕下头部依然保持紧凑。
- */
-
-/* 最小手机屏幕: 宽度在 480px 及以下时应用这些样式。*/
-@media (max-width: 480px) {
-    /* 主标题字体大小调整 */
-    .site-title {
-        font-size: 1.1rem; /* 【优化】进一步缩小主标题字体 */
-    }
-    /* 副标题字体大小调整 */
-    .header-subtitle {
-        font-size: 1.0em; /* 【优化】增大副标题字体 */
-        white-space: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding: 5px 0;
-    }
-    /*
-     * 调整头部内边距和下方间距，使其在小屏幕下更紧凑。
-     */
-    header {
-        padding: 1px 0; /* 【优化】进一步减小头部上下内边距 */
-        margin-bottom: 2px; /* 【优化】进一步减小头部与下方内容的间距 */
-    }
-    /* 调整头部内容左右内边距，使其更贴合边缘。*/
-    .header-content {
-        padding: 0 2px; /* 【优化】更小的左右内边距 */
-    }
-    /*
-     * 网格布局调整：强制在最小手机屏幕下每行显示 5 个 App 图标。
-     */
-    .grid {
-        grid-template-columns: repeat(5, 1fr); /* 【优化】调整为 5 列。*/
-        gap: 4px 2px; /* 【优化】进一步减小网格间距，使其更紧凑。*/
-        padding: 4px 2px; /* 【优化】进一步减小网格容器内边距。*/
-    }
-    /* 卡片内边距调整 */
-    .card {
-        padding: 1px; /* 【优化】进一步减小卡片内边距。*/
-    }
-    /* 卡片内部图标尺寸调整 */
-    .card img {
-        width: 98%; /* 【优化】让图标更宽 */
-        height: 60px; /* 【优化】增大高度以适应新的列数和间距，确保图标不被裁剪，且整体更小 */
-        margin-bottom: 0px; /* 【优化】减小图标和标题的间距。*/
-    }
-    /* 卡片标题字体大小调整 */
-    .card-title {
-        font-size: 12px; /* 【优化】增大字体大小 */
-        line-height: 1.0; /* 【优化】更紧凑的行高 */
-        padding: 0; /* 【优化】减小内边距 */
-    }
-    /* 页脚字体大小调整 (保持不变) */
-    footer {
-        font-size: 0.8rem;
-    }
-}
-
-/* 中等屏幕手机/小平板: 宽度在 481px 到 768px 之间时应用这些样式。*/
-@media (min-width: 481px) and (max-width: 768px) {
-    /* 主标题字体大小调整 */
-    .site-title {
-        font-size: 1.3rem; /* 【优化】略微缩小主标题字体 */
-    }
-    /* 副标题字体大小调整 */
-    .header-subtitle {
-        font-size: 1.1em; /* 【优化】增大副标题字体 */
-        white-space: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding: 5px 0;
-    }
-    /*
-     * 再次调整头部内边距和下方间距。
-     */
-    header {
-        padding: 2px 0; /* 【优化】减小头部上下内边距 */
-        margin-bottom: 3px; /* 【优化】减小头部与下方内容的间距 */
-    }
-    /* 调整头部内容左右内边距。*/
-    .header-content {
-        padding: 0 4px; /* 【优化】略微减小左右内边距 */
-    }
-    /*
-     * 网格布局调整：强制在中等屏幕下每行显示 5 个 App 图标。
-     */
-    .grid {
-        grid-template-columns: repeat(5, 1fr); /* 【优化】调整为 5 列。*/
-        gap: 6px 3px; /* 【优化】减小网格间距。*/
-        padding: 6px 3px; /* 【优化】减小网格容器内边距。*/
-    }
-    /* 卡片内边距调整 */
-    .card {
-        padding: 2px; /* 【优化】减小卡片内边距 */
-    }
-    /* 卡片内部图标尺寸调整 */
-    .card img {
-        width: 98%; /* 【优化】让图标更宽 */
-        height: 75px; /* 【优化】增大高度以适应新的列数和间距 */
-        margin-bottom: 0px; /* 【优化】减小图标和标题的间距。*/
-    }
-    /* 卡片标题字体大小调整 */
-    .card-title {
-        font-size: 14px; /* 【优化】增大字体大小 */
-        line-height: 1.0; /* 【优化】更紧凑的行高 */
-        padding: 0; /* 【优化】减小内边距 */
-    }
-}
-
-/* 平板/桌面: 宽度在 769px 到 1024px 之间时应用这些样式。*/
-@media (min-width: 769px) and (max-width: 1024px) {
-    /* 主标题字体大小调整 */
-    .site-title {
-        font-size: 1.5rem;
-    }
-    /* 副标题字体大小调整 */
-    .header-subtitle {
-        font-size: 1.2em; /* 【优化】增大副标题字体 */
-        white-space: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding: 5px 0;
-    }
-    /*
-     * 再次调整头部内边距。
-     */
-    header {
-        padding: 3px 0; /* 【优化】减小头部上下内边距 */
-        margin-bottom: 4px;
-    }
-    /* 调整头部内容左右内边距。*/
-    .header-content {
-        padding: 0 8px; /* 【优化】略微减小左右内边距 */
-    }
-    /* 网格布局调整：保持 6 列。*/
-    .grid {
-        grid-template-columns: repeat(6, 1fr);
-        gap: 8px 4px; /* 【优化】减小网格间距 */
-        padding: 10px 8px; /* 【优化】减小网格容器内边距 */
-    }
-    /* 卡片内边距调整 */
-    .card {
-        padding: 2px; /* 【优化】减小卡片内边距 */
-    }
-    /* 卡片内部图标尺寸调整 */
-    .card img {
-        width: 98%; /* 【优化】让图标更宽 */
-        height: 90px; /* 【优化】增大高度 */
-        margin-bottom: 0px; /* 【优化】减小图标和标题的间距。*/
-    }
-    /* 卡片标题字体大小调整 */
-    .card-title {
-        font-size: 15px; /* 【优化】增大字体大小 */
-        line-height: 1.0; /* 【优化】更紧凑的行高 */
-        padding: 0; /* 【优化】减小内边距 */
-    }
-}
-
-/* 大屏幕桌面: 宽度在 1025px 到 1440px 之间时应用这些样式。*/
-@media (min-width: 1025px) and (max-width: 1440px) {
-    /* 主标题字体大小调整 */
-    .site-title {
-        font-size: 1.7rem;
-    }
-    /* 副标题字体大小调整 */
-    .header-subtitle {
-        font-size: 1.3em; /* 【优化】增大副标题字体 */
-        white-space: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding: 5px 0;
-    }
-    /*
-     * 再次调整头部内边距。
-     */
-    header {
-        padding: 4px 0; /* 【优化】减小头部上下内边距 */
-        margin-bottom: 5px;
-    }
-    /* 调整头部内容左右内边距。*/
-    .header-content {
-        padding: 0 12px; /* 【优化】略微减小左右内边距 */
-    }
-    /* 网格布局调整：保持 7 列。*/
-    .grid {
-        grid-template-columns: repeat(7, 1fr);
-        gap: 10px 5px; /* 【优化】减小网格间距 */
-        padding: 15px 10px; /* 【优化】减小网格容器内边距 */
-    }
-    /* 卡片内边距调整 */
-    .card {
-        padding: 3px; /* 【优化】减小卡片内边距 */
-    }
-    /* 卡片内部图标尺寸调整 */
-    .card img {
-        width: 98%; /* 【优化】让图标更宽 */
-        height: 100px; /* 【优化】增大高度 */
-        margin-bottom: 0px; /* 【优化】减小图标和标题的间距。*/
-    }
-    /* 卡片标题字体大小调整 */
-    .card-title {
-        font-size: 17px; /* 【优化】增大字体大小 */
-        line-height: 1.0; /* 【优化】更紧凑的行高 */
-        padding: 0; /* 【优化】减小内边距 */
-    }
-}
-
-/* 超大屏幕桌面: 宽度在 1441px 及以上时应用这些样式。*/
-@media (min-width: 1441px) {
-    /* 主标题字体大小调整 */
-    .site-title {
-        font-size: 1.9rem;
-    }
-    /* 副标题字体大小调整 */
-    .header-subtitle {
-        font-size: 1.4em; /* 【优化】增大副标题字体 */
-        white-space: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding: 5px 0;
-    }
-    /*
-     * 再次调整头部内边距。
-     */
-    header {
-        padding: 5px 0; /* 【优化】减小头部上下内边距 */
-        margin-bottom: 5px;
-    }
-    /* 调整头部内容左右内边距。*/
-    .header-content {
-        padding: 0 18px; /* 【优化】略微减小左右内边距 */
-    }
-    /* 网格布局调整：增加到 8 列。*/
-    .grid {
-        grid-template-columns: repeat(8, 1fr);
-        gap: 12px 6px; /* 【优化】减小网格间距 */
-        padding: 18px 12px; /* 【优化】减小网格容器内边距 */
-    }
-    /* 卡片内边距调整 */
-    .card {
-        padding: 4px; /* 【优化】保持或微调卡片内边距 */
-    }
-    /* 卡片内部图标尺寸调整 */
-    .card img {
-        width: 98%; /* 【优化】让图标更宽 */
-        height: 110px; /* 【优化】增大高度 */
-        margin-bottom: 0px; /* 【优化】减小图标和标题的间距。*/
-    }
-    /* 卡片标题字体大小调整 */
-    .card-title {
-        font-size: 18px; /* 【优化】增大字体大小 */
-        line-height: 1.0; /* 【优化】更紧凑的行高 */
-        padding: 0; /* 【优化】减小内边距 */
-    }
-}
-
-
-/* 🎯 滚动字幕 + 诱导样式增强 */
 #subtitle-scroll.scroll-wrapper {
   position: relative;
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
-  padding: 0.4rem 0; /* ✅ 上下间距更窄，更紧凑 */
+  padding: 0.4rem 0;
   white-space: nowrap;
   background: transparent;
 }
-
 #subtitle-scroll .scroll-text {
   display: inline-block;
   color: #e91e63;
@@ -691,47 +78,192 @@ footer {
   padding-left: 100%;
   animation: subtitle-scroll-global 18s linear infinite;
   transition: all 0.3s ease;
-  font-family: 'Montserrat', 'Segoe UI', 'PingFang SC', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
-
 @keyframes subtitle-scroll-global {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 }
-
-/* 悬停暂停 */
-#subtitle-scroll .scroll-text:hover {
-  animation-play-state: paused;
+#subtitle-scroll .scroll-text:hover { animation-play-state: paused; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--grid-gap-vertical) var(--grid-gap-horizontal);
+  padding: 12px 8px;
+  max-width: 1400px;
+  margin: 0 auto;
+  flex-grow: 1;
 }
-
-/* 💡 左右渐变遮罩 */
-.scroll-fade-left,
-.scroll-fade-right {
-  position: absolute;
+.card {
+  text-decoration: none;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  padding: 2px;
+  border-radius: 12px;
+  background-color: transparent;
+  box-shadow: none;
+  cursor: pointer;
+}
+.card:hover {
+  transform: scale(var(--card-hover-scale));
+  background-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+.card img {
+  width: 98%;
+  height: 100px;
+  max-width: 100%;
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 20%;
+  margin-bottom: 0px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+.card-title {
+  font-size: 17px;
+  font-weight: 500;
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+  padding: 0;
+  color: var(--text-color);
+  line-height: 1.0;
+}
+footer {
+  text-align: center;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  color: var(--footer-text-color);
+  margin-top: 20px;
+  border-top: none;
+  background-color: var(--header-bg-end-color);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+  line-height: 1.3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: 5px;
+  padding: 0;
+}
+.contact-info p {
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+  color: var(--footer-text-color);
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contact-info p:first-child {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+.contact-info .icon {
+  margin-right: 6px;
+  font-size: 1em;
+  color: var(--footer-icon-color);
+}
+.contact-info a {
+  color: var(--footer-link-color);
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+  line-height: 1.2;
+}
+.contact-info a:hover {
+  color: #a0c0ff;
+  text-shadow: 0 0 5px rgba(160, 192, 255, 0.6);
+}
+.copyright-text {
+  margin: 0;
+  padding: 0;
+  font-size: 0.75rem;
+  color: var(--secondary-text-color);
+  opacity: 0.7;
+  line-height: 1.2;
+  margin-top: 5px;
+}
+#loading-indicator {
+  position: fixed;
   top: 0;
-  width: 40px;
-  height: 100%;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.scroll-fade-left {
   left: 0;
-  background: linear-gradient(to right, #fff, transparent);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--loading-text-color);
+  font-size: 1.8rem;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
-
-.scroll-fade-right {
-  right: 0;
-  background: linear-gradient(to left, #fff, transparent);
+#loading-indicator.show {
+  opacity: 1;
+  visibility: visible;
 }
-/*
- * ad-styles.css - 广告横幅样式文件（最终推荐版）
- * ✅ 横幅拉满宽度（100%）
- * ✅ 保留圆角、阴影，整体更有层次
- * ✅ 移动端自动切图，最大高度限制
- */
-
-/* ===== 通用广告容器样式（已改为上下排序） ===== */
+#loading-indicator .spinner-dots { margin-top: 10px; }
+#loading-indicator span {
+  animation: blink 1s infinite alternate;
+  margin: 0 2px;
+  display: inline-block;
+}
+#loading-indicator span:nth-child(2) { animation-delay: 0.2s; }
+#loading-indicator span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes blink {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+@media (max-width: 480px) {
+  .grid { grid-template-columns: repeat(5, 1fr); gap: 4px 2px; padding: 4px 2px; }
+  .card img { height: 60px; }
+  .card-title { font-size: 12px; }
+  .ad-container { margin: 10px auto; border-radius: 4px; }
+  .ad-container img.ad-image-mobile { max-height: 90px; border-radius: 4px; }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .grid { grid-template-columns: repeat(5, 1fr); gap: 6px 3px; padding: 6px 3px; }
+  .card img { height: 75px; }
+  .card-title { font-size: 14px; }
+  .ad-container { margin: 14px auto; border-radius: 6px; }
+  .ad-container img.ad-image-mobile { max-height: 100px; border-radius: 6px; }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .grid { grid-template-columns: repeat(6, 1fr); gap: 8px 4px; padding: 10px 8px; }
+  .card img { height: 90px; }
+  .card-title { font-size: 15px; }
+}
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .grid { grid-template-columns: repeat(7, 1fr); gap: 10px 5px; padding: 15px 10px; }
+  .card img { height: 100px; }
+  .card-title { font-size: 17px; }
+}
+@media (min-width: 1441px) {
+  .grid { grid-template-columns: repeat(8, 1fr); gap: 12px 6px; padding: 18px 12px; }
+  .card img { height: 110px; }
+  .card-title { font-size: 18px; }
+}
 .ad-container {
   width: 100%;
   max-width: 100%;
@@ -742,17 +274,12 @@ footer {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   text-align: center;
-
-  /* ✅ 修改的部分 */
   display: flex;
-  flex-direction: column; /* ⬅️ 垂直排列每个广告 */
-  gap: 12px;               /* ⬅️ 广告之间的间距 */
+  flex-direction: column;
+  gap: 12px;
   justify-content: center;
   align-items: center;
 }
-
-
-/* PC端广告图样式 */
 .ad-container img.ad-image-pc {
   width: 100%;
   height: auto;
@@ -761,68 +288,45 @@ footer {
   object-position: center;
   border-radius: 10px;
 }
-
-/* 默认隐藏移动图 */
 .ad-container img.ad-image-mobile {
   display: none;
 }
-
-/* ===== 中等屏幕及以下（≤768px）===== */
-@media (max-width: 768px) {
-  .ad-container {
-    margin: 14px auto;
-    border-radius: 6px;
-  }
-
-  .ad-container img.ad-image-pc {
-    display: none;
-  }
-
-  .ad-container img.ad-image-mobile {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-height: 100px;
-    object-fit: contain;
-    object-position: center;
-    border-radius: 6px;
-  }
+.download-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+  background-color: #e91e63;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  padding: 4px;
+  box-sizing: content-box;
 }
-
-/* ===== 小屏手机（≤480px）===== */
-@media (max-width: 480px) {
-  .ad-container {
-    margin: 10px auto;
-    border-radius: 4px;
-  }
-
-  .ad-container img.ad-image-mobile {
-    max-height: 90px;
-    border-radius: 4px;
-  }
+.download-icon:hover {
+  transform: scale(1.1);
 }
 </style>
-
 </head>
 <body>
-
- <header>
-  <div class="header-content">
-  <div class="scroll-wrapper" id="subtitle-scroll">
-  <div class="scroll-text">
-  ❤️ 请记住永久海外域名：haoaise.tv ❤️ 大胆探索，释放你的真实渴望 ｜ 🔥 私密推荐，只为真正懂的人 ｜ 💋 无限畅享，前所未有的激情体验 ｜ 🎯 绅士专属推荐，尽在 haoaise.tv ❤️
-  </div>
-</div>
-</header>
-<main>
-  <div class="ad-wrapper">
-    <div class="ad-container"></div>
-    </div>
-
-  <div id="card-container" class="grid"></div>
-</main>
-
-
+    <header>
+        <div class="header-content">
+            <div class="scroll-wrapper" id="subtitle-scroll">
+                <div class="scroll-text">
+                    ❤️ 请记住永久海外域名：haoaise.tv ❤️ 大胆探索，释放你的真实渴望 ｜ 🔥 私密推荐，只为真正懂的人 ｜ 💋 无限畅享，前所未有的激情体验 ｜ 🎯 绅士专属推荐，尽在 haoaise.tv ❤️
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="ad-wrapper">
+            <div class="ad-container"></div>
+        </div>
+        <div id="card-container" class="grid"></div>
+    </main>
     <footer>
         <div class="contact-info">
             <p>联系站长:</p>
@@ -838,185 +342,101 @@ footer {
         <p class="copyright-text">本页含成人内容，链接跳转第三方，请自行甄别。</p>
         <p class="copyright-text">© 2025 haoaise.tv · All Rights Reserved.</p>
     </footer>
-
-<div id="loading-indicator" aria-live="polite" style="text-align: center; color: #ffffff;">
-  <div style="font-size: 18px; font-weight: bold; margin-bottom: 4px;">
-    精彩内容正在加载
-  </div>
-  <div style="font-size: 16px; font-weight: normal; margin-bottom: 10px;">
-    请记住永久海外域名：<a href="https://haoaise.tv" target="_blank" style="color: #00e0ff; text-decoration: underline;">haoaise.tv</a>
-  </div>
-  <div class="spinner-dots"><span>.</span><span>.</span><span>.</span></div>
-</div>
-
-<script>
-// content-list.js
-const sites = [
-  { "image": "tiktok.gif",     "name": "TikTok成人版",     "url": "https://tpv10.cc" },
-  { "image": "txvlog.gif",     "name": "糖心vlog",         "url": "https://woh02szd.brovakbblavryc8lnvikrilvax.com/hy/41398/6agtrtx" },
-  { "image": "jmtt.gif",       "name": "禁漫天堂",         "url": "https://ce86.cwndgiuw.biz/chan/jm1300/5rmW" },
-  { "image": "hjllsq.gif",     "name": "海角乱伦社区",      "url": "https://e98a.soetrwe.org/aff-ekUuZ"},
-  { "image": "bkmh.gif",       "name": "哔咔漫画",         "url": "https://adh.drakilstorvryc8jvaxplidro.com/hy/41396/arq19bk" },
-  { "image": "91qy.png",       "name": "91妻友",           "url": "https://ad1.lpgylbv.com/aff-cfHS7" },
-  { "image": "51dm.gif",       "name": "51动漫",           "url": "https://1743.hsuokfs.cc/?code=bJMDj&c=18844" },
-  { "image": "Pornhub.gif",    "name": "PornHub",          "url": "https://6afa.gzwgglu.top/chan/GS1000/agtRG" },
-  { "image": "51mh2.gif",      "name": "51漫画",           "url": "https://woh03szd.fylslovryc8lntekorfarnik.com/ck/41400/xeumh" },
-  { "image": "hj.gif",         "name": "海角社区",        "url": "https://woh03szd.xurtsnovryc8lrvakadrumbek.com/hy/41402/g1uhjsq" },
-  { "image": "xxb.png",         "name": "杏吧",             "url": "https://woh04szd.fentdrovryc8lfakrozibrek.com/ky/41504/iq1gybxb" },
-  { "image": "xnjlb.gif",      "name": "小蓝俱乐部",       "url": "https://34cb.sxrkcig.biz/chan/xb3859/czTvz" },
-  { "image": "91dsp.png",      "name": "91短视频",         "url": "https://8487.idvwfgm.top/chan-5028/aff-mhY87" },
-  { "image": "91porn.png",     "name": "91PORN",           "url": "https://7e59.ipcwizr.top/chan/GS0710/nN9s" },
-  { "image": "awjq.png",       "name": "暗网禁区",         "url": "https://11a8.tdagmco.com/aff-dHXe9" },
-  { "image": "dymax.gif",      "name": "抖音Max",          "url": "https://55b1.hlszfoig.top/chan/max1559/KD4j" },
-  { "image": "pilipili.png",   "name": "pilipili二次元",   "url": "https://a09.ndejhjt.cc/?code=arGSB&c=18844" },
-  { "image": "clsq.png",       "name": "草榴社区",         "url": "https://a62b.zymnvro.top/aff-a4phK" },
-  { "image": "51pc.png",       "name": "51品茶",           "url": "https://d076.fokkpsdq.top/?code=bqgkF&c=18844" },
-  { "image": "bld.gif",       "name": "不撸帝",           "url": "https://uzhgfe.obiv6wlf97aw.vip/blued-6umibld" },
-];
-
-// ads-data.js
-const adsData = [
-    {
-        name: "主要推广广告",
-        pcImage: "images/ad-banner-pc.gif",          
-        mobileImage: "images/ad-banner-mobile.gif",   
-        alt: "haohaise.tv 的主要推广广告",
-        link: "https://kyyl.im" 
-    }
-    /*
-    ,{
-        name: "第二个广告",
-        pcImage: "images/134498.gif",
-        mobileImage: "images/43057.gif",
-        alt: "第二个广告的描述",
-        link: "https://example.com/second-ad-link"
-    }
-    */
-];
-
-// script.js
-document.addEventListener('DOMContentLoaded', () => {
-  const cardContainer = document.getElementById('card-container');
-  const loadingIndicator = document.getElementById('loading-indicator');
-
-  if (loadingIndicator) {
-    loadingIndicator.classList.add('show');
-  }
-
-  // 模拟异步加载数据
-  setTimeout(() => {
-    if (cardContainer && typeof sites !== 'undefined' && Array.isArray(sites)) {
-      const fragment = document.createDocumentFragment();
-
-      sites.forEach(site => {
-        const card = document.createElement('a');
-        card.href = site.url;
-        card.target = "_blank";
-        card.rel = "noopener noreferrer";
-        card.classList.add('card');
-
-        const img = document.createElement('img');
-        img.src = /^(https?:)?\/\//.test(site.image) ? site.image : 'logos/' + site.image;
-        img.alt = site.name + ' Logo';
-        img.loading = "lazy";
-
-        const title = document.createElement('div');
-        title.classList.add('card-title');
-        title.textContent = site.name;
-
-        card.appendChild(img);
-        card.appendChild(title);
-        fragment.appendChild(card);
-      });
-
-      cardContainer.appendChild(fragment);
-    } else {
-      console.error("❌ 未能找到 card-container 或 sites 数据未正确加载。");
-    }
-
-    if (loadingIndicator) {
-      loadingIndicator.classList.remove('show');
-    }
-  }, 500);
-});
-
-// download-icons.js
-document.addEventListener('DOMContentLoaded', () => {
-  const cardContainer = document.getElementById('card-container');
-
-  if (!cardContainer || typeof sites === 'undefined') {
-    console.error('❌ 未找到 card-container 或 sites 未定义');
-    return;
-  }
-
-  const observer = new MutationObserver(() => {
-    const cards = cardContainer.querySelectorAll('.card');
-
-    if (cards.length === 0) return;
-
-    cards.forEach((card, index) => {
-      const site = sites[index];
-      if (!site || !site.url) return;
-
-      if (card.querySelector('.download-icon')) return;
-
-      const icon = document.createElement('img');
-      icon.src = "images/download-logo.png";
-      icon.alt = "点击下载";
-      icon.className = "download-icon";
-
-      icon.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        window.open(site.url, '_blank');
-      });
-
-      card.appendChild(icon);
-    });
-
-    observer.disconnect();
-  });
-
-  observer.observe(cardContainer, { childList: true, subtree: true });
-});
-
-// ad-script.js
-document.addEventListener('DOMContentLoaded', function () {
-  const adContainer = document.querySelector('.ad-container');
-
-  function isMobileView() {
-    return window.innerWidth <= 768;
-  }
-
-  function displayAds(adArray) {
-    if (!adContainer || adArray.length === 0) return;
-
-    adContainer.innerHTML = '';
-
-    adArray.forEach((ad) => {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'ad-wrapper';
-
-      const adLink = document.createElement('a');
-      adLink.href = ad.link;
-      adLink.target = '_blank';
-      adLink.rel = 'noopener noreferrer';
-
-      const img = document.createElement('img');
-      img.src = isMobileView() ? ad.mobileImage : ad.pcImage;
-      img.alt = ad.alt || '广告';
-      img.classList.add(isMobileView() ? 'ad-image-mobile' : 'ad-image-pc');
-      img.style.width = '100%';
-
-      adLink.appendChild(img);
-      wrapper.appendChild(adLink);
-      adContainer.appendChild(wrapper);
-    });
-  }
-
-  displayAds(adsData);
-  window.addEventListener('resize', () => displayAds(adsData));
-});
-</script>
+    <div id="loading-indicator" aria-live="polite" style="text-align: center; color: #ffffff;">
+        <div style="font-size: 18px; font-weight: bold; margin-bottom: 4px;">精彩内容正在加载</div>
+        <div style="font-size: 16px; font-weight: normal; margin-bottom: 10px;">请记住永久海外域名：<a href="https://haoaise.tv" target="_blank" style="color: #00e0ff; text-decoration: underline;">haoaise.tv</a></div>
+        <div class="spinner-dots"><span>.</span><span>.</span><span>.</span></div>
+    </div>
+    <script>
+        const sites = [
+          { "image": "tiktok.gif", "name": "TikTok成人版", "url": "https://tpv10.cc" },
+          { "image": "txvlog.gif", "name": "糖心vlog", "url": "https://woh02szd.brovakbblavryc8lnvikrilvax.com/hy/41398/6agtrtx" },
+          { "image": "jmtt.gif", "name": "禁漫天堂", "url": "https://ce86.cwndgiuw.biz/chan/jm1300/5rmW" },
+          { "image": "hjllsq.gif", "name": "海角乱伦社区", "url": "https://e98a.soetrwe.org/aff-ekUuZ"},
+          { "image": "bkmh.gif", "name": "哔咔漫画", "url": "https://adh.drakilstorvryc8jvaxplidro.com/hy/41396/arq19bk" },
+          { "image": "91qy.png", "name": "91妻友", "url": "https://ad1.lpgylbv.com/aff-cfHS7" },
+          { "image": "51dm.gif", "name": "51动漫", "url": "https://1743.hsuokfs.cc/?code=bJMDj&c=18844" },
+          { "image": "Pornhub.gif", "name": "PornHub", "url": "https://6afa.gzwgglu.top/chan/GS1000/agtRG" },
+          { "image": "51mh2.gif", "name": "51漫画", "url": "https://woh03szd.fylslovryc8lntekorfarnik.com/ck/41400/xeumh" },
+          { "image": "hj.gif", "name": "海角社区", "url": "https://woh03szd.xurtsnovryc8lrvakadrumbek.com/hy/41402/g1uhjsq" },
+          { "image": "xxb.png", "name": "杏吧", "url": "https://woh04szd.fentdrovryc8lfakrozibrek.com/ky/41504/iq1gybxb" },
+          { "image": "xnjlb.gif", "name": "小蓝俱乐部", "url": "https://34cb.sxrkcig.biz/chan/xb3859/czTvz" },
+          { "image": "91dsp.png", "name": "91短视频", "url": "https://8487.idvwfgm.top/chan-5028/aff-mhY87" },
+          { "image": "91porn.png", "name": "91PORN", "url": "https://7e59.ipcwizr.top/chan/GS0710/nN9s" },
+          { "image": "awjq.png", "name": "暗网禁区", "url": "https://11a8.tdagmco.com/aff-dHXe9" },
+          { "image": "dymax.gif", "name": "抖音Max", "url": "https://55b1.hlszfoig.top/chan/max1559/KD4j" },
+          { "image": "pilipili.png", "name": "pilipili二次元", "url": "https://a09.ndejhjt.cc/?code=arGSB&c=18844" },
+          { "image": "clsq.png", "name": "草榴社区", "url": "https://a62b.zymnvro.top/aff-a4phK" },
+          { "image": "51pc.png", "name": "51品茶", "url": "https://d076.fokkpsdq.top/?code=bqgkF&c=18844" },
+          { "image": "bld.gif", "name": "不撸帝", "url": "https://uzhgfe.obiv6wlf97aw.vip/blued-6umibld" },
+        ];
+        const adsData = [
+            {
+                name: "主要推广广告",
+                pcImage: "images/ad-banner-pc.gif",
+                mobileImage: "images/ad-banner-mobile.gif",
+                alt: "haohaise.tv 的主要推广广告",
+                link: "https://kyyl.im"
+            }
+        ];
+        document.addEventListener('DOMContentLoaded', () => {
+            const cardContainer = document.getElementById('card-container');
+            const loadingIndicator = document.getElementById('loading-indicator');
+            if (loadingIndicator) {
+                loadingIndicator.classList.add('show');
+            }
+            setTimeout(() => {
+                if (cardContainer && sites && Array.isArray(sites)) {
+                    const fragment = document.createDocumentFragment();
+                    sites.forEach(site => {
+                        const card = document.createElement('a');
+                        card.href = site.url;
+                        card.target = "_blank";
+                        card.rel = "noopener noreferrer";
+                        card.classList.add('card');
+                        const img = document.createElement('img');
+                        img.src = /^(https?:)?\/\//.test(site.image) ? site.image : 'logos/' + site.image;
+                        img.alt = site.name + ' Logo';
+                        img.loading = "lazy";
+                        const title = document.createElement('div');
+                        title.classList.add('card-title');
+                        title.textContent = site.name;
+                        card.appendChild(img);
+                        card.appendChild(title);
+                        fragment.appendChild(card);
+                    });
+                    cardContainer.appendChild(fragment);
+                } else {
+                    console.error("❌ 容器或数据未正确加载。");
+                }
+                if (loadingIndicator) {
+                    loadingIndicator.classList.remove('show');
+                }
+            }, 500);
+            const adContainer = document.querySelector('.ad-container');
+            function isMobileView() {
+                return window.innerWidth <= 768;
+            }
+            function displayAds(adArray) {
+                if (!adContainer || adArray.length === 0) return;
+                adContainer.innerHTML = '';
+                adArray.forEach((ad) => {
+                    const adLink = document.createElement('a');
+                    adLink.href = ad.link;
+                    adLink.target = '_blank';
+                    adLink.rel = 'noopener noreferrer';
+                    const img = document.createElement('img');
+                    img.src = isMobileView() ? ad.mobileImage : ad.pcImage;
+                    img.alt = ad.alt || '广告';
+                    img.classList.add(isMobileView() ? 'ad-image-mobile' : 'ad-image-pc');
+                    img.style.width = '100%';
+                    adLink.appendChild(img);
+                    adContainer.appendChild(adLink);
+                });
+            }
+            displayAds(adsData);
+            window.addEventListener('resize', () => displayAds(adsData));
+        });
+    </script>
 </body>
 </html>
