@@ -9,7 +9,7 @@ const sites = [
   { "image": "Pornhub.gif",    "name": "PornHub",          "url": "https://984.gzwgglu.top/chan/GS1000/agtRG" },
   { "image": "51mh2.gif",      "name": "51漫画",           "url": "https://woh03szd.fylslovryc8lntekorfarnik.com/ck/41400/xeumh" },
   { "image": "hj.gif",         "name": "海角社区",        "url": "https://woh03szd.xurtsnovryc8lrvakadrumbek.com/hy/41402/g1uhjsq" },
-  { "image": "xxb.png",         "name": "杏吧",             "url": "https://woh04szd.fentdrovryc8lfakrozibrek.com/ky/41504/iq1gybxb" },
+  { "image": "xxb.png",         "name": "杏吧",             "url": "https://nfsxvd.ks.nsw7peaztwbj.vip/xb-iq1gybxb" },
   { "image": "xnjlb.gif",      "name": "小蓝俱乐部",       "url": "https://2fa5.scsubbu.org/chan/xb3859/czTvz" },
   { "image": "91dsp.png",      "name": "91短视频",         "url": "https://6ce4.erbrqsbi.org/chan-5028/aff-mhY87" },
   { "image": "91porn.png",     "name": "91PORN",           "url": "https://5983.uhgtjzs.cc/chan/GS0710/nN9s" },
@@ -18,5 +18,5 @@ const sites = [
   { "image": "pilipili.png",   "name": "pilipili二次元",   "url": "https://771.cwqdidqk.org/?code=arGSB&c=18844" },
   { "image": "clsq.png",       "name": "草榴社区",         "url": "https://5a5e.gvvjxmo.top/aff-a4phK" },
   { "image": "51pc.png",       "name": "51品茶",           "url": " https://920c.scwtwauq.org/?code=bqgkF&c=18844" },
-  { "image": "bld.gif",       "name": "不撸帝",           "url": "https://uzhgfe.obiv6wlf97aw.vip/blued-6umibld" },
+  { "image": "bld.gif",       "name": "不撸帝",           "url": "https://pcbzqe.mkmft5kua1jj.vip/blued-6umibld" },
 ];
