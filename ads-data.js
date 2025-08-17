@@ -1,12 +1,12 @@
 //ads-data.js
 
-   /*const adsData = [
+  const adsData = [
     {
         name: "主要推广广告",
         pcImage: "images/ad-banner-pc.gif",          
         mobileImage: "images/ad-banner-mobile.gif",   
         alt: "haohaise.tv 的主要推广广告",
-        link: "https://xx88.im" 
+        link: "https://m.uirates.com" 
     }
 
     /*
