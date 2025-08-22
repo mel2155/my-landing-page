@@ -12,6 +12,7 @@ const sites = [
   { "image": "xxb.png",         "name": "杏吧",             "url": "https://dd9018.kravlismozhevryc7mntorrvik.com/ky/41504/iq1gybxb" },
   { "image": "xnjlb.gif",      "name": "小蓝俱乐部",       "url": "https://9470.scsubbu.org/chan/xb3859/czTvz" },
   { "image": "btcy.gif",       "name": "半糖次元",           "url": "https://dd9018.jankruvryc7mlbodorvornux.com/bk/42916/p51rbtcy" },
+  { "image": "lld.gif",       "name": "萝莉岛",             "url": "https://a38.facmbvb.top/chan/lldapp0875/F9ac" },
   { "image": "91qy.png",       "name": "91妻友",           "url": "https://2f2c.vefjogzx.cc/aff-cfHS7" },
   { "image": "91dsp.png",      "name": "91短视频",         "url": "https://e8e5.tulojsis.top/chan-5028/aff-mhY87" },
   { "image": "91porn.png",     "name": "91PORN",           "url": "https://e5c5.vbdiing.top/chan/GS0710/nN9s" },
