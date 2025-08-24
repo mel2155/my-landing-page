@@ -4,7 +4,7 @@ const sites = [
   { "image": "txvlog.gif",     "name": "糖心vlog",         "url": "https://bjc.jorlakstornpyzvryc7srekil.com/hy/41398/6agtrtx" },
   { "image": "jmtt.gif",       "name": "禁漫天堂",         "url": "https://d2f2c.cmmyrgs.top/chan/jm1300/5rmW" },
   { "image": "hjllsq.gif",     "name": "海角乱伦社区",      "url": "https://efa1.vcofhfwr.com/aff-ekUuZ"},
-  { "image": "bkmh.gif",       "name": "哔咔漫画",         "url": "https://bjc.truwemvryc7szorvixfarnik.com/hy/41396/arq19bk" },
+  { "image": "bkmh.gif",       "name": "哔咔漫画",         "url": "https://a426244-a92.pr7ax6iehbmq.vip?ch=arq19bk" },
   { "image": "lld.gif",       "name": "萝莉岛",             "url": "https://a38.facmbvb.top/chan/lldapp0875/F9ac" },
   { "image": "51dm.gif",       "name": "51动漫",           "url": "https://856a.uraemig.top/?code=bJMDj&c=18844" },
   { "image": "Pornhub.gif",    "name": "PornHub",          "url": "https://4de.giuvmxiq.top/chan/GS1000/agtRG" },
