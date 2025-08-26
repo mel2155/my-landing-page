@@ -32,4 +32,11 @@ const sites = [
   { "image": "sgp.png",        "name": "水果派",           "url": "https://cedfb.daokzgc.org/chan/GS0782/kEC6" },
   { "image": "hls.png",        "name": "黑料社",           "url": "https://34153.rkwwubx.top/aff-Dtsn" },
   { "image": "50dh.png",       "name": "50度灰",           "url": "https://f0e14.hpmlbxl.cc/chan/h57170/559dw" },
+  
+  { "image": "91ym.jpg",       "name": "91淫母",             "url": "https://ivrb.es14t.com/mcg/?channel=ppkccI" },
+  { "image": "17s.jpg",        "name": "17岁",             "url": "https://nhpb.14glj.com/dzy/?channel=erxlPr" },
+  { "image": "llsq.jpg",        "name": "乱伦社区",          "url": "https://fgob.d378v.com/pbn/?channel=R1lPfj" },
+  { "image": "91xy.jpg",        "name": "91学院",           "url": "https://clwb.ju9an.com/mzi/?channel=GDpG1x" },
+  { "image": "lyd.jpg",        "name": "萝莉岛",           "url": "https://caqb.sm6du.com/cox/?channel=qTFeUe" },
+  { "image": "xlq.jpg",        "name": "新娘圈",           "url": "https://cikb.3j3or.com/ifx/?channel=Z3f6hwe" },
 ];
