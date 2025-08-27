@@ -1,6 +1,6 @@
 const sites = [
   { "image": "https://picsislkss.1031.academy/i/2025/08/16/71a41259cd301ecc92f019d6d83c06d2e7d9d7e9.gif",     "name": "星星直播",     "url": "https://dspern8asx.xdslkajb100850029.top:57009/1_xxzb/et.htm?yxn847" },
-  { "image": "bkmh.gif",       "name": "哔咔漫画",         "url": "https://12d49-288.z1pn0l15ji6n.vip?ch=arq19bk" },
+  { "image": "bkmh.gif",       "name": "哔咔漫画",         "url": "https://b2743.el7x1ptm2b73.vip?ch=arq19bk" },
   { "image": "txvlog.gif",     "name": "糖心vlog",         "url": "https://bjc.jorlakstornpyzvryc7srekil.com/hy/41398/6agtrtx" },
   { "image": "jmtt.gif",       "name": "禁漫天堂",         "url": "https://d2f2c.cmmyrgs.top/chan/jm1300/5rmW" },
   { "image": "hjllsq.gif",     "name": "海角乱伦社区",      "url": "https://efa1.vcofhfwr.com/aff-ekUuZ"},
