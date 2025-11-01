@@ -10,7 +10,7 @@ const sites = [
   { "image": "51mh2.gif",      "name": "51漫画",           "url": "https://82d9.vwwlrjiv.com/?code=bJMDj&c=18844" },
   { "image": "hj.gif",         "name": "海角社区",        "url": "https://aplsof2fd.nubrenzolvrybhspekglundor.com/hy/41402/g1uhjsq" },
   { "image": "xxb.png",         "name": "杏吧",             "url": "https://aplsof2fd.griznomelnarzenvrybhskro.com/ky/41504/iq1gybxb" },
-  { "image": "xnjlb.gif",      "name": "男同乐园",       "url": "https://9399.xkpihxbk.xyz/chan/xb3859/czTvz" },
+  { "image": "xnjlb.gif",      "name": "男同乐园",       "url": "https://d258.fgyauct.cc/chan/xb3859/czTvz" },
   { "image": "91dsp.png",      "name": "91短视频",         "url": " https://d08a.prjqoamc.cc/chan-5028/aff-mhY87" },
   { "image": "91porn.png",     "name": "91PORN",           "url": "https://82c9.vasqtzi.cc/chan/GS0710/nN9s" },
   { "image": "awjq.png",       "name": "暗网禁区",         "url": " https://302.pxikzrf.cc/aff-dHXe9" },
